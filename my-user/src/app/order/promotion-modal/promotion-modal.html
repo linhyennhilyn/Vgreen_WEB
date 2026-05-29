@@ -1,0 +1,152 @@
+<!-- Modal Overlay -->
+<div class="modal-overlay" (click)="onClose()">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h2>Khuyến mãi</h2>
+      <button class="close-btn" (click)="onClose()" aria-label="Đóng">
+        <span><img src="/asset/icons/clear_dark.png" alt="Close" class="close-icon" /></span>
+      </button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body">
+      <!-- Manual Promo Code Input -->
+      <div class="promo-code-section">
+        <h3>Nhập mã khuyến mãi</h3>
+        <div class="code-input-group">
+          <div class="input-with-clear">
+            <input
+              #codeInput
+              type="text"
+              [(ngModel)]="manualPromoCode"
+              (ngModelChange)="onManualCodeChange()"
+              (input)="onManualCodeChange()"
+              (compositionend)="onCompositionEnd()"
+              placeholder="Nhập mã khuyến mãi"
+              class="code-input"
+              [class.error]="errorMessage && manualPromoCode"
+            />
+            <button
+              *ngIf="manualPromoCode.trim()"
+              class="clear-btn"
+              (click)="onClearCode(codeInput)"
+              type="button"
+              aria-label="Xóa mã"
+            >
+              <img src="/asset/icons/clear_dark.png" alt="Clear" class="clear-icon" />
+            </button>
+          </div>
+          <!-- Nút "Tìm kiếm" - chỉ cần đủ 4 ký tự -->
+          <button class="apply-code-btn" (click)="onSearchPromotion()" [disabled]="!canSearchCode">
+            Tìm kiếm
+          </button>
+        </div>
+        <div class="error-message" *ngIf="errorMessage && manualPromoCode">{{ errorMessage }}</div>
+      </div>
+
+      <!-- Available Promotions -->
+      <div class="promotions-section">
+        <h3>
+          Mã giảm giá <span class="promotion-count">({{ availablePromotions.length }})</span>
+        </h3>
+        <div class="promotions-list">
+          <!-- Loading State -->
+          <div *ngIf="isLoading" class="loading-message">
+            <p>Đang tải mã khuyến mãi...</p>
+          </div>
+
+          <!-- Empty State -->
+          <div *ngIf="!isLoading && availablePromotions.length === 0" class="no-promotions-message">
+            <p>Không có mã khuyến mãi</p>
+          </div>
+
+          <!-- Promotions List -->
+          <div
+            *ngFor="let promotion of availablePromotions; trackBy: trackByPromotionId"
+            class="promotion-card"
+            [class.selected]="selectedPromotionId === promotion.id"
+            [class.disabled]="!isPromotionApplicable(promotion)"
+            (click)="onPromotionSelect(promotion.id)"
+            [attr.data-promotion-code]="promotion.code"
+          >
+            <div class="promotion-header">
+              <img
+                src="/asset/icons/sale_outline_lightgreen.png"
+                alt="sale"
+                class="promotion-icon"
+              />
+              <div class="promotion-info">
+                <h4>{{ promotion.name }}</h4>
+                <!-- <p class="promotion-code" *ngIf="promotion.code">Mã: {{ promotion.code }}</p> -->
+                <!-- <p class="promotion-description" *ngIf="promotion.description">{{ promotion.description }}</p> -->
+                <div class="detail-row">
+                  <span class="label">Đơn tối thiểu:</span>
+                  <span class="value">{{ formatCurrency(promotion.minOrderAmount) }}</span>
+                </div>
+                <div class="detail-row" *ngIf="promotion.discountValue > 0">
+                  <span class="label">Giảm giá:</span>
+                  <span class="value">
+                    <span *ngIf="promotion.discountType === 'percentage'"
+                      >{{ promotion.discountValue }}%</span
+                    >
+                    <span *ngIf="promotion.discountType === 'fixed'">{{
+                      formatCurrency(promotion.discountValue)
+                    }}</span>
+                    <span
+                      *ngIf="
+                        promotion.discountType === 'percentage' &&
+                        promotion.maxDiscount &&
+                        promotion.maxDiscount > 0
+                      "
+                    >
+                      (tối đa {{ formatCurrency(promotion.maxDiscount) }})</span
+                    >
+                  </span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">{{ promotion.expiryLabel }}</span>
+                  <span class="value">{{ promotion.expiryValue }}</span>
+                </div>
+                <div class="not-applicable" *ngIf="!isPromotionApplicable(promotion)">
+                  <span>Đơn hàng chưa đủ điều kiện</span>
+                </div>
+              </div>
+              <div class="promotion-radio">
+                <input
+                  type="radio"
+                  name="promotion"
+                  [value]="promotion.id"
+                  [checked]="selectedPromotionId === promotion.id"
+                  [disabled]="!isPromotionApplicable(promotion)"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="modal-footer">
+      <div class="footer-left" *ngIf="hasValidPromotion">
+        <div class="selection-info">
+          <div class="selection-label">{{ getSelectedPromotionName() }}</div>
+          <div class="selection-name">{{ getSelectedPromotionDiscount() }}</div>
+        </div>
+      </div>
+      <div class="footer-right">
+        <button type="button" class="btn-secondary" (click)="onRemoveAllPromotions()">Xóa</button>
+        <!-- Nút "Áp dụng" - chỉ kích hoạt khi có promotion trong selection-info -->
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="onApplyPromotion()"
+          [disabled]="!canApplyPromotion"
+        >
+          Áp dụng
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

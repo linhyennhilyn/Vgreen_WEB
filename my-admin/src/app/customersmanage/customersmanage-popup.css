@@ -1,0 +1,243 @@
+/* ========================================
+   POPUP NOTIFICATION
+   ======================================== */
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.popup-container {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  min-width: 350px;
+  max-width: 500px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: popupSlideIn 0.3s ease-out;
+  position: relative;
+}
+
+.popup-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+.popup-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.popup-content.popup-success .popup-icon {
+  background: linear-gradient(135deg, #3CB018 0%, #2D8A1F 100%);
+}
+
+.popup-content.popup-error .popup-icon {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+}
+
+.popup-content.popup-info .popup-icon {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.popup-message {
+  flex: 1;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+  font-family: 'Lexend', sans-serif;
+}
+
+.popup-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: #999;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.popup-close:hover {
+  background: #f3f4f6;
+  color: #333;
+}
+
+/* ========================================
+   CONFIRMATION DIALOG
+   ======================================== */
+
+.confirm-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.confirm-dialog {
+  background: white;
+  border-radius: 16px;
+  padding: 0;
+  min-width: 400px;
+  max-width: 500px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: popupSlideIn 0.3s ease-out;
+  overflow: hidden;
+}
+
+.confirm-header {
+  background: #F3F4F6;
+  padding: 16px 24px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.confirm-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6B7280;
+  font-family: 'Lexend', sans-serif;
+}
+
+.confirm-body {
+  padding: 24px;
+}
+
+.confirm-message {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  font-family: 'Lexend', sans-serif;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 16px 24px;
+  background: #F9FAFB;
+  border-top: 1px solid #E5E7EB;
+}
+
+.btn-confirm-cancel,
+.btn-confirm-ok {
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Lexend', sans-serif;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.btn-confirm-cancel {
+  background: #F3F4F6;
+  color: #374151;
+  border: 1px solid #E5E7EB;
+}
+
+.btn-confirm-cancel:hover {
+  background: #E5E7EB;
+  border-color: #D1D5DB;
+}
+
+.btn-confirm-ok {
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+  color: white;
+}
+
+.btn-confirm-ok:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+}
+
+.btn-confirm-ok:active {
+  transform: translateY(0);
+}
+
+/* Popup Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popupSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive Popup */
+@media (max-width: 480px) {
+  .popup-container,
+  .confirm-dialog {
+    min-width: 280px;
+    padding: 20px;
+  }
+
+  .popup-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .popup-message,
+  .confirm-message {
+    font-size: 14px;
+  }
+
+  .confirm-actions {
+    flex-direction: column;
+  }
+
+  .btn-confirm-cancel,
+  .btn-confirm-ok {
+    width: 100%;
+  }
+}
+

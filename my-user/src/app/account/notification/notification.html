@@ -1,0 +1,86 @@
+<!-- ===== NOTIFICATION PAGE LAYOUT ===== -->
+<div class="notification-page">
+  <!-- Main Content -->
+  <div class="notification-content">
+    <!-- Header -->
+    <div class="content-header">
+      <div>
+        <h1>Thông báo</h1>
+        <p>Quản lý và xem tất cả thông báo của bạn</p>
+      </div>
+      <button class="delete-all-btn" (click)="markAllAsRead()" *ngIf="hasNotifications">
+        Đọc tất cả
+      </button>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tab-navigation">
+      <button
+        class="tab-scroll-btn tab-scroll-left"
+        (click)="scrollTabs(-200)"
+        [class.hidden]="!canScrollLeft"
+      >
+        <img src="/asset/icons/arrowright_lightgreen.png" alt="Left" class="scroll-arrow left" />
+      </button>
+      <div class="tab-list" #tabList>
+        <button
+          *ngFor="let tab of tabs"
+          class="tab-button"
+          [class.active]="activeTab === tab.key"
+          (click)="setActiveTab(tab.key)"
+        >
+          <span class="tab-label">{{ tab.label }}</span>
+          <span class="tab-badge" *ngIf="getTabBadge(tab.key) > 0">{{ getTabBadge(tab.key) }}</span>
+        </button>
+      </div>
+      <button
+        class="tab-scroll-btn tab-scroll-right"
+        (click)="scrollTabs(200)"
+        [class.hidden]="!canScrollRight"
+      >
+        <img src="/asset/icons/arrowright_lightgreen.png" alt="Right" class="scroll-arrow right" />
+      </button>
+    </div>
+
+    <!-- Notification Content -->
+    <div class="notification-container">
+      <!-- Có thông báo -->
+      <div *ngIf="hasNotifications" class="notification-list">
+        <div
+          *ngFor="let notification of filteredNotifications"
+          class="notification-card"
+          [class.unread]="!isNotificationRead(notification)"
+          (click)="markAsRead(notification)"
+        >
+          <div class="notification-icon">
+            <img [src]="getNotificationIcon(notification.type)" alt="notification icon" />
+          </div>
+
+          <div class="notification-content-wrapper">
+            <div class="notification-main">
+              <h3 class="notification-title">{{ getNotificationTitle(notification) }}</h3>
+              <p class="notification-description">{{ getNotificationContent(notification) }}</p>
+              <div class="notification-footer">
+                <span class="notification-timestamp">{{
+                  formatTimestamp(getNotificationTimestamp(notification))
+                }}</span>
+              </div>
+            </div>
+
+            <div class="notification-indicator" *ngIf="!isNotificationRead(notification)">
+              <span class="unread-dot"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Không có thông báo -->
+      <div *ngIf="!hasNotifications" class="empty-state">
+        <div class="empty-icon">
+          <img src="/asset/icons/no_notice.png" alt="notification icon" />
+        </div>
+        <h2 class="empty-title">Bạn không có thông báo nào</h2>
+      </div>
+    </div>
+  </div>
+</div>

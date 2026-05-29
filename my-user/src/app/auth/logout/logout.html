@@ -1,0 +1,21 @@
+<!-- Logout Confirmation Popup -->
+@if (isOpen) {
+<div class="logout-overlay" (click)="onOverlayClick($event)">
+  <div class="logout-popup">
+    <!-- Header -->
+    <div class="popup-header">
+      <div class="popup-icon">
+        <img src="/asset/icons/logout_dark.png" alt="Logout" />
+      </div>
+      <h2 class="popup-title">Xác nhận đăng xuất</h2>
+      <p class="popup-message">Bạn có chắc chắn muốn đăng xuất khỏi tài khoản?</p>
+    </div>
+
+    <!-- Actions -->
+    <div class="popup-actions">
+      <button class="btn-cancel" (click)="onCancel()">Hủy</button>
+      <button class="btn-confirm" (click)="onConfirm()">Đăng xuất</button>
+    </div>
+  </div>
+</div>
+}

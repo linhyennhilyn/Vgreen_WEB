@@ -1,0 +1,379 @@
+<!-- Customers Management Page -->
+<div class="customers-page" (click)="closeDropdowns($event)">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <span>Quản trị viên</span>
+    <span class="separator">/</span>
+    <span>Quản lý khách hàng</span>
+    <span class="separator">/</span>
+    <span class="current">Danh sách khách hàng</span>
+  </div>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1 class="page-title">DANH SÁCH KHÁCH HÀNG</h1>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <!-- Search Container (Left aligned) -->
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Tìm kiếm khách hàng..." (input)="searchCustomers($event)">
+      <button class="search-btn">
+        <img src="/asset/icons/search_dark.png" alt="Search">
+      </button>
+    </div>
+
+    <!-- Actions (Right aligned) -->
+    <div class="actions-container">
+      <span class="selected-count">{{selectedCount}} đã chọn</span>
+      
+      <button class="btn-action btn-edit" (click)="editCustomers()" [disabled]="selectedCount !== 1">
+        <img src="/asset/icons/edit_dark.png" alt="Edit">
+        <span>Chỉnh</span>
+      </button>
+      
+      <button 
+        class="btn-action btn-delete" 
+        [class.disabled]="selectedCount === 0"
+        [disabled]="selectedCount === 0"
+        (click)="deleteCustomers(); $event.stopPropagation(); $event.preventDefault()" 
+        type="button">
+        <img src="/asset/icons/trash_red.png" alt="Delete">
+        <span>Xoá</span>
+      </button>
+      
+      <button class="btn-action btn-group" (click)="manageGroups()" [disabled]="selectedCount < 2">
+        <img src="/asset/icons/customer_dark.png" alt="Group">
+        <span>Nhóm</span>
+      </button>
+      
+      <!-- Filter Dropdown -->
+      <div class="dropdown-container">
+        <button class="btn-action btn-filter" [class.active]="showFilterDropdown" (click)="toggleFilterDropdown($event)">
+          <img src="/asset/icons/filter_dark.png" alt="Filter">
+          <span>Lọc {{showFilterDropdown ? '✓' : ''}}</span>
+          <span class="dropdown-arrow">▼</span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-multilevel" *ngIf="showFilterDropdown" (click)="$event.stopPropagation()">
+          <!-- Member Tier with Submenu -->
+          <div class="dropdown-item-parent">
+            <div class="dropdown-item">
+              <img src="/asset/icons/customer_dark.png" alt="Member Tier" class="item-icon">
+              <span>Hạng thành viên</span>
+              <span class="arrow-right">›</span>
+            </div>
+            <div class="dropdown-submenu">
+              <label class="dropdown-option" (click)="toggleMemberTierFilter('all')">
+                <input type="checkbox" [checked]="filterOptions.memberTier === 'all'" (click)="$event.stopPropagation()">
+                <img src="/asset/icons/list_dark.png" alt="All" class="tier-icon" style="width: 16px; height: 16px; margin-right: 8px;">
+                <span>Tất cả</span>
+              </label>
+              <label class="dropdown-option" (click)="toggleMemberTierFilter('gold')">
+                <input type="checkbox" [checked]="filterOptions.memberTier === 'gold'" (click)="$event.stopPropagation()">
+                <img src="/asset/icons/vip.png" alt="Gold" class="tier-icon" style="width: 16px; height: 16px; margin-right: 8px;">
+                <span>Vàng (VIP)</span>
+              </label>
+              <label class="dropdown-option" (click)="toggleMemberTierFilter('silver')">
+                <input type="checkbox" [checked]="filterOptions.memberTier === 'silver'" (click)="$event.stopPropagation()">
+                <img src="/asset/icons/premium.png" alt="Silver" class="tier-icon" style="width: 16px; height: 16px; margin-right: 8px;">
+                <span>Bạc (Premium)</span>
+              </label>
+              <label class="dropdown-option" (click)="toggleMemberTierFilter('bronze')">
+                <input type="checkbox" [checked]="filterOptions.memberTier === 'bronze'" (click)="$event.stopPropagation()">
+                <img src="/asset/icons/regular.png" alt="Bronze" class="tier-icon" style="width: 16px; height: 16px; margin-right: 8px;">
+                <span>Đồng (Regular)</span>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Group with Submenu -->
+          <div class="dropdown-item-parent">
+            <div class="dropdown-item">
+              <img src="/asset/icons/group.png" alt="Group" class="item-icon">
+              <span>Nhóm khách hàng</span>
+              <span class="arrow-right">›</span>
+            </div>
+            <div class="dropdown-submenu dropdown-submenu-scrollable" *ngIf="allGroupNames.length > 0">
+              <label class="dropdown-option" (click)="toggleGroupFilterDropdown('all')">
+                <input type="checkbox" [checked]="filterOptions.group === 'all'" (click)="$event.stopPropagation()">
+                <img src="/asset/icons/list_dark.png" alt="All" class="tier-icon" style="width: 16px; height: 16px; margin-right: 8px;">
+                <span>Tất cả</span>
+              </label>
+              <label class="dropdown-option" *ngFor="let groupName of allGroupNames" (click)="toggleGroupFilterDropdown(groupName)">
+                <input type="checkbox" [checked]="filterOptions.group === groupName" (click)="$event.stopPropagation()">
+                <span>{{groupName}}</span>
+              </label>
+            </div>
+            <div class="dropdown-submenu" *ngIf="allGroupNames.length === 0">
+              <div class="dropdown-empty">
+                <img src="/asset/icons/group.png" alt="Group" class="empty-icon" style="width: 20px; height: 20px;">
+                <span>Chưa có nhóm nào</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-actions">
+            <button class="btn-clear-filter" (click)="clearAllFilters()">
+              <img src="/asset/icons/trash_red.png" alt="Clear Filter" style="width: 16px; height: 16px;">
+              <span>Xóa bộ lọc</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Sort Dropdown -->
+      <div class="dropdown-container">
+        <button class="btn-action btn-sort" [class.active]="showSortDropdown" (click)="toggleSortDropdown($event)">
+          <span class="icon-sort">⇅</span>
+          <span>Sắp xếp {{showSortDropdown ? '✓' : ''}}</span>
+          <span class="dropdown-arrow">▼</span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-sort" *ngIf="showSortDropdown" (click)="$event.stopPropagation()">
+          <!-- Sort by Name -->
+          <div class="sort-option" 
+               [class.active]="currentSortField === 'name'" 
+               (click)="sortBy('name')">
+            <div class="sort-option-icon">
+              <img src="/asset/icons/name.png" alt="Name" style="width: 24px; height: 24px;">
+            </div>
+            <div class="sort-option-content">
+              <div class="sort-option-label">Tên khách hàng</div>
+              <div class="sort-option-desc">A → Z hoặc Z → A</div>
+            </div>
+            <div class="sort-option-indicator" *ngIf="currentSortField === 'name'">
+              <div class="indicator-badge" [class.asc]="currentSortOrder === 'asc'" [class.desc]="currentSortOrder === 'desc'">
+                {{currentSortOrder === 'asc' ? 'A→Z' : 'Z→A'}}
+              </div>
+            </div>
+          </div>
+
+          <!-- Sort by Join Date -->
+          <div class="sort-option" 
+               [class.active]="currentSortField === 'joinDate'" 
+               (click)="sortBy('joinDate')">
+            <div class="sort-option-icon">
+              <img src="/asset/icons/calendar.png" alt="Calendar" style="width: 24px; height: 24px;">
+            </div>
+            <div class="sort-option-content">
+              <div class="sort-option-label">Ngày tham gia</div>
+              <div class="sort-option-desc">Cũ đến mới / Mới đến cũ</div>
+            </div>
+            <div class="sort-option-indicator" *ngIf="currentSortField === 'joinDate'">
+              <div class="indicator-badge" [class.asc]="currentSortOrder === 'asc'" [class.desc]="currentSortOrder === 'desc'">
+                {{currentSortOrder === 'asc' ? '↑' : '↓'}}
+              </div>
+            </div>
+          </div>
+
+          <!-- Sort by Total Spending -->
+          <div class="sort-option" 
+               [class.active]="currentSortField === 'totalOrders'" 
+               (click)="sortBy('totalOrders')">
+            <div class="sort-option-icon">
+              <img src="/asset/icons/price.png" alt="Price" style="width: 24px; height: 24px;">
+            </div>
+            <div class="sort-option-content">
+              <div class="sort-option-label">Tổng chi tiêu</div>
+              <div class="sort-option-desc">Thấp đến cao / Cao đến thấp</div>
+            </div>
+            <div class="sort-option-indicator" *ngIf="currentSortField === 'totalOrders'">
+              <div class="indicator-badge" [class.asc]="currentSortOrder === 'asc'" [class.desc]="currentSortOrder === 'desc'">
+                {{currentSortOrder === 'asc' ? '↑' : '↓'}}
+              </div>
+            </div>
+          </div>
+
+          <!-- Sort by Member Tier -->
+          <div class="sort-option" 
+               [class.active]="currentSortField === 'memberTier'" 
+               (click)="sortBy('memberTier')">
+            <div class="sort-option-icon">
+              <img src="/asset/icons/star_dark.png" alt="Rating" style="width: 24px; height: 24px;">
+            </div>
+            <div class="sort-option-content">
+              <div class="sort-option-label">Hạng thành viên</div>
+              <div class="sort-option-desc">Cao đến thấp / Thấp đến cao</div>
+            </div>
+            <div class="sort-option-indicator" *ngIf="currentSortField === 'memberTier'">
+              <div class="indicator-badge" [class.asc]="currentSortOrder === 'asc'" [class.desc]="currentSortOrder === 'desc'">
+                {{currentSortOrder === 'asc' ? '↑' : '↓'}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Customers Table -->
+  <div class="customers-table-container">
+    <table class="customers-table">
+      <thead>
+        <tr>
+          <th class="col-checkbox">
+            <input type="checkbox" class="checkbox-all" [checked]="selectAll" (change)="toggleSelectAll()">
+          </th>
+          <th class="col-customer-id">Mã khách hàng</th>
+          <th class="col-join-date">Thời gian tham gia</th>
+          <th class="col-name">Khách hàng</th>
+          <th class="col-address">Địa chỉ</th>
+          <th class="col-tier">Hạng thành viên</th>
+          <th class="col-total">Tổng đơn</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic Customer Rows -->
+        <tr class="customer-row" *ngFor="let customer of customers" (click)="viewCustomerDetail(customer)">
+          <td class="col-checkbox" (click)="$event.stopPropagation()">
+            <input type="checkbox" class="checkbox-item" [checked]="customer.selected" (change)="toggleCustomer(customer)">
+          </td>
+          <td class="col-customer-id">{{customer.id}}</td>
+          <td class="col-join-date">{{customer.joinDate}}</td>
+          <td class="col-name">{{customer.name}}</td>
+          <td class="col-address">{{customer.address}}</td>
+          <td class="col-tier">
+            <span class="tier-badge" [ngClass]="getMemberTierClass(customer.memberTier)">
+              {{getMemberTierLabel(customer.memberTier)}}
+            </span>
+          </td>
+          <td class="col-total">{{customer.totalOrders}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Batch Edit Modal -->
+<div class="group-modal-overlay" *ngIf="showBatchEditModal" (click)="closeBatchEditModal()">
+  <div class="group-modal-content" (click)="$event.stopPropagation()">
+    <div class="group-modal-header">
+      <h3 class="group-modal-title">
+        <img src="/asset/icons/edit_dark.png" alt="Edit" class="title-icon" style="width: 20px; height: 20px;">
+        Chỉnh sửa hàng loạt
+      </h3>
+      <button class="btn-close-modal" (click)="closeBatchEditModal()">×</button>
+    </div>
+
+    <div class="group-modal-body">
+      <p class="group-modal-desc">
+        Đang chỉnh sửa <strong>{{selectedCount}}</strong> khách hàng đã chọn
+      </p>
+
+      <div class="group-form-group">
+        <label class="group-label">Chọn thao tác:</label>
+        <select class="group-name-input" [(ngModel)]="batchEditOption">
+          <option value="">-- Chọn thao tác --</option>
+          <option value="tier">Thay đổi hạng thành viên</option>
+          <option value="group">Thay đổi nhóm</option>
+          <option value="removeGroup">Xóa khỏi nhóm</option>
+        </select>
+      </div>
+
+      <!-- Tier Selection -->
+      <div class="group-form-group" *ngIf="batchEditOption === 'tier'">
+        <label class="group-label">Chọn hạng mới:</label>
+        <select class="group-name-input" [(ngModel)]="selectedTier">
+          <option value="">-- Chọn hạng --</option>
+          <option value="gold">Vàng (VIP)</option>
+          <option value="silver">Bạc (Premium)</option>
+          <option value="bronze">Đồng (Regular)</option>
+        </select>
+      </div>
+
+      <!-- Group Selection -->
+      <div class="group-form-group" *ngIf="batchEditOption === 'group'">
+        <label class="group-label">Tên nhóm:</label>
+        <input 
+          type="text" 
+          class="group-name-input" 
+          placeholder="VD: Khách hàng VIP, Khách hàng thân thiết..." 
+          [(ngModel)]="selectedGroupForBatch">
+      </div>
+
+      <div class="group-info" *ngIf="batchEditOption">
+        <img src="/asset/icons/info_dark.png" alt="Info" class="info-icon" style="width: 16px; height: 16px;">
+        <span>Thay đổi sẽ được áp dụng cho tất cả khách hàng đã chọn</span>
+      </div>
+    </div>
+
+    <div class="group-modal-footer">
+      <button class="btn-cancel-group" (click)="closeBatchEditModal()">Hủy</button>
+      <button class="btn-create-group" (click)="applyBatchEdit()" [disabled]="!batchEditOption">
+        <span>✓</span> Áp dụng
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Group Modal -->
+<div class="group-modal-overlay" *ngIf="showGroupModal" (click)="closeGroupModal()">
+  <div class="group-modal-content" (click)="$event.stopPropagation()">
+    <div class="group-modal-header">
+      <h3 class="group-modal-title">
+        <img src="/asset/icons/group.png" alt="Group" class="title-icon" style="width: 20px; height: 20px;">
+        Tạo nhóm khách hàng
+      </h3>
+      <button class="btn-close-modal" (click)="closeGroupModal()">×</button>
+    </div>
+
+    <div class="group-modal-body">
+      <p class="group-modal-desc">
+        Bạn đang nhóm <strong>{{selectedCount}}</strong> khách hàng đã chọn
+      </p>
+
+      <div class="group-form-group">
+        <label class="group-label">Tên nhóm:</label>
+        <input 
+          type="text" 
+          class="group-name-input" 
+          placeholder="VD: Khách hàng VIP, Khách hàng thân thiết, Khách hàng mới..." 
+          [(ngModel)]="newGroupName"
+          (keyup.enter)="createGroup()"
+          autofocus>
+      </div>
+
+      <div class="group-info">
+        <img src="/asset/icons/info_dark.png" alt="Info" class="info-icon" style="width: 16px; height: 16px;">
+        <span>Mỗi khách hàng có thể thuộc nhiều nhóm khác nhau</span>
+      </div>
+    </div>
+
+    <div class="group-modal-footer">
+      <button class="btn-cancel-group" (click)="closeGroupModal()">Hủy</button>
+      <button class="btn-create-group" (click)="createGroup()">
+        <span>✓</span> Tạo nhóm
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Popup Notification -->
+<div class="popup-overlay" *ngIf="showPopup" (click)="closePopup()">
+  <div class="popup-container" (click)="$event.stopPropagation()">
+    <div class="popup-content" [ngClass]="'popup-' + popupType">
+      <div class="popup-icon">
+        <span *ngIf="popupType === 'success'">✓</span>
+        <span *ngIf="popupType === 'error'">✗</span>
+        <span *ngIf="popupType === 'info'">ℹ</span>
+      </div>
+      <div class="popup-message">{{popupMessage}}</div>
+      <button class="popup-close" (click)="closePopup()">×</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirmation Dialog -->
+<div class="popup-overlay" *ngIf="showConfirmDialog" (click)="cancelDelete()">
+  <div class="confirm-dialog" (click)="$event.stopPropagation()">
+    <div class="confirm-icon">
+      <span class="icon-question">?</span>
+    </div>
+    <div class="confirm-message">{{ confirmMessage }}</div>
+    <div class="confirm-buttons">
+      <button class="btn-confirm-cancel" (click)="cancelDelete()">Hủy</button>
+      <button class="btn-confirm-ok" (click)="confirmDelete()">OK</button>
+    </div>
+  </div>
+</div>

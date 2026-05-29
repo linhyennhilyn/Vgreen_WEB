@@ -1,0 +1,891 @@
+<!-- Order Detail Page -->
+<div class="order-detail-page">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <span>Quản trị viên</span>
+    <span class="separator">/</span>
+    <span class="clickable" (click)="navigateToOrders()">{{ breadcrumbText }}</span>
+    <span class="separator">/</span>
+    <span class="current">Chi tiết đơn hàng</span>
+  </div>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1 class="page-title">
+      {{
+        isNewOrder ? 'TẠO ĐƠN HÀNG MỚI' : isEditMode ? 'CHỈNH SỬA ĐƠN HÀNG' : 'CHI TIẾT ĐƠN HÀNG'
+      }}
+    </h1>
+    <div class="header-actions" *ngIf="!isNewOrder && !isEditMode">
+      <button class="btn-edit-order" (click)="enterEditMode()">
+        <img src="/asset/icons/edit.png" alt="Edit" />
+        <span>Chỉnh sửa</span>
+      </button>
+      <button class="btn-print" (click)="printOrder()">
+        <img src="/asset/icons/print.png" alt="Print" />
+        <span>In đơn hàng</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Back Button -->
+  <button class="btn-back" (click)="goBack()">
+    <img src="/asset/icons/arrowleft.png" alt="Back" />
+    <span>{{ backButtonText }}</span>
+  </button>
+
+  <!-- Main Content -->
+  <div class="content-wrapper">
+    <!-- Left Column -->
+    <div class="left-column">
+      <!-- Order Info Card -->
+      <div class="order-info-card">
+        <div class="order-header">
+          <div class="order-id-date">
+            <h2 class="order-id" *ngIf="!isNewOrder">#{{ orderData.id }}</h2>
+            <h2 class="order-id" *ngIf="isNewOrder">Đơn hàng mới</h2>
+            <p class="order-date">{{ orderData.date }}</p>
+          </div>
+          <div class="order-statuses" *ngIf="!isNewOrder && !isEditMode">
+            <div class="status-item">
+              <p class="status-label">Trạng thái đơn hàng</p>
+              <span class="status-badge" [ngClass]="'status-' + orderData.status">
+                <span class="status-dot"></span>
+                {{ getStatusLabel(orderData.status) }}
+              </span>
+            </div>
+            <div class="status-item" *ngIf="orderData.delivery !== 'none'">
+              <p class="status-label">Trạng thái giao hàng</p>
+              <span class="status-badge" [ngClass]="'delivery-' + orderData.delivery">
+                <span class="delivery-dot"></span>
+                {{ getDeliveryLabel(orderData.delivery) }}
+              </span>
+            </div>
+            <div class="status-item">
+              <p class="status-label">Trạng thái thanh toán</p>
+              <span class="status-badge" [ngClass]="'payment-' + orderData.payment">
+                <span class="payment-dot"></span>
+                {{ getPaymentLabel(orderData.payment) }}
+              </span>
+            </div>
+          </div>
+          <div class="order-statuses" *ngIf="isNewOrder || isEditMode">
+            <div class="status-item">
+              <p class="status-label">Trạng thái đơn hàng</p>
+              <select class="form-select" [(ngModel)]="orderData.status">
+                <option value="pending">Chờ xác nhận</option>
+                <option value="confirmed">Đã xác nhận</option>
+              </select>
+            </div>
+            <div class="status-item">
+              <p class="status-label">Trạng thái giao hàng</p>
+              <select class="form-select" [(ngModel)]="orderData.delivery">
+                <option value="pending">Chờ giao</option>
+                <option value="delivering">Đang giao</option>
+                <option value="delivered">Đã giao</option>
+              </select>
+            </div>
+            <div class="status-item">
+              <p class="status-label">Trạng thái thanh toán</p>
+              <select class="form-select" [(ngModel)]="orderData.payment">
+                <option value="unpaid">Chưa thanh toán</option>
+                <option value="paid">Đã thanh toán</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Products Table -->
+        <div class="products-section">
+          <div class="section-header">
+            <h3 class="section-title">Danh sách sản phẩm</h3>
+            <button
+              class="btn-add-item"
+              *ngIf="isNewOrder || isEditMode"
+              (click)="addProductToOrder()"
+            >
+              <img src="/asset/icons/plus.png" alt="Add" />
+              <span>Thêm sản phẩm</span>
+            </button>
+          </div>
+          <table class="products-table">
+            <thead>
+              <tr>
+                <th class="col-image"></th>
+                <th class="col-name">Tên sản phẩm<br /><span class="sub-header">SKU</span></th>
+                <th class="col-quantity">Số lượng</th>
+                <th class="col-price">Giá</th>
+                <th class="col-total">Thành tiền</th>
+                <th class="col-actions" *ngIf="isNewOrder || isEditMode"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let item of orderData.items; let i = index"
+                [class.clickable-row]="!isNewOrder && !isEditMode"
+                (click)="!isNewOrder && !isEditMode && goToProductDetail(item)"
+              >
+                <td class="col-image">
+                  <div class="product-image">
+                    <img [src]="item.image" alt="Product" />
+                  </div>
+                </td>
+                <td class="col-name">
+                  <input
+                    *ngIf="isNewOrder || isEditMode"
+                    type="text"
+                    class="form-input-inline"
+                    [(ngModel)]="item.name"
+                    placeholder="Tên sản phẩm"
+                  />
+                  <div *ngIf="!isNewOrder && !isEditMode" class="product-name">
+                    <span class="free-item-badge" *ngIf="item.itemType === 'gifted'">Tặng kèm</span
+                    >{{ item.name }}
+                  </div>
+                  <input
+                    *ngIf="isNewOrder || isEditMode"
+                    type="text"
+                    class="form-input-inline form-input-sku"
+                    [(ngModel)]="item.sku"
+                    placeholder="SKU"
+                  />
+                  <div *ngIf="!isNewOrder && !isEditMode" class="product-sku">{{ item.sku }}</div>
+                </td>
+                <td class="col-quantity">
+                  <input
+                    *ngIf="isNewOrder || isEditMode"
+                    type="number"
+                    class="form-input-inline"
+                    [(ngModel)]="item.quantity"
+                    (change)="updateProductQuantity(i, item.quantity)"
+                    min="1"
+                  />
+                  <span *ngIf="!isNewOrder && !isEditMode">{{ item.quantity }}</span>
+                </td>
+                <td class="col-price">
+                  <input
+                    *ngIf="isNewOrder || isEditMode"
+                    type="number"
+                    class="form-input-inline"
+                    [(ngModel)]="item.price"
+                    (change)="updateProductPrice(i, item.price)"
+                    min="0"
+                    step="1000"
+                  />
+                  <span *ngIf="!isNewOrder && !isEditMode">{{ formatCurrency(item.price) }}</span>
+                </td>
+                <td class="col-total">
+                  {{ formatCurrency(item.total || item.price * item.quantity) }}
+                </td>
+                <td class="col-actions" *ngIf="isNewOrder || isEditMode">
+                  <button class="btn-remove-item" (click)="removeProductFromOrder(i)">
+                    <img src="/asset/icons/trash_red.png" alt="Remove" />
+                  </button>
+                </td>
+              </tr>
+              <tr *ngIf="isNewOrder && orderData.items.length === 0">
+                <td colspan="6" class="empty-products">
+                  <p>Chưa có sản phẩm nào. Nhấn "Thêm sản phẩm" để thêm sản phẩm vào đơn hàng.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Promotion Section -->
+        <div class="promotion-section" *ngIf="orderData.promotion.name">
+          <h3 class="section-title">Khuyến mãi</h3>
+          <div class="promotion-content">
+            <div class="promotion-label">
+              <strong>{{ orderData.promotion.name }}</strong>
+            </div>
+            <div class="promotion-code">{{ orderData.promotion.code }}</div>
+            <div class="promotion-description" *ngIf="orderData.promotion.description">
+              {{ orderData.promotion.description }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="right-column">
+      <!-- Customer Info Card -->
+      <div class="info-card">
+        <h3 class="card-title">Thông tin người mua</h3>
+        <div class="card-content">
+          <div class="info-row" *ngIf="!isNewOrder && !isEditMode">
+            <strong>{{ orderData.customerInfo.name }}</strong>
+          </div>
+          <!-- Customer ID - Always display -->
+          <div class="info-row">
+            <label class="info-label">ID Khách hàng:</label>
+            <div class="customer-id-search-container" *ngIf="isNewOrder || isEditMode">
+              <input
+                type="text"
+                class="form-input-inline"
+                [(ngModel)]="customerIDSearch"
+                placeholder="Nhập Customer ID để tìm kiếm"
+                (keyup.enter)="searchCustomerById()"
+                (blur)="searchCustomerById()"
+              />
+              <button class="btn-search-customer" (click)="searchCustomerById()" type="button">
+                <img src="/asset/icons/search.png" alt="Search" style="width: 16px; height: 16px" />
+              </button>
+            </div>
+            <div class="info-value" *ngIf="!isNewOrder && !isEditMode">
+              <strong>{{ customerIDSearch || orderData.customerID || 'N/A' }}</strong>
+            </div>
+          </div>
+          <div class="info-row" *ngIf="isNewOrder || isEditMode">
+            <label class="info-label">Chọn khách hàng:</label>
+            <select
+              class="form-select"
+              [(ngModel)]="orderData.customerInfo.name"
+              (change)="onCustomerChange($event)"
+            >
+              <option value="">-- Chọn khách hàng --</option>
+              <option
+                *ngFor="let user of users"
+                [value]="user.FullName || user.full_name || user.name || ''"
+              >
+                {{ user.FullName || user.full_name || user.name || user.Email || user.CustomerID }}
+              </option>
+            </select>
+          </div>
+          <div class="info-row" *ngIf="isNewOrder || isEditMode">
+            <label class="info-label required">Tên:</label>
+            <input
+              type="text"
+              class="form-input-inline"
+              [(ngModel)]="orderData.customerInfo.name"
+              placeholder="Tên khách hàng"
+            />
+          </div>
+          <div class="info-row" *ngIf="isNewOrder || isEditMode">
+            <label class="info-label required">SĐT:</label>
+            <input
+              type="text"
+              class="form-input-inline"
+              [(ngModel)]="orderData.customerInfo.phone"
+              placeholder="Số điện thoại"
+            />
+          </div>
+          <div class="info-row" *ngIf="isNewOrder || isEditMode">
+            <label class="info-label required">Email:</label>
+            <input
+              type="email"
+              class="form-input-inline"
+              [(ngModel)]="orderData.customerInfo.email"
+              placeholder="Email"
+            />
+          </div>
+          <div
+            class="info-row"
+            *ngIf="!isNewOrder && !isEditMode && orderData.customerInfo.totalOrders > 0"
+          >
+            <span class="info-label">Đã đặt</span>
+            <span class="info-value">{{ orderData.customerInfo.totalOrders }} đơn hàng</span>
+          </div>
+          <div class="info-row" *ngIf="!isNewOrder && orderData.customerInfo.totalSpent > 0">
+            <span class="info-label">Doanh thu tích lũy</span>
+            <span class="info-value">{{ formatCurrency(orderData.customerInfo.totalSpent) }}</span>
+          </div>
+          <div class="info-row" *ngIf="!isNewOrder">
+            <span class="info-label">Khách nợ</span>
+            <span class="info-value">{{ formatCurrency(orderData.customerInfo.debt || 0) }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delivery Info Card -->
+      <div class="info-card">
+        <h3 class="card-title">Thông tin giao hàng</h3>
+        <div class="card-content">
+          <!-- Display mode (not new order and not edit mode) -->
+          <div class="info-section" *ngIf="!isNewOrder && !isEditMode">
+            <h4 class="section-subtitle">Thông tin nhận hàng</h4>
+            <div class="info-row">
+              <strong>{{ orderData.deliveryInfo.name }}</strong>
+            </div>
+            <div class="info-row">
+              <span>{{ orderData.deliveryInfo.phone }}</span>
+            </div>
+            <div class="info-row">
+              <span>{{ orderData.deliveryInfo.email }}</span>
+            </div>
+          </div>
+
+          <div class="info-section" *ngIf="!isNewOrder && !isEditMode">
+            <h4 class="section-subtitle">Địa chỉ giao hàng</h4>
+            <div class="info-row">
+              <span>{{ orderData.deliveryInfo.address }}</span>
+            </div>
+          </div>
+
+          <!-- Edit mode (new order or edit mode) -->
+          <!-- Thông tin nhận hàng -->
+          <div class="info-section" *ngIf="isNewOrder || isEditMode">
+            <h4 class="section-subtitle">Thông tin nhận hàng</h4>
+            <div class="info-row">
+              <label class="info-label required">Tên:</label>
+              <input
+                type="text"
+                class="form-input-inline"
+                [(ngModel)]="orderData.deliveryInfo.name"
+                placeholder="Tên người nhận"
+              />
+            </div>
+            <div class="info-row">
+              <label class="info-label required">SĐT:</label>
+              <input
+                type="text"
+                class="form-input-inline"
+                [(ngModel)]="orderData.deliveryInfo.phone"
+                placeholder="Số điện thoại"
+              />
+            </div>
+            <div class="info-row">
+              <label class="info-label required">Email:</label>
+              <input
+                type="email"
+                class="form-input-inline"
+                [(ngModel)]="orderData.deliveryInfo.email"
+                placeholder="Email"
+              />
+            </div>
+          </div>
+
+          <!-- Địa chỉ giao hàng -->
+          <div class="info-section" *ngIf="isNewOrder || isEditMode">
+            <h4 class="section-subtitle">Địa chỉ nhận hàng</h4>
+            <div class="address-grid">
+              <div class="info-row">
+                <label class="info-label required">Tỉnh/Thành phố:</label>
+                <select
+                  class="form-select"
+                  [(ngModel)]="selectedProvince"
+                  (ngModelChange)="onProvinceChange()"
+                >
+                  <option value="">Chọn</option>
+                  <option
+                    *ngFor="let province of provinces"
+                    [value]="province.slug || province.id || province.code"
+                  >
+                    {{ province.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="info-row">
+                <label class="info-label required">Quận/Huyện:</label>
+                <select
+                  class="form-select"
+                  [(ngModel)]="selectedDistrict"
+                  (ngModelChange)="onDistrictChange()"
+                  [disabled]="!selectedProvince"
+                >
+                  <option value="">Chọn</option>
+                  <option
+                    *ngFor="let district of districts"
+                    [value]="district.slug || district.id || district.code"
+                  >
+                    {{ district.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="info-row">
+                <label class="info-label required">Phường/Xã:</label>
+                <select
+                  class="form-select"
+                  [(ngModel)]="selectedWard"
+                  (ngModelChange)="onWardChange()"
+                  [disabled]="!selectedDistrict"
+                >
+                  <option value="">Chọn</option>
+                  <option
+                    *ngFor="let ward of wards"
+                    [value]="ward.slug || ward.id || ward.code || ward.name"
+                  >
+                    {{ ward.name || ward }}
+                  </option>
+                </select>
+              </div>
+              <div class="info-row">
+                <label class="info-label required">Địa chỉ cụ thể:</label>
+                <input
+                  type="text"
+                  class="form-input-inline"
+                  [(ngModel)]="orderData.deliveryInfo.streetAddress"
+                  placeholder="Số nhà, tên đường..."
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Summary Card -->
+      <div class="info-card">
+        <h3 class="card-title">Thông tin đơn hàng</h3>
+        <div class="card-content">
+          <div class="summary-row">
+            <span class="summary-label">Số lượng sản phẩm</span>
+            <span class="summary-value">{{ orderData.items.length }}</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Tổng tiền hàng</span>
+            <span class="summary-value" *ngIf="!isNewOrder">{{
+              formatCurrency(orderData.subtotal)
+            }}</span>
+            <span *ngIf="isNewOrder" class="summary-value">{{
+              formatCurrency(orderData.subtotal)
+            }}</span>
+          </div>
+          <div class="summary-row" [class.summary-row-discount]="isNewOrder || isEditMode">
+            <div *ngIf="isNewOrder || isEditMode" class="summary-label-wrapper">
+              <span class="summary-label">Giảm giá</span>
+              <select
+                class="form-select-discount"
+                [(ngModel)]="selectedPromotionId"
+                (ngModelChange)="onPromotionChange()"
+              >
+                <option [value]="null">-- Chọn khuyến mãi --</option>
+                <option *ngFor="let promo of activePromotions" [value]="promo.promotion_id">
+                  {{ promo.promotion_name || promo.name }} ({{ getPromotionDisplayValue(promo) }})
+                </option>
+              </select>
+            </div>
+            <div
+              *ngIf="!isNewOrder && !isEditMode"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+              "
+            >
+              <span class="summary-label">Giảm giá</span>
+              <span class="summary-value">{{ formatCurrency(orderData.discount || 0) }}</span>
+            </div>
+            <span
+              *ngIf="isNewOrder || isEditMode"
+              class="summary-value-discount"
+              [style.color]="orderData.discount > 0 ? '#EF4444' : ''"
+            >
+              <span *ngIf="orderData.discount > 0">-</span
+              >{{ formatCurrency(orderData.discount || 0) }}
+            </span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Tổng phí vận chuyển</span>
+            <span class="summary-value" *ngIf="!isNewOrder && !isEditMode">{{
+              formatCurrency(orderData.shippingFee || 30000)
+            }}</span>
+            <input
+              *ngIf="isNewOrder || isEditMode"
+              type="number"
+              class="form-input-inline"
+              [(ngModel)]="orderData.shippingFee"
+              (change)="updateOrderSummary()"
+              min="0"
+              step="1000"
+              style="width: 150px"
+            />
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Giảm giá phí vận chuyển</span>
+            <span
+              class="summary-value"
+              *ngIf="!isNewOrder && !isEditMode"
+              [style.color]="orderData.shippingDiscount > 0 ? '#EF4444' : ''"
+            >
+              <span *ngIf="orderData.shippingDiscount > 0">-</span
+              >{{ formatCurrency(orderData.shippingDiscount || 0) }}
+            </span>
+            <input
+              *ngIf="isNewOrder || isEditMode"
+              type="number"
+              class="form-input-inline"
+              [(ngModel)]="orderData.shippingDiscount"
+              (change)="updateOrderSummary()"
+              min="0"
+              step="1000"
+              style="width: 150px"
+            />
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Phương thức thanh toán</span>
+            <span class="summary-value" *ngIf="!isNewOrder && !isEditMode">{{
+              orderData.paymentMethod || 'COD'
+            }}</span>
+            <select
+              *ngIf="isNewOrder || isEditMode"
+              class="form-select-inline"
+              [(ngModel)]="orderData.paymentMethod"
+            >
+              <option value="COD">COD</option>
+              <option value="bank">Chuyển khoản</option>
+              <option value="cash">Tiền mặt</option>
+            </select>
+          </div>
+          <div class="summary-row total">
+            <span class="summary-label"><strong>Thành Tiền:</strong></span>
+            <span class="summary-value"
+              ><strong>{{ formatCurrency(orderData.total) }}</strong></span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Note -->
+      <div class="note-section">
+        <label class="note-label">Ghi chú đơn hàng:</label>
+        <textarea
+          class="note-input"
+          [(ngModel)]="orderData.note"
+          placeholder="Nhập ghi chú..."
+          [disabled]="true"
+          [readonly]="true"
+        ></textarea>
+      </div>
+
+      <!-- Return Reason Section - Show only when there is a return reason -->
+      <div
+        class="return-reason-section"
+        *ngIf="
+          !isNewOrder &&
+          !isEditMode &&
+          (order?.returnReason || order?.return_reason) &&
+          (order?.status === 'processing_return' ||
+            order?.status === 'returning' ||
+            order?.status === 'returned')
+        "
+      >
+        <label class="return-reason-label">Lý do trả hàng/hoàn tiền của khách hàng:</label>
+        <div class="return-reason-content">
+          {{ order?.returnReason || order?.return_reason || '' }}
+        </div>
+      </div>
+
+      <!-- Cancel Reason Section - Show only when there is a cancel reason -->
+      <div
+        class="reason-section"
+        *ngIf="!isNewOrder && !isEditMode && order?.cancelReason && !order?.returnReason"
+      >
+        <label class="reason-label">
+          <span *ngIf="order?.status === 'cancelled'">Lý do hủy đơn hàng:</span>
+          <span
+            *ngIf="
+              !order?.status ||
+              (order?.status !== 'cancelled' &&
+                order?.status !== 'processing_return' &&
+                order?.status !== 'returning' &&
+                order?.status !== 'returned')
+            "
+            >Lý do:</span
+          >
+        </label>
+        <div class="reason-content">
+          {{ order.cancelReason }}
+        </div>
+      </div>
+
+      <!-- Confirm Delivered Button - Show for shipping orders -->
+      <button
+        class="btn-confirm"
+        (click)="confirmDelivered()"
+        *ngIf="!isNewOrder && !isEditMode && order?.status === 'shipping'"
+      >
+        Xác nhận đã giao
+      </button>
+
+      <!-- Save and Cancel Buttons - Show for new orders -->
+      <div class="order-action-buttons" *ngIf="isNewOrder">
+        <button class="btn-cancel-action" (click)="cancelNewOrder()">
+          <span>Hủy</span>
+        </button>
+        <button class="btn-confirm" (click)="saveNewOrder()">
+          <span>Lưu</span>
+        </button>
+      </div>
+
+      <!-- Save and Cancel Buttons - Show for edit mode -->
+      <div class="order-action-buttons" *ngIf="isEditMode && !isNewOrder">
+        <button class="btn-cancel-action" (click)="cancelEdit()">
+          <span>Hủy</span>
+        </button>
+        <button class="btn-confirm" (click)="updateOrder()">
+          <span>Lưu thay đổi</span>
+        </button>
+      </div>
+
+      <!-- Confirm Button - Only show for pending orders (not in edit mode) -->
+      <button
+        class="btn-confirm"
+        (click)="confirmOrder()"
+        *ngIf="
+          !isNewOrder &&
+          !isEditMode &&
+          orderData.status === 'pending' &&
+          orderData.refund !== 'requested'
+        "
+      >
+        Xác nhận đơn hàng
+      </button>
+
+      <!-- Confirm Refund Button - Show for processing_return status (first step) -->
+      <button
+        class="btn-confirm-refund"
+        (click)="confirmRefund()"
+        *ngIf="!isNewOrder && !isEditMode && order?.status === 'processing_return'"
+      >
+        Chấp nhận yêu cầu trả hàng
+      </button>
+
+      <!-- Complete Return Button - Show for returning status (second step) -->
+      <button
+        class="btn-complete-return"
+        (click)="completeReturn()"
+        *ngIf="!isNewOrder && !isEditMode && order?.status === 'returning'"
+      >
+        Hoàn tất trả hàng/hoàn tiền
+      </button>
+
+      <!-- Reject Refund Button - Only show for processing_return status -->
+      <button
+        class="btn-reject-refund"
+        (click)="rejectRefund()"
+        *ngIf="!isNewOrder && !isEditMode && order?.status === 'processing_return'"
+      >
+        Từ chối yêu cầu trả hàng
+      </button>
+
+      <!-- Print Footer (Only visible in print) -->
+      <div class="print-footer">
+        <div class="print-time">Đơn hàng được in lúc: <span id="print-time-value"></span></div>
+        <div class="print-thank-you">
+          Cảm ơn quý khách đã tin tưởng và sử dụng dịch vụ của VGreen!
+        </div>
+        <div class="print-contact">
+          <p>Mọi thắc mắc xin vui lòng liên hệ:</p>
+          <p><strong>Hotline:</strong> 1900-xxxx | <strong>Email:</strong> support@vgreen.vn</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Custom Popup -->
+<div class="popup-overlay" *ngIf="showPopup" (click)="closePopup()">
+  <div class="popup-container" (click)="$event.stopPropagation()">
+    <div
+      class="popup-icon"
+      [class.success]="popupType === 'success'"
+      [class.error]="popupType === 'error'"
+      [class.info]="popupType === 'info'"
+    >
+      <span class="icon-check" *ngIf="popupType === 'success'">✓</span>
+      <span class="icon-error" *ngIf="popupType === 'error'">✕</span>
+      <span class="icon-info" *ngIf="popupType === 'info'">i</span>
+    </div>
+
+    <div class="popup-message">{{ popupMessage }}</div>
+
+    <button class="popup-btn-ok" (click)="closePopup()">OK</button>
+  </div>
+</div>
+
+<!-- Reject Refund Popup -->
+<div
+  class="popup-overlay reject-refund-popup-overlay"
+  *ngIf="showRejectRefundPopup"
+  (click)="closeRejectRefundPopup()"
+>
+  <div class="reject-refund-popup-container" (click)="$event.stopPropagation()">
+    <div class="reject-refund-popup-header">
+      <h2 class="reject-refund-popup-title">Từ chối yêu cầu trả hàng/hoàn tiền</h2>
+      <button
+        class="reject-refund-popup-close"
+        (click)="closeRejectRefundPopup()"
+        aria-label="Đóng"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="reject-refund-popup-body">
+      <!-- Order Basic Info -->
+      <div class="reject-refund-info-section">
+        <h3 class="reject-refund-section-title">Thông tin cơ bản đơn hàng</h3>
+        <div class="reject-refund-info-row">
+          <span class="reject-refund-info-label">Mã đơn hàng:</span>
+          <span class="reject-refund-info-value reject-refund-order-id">{{ orderData.id }}</span>
+        </div>
+        <div class="reject-refund-info-row">
+          <span class="reject-refund-info-label">Khách hàng:</span>
+          <span class="reject-refund-info-value">{{ orderData.customer }}</span>
+        </div>
+        <div class="reject-refund-info-row">
+          <span class="reject-refund-info-label">Tổng tiền:</span>
+          <span class="reject-refund-info-value reject-refund-total-amount">{{
+            formatCurrency(orderData.total)
+          }}</span>
+        </div>
+      </div>
+
+      <!-- Return Reason from Customer -->
+      <div class="reject-refund-info-section">
+        <h3 class="reject-refund-section-title">Lý do người mua trả hàng</h3>
+        <div class="reject-refund-return-reason">
+          {{ order?.returnReason || order?.return_reason || 'Không có lý do' }}
+        </div>
+      </div>
+
+      <!-- Reject Reason Selection -->
+      <div class="reject-refund-info-section">
+        <h3 class="reject-refund-section-title">
+          Lý do từ chối trả hàng <span style="color: red">*</span>
+        </h3>
+        <div class="custom-dropdown">
+          <div
+            #rejectReasonDropdown
+            class="custom-dropdown-selected"
+            [class.placeholder]="!selectedRejectReason"
+            (click)="toggleRejectReasonDropdown($event)"
+          >
+            <span>{{
+              getRejectReasonLabel(selectedRejectReason) || '-- Chọn lý do từ chối --'
+            }}</span>
+            <svg
+              class="dropdown-arrow"
+              [class.open]="showRejectReasonDropdown"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M6 9L1 4h10z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dropdown list rendered outside body to avoid overflow clipping -->
+    <ul
+      class="custom-dropdown-list custom-dropdown-list-portal"
+      *ngIf="showRejectReasonDropdown"
+      [style.top.px]="dropdownPosition.top"
+      [style.left.px]="dropdownPosition.left"
+      [style.width.px]="dropdownPosition.width"
+    >
+      <li
+        *ngFor="let reason of rejectReasonOptions"
+        class="custom-dropdown-item"
+        [class.selected]="selectedRejectReason === reason.value"
+        (click)="selectRejectReason(reason.value)"
+      >
+        {{ reason.label }}
+      </li>
+    </ul>
+
+    <div class="reject-refund-popup-footer">
+      <button class="reject-refund-btn-cancel" (click)="closeRejectRefundPopup()">Hủy</button>
+      <button
+        class="reject-refund-btn-confirm"
+        (click)="confirmRejectRefund()"
+        [disabled]="!selectedRejectReason"
+      >
+        Từ chối trả hàng
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Product Selection Modal -->
+<div class="product-modal-overlay" *ngIf="showProductModal" (click)="closeProductModal()">
+  <div class="product-modal-content" (click)="$event.stopPropagation()">
+    <!-- Modal Header -->
+    <div class="product-modal-header">
+      <h2 class="product-modal-title">Chọn sản phẩm</h2>
+      <button class="product-modal-close" (click)="closeProductModal()">×</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="product-modal-body">
+      <!-- Search and Filter Section -->
+      <div class="product-modal-filters">
+        <div class="filter-group">
+          <label class="filter-label">Tìm kiếm:</label>
+          <input
+            type="text"
+            class="filter-input"
+            placeholder="Tìm theo tên hoặc SKU..."
+            [(ngModel)]="searchQuery"
+            (input)="onSearchQueryChange()"
+          />
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Danh mục:</label>
+          <select
+            class="filter-select"
+            [(ngModel)]="selectedCategory"
+            (change)="onCategoryFilterChange()"
+          >
+            <option value="">Tất cả danh mục</option>
+            <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Products List -->
+      <div class="product-modal-list">
+        <div *ngIf="filteredProducts.length === 0" class="product-modal-empty">
+          <p>Không tìm thấy sản phẩm nào.</p>
+        </div>
+        <div
+          *ngFor="let product of filteredProducts"
+          class="product-modal-item"
+          (click)="selectProduct(product)"
+        >
+          <div class="product-modal-item-image">
+            <img
+              [src]="product.Image?.[0] || product.image || '/asset/icons/shop.png'"
+              alt="Product"
+              onerror="this.src='/asset/icons/shop.png'"
+            />
+          </div>
+          <div class="product-modal-item-info">
+            <div class="product-modal-item-name">
+              {{ product.product_name || product.productName || 'Sản phẩm' }}
+            </div>
+            <div class="product-modal-item-sku">SKU: {{ product.sku || 'N/A' }}</div>
+            <div class="product-modal-item-category">{{ product.category || '' }}</div>
+          </div>
+          <div class="product-modal-item-price">
+            {{ formatCurrency(product.price || product.ProductPrice || 0) }}
+          </div>
+          <div class="product-modal-item-action">
+            <img src="/asset/icons/plus.png" alt="Add" class="add-icon" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+name: Deploy my-admin to Cloudflare Pages
+
+on:
+  push:
+    paths:
+      - 'my-admin/**'
+      - '.github/workflows/deploy-my-admin.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Install dependencies
+        run: cd my-admin && npm ci
+      - name: Generate Supabase config
+        run: node ./scripts/generate-supabase-config.js
+      - name: Build admin app
+        run: cd my-admin && npm run build -- --configuration production
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ secrets.CLOUDFLARE_PROJECT_NAME_ADMIN }}
+          directory: my-admin/dist/my-admin

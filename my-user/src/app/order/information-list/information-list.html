@@ -1,0 +1,88 @@
+<!-- Address List Modal -->
+<div class="modal-overlay" (click)="onClose()">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    <!-- Header -->
+    <div class="modal-header">
+      <h2>Danh sách địa chỉ</h2>
+      <button class="close-btn" (click)="onClose()">
+        <img src="/asset/icons/clear_dark.png" alt="Close" />
+      </button>
+    </div>
+
+    <!-- Address List -->
+    <div class="modal-body">
+      <div class="address-list">
+        <div
+          class="address-item"
+          *ngFor="let address of addressList; let i = index"
+          [class.selected]="i === selectedIndex"
+          (click)="onSelectAddress(i)"
+        >
+          <div class="address-content">
+            <div class="address-name">
+              {{ getAddressNameWithPhone(address) }}
+              <!-- Badge cho địa chỉ mặc định -->
+              <span class="default-badge" *ngIf="isDefaultAddress(i)">Địa chỉ mặc định</span>
+            </div>
+            <div class="address-details">
+              {{ getAddressString(address) }}
+            </div>
+            <div class="address-actions">
+              <button class="edit-btn" (click)="onEditAddress(i); $event.stopPropagation()">
+                <img src="/asset/icons/note.png" alt="Edit" />
+                Sửa
+              </button>
+              <button class="delete-btn" (click)="onDeleteAddress(i); $event.stopPropagation()">
+                <img src="/asset/icons/clear_light_green.png" alt="Delete" />
+                Xóa
+              </button>
+            </div>
+          </div>
+          <div class="address-status" *ngIf="i === selectedIndex">
+            <span class="checkmark">✓</span>
+          </div>
+        </div>
+
+        <!-- Empty state -->
+        <div class="empty-state" *ngIf="addressList.length === 0">
+          <p>Chưa có địa chỉ nào</p>
+        </div>
+      </div>
+
+      <!-- Add New Address Button -->
+      <button class="add-new-address-btn" (click)="onAddNewAddress()">
+        <span>+</span> Thêm địa chỉ mới
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <div class="modal-footer">
+      <button class="confirm-btn" (click)="onConfirm()" [disabled]="selectedIndex < 0">
+        Xác nhận
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div
+  class="modal-overlay delete-modal-overlay"
+  *ngIf="showDeleteConfirm"
+  (click)="onCancelDelete()"
+>
+  <div class="delete-modal" (click)="$event.stopPropagation()">
+    <div class="delete-header">
+      <h3 class="delete-title">
+        <img src="/asset/icons/trash_red.png" alt="Delete" class="delete-icon" />
+        Xác nhận xóa
+      </h3>
+    </div>
+    <div class="delete-body">
+      <p class="delete-message">Bạn có chắc chắn muốn xóa địa chỉ này?</p>
+    </div>
+    <div class="delete-footer">
+      <button class="btn-cancel" (click)="onCancelDelete()">Hủy</button>
+      <button class="btn-delete" (click)="onConfirmDelete()">Xóa địa chỉ</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,417 @@
+<!-- Header Top -->
+<div class="header-top">
+  <div class="header-top-content">
+    <div class="header-top-text">CHUẨN VỊ XANH - TRỌN VỊ NGON</div>
+    <div class="header-top-menu">
+      <a routerLink="/about" class="header-top-link">Giới thiệu</a>
+      <a routerLink="/support" [queryParams]="{ open: 'order' }" class="header-top-link"
+        >Hướng dẫn đặt hàng</a
+      >
+      <a routerLink="/blog" class="header-top-link">Bài viết</a>
+      <a href="#" class="header-top-link">Hotline: 0125 456 789</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header Main -->
+<header class="header-main" [class.sticky]="isSticky">
+  <div class="header-container">
+    <!-- Logo -->
+    <div class="logo-section">
+      <a routerLink="/" class="logo-link">
+        <img [src]="logoSrc" alt="VGREEN" class="logo" loading="eager" decoding="async" />
+      </a>
+    </div>
+
+    <!-- Dropdown Button -->
+    <div class="dropdown-section">
+      <button
+        class="dropdown-btn"
+        (click)="toggleProductDropdown()"
+        (mouseenter)="onButtonHover()"
+        (mouseleave)="onButtonLeave()"
+        [class.active]="isProductDropdownOpen"
+      >
+        <img
+          *ngIf="showDropdownIcon"
+          [src]="isDropdownIconHovered ? '/asset/icons/list.png' : '/asset/icons/list_dark.png'"
+          alt="Danh mục"
+          class="dropdown-icon-only"
+        />
+        <span *ngIf="!showDropdownIcon">{{ dropdownButtonText }}</span>
+        <img
+          *ngIf="!showDropdownIcon"
+          src="/asset/icons/arrowdown_lightgreen.png"
+          alt="Down Arrow"
+          class="dropdown-icon"
+        />
+      </button>
+
+      <!-- Mega Dropdown Menu -->
+      <div
+        class="mega-dropdown"
+        [class.active]="isProductDropdownOpen"
+        (mouseenter)="onDropdownHover()"
+        (mouseleave)="onDropdownLeave()"
+      >
+        <div class="mega-dropdown-content">
+          <!-- Left Column - Main Categories -->
+          <div class="categories-column">
+            <div
+              class="category-item"
+              *ngFor="let category of categories; let i = index"
+              [class.active]="selectedCategoryIndex === i"
+              (mouseenter)="onCategoryHover(i)"
+              (click)="selectCategory(i)"
+            >
+              <span>{{ category.name }}</span>
+              <img src="/asset/icons/arrowright_dark.png" alt="Right Arrow" class="icon-img" />
+            </div>
+          </div>
+
+          <!-- Right Column - Sub Categories -->
+          <div class="subcategories-column">
+            <div class="subcategory-title">{{ getSelectedCategoryName() }}</div>
+            <div class="subcategory-list">
+              <div
+                class="subcategory-item"
+                *ngFor="let subcategory of getSelectedSubcategories()"
+                (click)="selectSubcategory(subcategory)"
+              >
+                {{ subcategory }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-section">
+      <div
+        class="search-container"
+        [class.focused]="isSearchFocused"
+        (click)="onSearchContainerClick($event)"
+      >
+        <button class="camera-btn" (click)="onCameraSearch()" title="Tìm kiếm bằng hình ảnh">
+          <img
+            src="/asset/icons/camera_outline.png"
+            alt="Camera"
+            class="icon-img"
+            style="width: 15px; height: 15px"
+          />
+        </button>
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Tìm kiếm..."
+          [(ngModel)]="searchQuery"
+          (focus)="onSearchFocus()"
+          (click)="onSearchClick()"
+          (blur)="onSearchBlur()"
+          (input)="onSearchInput()"
+          (keydown.enter)="performSearch()"
+        />
+        <button class="search-btn" (click)="performSearch()">
+          <img
+            src="/asset/icons/search.png"
+            alt="Tìm kiếm"
+            class="icon-img"
+            style="width: 15px; height: 15px"
+          />
+        </button>
+      </div>
+
+      <!-- Search Dropdown -->
+      <div class="search-dropdown" [class.active]="isSearchDropdownOpen">
+        <!-- Search Results (Products) - Hiển thị khi có kết quả tìm kiếm -->
+        <div class="search-section-content" *ngIf="searchQuery.trim() && searchResults.length > 0">
+          <div class="search-section-title">Sản phẩm</div>
+          <div class="search-products">
+            <div
+              class="search-product-item"
+              *ngFor="let product of searchResults"
+              (click)="selectProduct(product)"
+            >
+              <img
+                [src]="getProductImage(product)"
+                [alt]="product.product_name"
+                class="product-search-image"
+              />
+              <div class="product-search-info">
+                <div class="product-search-name">{{ product.product_name }}</div>
+                <div class="product-search-price">{{ formatPrice(product.price) }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search History - Chỉ hiển thị khi không có search query hoặc không có kết quả -->
+        <div
+          class="search-section-content"
+          *ngIf="
+            (!searchQuery.trim() || searchResults.length === 0) &&
+            getFilteredSearchHistory().length > 0
+          "
+        >
+          <div class="search-history-header">
+            <div class="search-section-title">Lịch sử tìm kiếm</div>
+            <button
+              class="clear-history-btn"
+              (click)="clearSearchHistory($event)"
+              title="Xóa toàn bộ lịch sử tìm kiếm"
+            >
+              <span>Xóa lịch sử</span>
+            </button>
+          </div>
+          <div class="search-history">
+            <div
+              class="search-history-item"
+              *ngFor="let item of getFilteredSearchHistory(); let i = index"
+              (click)="selectSearchHistory(item, $event)"
+            >
+              <img src="/asset/icons/history_dark.png" />
+              <span>{{ item }}</span>
+              <img
+                src="/asset/icons/clear_dark.png"
+                alt="X"
+                (click)="removeSearchHistory(i, $event)"
+                class="icon-img"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Popular Keywords - Chỉ hiển thị khi không có search query hoặc không có kết quả -->
+        <div
+          class="search-section-content"
+          *ngIf="
+            (!searchQuery.trim() || searchResults.length === 0) &&
+            getFilteredPopularKeywords().length > 0
+          "
+        >
+          <div class="search-section-title">Từ khóa phổ biến</div>
+          <div class="popular-keywords">
+            <div
+              class="keyword-item"
+              *ngFor="let keyword of getFilteredPopularKeywords(); let i = index"
+              [class.top3]="i < 3"
+              (click)="selectKeyword(keyword)"
+            >
+              <span class="keyword-rank">{{ i + 1 }}</span>
+              <span class="keyword-text">{{ keyword }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fallback content if no results -->
+        <div
+          class="search-section-content"
+          *ngIf="
+            searchQuery.trim() &&
+            searchResults.length === 0 &&
+            getFilteredSearchHistory().length === 0 &&
+            getFilteredPopularKeywords().length === 0
+          "
+        >
+          <div class="search-section-title">Không tìm thấy sản phẩm</div>
+          <div style="color: #666; font-size: 14px">Thử gõ từ khóa khác</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- User Action Icons -->
+    <div class="user-actions">
+      <!-- Nút Đăng nhập - Hiển thị khi chưa đăng nhập -->
+      <button
+        *ngIf="!isLoggedIn()"
+        class="login-btn"
+        type="button"
+        (click)="onLoginRegister($event)"
+        title="Đăng nhập"
+      >
+        <span class="login-btn-text">Đăng nhập</span>
+        <img src="/asset/icons/person.png" alt="Đăng nhập" class="login-btn-icon" />
+      </button>
+
+      <!-- Notification Icon - Chỉ hiển thị khi đã đăng nhập -->
+      <div
+        *ngIf="isLoggedIn()"
+        class="action-icon notification-icon"
+        (mouseenter)="showNotificationPopup()"
+        (mouseleave)="hideNotificationPopup()"
+        (click)="onNotificationIconClick()"
+        [class.active]="isNotificationPopupOpen"
+      >
+        <img src="/asset/icons/notice_dark.png" alt="Thông báo" class="icon-img" />
+        <div class="notification-badge" *ngIf="notificationCount > 0">
+          {{ getFormattedNotificationCount() }}
+        </div>
+
+        <!-- Notification Popup -->
+        <div class="action-popup notification-popup" [class.active]="isNotificationPopupOpen">
+          <div class="popup-title">Thông báo mới ({{ notificationCount }})</div>
+          <div class="popup-content">
+            <!-- Hiển thị thông báo từ backend -->
+            <div *ngIf="notifications.length > 0">
+              <div class="notification-item" *ngFor="let notification of notifications">
+                <img
+                  [src]="getNotificationIcon(notification.type)"
+                  class="notification-icon-item"
+                />
+                <div class="notification-content">
+                  <div class="notification-title">{{ notification.title || 'Thông báo' }}</div>
+                  <div class="notification-desc">
+                    {{ notification.message || notification.content || '' }}
+                  </div>
+                  <div
+                    class="notification-time"
+                    style="font-size: 11px; color: #999; margin-top: 4px"
+                  >
+                    {{ formatNotificationTime(notification.createdAt || notification.timestamp) }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Đã comment phần hiển thị "Không có thông báo mới" -->
+            <!-- <div
+              *ngIf="notifications.length === 0"
+              style="padding: 20px; text-align: center; color: #999"
+            >
+              Không có thông báo mới
+            </div> -->
+          </div>
+          <!-- Chỉ hiển thị nút "Xem tất cả thông báo" khi có thông báo -->
+          <a
+            *ngIf="notifications.length > 0"
+            routerLink="/account/notifications"
+            class="popup-btn"
+            style="display: block; text-decoration: none; text-align: center"
+            >Xem tất cả thông báo</a
+          >
+        </div>
+      </div>
+
+      <!-- Shopping Cart Icon - Chỉ hiển thị khi đã đăng nhập -->
+      <div
+        *ngIf="isLoggedIn()"
+        class="action-icon cart-icon"
+        (click)="onViewCart()"
+        (mouseenter)="showCartPopup()"
+        (mouseleave)="hideCartPopup()"
+        [class.active]="isCartPopupOpen"
+      >
+        <img src="/asset/icons/shop_dark.png" alt="Giỏ hàng" class="icon-img" />
+        <div class="notification-badge" *ngIf="cartCount > 0">{{ cartCount }}</div>
+
+        <!-- Cart Popup -->
+        <div class="action-popup cart-popup" [class.active]="isCartPopupOpen">
+          <div class="popup-title" *ngIf="cartCount === 0">Chưa có sản phẩm nào</div>
+          <div class="popup-title" *ngIf="cartCount > 0">
+            Giỏ hàng của bạn <span class="cart-count-badge">({{ cartCount }})</span>
+          </div>
+
+          <!-- Recent Cart Items -->
+          <div class="cart-items-list" *ngIf="cartCount > 0">
+            <div class="cart-item" *ngFor="let item of getRecentCartItems()">
+              <!-- Click vào cart item trong hover chỉ mở giỏ hàng, không điều hướng đến chi tiết sản phẩm -->
+              <img
+                [src]="item.image"
+                [alt]="item.name"
+                class="cart-item-image"
+                (click)="onViewCart()"
+                style="cursor: pointer"
+              />
+              <div class="cart-item-info" (click)="onViewCart()" style="cursor: pointer">
+                <div class="cart-item-name">{{ item.name }}</div>
+                <div class="cart-item-details">
+                  <span class="cart-item-quantity">x{{ item.quantity }}</span>
+                  <span class="cart-item-price">{{ formatPrice(item.price) }}</span>
+                </div>
+              </div>
+              <!-- 
+                Code điều hướng đến chi tiết sản phẩm (đã comment):
+                (click)="goToProductDetailFromCart(item)"
+              -->
+            </div>
+          </div>
+
+          <!-- Đã comment nút Xem giỏ hàng - không điều hướng khi click -->
+          <!-- <button class="popup-btn" (click)="onViewCart()">Xem giỏ hàng</button> -->
+        </div>
+      </div>
+
+      <!-- User Account Icon - Chỉ hiển thị khi đã đăng nhập -->
+      <div
+        *ngIf="isLoggedIn()"
+        class="action-icon user-icon"
+        (mouseenter)="showUserPopup()"
+        (mouseleave)="hideUserPopup()"
+        (click)="onUserIconClick()"
+        [class.active]="isUserPopupOpen"
+      >
+        <img src="/asset/icons/person_dark.png" alt="Tài khoản" class="icon-img" />
+
+        <!-- User Popup -->
+        <div class="action-popup user-popup" [class.active]="isUserPopupOpen">
+          <div class="user-menu">
+            <a
+              routerLink="/account/profile"
+              class="user-menu-item"
+              (click)="closeAllDropdowns(); $event.stopPropagation()"
+            >
+              <img src="/asset/icons/person_dark.png" alt="" />
+              <span>Tài khoản cá nhân</span>
+            </a>
+            <a
+              routerLink="/account/orders"
+              class="user-menu-item"
+              (click)="closeAllDropdowns(); $event.stopPropagation()"
+            >
+              <img src="/asset/icons/order_dark.png" alt="" />
+              <span>Quản lý đơn hàng</span>
+            </a>
+            <div class="user-menu-item" (click)="onLogout(); $event.stopPropagation()">
+              <img src="/asset/icons/logout_dark.png" alt="" />
+              <span>Đăng xuất</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Overlay for dropdowns -->
+<div
+  class="dropdown-overlay"
+  [class.active]="isProductDropdownOpen"
+  (click)="closeAllDropdowns()"
+></div>
+
+<!-- Logout Confirmation Popup -->
+<app-logout
+  [isOpen]="isLogoutPopupOpen"
+  (confirm)="confirmLogout()"
+  (cancel)="cancelLogout()"
+></app-logout>
+
+<!-- Clear Search History Confirmation Popup -->
+<div class="clear-history-overlay" *ngIf="isClearHistoryPopupOpen" (click)="cancelClearHistory()">
+  <div class="clear-history-popup" (click)="$event.stopPropagation()">
+    <!-- Header -->
+    <div class="popup-header">
+      <div class="popup-icon">
+        <img src="/asset/icons/bins.png" alt="Clear History" />
+      </div>
+      <h2 class="popup-title">Xác nhận xóa lịch sử</h2>
+      <p class="popup-message">Bạn có chắc chắn muốn xóa toàn bộ lịch sử tìm kiếm?</p>
+    </div>
+
+    <!-- Actions -->
+    <div class="popup-actions">
+      <button class="btn-cancel" (click)="cancelClearHistory()">Hủy</button>
+      <button class="btn-confirm" (click)="confirmClearHistory()">Xóa</button>
+    </div>
+  </div>
+</div>

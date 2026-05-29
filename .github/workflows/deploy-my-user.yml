@@ -1,0 +1,34 @@
+name: Deploy my-user to Cloudflare Pages
+
+on:
+  push:
+    paths:
+      - 'my-user/**'
+      - '.github/workflows/deploy-my-user.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+      SUPABASE_EMAIL_DOMAIN: ${{ secrets.SUPABASE_EMAIL_DOMAIN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Install dependencies
+        run: cd my-user && npm ci
+      - name: Generate Supabase config
+        run: node ./scripts/generate-supabase-config.js
+      - name: Build user app
+        run: cd my-user && npm run build -- --configuration production
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ secrets.CLOUDFLARE_PROJECT_NAME_USER }}
+          directory: my-user/dist/my-user

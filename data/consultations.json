@@ -1,0 +1,106 @@
+[
+  {
+    "_id": "69145f1a68dffe848aadfb2a",
+    "sku": "3138561",
+    "productName": "Cà phê Nescafé 3in1 nguyên bản 20 gói x 16g",
+    "questions": [
+      {
+        "question": "Cái này mua về chi",
+        "customerId": "CUS000003",
+        "customerName": "Trần Thanh Thịnh",
+        "answer": "Mua pha uống chứ chi",
+        "answeredBy": "Admin",
+        "answeredAt": "2025-11-12T10:19:34.647Z",
+        "status": "answered",
+        "createdAt": "2025-11-12T10:19:06.072Z",
+        "updatedAt": "2025-11-12T10:19:34.647Z",
+        "_id": "69145f1a68dffe848aadfb2b"
+      }
+    ],
+    "createdAt": "2025-11-12T10:19:06.078Z",
+    "updatedAt": "2025-11-12T10:19:34.648Z",
+    "__v": 0
+  },
+  {
+    "_id": "6914625168dffe848aadfb59",
+    "sku": "3412005",
+    "productName": "Sả cây 100g – Huy Vũ",
+    "questions": [
+      {
+        "question": "Nấu cái gì với cái này",
+        "customerId": "CUS000003",
+        "customerName": "Trần Thanh Thịnh",
+        "answer": "oke",
+        "answeredBy": "Admin",
+        "answeredAt": "2025-11-12T10:33:12.353Z",
+        "status": "answered",
+        "createdAt": "2025-11-12T10:32:49.447Z",
+        "updatedAt": "2025-11-12T10:33:12.353Z",
+        "_id": "6914625168dffe848aadfb5a"
+      },
+      {
+        "question": "ờm",
+        "customerId": "CUS000003",
+        "customerName": "Trần Thanh Thịnh",
+        "answer": "",
+        "answeredBy": "",
+        "answeredAt": null,
+        "status": "pending",
+        "createdAt": "2025-11-12T10:33:20.905Z",
+        "updatedAt": "2025-11-12T10:33:20.905Z",
+        "_id": "6914627068dffe848aadfb75"
+      },
+      {
+        "question": "à",
+        "customerId": "CUS000003",
+        "customerName": "Trần Thanh Thịnh",
+        "answer": "",
+        "answeredBy": "",
+        "answeredAt": null,
+        "status": "pending",
+        "createdAt": "2025-11-12T10:33:22.838Z",
+        "updatedAt": "2025-11-12T10:33:22.838Z",
+        "_id": "6914627268dffe848aadfb7f"
+      },
+      {
+        "question": "ừ",
+        "customerId": "CUS000003",
+        "customerName": "Trần Thanh Thịnh",
+        "answer": "",
+        "answeredBy": "",
+        "answeredAt": null,
+        "status": "pending",
+        "createdAt": "2025-11-12T10:33:24.902Z",
+        "updatedAt": "2025-11-12T10:33:24.902Z",
+        "_id": "6914627468dffe848aadfb8b"
+      },
+      {
+        "question": "ờ",
+        "customerId": "CUS000003",
+        "customerName": "Trần Thanh Thịnh",
+        "answer": "",
+        "answeredBy": "",
+        "answeredAt": null,
+        "status": "pending",
+        "createdAt": "2025-11-12T10:33:27.348Z",
+        "updatedAt": "2025-11-12T10:33:27.348Z",
+        "_id": "6914627768dffe848aadfb99"
+      },
+      {
+        "question": "ok",
+        "customerId": "CUS000003",
+        "customerName": "Trần Thanh Thịnh",
+        "answer": "",
+        "answeredBy": "",
+        "answeredAt": null,
+        "status": "pending",
+        "createdAt": "2025-11-12T10:33:29.302Z",
+        "updatedAt": "2025-11-12T10:33:29.302Z",
+        "_id": "6914627968dffe848aadfba9"
+      }
+    ],
+    "createdAt": "2025-11-12T10:32:49.448Z",
+    "updatedAt": "2025-11-12T10:33:29.304Z",
+    "__v": 5
+  }
+]

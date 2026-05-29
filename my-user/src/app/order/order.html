@@ -1,0 +1,591 @@
+<!-- Main Order Page -->
+<div class="order-container">
+  <div class="order-layout">
+    <!-- Left Column - Order Information -->
+    <div class="order-info">
+      <!-- Unified Shipping Information Section -->
+      <div class="info-section unified-section" style="order: 1">
+        <div>
+          <h2 id="shipping-info-title" class="section-title">Thông tin giao hàng <sup>*</sup></h2>
+        </div>
+
+        <!-- 1. Địa chỉ nhận hàng -->
+        <div class="subsection address-subsection">
+          <div class="subsection-header">
+            <img src="/asset/icons/customer_lightgreen.png" alt="leaf" class="leaf-icon" />
+            <h3 class="subsection-label">Thông tin người nhận</h3>
+            <!-- Button to open address list modal - chỉ hiện khi có địa chỉ -->
+            <button
+              class="view-addresses-btn"
+              *ngIf="hasAddressInfo()"
+              (click)="onOpenAddressListModal()"
+            >
+              Danh sách địa chỉ
+            </button>
+          </div>
+          <div class="address-container">
+            <!-- Display ONLY selected address -->
+            <div class="address-display selected" *ngIf="hasAddressInfo()">
+              <div class="address-content">
+                <div class="address-name">
+                  {{ getAddressNameWithPhone(addressList[selectedAddressIndex]) }}
+                  <!-- Badge cho địa chỉ mặc định -->
+                  <span class="default-badge" *ngIf="isDefaultAddress(selectedAddressIndex)">
+                    Địa chỉ mặc định
+                  </span>
+                </div>
+                <div class="address-details">
+                  {{ getAddressString(addressList[selectedAddressIndex]) }}
+                </div>
+              </div>
+              <div class="address-status">
+                <span class="checkmark">✓</span>
+              </div>
+            </div>
+
+            <!-- Quick add address button (nếu chưa có địa chỉ nào) -->
+            <button
+              class="add-address-btn"
+              *ngIf="!hasAddressInfo()"
+              (click)="onOpenAddressModal()"
+            >
+              <span>+</span> Thêm địa chỉ
+            </button>
+          </div>
+        </div>
+
+        <!-- Border phân cách -->
+        <div class="subsection-divider"></div>
+
+        <!-- 2. Phương thức giao hàng -->
+        <div class="subsection delivery-subsection">
+          <div class="subsection-header">
+            <img src="/asset/icons/delivery_truck.png" alt="add" class="add-icon" />
+            <h3 class="subsection-label">Phương thức giao hàng</h3>
+          </div>
+          <div class="delivery-options">
+            <label class="delivery-option">
+              <input
+                type="radio"
+                name="deliveryMethod"
+                value="standard"
+                [(ngModel)]="addressInfo.deliveryMethod"
+              />
+              <span>Giao hàng tiêu chuẩn</span>
+            </label>
+            <!-- <label class="delivery-option">
+              <input
+                type="radio"
+                name="deliveryMethod"
+                value="express"
+                [(ngModel)]="addressInfo.deliveryMethod"
+              />
+              <span>Giao hàng nhanh</span>
+            </label> -->
+          </div>
+        </div>
+
+        <!-- Border phân cách -->
+        <div class="subsection-divider"></div>
+
+        <!-- 3. Giao từ -->
+        <div class="subsection delivery-from-subsection">
+          <div class="subsection-header">
+            <img src="/asset/icons/warehouse.png" alt="location" class="location-icon" />
+            <h3 class="subsection-label">Giao từ</h3>
+          </div>
+          <div class="delivery-from-container">
+            <div class="delivery-select">
+              <div
+                class="delivery-selected"
+                [class.active]="showDeliveryDropdown"
+                (click)="toggleDeliveryDropdown()"
+                tabindex="0"
+                (keydown.enter)="toggleDeliveryDropdown()"
+                (keydown.escape)="closeDeliveryDropdown()"
+              >
+                <span class="delivery-text">{{
+                  selectedDeliveryAddress || 'Chọn địa chỉ giao từ'
+                }}</span>
+                <img src="/asset/icons/arrowdown_lightgreen.png" alt="Down" class="down-icon" />
+              </div>
+              <div class="delivery-items" [class.show]="showDeliveryDropdown">
+                <div
+                  *ngFor="let address of deliveryAddresses"
+                  [class.selected]="selectedDeliveryAddress === address"
+                  (click)="selectDeliveryAddress(address)"
+                >
+                  {{ address }}
+                </div>
+              </div>
+            </div>
+            <div class="estimate-display">
+              <div class="estimate-content">
+                <span class="estimate-text">20km</span>
+                <span class="estimate-time">~45 phút</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="info-section notes-section" style="order: 2">
+        <h2>Ghi chú</h2>
+        <textarea
+          [(ngModel)]="addressInfo.notes"
+          placeholder="Nhập ghi chú cho người bán"
+          class="notes-textarea"
+        ></textarea>
+      </div>
+
+      <!-- Payment Method -->
+      <div class="info-section payment-section" style="order: 6">
+        <h2>Phương thức thanh toán <sup>*</sup></h2>
+        <p class="payment-description">Thông tin thanh toán của bạn sẽ luôn được bảo mật</p>
+
+        <div class="payment-methods">
+          <div
+            class="payment-method"
+            [class.selected]="paymentInfo.method === 'cod'"
+            (click)="paymentInfo.method = 'cod'"
+          >
+            <input type="radio" name="paymentMethod" value="cod" [(ngModel)]="paymentInfo.method" />
+            <div class="method-content">
+              <span class="method-name">Thanh toán khi nhận hàng</span>
+              <span class="method-status" *ngIf="paymentInfo.method === 'cod'">✓</span>
+            </div>
+          </div>
+
+          <div
+            class="payment-method"
+            [class.selected]="paymentInfo.method === 'vnpay'"
+            (click)="paymentInfo.method = 'vnpay'"
+          >
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="vnpay"
+              [(ngModel)]="paymentInfo.method"
+            />
+            <div class="method-content">
+              <span class="method-name">VNPAY-QR</span>
+              <span class="method-status" *ngIf="paymentInfo.method === 'vnpay'">✓</span>
+            </div>
+          </div>
+
+          <div
+            class="payment-method"
+            [class.selected]="paymentInfo.method === 'momo'"
+            (click)="paymentInfo.method = 'momo'"
+          >
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="momo"
+              [(ngModel)]="paymentInfo.method"
+            />
+            <div class="method-content">
+              <span class="method-name">Momo</span>
+              <span class="method-status" *ngIf="paymentInfo.method === 'momo'">✓</span>
+            </div>
+          </div>
+
+          <div
+            class="payment-method"
+            [class.selected]="paymentInfo.method === 'card'"
+            (click)="paymentInfo.method = 'card'"
+          >
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="card"
+              [(ngModel)]="paymentInfo.method"
+            />
+            <div class="method-content">
+              <span class="method-name">Thẻ thanh toán quốc tế</span>
+              <span class="method-status" *ngIf="paymentInfo.method === 'card'">✓</span>
+            </div>
+          </div>
+
+          <div
+            class="payment-method"
+            [class.selected]="paymentInfo.method === 'banking'"
+            (click)="paymentInfo.method = 'banking'"
+          >
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="banking"
+              [(ngModel)]="paymentInfo.method"
+            />
+            <div class="method-content">
+              <span class="method-name">Ứng dụng Mobile Banking</span>
+              <span class="method-status" *ngIf="paymentInfo.method === 'banking'">✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Invoice Option -->
+      <div class="info-section invoice-section" style="order: 7">
+        <label class="invoice-checkbox" [class.has-form]="wantInvoice">
+          <input type="checkbox" [(ngModel)]="wantInvoice" />
+          <span>Tôi muốn xuất hóa đơn</span>
+        </label>
+
+        <!-- Invoice Form - Show when checkbox is checked -->
+        <div class="invoice-form" *ngIf="wantInvoice">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Tên doanh nghiệp <sup>*</sup></label>
+              <div class="input-container">
+                <input
+                  type="text"
+                  [(ngModel)]="invoiceInfo.companyName"
+                  placeholder="Nhập tên doanh nghiệp"
+                  class="form-input"
+                  #companyNameInput
+                />
+                <button
+                  type="button"
+                  class="clear-btn"
+                  *ngIf="invoiceInfo.companyName"
+                  (click)="clearInvoiceField('companyName', companyNameInput)"
+                  title="Xóa"
+                >
+                  <img src="/asset/icons/clear_dark.png" alt="Clear" />
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Mã số thuế <sup>*</sup></label>
+              <div class="input-container">
+                <input
+                  type="text"
+                  [(ngModel)]="invoiceInfo.taxId"
+                  placeholder="Nhập mã số thuế (10 hoặc 13 chữ số)"
+                  class="form-input"
+                  [class.error]="invoiceErrors.taxId"
+                  (input)="onTaxIdInput()"
+                  (blur)="onTaxIdBlur()"
+                  #taxIdInput
+                />
+                <button
+                  type="button"
+                  class="clear-btn"
+                  *ngIf="invoiceInfo.taxId"
+                  (click)="clearInvoiceField('taxId', taxIdInput)"
+                  title="Xóa"
+                >
+                  <img src="/asset/icons/clear_dark.png" alt="Clear" />
+                </button>
+              </div>
+              <div class="error-message" *ngIf="invoiceErrors.taxId">{{ invoiceErrors.taxId }}</div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email nhận hóa đơn <sup>*</sup></label>
+              <div class="input-container">
+                <input
+                  type="email"
+                  [(ngModel)]="invoiceInfo.invoiceEmail"
+                  placeholder="Nhập email nhận hóa đơn"
+                  class="form-input"
+                  [class.error]="invoiceErrors.invoiceEmail"
+                  (input)="onInvoiceEmailInput()"
+                  (blur)="onInvoiceEmailBlur()"
+                  #invoiceEmailInput
+                />
+                <button
+                  type="button"
+                  class="clear-btn"
+                  *ngIf="invoiceInfo.invoiceEmail"
+                  (click)="clearInvoiceField('invoiceEmail', invoiceEmailInput)"
+                  title="Xóa"
+                >
+                  <img src="/asset/icons/clear_dark.png" alt="Clear" />
+                </button>
+              </div>
+              <div class="error-message" *ngIf="invoiceErrors.invoiceEmail">
+                {{ invoiceErrors.invoiceEmail }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Địa chỉ trên hóa đơn <sup>*</sup></label>
+              <div class="input-container">
+                <input
+                  type="text"
+                  [(ngModel)]="invoiceInfo.invoiceAddress"
+                  placeholder="Nhập địa chỉ trên hóa đơn"
+                  class="form-input"
+                  #invoiceAddressInput
+                />
+                <button
+                  type="button"
+                  class="clear-btn"
+                  *ngIf="invoiceInfo.invoiceAddress"
+                  (click)="clearInvoiceField('invoiceAddress', invoiceAddressInput)"
+                  title="Xóa"
+                >
+                  <img src="/asset/icons/clear_dark.png" alt="Clear" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Consultant Code -->
+      <div class="info-section consultant-section" id="consultant-section" style="order: 8">
+        <h2>Mã nhân viên tư vấn</h2>
+        <input
+          type="text"
+          [(ngModel)]="consultantCode"
+          placeholder="Nhập mã nhân viên tư vấn/giới thiệu, không liên quan đến giảm giá"
+          class="consultant-input"
+        />
+      </div>
+
+      <!-- Mobile Sticky Footer - Nằm sau consultant section khi scroll qua -->
+      <div class="total-fixed-sticky mobile-only" *ngIf="isStickyBottom" style="order: 9">
+        <div class="breakdown-row total">
+          <span>Tổng cộng</span>
+          <span style="color: #e53935">{{ formatCurrency(totalAmount) }}</span>
+        </div>
+        <button
+          class="place-order-btn"
+          (click)="onPlaceOrder()"
+          [disabled]="!isAllRequiredFieldsComplete()"
+        >
+          THANH TOÁN
+        </button>
+      </div>
+    </div>
+
+    <!-- Right Column - Order Summary -->
+    <div class="order-summary">
+      <!-- Order Information -->
+      <div class="summary-section order-info-section" style="order: 3">
+        <h2>Thông tin đơn hàng</h2>
+        <div class="cart-items" *ngIf="getPurchasedItems().length > 0; else noItems">
+          <div
+            *ngFor="let item of getPurchasedItems()"
+            [class.cart-item-wrapper]="hasGiftedItem(item)"
+          >
+            <div class="cart-item" [class.has-free-item]="hasGiftedItem(item)">
+              <div class="item-image">
+                <img [src]="item.image" [alt]="item.name" />
+              </div>
+              <div class="item-details">
+                <h4 class="item-name">{{ item.name }}</h4>
+                <p class="item-price">{{ formatCurrency(item.price) }} /1kg</p>
+                <!-- <p class="item-category">{{ item.category }} - {{ item.subcategory }}</p> -->
+              </div>
+              <div class="item-quantity">
+                <span>{{ item.quantity }}</span>
+              </div>
+              <div class="item-total">
+                {{ formatCurrency(item.price * item.quantity) }}
+              </div>
+            </div>
+
+            <!-- Khung sản phẩm tặng kèm cho buy1get1 - hiển thị gifted item nếu có -->
+            <div class="free-item-container" *ngIf="hasGiftedItem(item)">
+              <div class="free-item-image" *ngIf="getGiftedItem(item) as giftedItem">
+                <img [src]="giftedItem.image" [alt]="giftedItem.name" />
+              </div>
+              <div class="free-item-details" *ngIf="getGiftedItem(item) as giftedItem">
+                <div class="free-item-name">
+                  <span class="free-item-badge">Tặng kèm</span>{{ giftedItem.name }}
+                </div>
+                <div class="free-item-price">
+                  <span class="free-price">Miễn phí</span>
+                  <span class="original-price-striked">{{
+                    formatCurrency(giftedItem.originalPrice || giftedItem.price)
+                  }}</span>
+                </div>
+              </div>
+              <div class="free-item-quantity" *ngIf="getGiftedItem(item) as giftedItem">
+                <span>{{ giftedItem.quantity }}</span>
+              </div>
+              <div class="free-item-total">0đ</div>
+            </div>
+          </div>
+        </div>
+
+        <ng-template #noItems>
+          <div class="no-items">
+            <p>Không có sản phẩm nào trong giỏ hàng</p>
+          </div>
+        </ng-template>
+      </div>
+
+      <!-- VGreen Promotion -->
+      <div class="summary-section order-promotion-section" style="order: 4">
+        <div class="promotion-header" (click)="onOpenPromotionModal()">
+          <div class="promotion-title">
+            <img src="/asset/icons/sale_lightgreen.png" alt="leaf" class="leaf-icon" />
+            <h2>VGreen khuyến mãi</h2>
+          </div>
+          <div class="promotion-action">
+            <span *ngIf="selectedPromotion">{{ selectedPromotion.name }}</span>
+            <span *ngIf="!selectedPromotion" class="placeholder-text"></span>
+            <img src="/asset/icons/arrowright_dark.png" alt="arrow" class="arrow" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Details -->
+      <div
+        class="summary-section order-payment-details-section"
+        id="payment-details-section"
+        style="order: 5"
+      >
+        <h2>Chi tiết thanh toán</h2>
+        <div class="payment-breakdown">
+          <div class="breakdown-row">
+            <span>Tổng tiền hàng (Đã gồm VAT)</span>
+            <span>{{ formatCurrency(subtotalWithVAT) }}</span>
+          </div>
+          <div class="breakdown-row">
+            <span>Tổng phí vận chuyển</span>
+            <span>{{ formatCurrency(30000) }}</span>
+          </div>
+
+          <!-- Thông báo miễn phí vận chuyển khi đơn hàng >= 200,000 -->
+          <!-- <div class="free-shipping-notice" *ngIf="!isFreeShipping() && subtotal < 200000">
+            <span class="notice-text">
+              Mua thêm <strong>{{ formatCurrency(200000 - subtotal) }}</strong> để được
+              <strong>Miễn phí vận chuyển</strong>
+            </span>
+          </div> -->
+
+          <!-- Miễn phí vận chuyển (nếu subtotal >= 200,000) -->
+          <div class="breakdown-row discount-row" *ngIf="isFreeShipping()">
+            <span>Miễn phí vận chuyển</span>
+            <span>-{{ formatCurrency(30000) }}</span>
+          </div>
+
+          <!-- Giảm phí ship (chỉ hiện khi có shipping promotion và không free shipping) -->
+          <div
+            class="breakdown-row discount-row"
+            *ngIf="selectedPromotion && isShippingPromotion(selectedPromotion) && !isFreeShipping()"
+          >
+            <span>Giảm phí vận chuyển</span>
+            <span>-{{ formatCurrency(getActualShippingDiscount()) }}</span>
+          </div>
+
+          <!-- Giảm giá sản phẩm (chỉ hiện khi có product promotion) -->
+          <div
+            class="breakdown-row discount-row"
+            *ngIf="
+              selectedPromotion && !isShippingPromotion(selectedPromotion) && discountAmount > 0
+            "
+          >
+            <span>Giảm giá sản phẩm</span>
+            <span>-{{ formatCurrency(discountAmount) }}</span>
+          </div>
+          <!-- Desktop version - Chỉ hiện khi >1024px -->
+          <div class="breakdown-row total desktop-only">
+            <span>Tổng cộng</span>
+            <span style="color: #e53935">{{ formatCurrency(totalAmount) }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop Place Order Button - Chỉ hiện khi >1024px -->
+      <button
+        class="place-order-btn desktop-only"
+        (click)="onPlaceOrder()"
+        [disabled]="!isAllRequiredFieldsComplete()"
+      >
+        THANH TOÁN
+      </button>
+
+      <!-- Mobile Fixed Footer - Chỉ hiện khi ≤1024px -->
+      <div class="total-fixed mobile-only" [class.sticky-bottom]="isStickyBottom">
+        <div class="breakdown-row total">
+          <span>Tổng cộng</span>
+          <span style="color: #e53935">{{ formatCurrency(totalAmount) }}</span>
+        </div>
+        <button
+          class="place-order-btn"
+          (click)="onPlaceOrder()"
+          [disabled]="!isAllRequiredFieldsComplete()"
+        >
+          THANH TOÁN
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modals -->
+<app-address-form
+  *ngIf="showAddressModal"
+  [addressInfo]="addressInfo"
+  (addressComplete)="onAddressComplete($event)"
+  (closeModal)="onCloseAddressModal()"
+></app-address-form>
+
+<app-payment-method
+  *ngIf="showPaymentModal"
+  [paymentInfo]="paymentInfo"
+  (paymentComplete)="onPaymentComplete($event)"
+  (closeModal)="onClosePaymentModal()"
+></app-payment-method>
+
+<app-promotion-modal
+  *ngIf="showPromotionModal"
+  [cartAmount]="subtotal"
+  [currentSelectedPromotion]="selectedPromotion"
+  (promotionApplied)="onPromotionApplied($event)"
+  (closeModal)="onClosePromotionModal()"
+  (confirmPromotion)="onConfirmPromotion()"
+></app-promotion-modal>
+
+<!-- Address List Modal -->
+<app-information-list
+  *ngIf="showAddressListModal"
+  [addressList]="addressList"
+  [selectedIndex]="selectedAddressIndex"
+  (closeModal)="onCloseAddressListModal()"
+  (selectAddress)="onSelectAddressFromList($event)"
+  (editAddress)="onEditAddressFromList($event)"
+  (deleteAddress)="onDeleteAddress($event)"
+  (addNewAddress)="onAddNewAddressFromList()"
+></app-information-list>
+
+<!-- Order Success Modal -->
+<div
+  class="modal-overlay order-success-overlay"
+  *ngIf="showOrderSuccessModal"
+  (click)="onGoToHome()"
+>
+  <div class="order-success-modal" (click)="$event.stopPropagation()">
+    <!-- Success Icon -->
+    <div class="success-icon">
+      <img src="/asset/icons/tick.png" alt="Success" />
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message">
+      <h3 class="success-title">Đặt hàng thành công!</h3>
+      <p class="success-text" *ngIf="createdOrderId">
+        Mã đơn hàng của bạn: <strong>{{ createdOrderId }}</strong>
+      </p>
+      <p class="success-subtext">
+        Cảm ơn bạn đã mua sắm tại <span class="vgreen-text">VGreen</span>!
+      </p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="success-footer">
+      <button class="success-btn go-home-btn" (click)="onGoToHome()">Về trang chủ</button>
+      <button class="success-btn view-orders-btn" (click)="onViewOrders()">Xem đơn hàng</button>
+    </div>
+  </div>
+</div>

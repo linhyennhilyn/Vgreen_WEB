@@ -1,0 +1,41 @@
+{
+  "name": "vgreen-backend",
+  "version": "1.0.0",
+  "description": "Backend API for VGreen Admin connecting to MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "sync-users:to-json": "node scripts/sync-users.js to-json",
+    "sync-users:to-mongo": "node scripts/sync-users.js to-mongo",
+    "sync-users:both": "node scripts/sync-users.js both",
+    "sync-data": "node sync-data-from-template.js",
+    "calculate-totalspent": "node scripts/calculate-totalspent-tiering.js",
+    "unify-status": "node scripts/unify-delivered-completed-status.js",
+    "update-mongo-data": "node scripts/update-mongo-data.js",
+    "cleanup-invalid-reviews": "node scripts/cleanup-invalid-reviews.js",
+    "import-all-json": "node scripts/import-all-json.js",
+    "sync-ratings": "node scripts/sync-product-ratings.js"
+  },
+  "keywords": [
+    "mongodb",
+    "express",
+    "api",
+    "vgreen"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.18.2",
+    "mongodb": "^5.9.0",
+    "mongoose": "^8.19.3",
+    "nodemailer": "^7.0.10"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

@@ -1,0 +1,1049 @@
+<!-- Products Management Page -->
+<div class="products-page" (click)="closeDropdowns($event)">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <span>Quản trị viên</span>
+    <span class="separator">/</span>
+    <span>Quản lý sản phẩm</span>
+    <span class="separator">/</span>
+    <span class="current">Danh sách sản phẩm</span>
+  </div>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="page-title-section">
+      <h1 class="page-title">DANH SÁCH SẢN PHẨM</h1>
+      <p class="products-info" *ngIf="!isLoading && products.length > 0">
+        Hiển thị <strong>{{ products.length }}</strong> sản phẩm
+      </p>
+    </div>
+    <button class="btn-add-product" (click)="addProduct()">
+      <img src="/asset/icons/plus.png" alt="Add" />
+      <span>Thêm sản phẩm</span>
+    </button>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <!-- Actions -->
+    <div class="actions-container">
+      <!-- Search Container -->
+      <div class="search-container">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Tìm kiếm sản phẩm..."
+          (input)="searchProducts($event)"
+        />
+        <button class="search-btn">
+          <img src="/asset/icons/search_dark.png" alt="Search" />
+        </button>
+      </div>
+
+      <span class="selected-count">{{ selectedCount }} đã chọn</span>
+
+      <button class="btn-action btn-edit" (click)="editProducts()" [disabled]="selectedCount !== 1">
+        <img src="/asset/icons/edit_dark.png" alt="Edit" />
+        <span>Chỉnh</span>
+      </button>
+
+      <button
+        class="btn-action btn-delete"
+        [class.disabled]="selectedCount === 0"
+        [disabled]="selectedCount === 0"
+        (click)="deleteProducts(); $event.stopPropagation(); $event.preventDefault()"
+        type="button"
+      >
+        <img src="/asset/icons/trash_red.png" alt="Delete" />
+        <span>Xoá</span>
+      </button>
+
+      <button
+        class="btn-action btn-group"
+        (click)="openGroupModal()"
+        [disabled]="selectedCount < 2"
+      >
+        <img src="/asset/icons/group.png" alt="Group" />
+        <span>Nhóm</span>
+      </button>
+
+      <!-- Filter Dropdown -->
+      <div class="dropdown-container">
+        <button
+          class="btn-action btn-filter"
+          [class.active]="showFilterDropdown"
+          (click)="toggleFilterDropdown($event)"
+        >
+          <img src="/asset/icons/filter_dark.png" alt="Filter" />
+          <span>Lọc {{ showFilterDropdown ? '✓' : '' }}</span>
+          <span class="dropdown-arrow">▼</span>
+        </button>
+        <div
+          class="dropdown-menu dropdown-menu-multilevel"
+          *ngIf="showFilterDropdown"
+          (click)="$event.stopPropagation()"
+        >
+          <!-- Stock Status with Submenu -->
+          <div class="dropdown-item-parent">
+            <div class="dropdown-item">
+              <img src="/asset/icons/storage.png" alt="Stock" class="item-icon" />
+              <span>Tồn kho</span>
+              <span class="arrow-right">›</span>
+            </div>
+            <div class="dropdown-submenu">
+              <label class="dropdown-option" (click)="toggleStockFilter('in-stock')">
+                <input
+                  type="checkbox"
+                  [checked]="currentFilters.stockStatus === 'in-stock'"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>Còn hàng</span>
+              </label>
+              <label class="dropdown-option" (click)="toggleStockFilter('low-stock')">
+                <input
+                  type="checkbox"
+                  [checked]="currentFilters.stockStatus === 'low-stock'"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>Sắp hết (&lt;10)</span>
+              </label>
+              <label class="dropdown-option" (click)="toggleStockFilter('out-of-stock')">
+                <input
+                  type="checkbox"
+                  [checked]="currentFilters.stockStatus === 'out-of-stock'"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>Hết hàng</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Rating with Submenu -->
+          <div class="dropdown-item-parent">
+            <div class="dropdown-item">
+              <img src="/asset/icons/star_dark.png" alt="Rating" class="item-icon" />
+              <span>Đánh giá</span>
+              <span class="arrow-right">›</span>
+            </div>
+            <div class="dropdown-submenu">
+              <label
+                class="dropdown-option"
+                *ngFor="let rating of [5, 4, 3, 2, 1]"
+                (click)="toggleRatingFilter(rating)"
+              >
+                <input
+                  type="checkbox"
+                  [checked]="currentFilters.rating === rating"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>{{ rating }} ⭐</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Category with Submenu -->
+          <div class="dropdown-item-parent" *ngIf="availableCategories.length > 0">
+            <div class="dropdown-item">
+              <img src="/asset/icons/category.png" alt="Category" class="item-icon" />
+              <span>Phân loại</span>
+              <span class="arrow-right">›</span>
+            </div>
+            <div class="dropdown-submenu dropdown-submenu-scrollable">
+              <label
+                class="dropdown-option"
+                *ngFor="let cat of availableCategories"
+                (click)="toggleCategoryFilter(cat)"
+              >
+                <input
+                  type="checkbox"
+                  [checked]="currentFilters.category === cat"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>{{ cat }}</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Group with Submenu -->
+          <div class="dropdown-item-parent">
+            <div class="dropdown-item">
+              <img src="/asset/icons/group.png" alt="Group" class="item-icon" />
+              <span>Nhóm sản phẩm</span>
+              <span class="arrow-right">›</span>
+            </div>
+            <div
+              class="dropdown-submenu dropdown-submenu-scrollable"
+              *ngIf="allGroupNames.length > 0"
+            >
+              <label
+                class="dropdown-option"
+                *ngFor="let groupName of allGroupNames"
+                (click)="toggleGroupFilter(groupName)"
+              >
+                <input
+                  type="checkbox"
+                  [checked]="currentFilters.group === groupName"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>{{ groupName }}</span>
+              </label>
+            </div>
+            <div class="dropdown-submenu" *ngIf="allGroupNames.length === 0">
+              <div class="dropdown-empty">
+                <img
+                  src="/asset/icons/group.png"
+                  alt="Group"
+                  class="empty-icon"
+                  style="width: 20px; height: 20px"
+                />
+                <span>Chưa có nhóm nào</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-actions">
+            <button class="btn-clear-filter" (click)="clearFilters()">
+              <img
+                src="/asset/icons/trash_red.png"
+                alt="Clear Filter"
+                style="width: 16px; height: 16px"
+              />
+              <span>Xóa bộ lọc</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sort Dropdown -->
+      <div class="dropdown-container">
+        <button
+          class="btn-action btn-sort"
+          [class.active]="showSortDropdown"
+          (click)="toggleSortDropdown($event)"
+        >
+          <span class="icon-sort">⇅</span>
+          <span>Sắp xếp {{ showSortDropdown ? '✓' : '' }}</span>
+          <span class="dropdown-arrow">▼</span>
+        </button>
+        <div
+          class="dropdown-menu dropdown-menu-sort"
+          *ngIf="showSortDropdown"
+          (click)="$event.stopPropagation()"
+        >
+          <!-- Sort by Name -->
+          <div
+            class="sort-option"
+            [class.active]="currentSortField === 'name'"
+            (click)="sortBy('name')"
+          >
+            <div class="sort-option-icon">
+              <img src="/asset/icons/name.png" alt="Name" style="width: 24px; height: 24px" />
+            </div>
+            <div class="sort-option-content">
+              <div class="sort-option-label">Tên sản phẩm</div>
+              <div class="sort-option-desc">A → Z hoặc Z → A</div>
+            </div>
+            <div class="sort-option-indicator" *ngIf="currentSortField === 'name'">
+              <div
+                class="indicator-badge"
+                [class.asc]="currentSortOrder === 'asc'"
+                [class.desc]="currentSortOrder === 'desc'"
+              >
+                {{ currentSortOrder === 'asc' ? 'A→Z' : 'Z→A' }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Sort by Price -->
+          <div
+            class="sort-option"
+            [class.active]="currentSortField === 'price'"
+            (click)="sortBy('price')"
+          >
+            <div class="sort-option-icon">
+              <img src="/asset/icons/price.png" alt="Price" style="width: 24px; height: 24px" />
+            </div>
+            <div class="sort-option-content">
+              <div class="sort-option-label">Giá</div>
+              <div class="sort-option-desc">Thấp đến cao / Cao đến thấp</div>
+            </div>
+            <div class="sort-option-indicator" *ngIf="currentSortField === 'price'">
+              <div
+                class="indicator-badge"
+                [class.asc]="currentSortOrder === 'asc'"
+                [class.desc]="currentSortOrder === 'desc'"
+              >
+                {{ currentSortOrder === 'asc' ? '↑' : '↓' }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Sort by Stock -->
+          <div
+            class="sort-option"
+            [class.active]="currentSortField === 'stock'"
+            (click)="sortBy('stock')"
+          >
+            <div class="sort-option-icon">
+              <img src="/asset/icons/storage.png" alt="Stock" style="width: 24px; height: 24px" />
+            </div>
+            <div class="sort-option-content">
+              <div class="sort-option-label">Tồn kho</div>
+              <div class="sort-option-desc">Ít đến nhiều / Nhiều đến ít</div>
+            </div>
+            <div class="sort-option-indicator" *ngIf="currentSortField === 'stock'">
+              <div
+                class="indicator-badge"
+                [class.asc]="currentSortOrder === 'asc'"
+                [class.desc]="currentSortOrder === 'desc'"
+              >
+                {{ currentSortOrder === 'asc' ? '↑' : '↓' }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Sort by Rating -->
+          <div
+            class="sort-option"
+            [class.active]="currentSortField === 'rating'"
+            (click)="sortBy('rating')"
+          >
+            <div class="sort-option-icon">
+              <img
+                src="/asset/icons/star_dark.png"
+                alt="Rating"
+                style="width: 24px; height: 24px"
+              />
+            </div>
+            <div class="sort-option-content">
+              <div class="sort-option-label">Đánh giá</div>
+              <div class="sort-option-desc">Thấp đến cao / Cao đến thấp</div>
+            </div>
+            <div class="sort-option-indicator" *ngIf="currentSortField === 'rating'">
+              <div
+                class="indicator-badge"
+                [class.asc]="currentSortOrder === 'asc'"
+                [class.desc]="currentSortOrder === 'desc'"
+              >
+                {{ currentSortOrder === 'asc' ? '↑' : '↓' }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Sort by Updated Date -->
+          <div
+            class="sort-option"
+            [class.active]="currentSortField === 'updated'"
+            (click)="sortBy('updated')"
+          >
+            <div class="sort-option-icon">
+              <img
+                src="/asset/icons/calendar.png"
+                alt="Calendar"
+                style="width: 24px; height: 24px"
+              />
+            </div>
+            <div class="sort-option-content">
+              <div class="sort-option-label">Ngày cập nhật</div>
+              <div class="sort-option-desc">Cũ đến mới / Mới đến cũ</div>
+            </div>
+            <div class="sort-option-indicator" *ngIf="currentSortField === 'updated'">
+              <div
+                class="indicator-badge"
+                [class.asc]="currentSortOrder === 'asc'"
+                [class.desc]="currentSortOrder === 'desc'"
+              >
+                {{ currentSortOrder === 'asc' ? '↑' : '↓' }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading-container" *ngIf="isLoading">
+    <div class="loading-spinner"></div>
+    <p>Đang tải dữ liệu sản phẩm...</p>
+  </div>
+
+  <!-- Error State -->
+  <div class="error-container" *ngIf="loadError">
+    <p class="error-message">{{ loadError }}</p>
+    <button class="btn-retry" (click)="loadProducts()">Thử lại</button>
+  </div>
+
+  <!-- Active Filters Count -->
+  <div class="active-filters-info" *ngIf="!isLoading && !loadError && getActiveFiltersCount() > 0">
+    <span class="filters-count-badge">{{ getActiveFiltersCount() }}</span>
+    <span class="filters-count-text">bộ lọc đang được áp dụng</span>
+  </div>
+
+  <!-- Products Table -->
+  <div class="products-table-container" *ngIf="!isLoading && !loadError">
+    <table class="products-table">
+      <thead>
+        <tr>
+          <th class="col-checkbox">
+            <input
+              type="checkbox"
+              class="checkbox-all"
+              [checked]="selectAll"
+              (change)="toggleSelectAll()"
+            />
+          </th>
+          <th class="col-name">Tên sản phẩm</th>
+          <th class="col-unit">Đơn vị tính</th>
+          <th class="col-stock">Tồn kho</th>
+          <th class="col-category">Phân loại</th>
+          <th class="col-groups">Giá bán</th>
+          <th class="col-rating">Đánh giá</th>
+          <th class="col-updated">Cập nhật gần nhất</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- No Products Message -->
+        <tr *ngIf="products.length === 0">
+          <td colspan="8" class="no-products">
+            <p>Không tìm thấy sản phẩm nào</p>
+          </td>
+        </tr>
+
+        <!-- Dynamic Product Rows -->
+        <tr
+          class="product-row"
+          *ngFor="let product of products"
+          [class.selected]="product.selected"
+        >
+          <td class="col-checkbox" (click)="$event.stopPropagation()">
+            <input
+              type="checkbox"
+              class="checkbox-item"
+              [checked]="product.selected"
+              (change)="toggleProduct(product)"
+            />
+          </td>
+          <td class="col-name clickable" (click)="viewProductDetail(product)">
+            <div class="product-info">
+              <div class="product-image">
+                <img
+                  [src]="product.image || '/asset/icons/shop.png'"
+                  [alt]="product.name"
+                  (error)="$any($event.target).src = '/asset/icons/shop.png'"
+                />
+              </div>
+              <div class="product-details">
+                <div class="product-name">{{ product.name }}</div>
+                <div class="product-code">{{ product.sku }}</div>
+              </div>
+            </div>
+          </td>
+          <td class="col-unit">{{ product.unit }}</td>
+          <td class="col-stock" [ngClass]="getStockClass(product.stock)">
+            {{ product.stock }}
+          </td>
+          <td class="col-category">{{ product.category }}</td>
+          <td class="col-groups">{{ formatCurrency(product.price) }}</td>
+          <td class="col-rating">
+            <div class="rating">
+              <span
+                *ngFor="let starType of getStarArray(product.rating || 0)"
+                class="star"
+                [class.star-full]="starType === 'full'"
+                [class.star-half]="starType === 'half'"
+                [class.star-empty]="starType === 'empty'"
+                >★</span
+              >
+            </div>
+            <div class="rating-value">{{ product.rating || 0 }}</div>
+          </td>
+          <td class="col-updated">{{ product.updated }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Product Form Modal -->
+<div
+  class="product-modal-overlay"
+  *ngIf="showProductForm"
+  [class.sidebar-collapsed]="isSidebarCollapsed"
+  (click)="closeProductForm()"
+>
+  <div class="product-modal-content" (click)="$event.stopPropagation()">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <div class="modal-title-section">
+        <button class="btn-back" (click)="closeProductForm()">
+          <img src="/asset/icons/arrowleft_dark.png" alt="Back" />
+          <span>Quay lại trang sản phẩm</span>
+        </button>
+        <h2 class="modal-title">
+          {{ currentProduct.name ? currentProduct.name.toUpperCase() : '' }}
+        </h2>
+      </div>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body">
+      <form class="product-form">
+        <!-- Tên sản phẩm -->
+        <div class="form-group full-width">
+          <label class="form-label">Tên sản phẩm:</label>
+          <input
+            type="text"
+            class="form-input"
+            placeholder="Tên sản phẩm"
+            [(ngModel)]="currentProduct.name"
+            (ngModelChange)="onFieldChange('name', $event)"
+            name="name"
+          />
+        </div>
+
+        <!-- Mã sản phẩm & SKU -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Mã sản phẩm</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Mã sản phẩm"
+              [(ngModel)]="currentProduct.code"
+              (ngModelChange)="onFieldChange('code', $event)"
+              name="code"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">SKU:</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="SKU"
+              [(ngModel)]="currentProduct.sku"
+              (ngModelChange)="onFieldChange('sku', $event)"
+              name="sku"
+            />
+          </div>
+        </div>
+
+        <!-- Thương hiệu & Phân loại -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Thương hiệu:</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Thương hiệu"
+              [(ngModel)]="currentProduct.brand"
+              (ngModelChange)="onFieldChange('brand', $event)"
+              name="brand"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phân loại:</label>
+            <div class="form-select-wrapper">
+              <select
+                class="form-select"
+                [(ngModel)]="currentProduct.category"
+                (ngModelChange)="onCategoryChange($event); onFieldChange('category', $event)"
+                name="category"
+              >
+                <option value="">Chọn phân loại...</option>
+                <option *ngFor="let cat of availableCategories" [value]="cat">{{ cat }}</option>
+              </select>
+              <img src="/asset/icons/arrowdown.png" alt="Dropdown" class="select-icon" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Phân loại phụ & Xuất xứ -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Phân loại phụ:</label>
+            <div class="form-select-wrapper">
+              <select
+                class="form-select"
+                [(ngModel)]="currentProduct.subcategory"
+                (ngModelChange)="onFieldChange('subcategory', $event)"
+                name="subcategory"
+                [disabled]="!currentProduct.category || formSubcategories.length === 0"
+              >
+                <option value="">Chọn phân loại phụ...</option>
+                <option *ngFor="let subcat of formSubcategories" [value]="subcat">
+                  {{ subcat }}
+                </option>
+              </select>
+              <img src="/asset/icons/arrowdown.png" alt="Dropdown" class="select-icon" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Xuất xứ:</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Xuất xứ"
+              [(ngModel)]="currentProduct.origin"
+              (ngModelChange)="onFieldChange('origin', $event)"
+              name="origin"
+            />
+          </div>
+        </div>
+
+        <!-- Khối lượng & Đơn vị tính -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Khối lượng:</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Khối lượng"
+              [(ngModel)]="currentProduct.weight"
+              (ngModelChange)="onFieldChange('weight', $event)"
+              name="weight"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Đơn vị tính:</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Đơn vị tính"
+              [(ngModel)]="currentProduct.unit"
+              (ngModelChange)="onFieldChange('unit', $event)"
+              name="unit"
+            />
+          </div>
+        </div>
+
+        <!-- Tồn kho -->
+        <div class="form-group full-width">
+          <label class="form-label">Tồn kho:</label>
+          <input
+            type="number"
+            class="form-input"
+            placeholder="xxx"
+            [(ngModel)]="currentProduct.stock"
+            (ngModelChange)="onFieldChange('stock', $event)"
+            name="stock"
+          />
+        </div>
+
+        <!-- Thống kê sản phẩm -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Lượt mua:</label>
+            <input
+              type="number"
+              class="form-input"
+              [value]="currentProduct.PurchaseCount || 0"
+              readonly
+              disabled
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Lượt like:</label>
+            <input
+              type="number"
+              class="form-input"
+              [value]="currentProduct.liked || 0"
+              readonly
+              disabled
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Lượt đánh giá:</label>
+            <input
+              type="number"
+              class="form-input"
+              [value]="currentProduct.reviewCount || 0"
+              readonly
+              disabled
+            />
+          </div>
+        </div>
+
+        <!-- Thành phần -->
+        <div class="form-group full-width">
+          <label class="form-label">Thành phần:</label>
+          <textarea
+            class="form-textarea"
+            placeholder="Thành phần"
+            rows="3"
+            [(ngModel)]="currentProduct.ingredients"
+            (ngModelChange)="onFieldChange('ingredients', $event)"
+            name="ingredients"
+          ></textarea>
+        </div>
+
+        <!-- Hướng dẫn sử dụng -->
+        <div class="form-group full-width">
+          <label class="form-label">Hướng dẫn sử dụng:</label>
+          <textarea
+            class="form-textarea"
+            placeholder="Hướng dẫn sử dụng"
+            rows="4"
+            [(ngModel)]="currentProduct.usage"
+            (ngModelChange)="onFieldChange('usage', $event)"
+            name="usage"
+          ></textarea>
+        </div>
+
+        <!-- Bảo quản -->
+        <div class="form-group full-width">
+          <label class="form-label">Bảo quản:</label>
+          <textarea
+            class="form-textarea"
+            placeholder="Bảo quản"
+            rows="2"
+            [(ngModel)]="currentProduct.storage"
+            (ngModelChange)="onFieldChange('storage', $event)"
+            name="storage"
+          ></textarea>
+        </div>
+
+        <!-- Màu sắc -->
+        <div class="form-group full-width">
+          <label class="form-label">Phân loại màu sắc:</label>
+          <div class="form-select-wrapper">
+            <select
+              class="form-select"
+              [(ngModel)]="currentProduct.color"
+              (ngModelChange)="onFieldChange('color', $event)"
+              name="color"
+            >
+              <option value="">Chọn màu sắc...</option>
+              <option *ngFor="let color of availableColors" [value]="color">{{ color }}</option>
+            </select>
+            <img src="/asset/icons/arrowdown.png" alt="Dropdown" class="select-icon" />
+          </div>
+        </div>
+
+        <!-- Nhà sản xuất & Tổ chức chịu trách nhiệm -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nhà sản xuất:</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Nhà sản xuất"
+              [(ngModel)]="currentProduct.producer"
+              (ngModelChange)="onFieldChange('producer', $event)"
+              name="producer"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tổ chức chịu trách nhiệm:</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Tổ chức chịu trách nhiệm"
+              [(ngModel)]="currentProduct.responsibleOrg"
+              (ngModelChange)="onFieldChange('responsibleOrg', $event)"
+              name="responsibleOrg"
+            />
+          </div>
+        </div>
+
+        <!-- Ngày sản xuất & Hạn sử dụng -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Ngày sản xuất:</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Ngày sản xuất"
+              [(ngModel)]="currentProduct.manufactureDate"
+              (ngModelChange)="onFieldChange('manufactureDate', $event)"
+              name="manufactureDate"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Hạn sử dụng:</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Hạn sử dụng"
+              [(ngModel)]="currentProduct.expiryDate"
+              (ngModelChange)="onFieldChange('expiryDate', $event)"
+              name="expiryDate"
+            />
+          </div>
+        </div>
+
+        <!-- Cảnh báo an toàn -->
+        <div class="form-group full-width">
+          <label class="form-label">Cảnh báo an toàn:</label>
+          <textarea
+            class="form-textarea"
+            placeholder="Cảnh báo an toàn"
+            rows="2"
+            [(ngModel)]="currentProduct.safetyWarning"
+            (ngModelChange)="onFieldChange('safetyWarning', $event)"
+            name="safetyWarning"
+          ></textarea>
+        </div>
+
+        <!-- Nhóm sản phẩm -->
+        <div class="form-group full-width">
+          <label class="form-label">Nhóm sản phẩm:</label>
+
+          <!-- Current Groups -->
+          <div
+            class="groups-container"
+            *ngIf="currentProduct.groups && currentProduct.groups.length > 0"
+          >
+            <div class="group-tag" *ngFor="let group of currentProduct.groups">
+              <img
+                src="/asset/icons/group.png"
+                alt="Group"
+                class="group-icon"
+                style="width: 16px; height: 16px"
+              />
+              <span class="group-name">{{ group }}</span>
+              <button type="button" class="group-remove" (click)="removeGroupFromProduct(group)">
+                ×
+              </button>
+            </div>
+          </div>
+
+          <!-- Select Group Dropdown -->
+          <div class="group-select-container" *ngIf="allGroupNames.length > 0">
+            <select
+              class="form-select group-select"
+              [(ngModel)]="selectedGroupToAdd"
+              name="groupSelect"
+              (change)="addSelectedGroup()"
+            >
+              <option value="" disabled selected>Chọn nhóm để thêm vào sản phẩm...</option>
+              <option
+                *ngFor="let groupName of allGroupNames"
+                [value]="groupName"
+                [disabled]="currentProduct.groups?.includes(groupName)"
+              >
+                📁 {{ groupName }}
+              </option>
+            </select>
+          </div>
+
+          <!-- Empty State -->
+          <div class="group-empty-state" *ngIf="allGroupNames.length === 0">
+            <p class="empty-state-text">
+              <img
+                src="/asset/icons/group.png"
+                alt="Group"
+                class="empty-icon"
+                style="width: 20px; height: 20px"
+              />
+              Chưa có nhóm nào. Hãy chọn nhiều sản phẩm và dùng chức năng "Nhóm" để tạo nhóm mới.
+            </p>
+          </div>
+        </div>
+
+        <!-- Hình ảnh -->
+        <div class="form-group full-width">
+          <label class="form-label">Hình ảnh:</label>
+          <div class="image-upload-grid">
+            <div class="image-upload-box" *ngFor="let img of getProductImages(); let i = index">
+              <input
+                type="file"
+                [id]="'file-upload-' + i"
+                class="file-input"
+                accept="image/*"
+                (change)="onImageSelect($event, i)"
+              />
+              <label [for]="'file-upload-' + i" class="upload-label">
+                <img
+                  *ngIf="img"
+                  [src]="img"
+                  [alt]="'Product image ' + (i + 1)"
+                  class="product-image-preview"
+                  (error)="handleImageError($event)"
+                />
+                <img
+                  *ngIf="!img"
+                  src="/asset/icons/camera_dark.png"
+                  alt="Upload"
+                  class="upload-icon"
+                />
+              </label>
+              <button
+                *ngIf="img"
+                type="button"
+                class="remove-image-btn"
+                (click)="removeImage(i)"
+                title="Xóa hình ảnh"
+              >
+                ×
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bảng giá -->
+        <div class="form-group full-width">
+          <div class="price-table">
+            <div class="price-header">
+              <div class="price-cell">Giá gốc</div>
+              <div class="price-cell">Giá bán</div>
+              <div class="price-cell">Giá khuyến mãi</div>
+            </div>
+            <div class="price-body">
+              <div class="price-cell">
+                <input
+                  type="number"
+                  class="price-input"
+                  placeholder="0"
+                  [(ngModel)]="currentProduct.originalPrice"
+                  (ngModelChange)="onFieldChange('originalPrice', $event)"
+                  name="originalPrice"
+                />
+              </div>
+              <div class="price-cell">
+                <input
+                  type="number"
+                  class="price-input"
+                  placeholder="0"
+                  [(ngModel)]="currentProduct.price"
+                  (ngModelChange)="onFieldChange('price', $event)"
+                  name="price"
+                />
+              </div>
+              <div class="price-cell">
+                <input
+                  type="number"
+                  class="price-input"
+                  placeholder="0"
+                  [(ngModel)]="currentProduct.salePrice"
+                  name="salePrice"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Form Actions - Footer cố định -->
+    <div class="form-actions">
+      <button type="button" class="btn-cancel" (click)="closeProductForm()">HỦY</button>
+      <button type="button" class="btn-save" (click)="saveProduct()">LƯU</button>
+    </div>
+  </div>
+</div>
+
+<!-- Group Modal -->
+<div class="group-modal-overlay" *ngIf="showGroupModal" (click)="closeGroupModal()">
+  <div class="group-modal-content" (click)="$event.stopPropagation()">
+    <div class="group-modal-header">
+      <h3 class="group-modal-title">
+        <img
+          src="/asset/icons/group.png"
+          alt="Group"
+          class="title-icon"
+          style="width: 20px; height: 20px"
+        />
+        Tạo nhóm sản phẩm
+      </h3>
+      <button class="btn-close-modal" (click)="closeGroupModal()">×</button>
+    </div>
+
+    <div class="group-modal-body">
+      <p class="group-modal-desc">
+        Bạn đang nhóm <strong>{{ selectedCount }}</strong> sản phẩm đã chọn
+      </p>
+
+      <div class="group-form-group">
+        <label class="group-label">Tên nhóm:</label>
+        <input
+          type="text"
+          class="group-name-input"
+          placeholder="VD: Sản phẩm khuyến mãi, Hàng mới về..."
+          [(ngModel)]="newGroupName"
+          (keyup.enter)="createGroup()"
+          autofocus
+        />
+      </div>
+
+      <div class="group-info">
+        <span class="info-icon">ℹ️</span>
+        <span>Mỗi sản phẩm có thể thuộc nhiều nhóm khác nhau</span>
+      </div>
+    </div>
+
+    <div class="group-modal-footer">
+      <button class="btn-cancel-group" (click)="closeGroupModal()">Hủy</button>
+      <button class="btn-create-group" (click)="createGroup()"><span>✓</span> Tạo nhóm</button>
+    </div>
+  </div>
+</div>
+
+<!-- Popup Notification -->
+<div class="popup-overlay" *ngIf="showPopup" (click)="closePopup()">
+  <div class="popup-container" (click)="$event.stopPropagation()">
+    <div class="popup-content" [ngClass]="'popup-' + popupType">
+      <div class="popup-icon">
+        <span *ngIf="popupType === 'success'">✓</span>
+        <span *ngIf="popupType === 'error'">✗</span>
+        <span *ngIf="popupType === 'info'">ℹ</span>
+      </div>
+      <div class="popup-message">{{ popupMessage }}</div>
+      <button class="popup-close" (click)="closePopup()">×</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirmation Dialog -->
+<div class="popup-overlay" *ngIf="showConfirmDialog" (click)="cancelDelete()">
+  <div class="confirm-dialog" (click)="$event.stopPropagation()">
+    <div class="confirm-icon">
+      <span class="icon-question">?</span>
+    </div>
+    <div class="confirm-message">{{ confirmMessage }}</div>
+    <div class="confirm-buttons">
+      <button class="btn-confirm-cancel" (click)="cancelDelete()">Hủy</button>
+      <button class="btn-confirm-ok" (click)="confirmDelete()">OK</button>
+    </div>
+  </div>
+</div>
+
+<!-- Order Warning Dialog -->
+<div class="popup-overlay" *ngIf="showOrderWarningDialog" (click)="cancelOrderWarning()">
+  <div class="confirm-dialog order-warning-dialog" (click)="$event.stopPropagation()">
+    <div class="confirm-icon warning-icon">
+      <span class="icon-warning">⚠</span>
+    </div>
+    <div class="confirm-message">{{ orderWarningMessage }}</div>
+
+    <div class="affected-orders-list" *ngIf="affectedOrders.length > 0">
+      <div class="orders-header">
+        Các đơn hàng sẽ bị ảnh hưởng (sản phẩm sẽ bị xóa khỏi đơn hàng):
+      </div>
+      <div class="orders-list">
+        <div class="order-item" *ngFor="let order of affectedOrders">
+          <span class="order-id">#{{ order.OrderID }}</span>
+          <span class="order-customer">Khách hàng: {{ order.CustomerID }}</span>
+          <span class="order-amount">{{ order.totalAmount | number }}₫</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pending-products-list" *ngIf="pendingDeleteProducts.length > 0">
+      <div class="products-header">Sản phẩm sẽ bị xóa:</div>
+      <div class="products-list">
+        <div class="product-item" *ngFor="let product of pendingDeleteProducts">
+          {{ product.productName }}
+        </div>
+      </div>
+    </div>
+
+    <div class="confirm-buttons">
+      <button class="btn-confirm-cancel" (click)="cancelOrderWarning()">Hủy</button>
+      <button class="btn-confirm-ok btn-warning" (click)="confirmOrderWarning()">
+        Xác nhận xóa
+      </button>
+    </div>
+  </div>
+</div>

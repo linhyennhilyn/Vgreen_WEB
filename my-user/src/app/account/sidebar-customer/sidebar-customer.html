@@ -1,0 +1,124 @@
+<!-- Mobile Menu Button -->
+<button class="mobile-menu-btn" (click)="toggleMobileSidebar()" *ngIf="!isMobileSidebarOpen">
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+  >
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <line x1="3" y1="12" x2="21" y2="12"></line>
+    <line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</button>
+
+<!-- Mobile Overlay -->
+<div class="mobile-overlay" *ngIf="isMobileSidebarOpen" (click)="onOverlayClick()"></div>
+
+<aside class="account-sidebar" [class.mobile-open]="isMobileSidebarOpen">
+  <!-- Mobile Close Button -->
+  <button class="mobile-close-btn" (click)="closeMobileSidebar()">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+
+  <!-- User Profile Section -->
+  <div class="user-section">
+    <div class="user-avatar">
+      <img
+        [src]="
+          userProfile.avatar && userProfile.avatar.trim() !== ''
+            ? userProfile.avatar
+            : '/asset/image/avt.png'
+        "
+        [alt]="userProfile.name || 'User'"
+      />
+    </div>
+    <h3 class="user-name">{{ getDisplayInfo().primary }}</h3>
+    <p
+      *ngIf="getDisplayInfo().secondary"
+      [class.user-email]="!isSecondaryPhone()"
+      [class.user-phone]="isSecondaryPhone()"
+    >
+      {{ getDisplayInfo().secondary }}
+    </p>
+    <div class="user-badges" *ngIf="userProfile.customerType">
+      <span
+        class="customer-type"
+        [class.customer-dong]="userProfile.customerType === 'Đồng'"
+        [class.customer-bac]="userProfile.customerType === 'Bạc'"
+        [class.customer-vang]="userProfile.customerType === 'Vàng'"
+        [class.customer-bachkim]="userProfile.customerType === 'Bạch Kim'"
+        [title]="getCustomerBadgeTooltip()"
+      >
+        {{ userProfile.customerType }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Navigation Menu -->
+  <nav class="sidebar-nav">
+    <ul class="menu-list">
+      <li
+        *ngFor="let item of menuItems"
+        class="menu-item"
+        [class.active]="item.isActive"
+        (click)="onMenuItemClick(item)"
+      >
+        <a [routerLink]="item.route" class="menu-link">
+          <!-- Icon -->
+          <span class="menu-icon">
+            <!-- Image Icon -->
+            <img [src]="item.icon" [alt]="item.label" width="20" height="20" />
+            <!-- Badge (if exists and > 0) -->
+            <span
+              class="menu-badge"
+              *ngIf="item.badge && item.badge > 0 && item.id !== 'profile'"
+              >{{ item.badge }}</span
+            >
+          </span>
+
+          <!-- Label -->
+          <span class="menu-label">{{ item.label }}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Logout Button -->
+  <div class="logout-section">
+    <button class="logout-btn" (click)="onLogout()">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
+      </svg>
+      <span>Đăng xuất</span>
+    </button>
+  </div>
+</aside>
+
+<!-- Logout Confirmation Popup -->
+<app-logout
+  [isOpen]="isLogoutPopupOpen"
+  (confirm)="confirmLogout()"
+  (cancel)="cancelLogout()"
+></app-logout>

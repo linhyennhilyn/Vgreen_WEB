@@ -1,0 +1,132 @@
+<!-- Fonts are imported globally in index.html; component stylesheet is wired via styleUrls -->
+
+<div class="login-container">
+  <div class="login-form">
+    @if (isPopupMode) {
+    <button type="button" class="close-btn" (click)="onClosePopup()" title="Đóng">
+      <img src="/asset/icons/clear_dark.png" alt="Đóng" class="close-icon" />
+    </button>
+    }
+    <h1 class="login-title">ĐĂNG NHẬP</h1>
+
+    <form class="form" (ngSubmit)="onSubmit()">
+      <!-- Phone Number Field -->
+      <div class="form-group">
+        <label for="phone" class="form-label">Số điện thoại<sup>*</sup></label>
+        <div class="input-container">
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="form-input"
+            placeholder="Nhập số điện thoại của bạn"
+            #phoneInput
+            [value]="phoneNumber"
+            (input)="onPhoneInput($event)"
+            required
+          />
+          @if (phoneNumber) {
+          <button type="button" class="clear-btn" (click)="clearPhone()">
+            <img src="/asset/icons/clear_dark.png" alt="Clear" class="icon" />
+          </button>
+          }
+        </div>
+        <div class="error-container">
+          @if (phoneError) {
+          <div class="error-message">
+            {{ phoneError }}
+          </div>
+          }
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password" class="form-label">Mật khẩu<sup>*</sup></label>
+        <div class="input-container">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            name="password"
+            class="form-input"
+            placeholder="Mật khẩu gồm ít nhất 8 ký tự, 1 chữ cái in hoa"
+            [value]="password"
+            (input)="onPasswordInput($event)"
+            required
+          />
+          <button type="button" class="toggle-password-btn" (click)="togglePassword()">
+            <img
+              [src]="
+                showPassword ? '/asset/icons/eye_hide_dark.png' : '/asset/icons/eye_show_dark.png'
+              "
+              alt="Toggle password"
+              class="icon"
+            />
+          </button>
+        </div>
+        <div class="password-footer">
+          <div class="error-container">
+            @if (passwordError) {
+            <div class="error-message">
+              {{ passwordError }}
+            </div>
+            }
+          </div>
+          @if (isPopupMode) {
+          <a href="#" (click)="onForgotPasswordClick($event)" class="forgot-password-link"
+            >Quên mật khẩu?</a
+          >
+          } @else {
+          <a routerLink="/forgot-password" class="forgot-password-link">Quên mật khẩu?</a>
+          }
+        </div>
+      </div>
+
+      <!-- Error Message -->
+      @if (loginError) {
+      <div class="error-message" style="margin-bottom: 16px; text-align: center; color: #e74c3c">
+        {{ loginError }}
+      </div>
+      }
+
+      <!-- Login Button -->
+      <button
+        type="submit"
+        class="login-btn"
+        [disabled]="!isFormValid() || isLoading"
+        [style.opacity]="isLoading ? '0.7' : '1'"
+      >
+        @if (isLoading) { Đang đăng nhập... } @else { ĐĂNG NHẬP }
+      </button>
+    </form>
+
+    <!-- Social Login Section -->
+    <div class="social-login-section">
+      <div class="separator">
+        <span class="separator-line"></span>
+        <span class="separator-text">hoặc</span>
+        <span class="separator-line"></span>
+      </div>
+
+      <div class="social-buttons-container">
+        <button type="button" class="social-login-btn google-btn" (click)="onGoogleLogin()">
+          <img src="/asset/icons/google.png" alt="Google" class="social-icon" />
+        </button>
+
+        <button type="button" class="social-login-btn facebook-btn" (click)="onFacebookLogin()">
+          <img src="/asset/icons/facebook.png" alt="Facebook" class="social-icon" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Register Link -->
+    <div class="register-section">
+      <span class="register-text">Bạn chưa có tài khoản? </span>
+      @if (isPopupMode) {
+      <a href="#" (click)="onRegisterClick($event)" class="register-link">Đăng ký ngay</a>
+      } @else {
+      <a routerLink="/register" class="register-link">Đăng ký ngay</a>
+      }
+    </div>
+  </div>
+</div>

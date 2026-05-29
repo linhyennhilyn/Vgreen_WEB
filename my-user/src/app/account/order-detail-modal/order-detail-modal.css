@@ -1,0 +1,1006 @@
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; /* Cao hơn header (9990) để che phủ toàn bộ màn hình */
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Container */
+.modal-container {
+  background-color: #ffffff;
+  border-radius: 16px;
+  width: 95%;
+  max-width: 1400px;
+  height: 95vh;
+  max-height: 1000px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease;
+  overflow: hidden;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 24px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #349409;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Modal Body: 2 Columns Layout */
+.modal-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Left Column: Orders List (1/3) */
+.orders-list-column {
+  flex: 0 0 33.333%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+  overflow: hidden;
+}
+
+.search-section {
+  padding: 16px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 80px 10px 12px; /* Tăng padding-right để chừa chỗ cho buttons */
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Lexend', sans-serif;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #349409;
+  box-shadow: 0 0 0 3px rgba(52, 148, 9, 0.1);
+}
+
+.search-icon-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.search-icon-btn:hover {
+  opacity: 0.8;
+}
+
+.search-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.clear-search-btn:hover {
+  opacity: 0.8;
+}
+
+.clear-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.orders-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.order-item {
+  background-color: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.order-item:hover {
+  border-color: #349409;
+  box-shadow: 0 4px 12px rgba(52, 148, 9, 0.15);
+  transform: translateY(-2px);
+}
+
+.order-item.selected {
+  border-color: #349409;
+  background-color: #f0f8ed;
+  box-shadow: 0 4px 12px rgba(52, 148, 9, 0.2);
+}
+
+.order-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.order-code {
+  font-size: 15px;
+  font-weight: 600;
+  color: #349409;
+  font-family: 'Lexend', sans-serif;
+}
+
+.order-status {
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.status-pending {
+  background-color: #fff8e5;
+  color: #e8a909;
+}
+
+.status-confirmed {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.status-shipping {
+  background-color: #ebeeff;
+  color: #0023dd;
+}
+
+.status-delivered,
+.status-completed {
+  background-color: #edffe5;
+  color: #256e05;
+}
+
+.status-cancelled {
+  background-color: #ffe8e8;
+  color: #c42326;
+}
+
+.status-returning,
+.status-returned {
+  background-color: #e0f2f1;
+  color: #00695c;
+}
+
+.status-refund_rejected {
+  background-color: #f5f5f5;
+  color: #666666;
+}
+
+.order-item-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.order-products-preview {
+  display: flex;
+  gap: 6px;
+  font-size: 13px;
+  color: #666;
+}
+
+.product-count {
+  font-weight: 500;
+}
+
+.product-quantity {
+  color: #999;
+}
+
+.order-item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.order-date {
+  font-size: 12px;
+  color: #999;
+}
+
+.order-total {
+  font-size: 15px;
+  font-weight: 600;
+  color: #e53935;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+  font-size: 14px;
+}
+
+/* Right Column: Order Detail (2/3) */
+.order-detail-column {
+  flex: 0 0 66.666%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.detail-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.empty-detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-detail-message {
+  text-align: center;
+  color: #999;
+  font-size: 16px;
+}
+
+.detail-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detail-section h3,
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #349409 !important;
+  margin: 0 0 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: #666;
+  font-size: 14px;
+}
+
+.detail-value {
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+  text-align: right;
+}
+
+.order-code-highlight {
+  color: #349409;
+  font-weight: 600;
+  font-size: 16px;
+  font-family: 'Lexend', sans-serif;
+}
+
+.order-status-badge {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.products-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect chỉ áp dụng cho product-item không có free-item */
+.product-item:not(.has-free-item):hover {
+  background-color: #f0f8ed;
+  border-color: #349409;
+  box-shadow: 0 2px 8px rgba(52, 148, 9, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Khi có free-item, không áp dụng hover transform cho product-item riêng lẻ */
+.product-item-wrapper:hover .product-item.has-free-item {
+  transform: none;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.product-image {
+  flex: 0 0 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.product-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.product-quantity-row {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.product-quantity-label {
+  color: #666;
+}
+
+.product-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  gap: 16px;
+}
+
+.product-price-label {
+  color: #666;
+  font-weight: 500;
+}
+
+.product-total-label {
+  color: #333;
+  font-weight: 500;
+  text-align: right;
+}
+
+.product-total-label strong {
+  color: #e53935;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.shipping-info {
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.shipping-name {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+
+.shipping-phone,
+.shipping-email {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.shipping-address {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+  margin-top: 4px;
+}
+
+.order-summary {
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.summary-row.discount {
+  color: #349409;
+}
+
+.total-row {
+  padding-top: 12px;
+  border-top: 2px solid #e0e0e0;
+  margin-top: 4px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.total-amount {
+  color: #e53935;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Modal Footer */
+.modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #f9f9f9;
+  flex-shrink: 0;
+}
+
+.footer-action-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* Gap cho các button bên trong div con của footer-action-buttons */
+.footer-action-buttons > div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.action-btn {
+  padding: 10px 20px;
+  border: none;
+  background: white;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Lexend', sans-serif;
+  white-space: nowrap;
+  border-radius: 6px;
+}
+
+/* Received Button */
+.received-btn {
+  background: #256e05 !important;
+  color: white !important;
+  border: 1px solid #256e05 !important;
+  border-radius: 6px;
+}
+
+.received-btn:hover {
+  background: #3cb018 !important;
+  border-color: #3cb018 !important;
+}
+
+/* Cancel Button */
+.cancel-btn {
+  background: transparent !important;
+  border: 1px solid #c42326 !important;
+  color: #c42326 !important;
+}
+
+.cancel-btn:hover {
+  background: #c42326 !important;
+  border-color: #c42326 !important;
+  color: white !important;
+}
+
+/* Return Button */
+.return-btn {
+  border: 1px solid #256e05 !important;
+  color: #256e05 !important;
+  background: transparent !important;
+}
+
+.return-btn:hover {
+  background: #256e05 !important;
+  border: 1px solid #256e05 !important;
+  color: white !important;
+}
+
+/* Rate Button */
+.rate-btn {
+  background: #256e05 !important;
+  color: white !important;
+}
+
+.rate-btn:hover {
+  background: #3cb018 !important;
+}
+
+/* Repurchase Button */
+.repurchase-btn {
+  border: 1px solid #349409 !important;
+  color: #349409 !important;
+  background: transparent !important;
+}
+
+.repurchase-btn:hover {
+  background: #349409 !important;
+  color: white !important;
+}
+
+/* Scrollbar Styling */
+.orders-list::-webkit-scrollbar,
+.detail-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.orders-list::-webkit-scrollbar-track,
+.detail-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.orders-list::-webkit-scrollbar-thumb,
+.detail-content::-webkit-scrollbar-thumb {
+  background: #349409;
+  border-radius: 4px;
+}
+
+.orders-list::-webkit-scrollbar-thumb:hover,
+.detail-content::-webkit-scrollbar-thumb:hover {
+  background: #2d7d08;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .modal-container {
+    width: 98%;
+    height: 95vh;
+  }
+
+  .orders-list-column {
+    flex: 0 0 40%;
+  }
+
+  .order-detail-column {
+    flex: 0 0 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-container {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    max-height: 100vh;
+  }
+
+  .modal-body {
+    flex-direction: column;
+  }
+
+  .orders-list-column {
+    flex: 0 0 auto;
+    max-height: 40vh;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .order-detail-column {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .modal-header {
+    padding: 8px 16px;
+  }
+
+  .modal-header h2 {
+    font-size: 18px;
+  }
+
+  .detail-content {
+    padding: 16px;
+  }
+
+  .product-item {
+    flex-direction: column;
+  }
+
+  .product-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .footer-action-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+/* Cancel Order Modal Styles */
+/* Cancel modal overlay should be above order detail modal */
+.cancel-modal-overlay {
+  z-index: 10001 !important;
+}
+
+.cancel-modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 10002;
+}
+
+.warning-icon {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancel-message {
+  margin-bottom: 24px;
+}
+
+.cancel-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 10px 0;
+  font-family: 'Lexend', sans-serif;
+}
+
+.cancel-text {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+  font-family: 'Lexend', sans-serif;
+}
+
+.cancel-footer {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.cancel-modal-btn {
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Lexend', sans-serif;
+  border: 1px solid;
+  min-width: 80px;
+}
+
+.cancel-no-btn {
+  background: transparent;
+  color: #333;
+  border-color: #e0e0e0;
+}
+
+.cancel-no-btn:hover {
+  background: #f5f5f5;
+  border-color: #d0d0d0;
+}
+
+.cancel-yes-btn {
+  background: #c42326;
+  color: white;
+  border-color: #c42326;
+}
+
+.cancel-yes-btn:hover {
+  background: #a01d20;
+  border-color: #a01d20;
+}
+
+/* Free Item Container (Gifted Products) */
+.product-item-wrapper {
+  background-color: #f8f9fab5;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  /* margin-bottom: 16px; */
+  transition: all 0.3s ease;
+}
+
+/* Hover effect cho wrapper khi có gifted product */
+.product-item-wrapper.has-gifted {
+  cursor: pointer;
+}
+
+.product-item-wrapper.has-gifted:hover {
+  background-color: #f0f8ed;
+  border-color: #349409;
+  box-shadow: 0 2px 8px rgba(52, 148, 9, 0.1);
+  transform: translateY(-2px);
+}
+
+.product-item-wrapper .product-item {
+  margin-bottom: 0;
+  border-bottom: none;
+  border-radius: 0;
+}
+
+.product-item.has-free-item {
+  background-color: transparent;
+  border-bottom: none;
+  border-radius: 0;
+}
+
+.free-item-container {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 10px 12px;
+  padding-left: 20px; /* Indent để tạo hiệu ứng nested */
+  margin-left: 40px; /* Thụt lề như trong cart */
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  /* border-top: 1px solid #f0f0f0; */
+  position: relative;
+}
+
+.free-item-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -40px; /* Bù lại margin-left */
+  right: 0;
+  height: 1px;
+  background-color: #f0f0f0;
+}
+
+.free-item-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.free-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.free-item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0; /* Cho phép text truncate khi cần */
+  flex: 1;
+}
+
+.free-item-name {
+  font-weight: 500;
+  color: #333;
+  font-size: 12px;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
+.free-item-badge {
+  display: inline-block;
+  color: #e74c3c;
+  background-color: #ffeaea;
+  padding: 0px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-right: 6px;
+  white-space: nowrap;
+}
+
+.free-item-price {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  margin: 0;
+  font-size: 11px;
+}
+
+.free-price {
+  color: #e74c3c;
+  font-weight: 600;
+  font-size: 11px;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.original-price-striked {
+  color: #999;
+  font-size: 10px;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+.free-item-quantity {
+  font-size: 11px;
+  color: #666;
+  margin: 0;
+  font-family: 'Lexend', sans-serif;
+}
+
+.free-item-total {
+  font-size: 11px;
+  font-weight: 600;
+  color: #349409;
+  margin: 0;
+}

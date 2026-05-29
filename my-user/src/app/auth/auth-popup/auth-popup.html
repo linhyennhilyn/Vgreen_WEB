@@ -1,0 +1,64 @@
+<!-- Popup Overlay -->
+<div
+  class="popup-overlay"
+  [class.active]="isOpen"
+  (click)="onOverlayClick()"
+  (keydown.escape)="onEscapeKey()"
+  tabindex="0"
+>
+  <!-- Popup Content -->
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <!-- Login Form -->
+    <app-login
+      *ngIf="activePopup === 'login'"
+      [isPopupMode]="true"
+      (navigateToRegister)="navigateToRegister()"
+      (navigateToForgotPassword)="navigateToForgotPassword()"
+      (loginSuccess)="onLoginSuccess()"
+    ></app-login>
+
+    <!-- Register Phone Form -->
+    <app-register-phone
+      *ngIf="activePopup === 'register-phone'"
+      [isPopupMode]="true"
+      (navigateToLogin)="navigateToLogin()"
+      (navigateToOTP)="onRegisterOTP($event)"
+    ></app-register-phone>
+
+    <!-- OTP Form -->
+    <app-otp
+      *ngIf="activePopup === 'otp'"
+      [phoneNumber]="popupData?.phoneNumber"
+      [isPopupMode]="true"
+      [flowType]="popupData?.flowType || 'register'"
+      (navigateBack)="onOtpBack()"
+      (navigateToNext)="onOtpNext($event)"
+    ></app-otp>
+
+    <!-- Register Password Form -->
+    <app-register-password
+      *ngIf="activePopup === 'register-password'"
+      [phoneNumber]="popupData?.phoneNumber"
+      [isPopupMode]="true"
+      (navigateToLogin)="navigateToLogin()"
+      (registerSuccess)="onRegisterSuccess()"
+    ></app-register-password>
+
+    <!-- Forgot Password Phone Form -->
+    <app-forgot-password-phone
+      *ngIf="activePopup === 'forgot-password-phone'"
+      [isPopupMode]="true"
+      (navigateToLogin)="navigateToLogin()"
+      (navigateToOTP)="onForgotPasswordOTP($event)"
+    ></app-forgot-password-phone>
+
+    <!-- Forgot Password Reset Form -->
+    <app-forgot-password-reset
+      *ngIf="activePopup === 'forgot-password-reset'"
+      [phoneNumber]="popupData?.phoneNumber"
+      [isPopupMode]="true"
+      (navigateToLogin)="navigateToLogin()"
+      (forgotPasswordSuccess)="onForgotPasswordSuccess()"
+    ></app-forgot-password-reset>
+  </div>
+</div>

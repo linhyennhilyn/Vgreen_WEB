@@ -1,0 +1,25 @@
+{
+  "name": "vgreen-fullstack",
+  "version": "1.0.0",
+  "description": "VGreen Fullstack Application",
+  "scripts": {
+    "start": "node start-app.js",
+    "ng": "node ng-serve-with-backend.js",
+    "ng-serve": "node ng-serve-with-backend.js",
+    "backend": "cd backend && npm start",
+    "check-data": "cd backend && node scripts/check-data.js",
+    "list-collections": "cd backend && node scripts/list-collections.js",
+    "init-db": "cd backend && npm run init-db",
+    "import-json": "cd backend && node scripts/import-all-json.js",
+    "test-api": "cd backend && npm run test-api",
+    "dev": "npx concurrently \"npm run backend\" \"npm run start\"",
+    "serve": "npx concurrently \"npm run backend\" \"cd my-user && ng serve --open\"",
+    "install-all": "npm install && cd backend && npm install && cd ../my-user && npm install --force && cd ../my-admin && npm install --force",
+    "gen:supabase-config": "node scripts/generate-supabase-config.js",
+    "setup": "node setup.js",
+    "fix-angular": "node fix-angular-build.js"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

@@ -1,0 +1,382 @@
+<!-- Personal Information Page -->
+<div class="personal-info-container">
+  <div class="personal-info-content">
+    <!-- Header -->
+    <div class="content-header">
+      <div>
+        <h1>Tài khoản cá nhân</h1>
+        <p>VGreen xin chào – chúc bạn một ngày tươi mới và tràn đầy năng lượng xanh!</p>
+      </div>
+    </div>
+
+    <!-- Main Content Card Wrapper -->
+    <div class="info-card-wrapper">
+      <div class="info-card">
+        <!-- User Avatar Section -->
+        <div class="avatar-section">
+          <div class="avatar-container">
+            <img
+              [src]="
+                userInfo.avatar && userInfo.avatar.trim() !== ''
+                  ? userInfo.avatar
+                  : tempUserInfo.avatar && tempUserInfo.avatar.trim() !== ''
+                  ? tempUserInfo.avatar
+                  : '/asset/image/avt.png'
+              "
+              alt="Avatar"
+              class="user-avatar"
+            />
+            <button class="edit-avatar-btn" (click)="onEditAvatar()">
+              <img src="/asset/icons/camera_white.png" alt="Edit" />
+            </button>
+          </div>
+          <div class="user-basic-info">
+            <h2 class="username" *ngIf="userInfo.fullName">{{ userInfo.fullName }}</h2>
+            <p class="user-phone" [class.user-phone-primary]="!userInfo.fullName">
+              {{ userInfo.phone || 'sdtcuato' }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="section-divider"></div>
+
+        <!-- Information Form -->
+        <form class="info-form" (ngSubmit)="onSubmit()" #infoForm="ngForm">
+          <!-- Full Name -->
+          <div class="form-group">
+            <label class="form-label"> Họ tên</label>
+            <div class="input-with-clear">
+              <input
+                type="text"
+                class="form-input"
+                [(ngModel)]="tempUserInfo.fullName"
+                name="fullName"
+                #fullName="ngModel"
+                #fullNameInput
+                placeholder="Nhập họ tên"
+                minlength="3"
+                maxlength="50"
+                pattern="^[a-zA-ZÀ-ỹ\s]+$"
+                [class.input-error]="fullName.invalid && fullName.touched"
+              />
+              <button
+                type="button"
+                class="clear-btn"
+                *ngIf="tempUserInfo.fullName"
+                (click)="clearField('fullName', fullNameInput)"
+              >
+                <img src="/asset/icons/clear_light_green.png" alt="Clear" />
+              </button>
+            </div>
+            <div class="error-message" *ngIf="fullName.invalid && fullName.touched">
+              <span *ngIf="fullName.errors?.['minlength']">Họ tên phải có ít nhất 3 ký tự</span>
+              <span *ngIf="fullName.errors?.['maxlength']">Họ tên không được quá 50 ký tự</span>
+              <span *ngIf="fullName.errors?.['pattern']"
+                >Họ tên không được chứa số hoặc ký tự đặc biệt</span
+              >
+            </div>
+          </div>
+
+          <!-- Date of Birth and Gender Row -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Ngày sinh</label>
+              <div class="date-input-wrapper">
+                <input
+                  type="date"
+                  class="form-input date-input"
+                  [(ngModel)]="tempUserInfo.dateOfBirth"
+                  name="dateOfBirth"
+                  #dateOfBirth="ngModel"
+                  #dateOfBirthInput
+                  [max]="maxDate"
+                  [class.input-error]="dateOfBirth.invalid && dateOfBirth.touched"
+                  (click)="openDatePicker(dateOfBirthInput)"
+                  (focus)="openDatePicker(dateOfBirthInput)"
+                />
+              </div>
+              <div class="error-message" *ngIf="dateOfBirth.invalid && dateOfBirth.touched">
+                <span *ngIf="dateOfBirth.errors?.['max']">Bạn phải từ 18 tuổi trở lên</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Giới tính</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    [(ngModel)]="tempUserInfo.gender"
+                  />
+                  <span class="radio-label">Nam</span>
+                </label>
+                <label class="radio-option">
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    [(ngModel)]="tempUserInfo.gender"
+                  />
+                  <span class="radio-label">Nữ</span>
+                </label>
+                <label class="radio-option">
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="other"
+                    [(ngModel)]="tempUserInfo.gender"
+                  />
+                  <span class="radio-label">Khác</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phone Number and Email Row -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label"> Số điện thoại <span class="required">*</span> </label>
+              <div class="input-with-clear">
+                <input
+                  type="tel"
+                  class="form-input locked-input"
+                  [(ngModel)]="tempUserInfo.phone"
+                  name="phone"
+                  #phone="ngModel"
+                  placeholder="Số điện thoại"
+                  required
+                  readonly
+                />
+              </div>
+              <!-- <div class="info-message">Số điện thoại không thể thay đổi</div> -->
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <div class="input-with-clear">
+                <input
+                  type="email"
+                  class="form-input"
+                  [(ngModel)]="tempUserInfo.email"
+                  name="email"
+                  #email="ngModel"
+                  #emailInput
+                  placeholder="Nhập email"
+                  pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                  [class.input-error]="email.invalid && email.touched"
+                />
+                <button
+                  type="button"
+                  class="clear-btn"
+                  *ngIf="tempUserInfo.email"
+                  (click)="clearField('email', emailInput)"
+                >
+                  <img src="/asset/icons/clear_light_green.png" alt="Clear" />
+                </button>
+              </div>
+              <div class="error-message" *ngIf="email.invalid && email.touched">
+                <span *ngIf="email.errors?.['pattern']"
+                  >Email không hợp lệ (VD: example@email.com)</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Password Section -->
+          <div class="form-group">
+            <label class="form-label">Mật khẩu <span class="required">*</span></label>
+            <div class="input-with-clear">
+              <input
+                type="password"
+                class="form-input locked-input"
+                [value]="userInfo.password"
+                placeholder="Mật khẩu"
+                readonly
+                disabled
+              />
+            </div>
+            <div class="password-actions">
+              <a
+                href="#"
+                class="change-password-link"
+                (click)="onChangePassword(); $event.preventDefault()"
+              >
+                Thay đổi mật khẩu
+              </a>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="form-actions">
+            <button type="submit" class="update-btn" [disabled]="infoForm.invalid || !hasChanges()">
+              Cập nhật thông tin
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Change Password Modal -->
+<div class="modal-overlay" *ngIf="showPasswordModal" (click)="onClosePasswordModal()">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Đổi mật khẩu</h2>
+      <button class="close-btn" (click)="onClosePasswordModal()">
+        <img src="/asset/icons/clear_dark.png" alt="Close" />
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form class="password-form" (ngSubmit)="onSubmitPasswordChange()" #passwordForm="ngForm">
+        <!-- Current Password -->
+        <div class="form-group">
+          <label class="form-label">Mật khẩu hiện tại <span class="required">*</span></label>
+          <input
+            type="password"
+            class="form-input"
+            [(ngModel)]="passwordData.currentPassword"
+            name="currentPassword"
+            #currentPassword="ngModel"
+            placeholder="Nhập mật khẩu hiện tại"
+            required
+            [class.input-error]="currentPassword.invalid && currentPassword.touched"
+          />
+          <div class="error-message" *ngIf="currentPassword.invalid && currentPassword.touched">
+            <span *ngIf="currentPassword.errors?.['required']"
+              >Vui lòng nhập mật khẩu hiện tại</span
+            >
+          </div>
+        </div>
+
+        <!-- New Password -->
+        <div class="form-group">
+          <label class="form-label">Mật khẩu mới <span class="required">*</span></label>
+          <input
+            type="password"
+            class="form-input"
+            [(ngModel)]="passwordData.newPassword"
+            name="newPassword"
+            #newPassword="ngModel"
+            placeholder="Mật khẩu gồm ít nhất 8 ký tự, 1 chữ cái in hoa"
+            required
+            minlength="8"
+            maxlength="30"
+            pattern="^(?=.*[A-Z]).{8,}$"
+            [class.input-error]="newPassword.invalid && newPassword.touched"
+          />
+          <div class="error-message" *ngIf="newPassword.invalid && newPassword.touched">
+            <span *ngIf="newPassword.errors?.['required']">Vui lòng nhập mật khẩu mới</span>
+            <!-- Ưu tiên hiển thị lỗi độ dài trước -->
+            <span *ngIf="!newPassword.errors?.['required'] && newPassword.errors?.['minlength']"
+              >Mật khẩu phải có ít nhất 8 ký tự</span
+            >
+            <span *ngIf="newPassword.errors?.['maxlength']">Mật khẩu không được quá 30 ký tự</span>
+            <!-- Chỉ hiển thị lỗi pattern (chữ hoa) nếu đã đủ 8 ký tự -->
+            <span
+              *ngIf="
+                !newPassword.errors?.['required'] &&
+                !newPassword.errors?.['minlength'] &&
+                newPassword.errors?.['pattern']
+              "
+              >Mật khẩu phải có ít nhất 1 chữ cái in hoa</span
+            >
+          </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label class="form-label">Xác nhận mật khẩu mới <span class="required">*</span></label>
+          <input
+            type="password"
+            class="form-input"
+            [(ngModel)]="passwordData.confirmPassword"
+            name="confirmPassword"
+            #confirmPassword="ngModel"
+            placeholder="Mật khẩu gồm ít nhất 8 ký tự, 1 chữ cái in hoa"
+            required
+            [class.input-error]="
+              (confirmPassword.invalid && confirmPassword.touched) ||
+              (confirmPassword.touched && passwordData.newPassword !== passwordData.confirmPassword)
+            "
+          />
+          <div class="error-message" *ngIf="confirmPassword.invalid && confirmPassword.touched">
+            <span *ngIf="confirmPassword.errors?.['required']">Vui lòng xác nhận mật khẩu mới</span>
+          </div>
+          <div
+            class="error-message"
+            *ngIf="
+              confirmPassword.touched &&
+              passwordData.newPassword !== passwordData.confirmPassword &&
+              passwordData.confirmPassword
+            "
+          >
+            <span>Mật khẩu xác nhận không khớp</span>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="cancel-btn" (click)="onClosePasswordModal()">Hủy</button>
+          <button
+            type="submit"
+            class="save-btn"
+            [disabled]="
+              passwordForm.invalid || passwordData.newPassword !== passwordData.confirmPassword
+            "
+          >
+            Lưu thay đổi
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Camera Modal -->
+<div class="camera-modal-overlay" *ngIf="showCameraModal" (click)="closeCameraModal()">
+  <div class="camera-modal" (click)="$event.stopPropagation()">
+    <div class="camera-header">
+      <h3 class="camera-title">Chụp ảnh hoặc tải ảnh lên</h3>
+      <button class="camera-close-btn" (click)="closeCameraModal()">×</button>
+    </div>
+    <div class="camera-body">
+      <div class="camera-view" *ngIf="!capturedImage; else previewMode">
+        <video #videoElement class="camera-video" autoplay playsinline muted></video>
+        <canvas #canvasElement class="camera-canvas" style="display: none"></canvas>
+      </div>
+      <ng-template #previewMode>
+        <div class="image-preview-container">
+          <img [src]="capturedImage" alt="Captured" class="preview-image" />
+        </div>
+      </ng-template>
+
+      <div class="camera-actions">
+        <input
+          type="file"
+          accept="image/*"
+          (change)="onFileSelected($event)"
+          class="file-input-hidden"
+          id="fileInput_avatar"
+          #fileInput
+        />
+        <label for="fileInput_avatar" class="upload-from-library-btn">
+          <span class="upload-plus-icon">
+            <img src="/asset/icons/upload.png" alt="Upload" />
+          </span>
+          <span>Tải ảnh lên</span>
+        </label>
+        <button type="button" class="capture-btn" *ngIf="!capturedImage" (click)="capturePhoto()">
+          Chụp ảnh
+        </button>
+        <button type="button" class="retake-btn" *ngIf="capturedImage" (click)="retakePhoto()">
+          Chụp lại
+        </button>
+        <button type="button" class="use-photo-btn" *ngIf="capturedImage" (click)="usePhoto()">
+          Sử dụng ảnh này
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

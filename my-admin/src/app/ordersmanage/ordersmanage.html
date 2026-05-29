@@ -1,0 +1,431 @@
+<!-- Orders Management Page -->
+<div class="orders-page">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <span>Quản trị viên</span>
+    <span class="separator">/</span>
+    <span>Quản lý đơn hàng</span>
+    <span class="separator">/</span>
+    <span class="current">Danh sách đơn hàng</span>
+  </div>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1 class="page-title">DANH SÁCH ĐƠN HÀNG</h1>
+    <div class="header-actions">
+      <button class="btn-add-order" (click)="addOrder()">
+        <img src="/asset/icons/plus.png" alt="Add" />
+        <span>Thêm đơn hàng</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Statistics Cards -->
+  <div class="statistics-grid">
+    <div
+      class="stat-card clickable stat-all"
+      [class.active]="isFilterActive('all')"
+      (click)="filterByStatus('all')"
+      title="Hiển thị tất cả đơn hàng"
+    >
+      <h3 class="stat-title">TỔNG ĐƠN HÀNG</h3>
+      <p class="stat-value">{{ statistics.total }}</p>
+    </div>
+    <div
+      class="stat-card clickable stat-pending"
+      [class.active]="isFilterActive('pending')"
+      (click)="filterByStatus('pending')"
+      title="Lọc đơn hàng chờ xác nhận"
+    >
+      <h3 class="stat-title">YÊU CẦU XÁC NHẬN</h3>
+      <p class="stat-value">{{ statistics.pending }}</p>
+    </div>
+    <div
+      class="stat-card clickable stat-delivering"
+      [class.active]="isFilterActive('delivering')"
+      (click)="filterByStatus('delivering')"
+      title="Lọc đơn hàng đang giao"
+    >
+      <h3 class="stat-title">ĐANG GIAO</h3>
+      <p class="stat-value">{{ statistics.delivering }}</p>
+    </div>
+    <div
+      class="stat-card clickable stat-unpaid"
+      [class.active]="isFilterActive('unpaid')"
+      (click)="filterByStatus('unpaid')"
+      title="Lọc đơn hàng chưa thanh toán"
+    >
+      <h3 class="stat-title">CHƯA THANH TOÁN</h3>
+      <p class="stat-value">{{ statistics.unpaid }}</p>
+    </div>
+    <div
+      class="stat-card clickable stat-refund-requested"
+      [class.active]="isFilterActive('refund-requested')"
+      (click)="filterByStatus('refund-requested')"
+      title="Lọc đơn hàng yêu cầu trả hàng/hoàn tiền"
+    >
+      <h3 class="stat-title">YÊU CẦU TRẢ HÀNG/HOÀN TIỀN</h3>
+      <p class="stat-value">{{ statistics.refundRequested }}</p>
+    </div>
+    <div
+      class="stat-card clickable stat-refunded"
+      [class.active]="isFilterActive('refunded') || isFilterActive('cancelled')"
+      (click)="filterByStatus('refunded')"
+      title="Lọc đơn hàng đã trả hàng/hoàn tiền/đã hủy"
+    >
+      <h3 class="stat-title">TRẢ HÀNG/HOÀN TIỀN</h3>
+      <p class="stat-value">{{ statistics.refunded }}</p>
+    </div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <!-- Actions -->
+    <div class="actions-container">
+      <!-- Search Container -->
+      <div class="search-container">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Tìm kiếm đơn hàng..."
+          (input)="searchOrders($event)"
+        />
+        <button class="search-btn">
+          <img src="/asset/icons/search_dark.png" alt="Search" />
+        </button>
+      </div>
+
+      <span class="selected-count">{{ selectedCount }} đã chọn</span>
+
+      <button class="btn-action btn-edit" (click)="editOrders()" [disabled]="selectedCount !== 1">
+        <img src="/asset/icons/edit_dark.png" alt="Edit" />
+        <span>Chỉnh</span>
+      </button>
+
+      <button
+        class="btn-action btn-delete"
+        (click)="deleteOrders()"
+        [disabled]="selectedCount === 0"
+      >
+        <img src="/asset/icons/trash_red.png" alt="Delete" />
+        <span>Xóa</span>
+      </button>
+
+      <div class="dropdown-container">
+        <button
+          class="btn-action btn-filter"
+          [class.active]="showFilterDropdown"
+          (click)="toggleFilterDropdown($event)"
+        >
+          <img src="/asset/icons/filter_dark.png" alt="Filter" />
+          <span>Lọc {{ showFilterDropdown ? '✓' : '' }}</span>
+          <span class="dropdown-arrow">▼</span>
+        </button>
+
+        <div
+          class="dropdown-menu dropdown-menu-multilevel"
+          *ngIf="showFilterDropdown"
+          (click)="$event.stopPropagation()"
+        >
+          <!-- Trạng thái đơn hàng with Submenu -->
+          <div class="dropdown-item-parent">
+            <div class="dropdown-item">
+              <img src="/asset/icons/order_dark.png" alt="Status" class="item-icon" />
+              <span>Trạng thái đơn hàng</span>
+              <span class="arrow-right">›</span>
+            </div>
+            <div class="dropdown-submenu dropdown-submenu-scrollable">
+              <label class="dropdown-option" (click)="applyFilterAndClose('all')">
+                <input
+                  type="checkbox"
+                  [checked]="currentFilter === 'all'"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>Tất cả</span>
+              </label>
+              <label class="dropdown-option" (click)="applyFilterAndClose('pending')">
+                <input
+                  type="checkbox"
+                  [checked]="currentFilter === 'pending'"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>Chờ xác nhận</span>
+              </label>
+              <label class="dropdown-option" (click)="applyFilterAndClose('confirmed')">
+                <input
+                  type="checkbox"
+                  [checked]="currentFilter === 'confirmed'"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>Đã xác nhận</span>
+              </label>
+              <label class="dropdown-option" (click)="applyFilterAndClose('refund-requested')">
+                <input
+                  type="checkbox"
+                  [checked]="currentFilter === 'refund-requested'"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>Yêu cầu trả hàng/hoàn tiền</span>
+              </label>
+              <label class="dropdown-option" (click)="applyFilterAndClose('cancelled')">
+                <input
+                  type="checkbox"
+                  [checked]="currentFilter === 'cancelled'"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>Đã hủy</span>
+              </label>
+              <label class="dropdown-option" (click)="applyFilterAndClose('refunded')">
+                <input
+                  type="checkbox"
+                  [checked]="currentFilter === 'refunded'"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>Đã hoàn tiền</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Thanh toán with Submenu -->
+          <div class="dropdown-item-parent">
+            <div class="dropdown-item">
+              <img src="/asset/icons/payment.jpg" alt="Payment" class="item-icon" />
+              <span>Thanh toán</span>
+              <span class="arrow-right">›</span>
+            </div>
+            <div class="dropdown-submenu">
+              <label class="dropdown-option" (click)="applyFilterAndClose('paid')">
+                <input
+                  type="checkbox"
+                  [checked]="currentFilter === 'paid'"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>Đã thanh toán</span>
+              </label>
+              <label class="dropdown-option" (click)="applyFilterAndClose('unpaid')">
+                <input
+                  type="checkbox"
+                  [checked]="currentFilter === 'unpaid'"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>Chưa thanh toán</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Giao hàng with Submenu -->
+          <div class="dropdown-item-parent">
+            <div class="dropdown-item">
+              <img src="/asset/icons/logistic_dark.png" alt="Delivery" class="item-icon" />
+              <span>Giao hàng</span>
+              <span class="arrow-right">›</span>
+            </div>
+            <div class="dropdown-submenu">
+              <label class="dropdown-option" (click)="applyFilterAndClose('pending')">
+                <input
+                  type="checkbox"
+                  [checked]="currentFilter === 'pending'"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>Chờ giao</span>
+              </label>
+              <label class="dropdown-option" (click)="applyFilterAndClose('delivering')">
+                <input
+                  type="checkbox"
+                  [checked]="currentFilter === 'delivering'"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>Đang giao</span>
+              </label>
+              <label class="dropdown-option" (click)="applyFilterAndClose('delivered')">
+                <input
+                  type="checkbox"
+                  [checked]="currentFilter === 'delivered'"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>Đã giao</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-actions">
+            <button class="btn-clear-filter" (click)="applyFilterAndClose('all')">
+              <img
+                src="/asset/icons/trash_red.png"
+                alt="Clear Filter"
+                style="width: 16px; height: 16px"
+              />
+              <span>Xóa bộ lọc</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown-container">
+        <button
+          class="btn-action btn-sort"
+          [class.active]="showSortDropdown"
+          (click)="openSort($event)"
+        >
+          <span class="icon-sort">⇅</span>
+          <span>Sắp xếp {{ showSortDropdown ? '✓' : '' }}</span>
+          <span class="dropdown-arrow">▼</span>
+        </button>
+
+        <!-- Sort Dropdown Menu -->
+        <div
+          class="dropdown-menu dropdown-menu-sort"
+          *ngIf="showSortDropdown"
+          (click)="$event.stopPropagation()"
+        >
+          <!-- Sort by Date -->
+          <div
+            class="sort-option"
+            [class.active]="currentSortBy === 'date'"
+            (click)="currentSortBy === 'date' ? toggleSortOrder() : sortByDate('desc')"
+          >
+            <div class="sort-option-icon">
+              <img src="/asset/icons/calendar.png" alt="Date" style="width: 24px; height: 24px" />
+            </div>
+            <div class="sort-option-content">
+              <div class="sort-option-label">Ngày cập nhật</div>
+              <div class="sort-option-desc">Cũ đến mới / Mới đến cũ</div>
+            </div>
+            <div class="sort-option-indicator" *ngIf="currentSortBy === 'date'">
+              <div
+                class="indicator-badge"
+                [class.asc]="currentSortOrder === 'asc'"
+                [class.desc]="currentSortOrder === 'desc'"
+              >
+                <span class="indicator-icon">{{ currentSortOrder === 'asc' ? '↓' : '↑' }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sort by Price -->
+          <div
+            class="sort-option"
+            [class.active]="currentSortBy === 'price'"
+            (click)="currentSortBy === 'price' ? toggleSortOrder() : sortByPrice('desc')"
+          >
+            <div class="sort-option-icon">
+              <img src="/asset/icons/price.png" alt="Price" style="width: 24px; height: 24px" />
+            </div>
+            <div class="sort-option-content">
+              <div class="sort-option-label">Giá</div>
+              <div class="sort-option-desc">Thấp đến cao / Cao đến thấp</div>
+            </div>
+            <div class="sort-option-indicator" *ngIf="currentSortBy === 'price'">
+              <div
+                class="indicator-badge"
+                [class.asc]="currentSortOrder === 'asc'"
+                [class.desc]="currentSortOrder === 'desc'"
+              >
+                <span class="indicator-icon">{{ currentSortOrder === 'asc' ? '↓' : '↑' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Orders Table -->
+  <div class="orders-table-container">
+    <table class="orders-table">
+      <thead>
+        <tr>
+          <th class="col-checkbox">
+            <input
+              type="checkbox"
+              class="checkbox-all"
+              [checked]="selectAll"
+              (change)="toggleSelectAll()"
+            />
+          </th>
+          <th class="col-order-id">Mã đơn</th>
+          <th class="col-date">Thời gian tạo</th>
+          <th class="col-customer">Mã khách hàng</th>
+          <th class="col-status">Trạng thái</th>
+          <th class="col-payment">Thanh toán</th>
+          <th class="col-delivery">Giao hàng</th>
+          <th class="col-total">Tổng đơn</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic Order Rows -->
+        <tr class="order-row" *ngFor="let order of orders" (click)="viewOrderDetail(order)">
+          <td class="col-checkbox" (click)="$event.stopPropagation()">
+            <input
+              type="checkbox"
+              class="checkbox-item"
+              [checked]="order.selected"
+              (change)="toggleOrder(order)"
+            />
+          </td>
+          <td class="col-order-id">{{ order.id }}</td>
+          <td class="col-date">{{ order.date }}</td>
+          <td class="col-customer">{{ order.customer }}</td>
+          <td class="col-status">
+            <span class="status-badge" [ngClass]="getStatusClass(order.status)">
+              <span class="status-dot"></span>
+              {{ getStatusLabel(order.status) }}
+            </span>
+          </td>
+          <td class="col-payment">
+            <span class="payment-badge" [ngClass]="getPaymentClass(order.payment)">
+              <span class="payment-dot"></span>
+              {{ getPaymentLabel(order.payment) }}
+            </span>
+          </td>
+          <td class="col-delivery">
+            <span
+              *ngIf="order.delivery !== 'none'"
+              class="delivery-badge"
+              [ngClass]="getDeliveryClass(order.delivery)"
+            >
+              <span class="delivery-dot"></span>
+              {{ getDeliveryLabel(order.delivery, order) }}
+            </span>
+          </td>
+          <td class="col-total">{{ order.total }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Custom Popup Notification -->
+<div class="popup-overlay" *ngIf="showPopup" (click)="closePopup()">
+  <div class="popup-container" (click)="$event.stopPropagation()">
+    <div
+      class="popup-icon"
+      [class.success]="popupType === 'success'"
+      [class.error]="popupType === 'error'"
+      [class.info]="popupType === 'info'"
+    >
+      <span class="icon-check" *ngIf="popupType === 'success'">✓</span>
+      <span class="icon-error" *ngIf="popupType === 'error'">✕</span>
+      <span class="icon-info" *ngIf="popupType === 'info'">i</span>
+    </div>
+
+    <div class="popup-message">{{ popupMessage }}</div>
+
+    <button class="popup-btn-ok" (click)="closePopup()">OK</button>
+  </div>
+</div>
+
+<!-- Confirmation Dialog -->
+<div class="popup-overlay" *ngIf="showConfirmDialog" (click)="cancelConfirmation()">
+  <div class="confirm-dialog" (click)="$event.stopPropagation()">
+    <div class="confirm-icon">
+      <span class="icon-question">?</span>
+    </div>
+    <div class="confirm-message">{{ confirmMessage }}</div>
+    <div class="confirm-buttons">
+      <button class="btn-confirm-cancel" (click)="cancelConfirmation()">Hủy</button>
+      <button class="btn-confirm-ok" (click)="confirmAction()">Xác nhận</button>
+    </div>
+  </div>
+</div>

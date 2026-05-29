@@ -1,0 +1,123 @@
+<!-- Loading State -->
+<div *ngIf="isLoading" class="loading-container">
+  <div class="loading-spinner"></div>
+  <p>Đang tải dữ liệu...</p>
+</div>
+
+<!-- Main Content -->
+<div *ngIf="!isLoading && !error" class="blog-container">
+  <!-- Featured Post Section -->
+  <section *ngIf="featuredPost" class="featured-section">
+    <div class="featured-container">
+      <div class="featured-image">
+        <img
+          [src]="featuredPost.img"
+          [alt]="featuredPost.title"
+          (load)="onImageLoad($event)"
+          (error)="onImageError($event)"
+          class="featured-img"
+        />
+      </div>
+
+      <div class="featured-overlay">
+        <div class="featured-content">
+          <span class="category-tag featured-tag">{{ featuredPost.categoryTag }}</span>
+          <div class="featured-meta">
+            <span class="author">{{ featuredPost.author }}</span>
+            <span class="separator">|</span>
+            <span class="date">{{ formatDate(featuredPost.pubDate) }}</span>
+          </div>
+          <h1 class="featured-title">{{ featuredPost.title }}</h1>
+          <button (click)="goToBlogDetail(featuredPost.id)" class="read-more-btn">Đọc thêm</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Posts Section -->
+  <section class="latest-posts-section">
+    <div class="section-header">
+      <h2 class="section-title">Bài đăng mới nhất</h2>
+
+      <div class="search-filter-container">
+        <!-- Search Bar -->
+        <div class="search-container" [class.focused]="isSearchFocused">
+          <input
+            type="text"
+            [(ngModel)]="searchTerm"
+            (focus)="onSearchFocus()"
+            (blur)="onSearchBlur()"
+            (keyup.enter)="onSearch()"
+            placeholder="Tìm kiếm bài viết..."
+            class="search-input"
+          />
+          <button class="search-btn" (click)="onSearch()">
+            <img
+              src="/asset/icons/search.png"
+              alt="Tìm kiếm"
+              class="icon-img"
+              style="width: 15px; height: 15px"
+            />
+          </button>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="filter-container">
+          <button
+            *ngFor="let category of categories"
+            (click)="onCategoryFilter(category)"
+            [class.active]="selectedCategory === category"
+            class="category-btn"
+          >
+            {{ category }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="posts-grid">
+      <article *ngFor="let blog of displayedBlogs" class="post-card" [attr.data-blog-id]="blog.id">
+        <div class="card-image">
+          <img
+            [src]="blog.img"
+            [alt]="blog.title"
+            (load)="onImageLoad($event)"
+            (error)="onImageError($event)"
+            class="post-img"
+          />
+          <div class="image-overlay">
+            <span class="category-tag">{{ blog.categoryTag }}</span>
+          </div>
+        </div>
+
+        <div class="card-content">
+          <div class="card-meta">
+            <span class="author">{{ blog.author }}</span>
+            <span class="separator">|</span>
+            <span class="date">{{ formatDate(blog.pubDate) }}</span>
+          </div>
+
+          <h3 class="card-title">{{ blog.title }}</h3>
+
+          <p class="card-excerpt">{{ blog.excerpt }}</p>
+
+          <button (click)="goToBlogDetail(blog.id)" class="card-read-more">Đọc thêm</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Load More Section -->
+  <section *ngIf="hasMorePosts" class="load-more-section">
+    <button (click)="loadMorePosts()" class="load-more-btn">Xem thêm</button>
+  </section>
+
+  <!-- No Results -->
+  <div *ngIf="displayedBlogs.length === 0 && !isLoading" class="no-results">
+    <h3>Không tìm thấy bài viết nào</h3>
+    <p>Hãy thử tìm kiếm với từ khóa khác hoặc chọn danh mục khác.</p>
+    <button (click)="searchTerm = ''; selectedCategory = ''; onSearch()" class="clear-filters-btn">
+      Xóa bộ lọc
+    </button>
+  </div>
+</div>

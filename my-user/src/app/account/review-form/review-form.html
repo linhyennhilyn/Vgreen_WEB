@@ -1,0 +1,167 @@
+<!-- Review Form Modal -->
+<div class="review-modal-overlay" *ngIf="showModal" (click)="closeModal($event)">
+  <div class="review-modal" (click)="$event.stopPropagation()">
+    <!-- Header -->
+    <div class="modal-header">
+      <h2 class="modal-title">Đánh giá đơn hàng</h2>
+      <button class="close-btn" (click)="closeModal($event)">
+        <span>✕</span>
+      </button>
+    </div>
+
+    <!-- Body -->
+    <div class="modal-body">
+      <!-- Products List -->
+      <div class="products-list" *ngFor="let product of internalProducts; let i = index">
+        <div class="product-review-item">
+          <!-- Product Info -->
+          <div class="product-info-row">
+            <img
+              [src]="product.productImage || 'asset/image/placeholder.png'"
+              [alt]="product.productName"
+              class="product-thumbnail"
+            />
+            <div class="product-details">
+              <h3 class="product-name-review">{{ product.productName }}</h3>
+              <p class="product-category">{{ product.category }}</p>
+            </div>
+          </div>
+
+          <!-- Star Rating -->
+          <div class="rating-section">
+            <label class="rating-label">Đánh giá</label>
+            <div class="star-rating">
+              <img
+                *ngFor="let star of [1, 2, 3, 4, 5]"
+                [src]="
+                  product.rating && product.rating >= star
+                    ? 'asset/icons/star_yellow.png'
+                    : 'asset/icons/star_outline_yellow.png'
+                "
+                [alt]="product.rating && star <= product.rating ? 'Filled star' : 'Empty star'"
+                class="star"
+                (click)="setRating(product, star)"
+              />
+            </div>
+            <span class="rating-text" *ngIf="product.rating">
+              {{ getRatingText(product.rating) }}
+            </span>
+          </div>
+
+          <!-- Image Upload Section -->
+          <div class="image-upload-section">
+            <label class="image-label">Thêm hình ảnh</label>
+            <div class="image-upload-grid">
+              <div
+                class="image-upload-item"
+                *ngFor="
+                  let img of product.images || [null, null, null, null, null];
+                  let idx = index
+                "
+              >
+                <div class="image-preview" *ngIf="img; else uploadPlaceholder">
+                  <img [src]="img" alt="Review image" class="uploaded-image" />
+                  <button
+                    type="button"
+                    class="remove-image-btn"
+                    (click)="removeImage(product, idx)"
+                  >
+                    ×
+                  </button>
+                </div>
+                <ng-template #uploadPlaceholder>
+                  <div class="upload-placeholder" (click)="openCameraView(product, idx)">
+                    <span class="upload-icon">+</span>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+
+          <!-- Camera View Modal -->
+          <div class="camera-modal-overlay" *ngIf="showCameraModal" (click)="closeCameraModal()">
+            <div class="camera-modal" (click)="$event.stopPropagation()">
+              <div class="camera-header">
+                <h3 class="camera-title">Chụp ảnh hoặc tải ảnh lên</h3>
+                <button class="camera-close-btn" (click)="closeCameraModal()">×</button>
+              </div>
+              <div class="camera-body">
+                <div class="camera-view" *ngIf="!capturedImage; else previewMode">
+                  <video #videoElement class="camera-video" autoplay playsinline muted></video>
+                  <canvas #canvasElement class="camera-canvas" style="display: none"></canvas>
+                </div>
+                <ng-template #previewMode>
+                  <div class="image-preview-container">
+                    <img [src]="capturedImage" alt="Captured" class="preview-image" />
+                  </div>
+                </ng-template>
+
+                <div class="camera-actions">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    (change)="onFileSelected($event)"
+                    class="file-input-hidden"
+                    [id]="'fileInput_' + currentImageIndex"
+                    #fileInput
+                  />
+                  <label [for]="'fileInput_' + currentImageIndex" class="upload-from-library-btn">
+                    <span class="upload-plus-icon">
+                      <img src="/asset/icons/upload.png" alt="Upload" />
+                    </span>
+                    <span>Tải ảnh lên</span>
+                  </label>
+                  <button
+                    type="button"
+                    class="capture-btn"
+                    *ngIf="!capturedImage"
+                    (click)="capturePhoto()"
+                  >
+                    Chụp ảnh
+                  </button>
+                  <button
+                    type="button"
+                    class="retake-btn"
+                    *ngIf="capturedImage"
+                    (click)="retakePhoto()"
+                  >
+                    Chụp lại
+                  </button>
+                  <button
+                    type="button"
+                    class="use-photo-btn"
+                    *ngIf="capturedImage"
+                    (click)="usePhoto()"
+                  >
+                    Sử dụng ảnh này
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review Text -->
+          <div class="review-text-section">
+            <label class="text-label">Nhận xét của bạn</label>
+            <textarea
+              class="review-textarea"
+              [(ngModel)]="product.reviewText"
+              placeholder="Chia sẻ cảm nhận của bạn về sản phẩm này..."
+              rows="3"
+              maxlength="500"
+            ></textarea>
+            <span class="char-count">{{ product.reviewText?.length || 0 }}/500</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="modal-footer">
+      <button class="cancel-btn" (click)="closeModal($event)">Hủy</button>
+      <button class="submit-btn" (click)="submitReview()" [disabled]="!canSubmit()">
+        Gửi đánh giá
+      </button>
+    </div>
+  </div>
+</div>

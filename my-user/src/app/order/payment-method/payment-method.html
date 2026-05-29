@@ -1,0 +1,139 @@
+<!-- Modal Overlay -->
+<div class="modal-overlay" (click)="onClose()">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h2>Phương thức thanh toán</h2>
+      <button class="close-btn" (click)="onClose()" aria-label="Đóng">
+        <span>&times;</span>
+      </button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body">
+      <!-- Payment Method Selection -->
+      <div class="payment-methods" *ngIf="!isProcessing">
+        <h3>Chọn phương thức thanh toán</h3>
+        <div class="method-grid">
+          <div
+            *ngFor="let method of paymentMethods"
+            class="method-card"
+            [class.selected]="paymentInfo.method === method.id"
+            [class.disabled]="!method.available"
+            (click)="onPaymentMethodSelect(method.id)"
+          >
+            <div class="method-icon">{{ method.icon }}</div>
+            <div class="method-info">
+              <h4>{{ method.name }}</h4>
+              <p>{{ method.description }}</p>
+            </div>
+            <div class="method-radio">
+              <input
+                type="radio"
+                name="paymentMethod"
+                [value]="method.id"
+                [checked]="paymentInfo.method === method.id"
+                [disabled]="!method.available"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Processing -->
+      <div class="payment-processing" *ngIf="isProcessing">
+        <div class="processing-header">
+          <h3>Đang xử lý thanh toán</h3>
+          <div class="countdown" *ngIf="countdown > 0">
+            Thời gian còn lại: {{ formatTime(countdown) }}
+          </div>
+        </div>
+
+        <!-- VNPAY QR Code -->
+        <div class="qr-payment" *ngIf="paymentInfo.method === 'vnpay' && qrCodeUrl">
+          <div class="qr-container">
+            <img [src]="qrCodeUrl" alt="QR Code" class="qr-code" />
+            <p class="qr-instruction">Quét mã QR bằng ứng dụng VNPAY để thanh toán</p>
+          </div>
+          <div class="payment-actions">
+            <button class="btn-secondary" (click)="onPaymentFailed()">Hủy thanh toán</button>
+          </div>
+        </div>
+
+        <!-- Other Payment Methods -->
+        <div class="gateway-payment" *ngIf="paymentInfo.method !== 'vnpay' && paymentUrl">
+          <div class="gateway-info">
+            <div class="gateway-icon">🔗</div>
+            <div class="gateway-text">
+              <h4>Chuyển hướng đến cổng thanh toán</h4>
+              <p>Vui lòng hoàn tất thanh toán trên trang tiếp theo</p>
+            </div>
+          </div>
+          <div class="payment-actions">
+            <button class="btn-secondary" (click)="onPaymentFailed()">Hủy thanh toán</button>
+          </div>
+        </div>
+
+        <!-- COD Confirmation -->
+        <div class="cod-payment" *ngIf="paymentInfo.method === 'cod'">
+          <div class="cod-info">
+            <div class="cod-icon">💰</div>
+            <div class="cod-text">
+              <h4>Thanh toán khi nhận hàng</h4>
+              <p>Bạn sẽ thanh toán khi nhận được sản phẩm</p>
+              <div class="amount-display">
+                Tổng tiền:
+                <strong style="color: #e53935">{{
+                  paymentInfo.amount | currency : 'VND' : 'symbol' : '1.0-0' : 'vi'
+                }}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Summary -->
+      <!-- <div class="payment-summary">
+        <div class="summary-row">
+          <span>Tổng tiền hàng:</span>
+          <span>{{ paymentInfo.amount | currency : 'VND' : 'symbol' : '1.0-0' : 'vi' }}</span>
+        </div>
+      </div> -->
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="modal-footer" *ngIf="!isProcessing">
+      <button type="button" class="btn-secondary" (click)="onClose()">Hủy</button>
+      <button
+        type="button"
+        class="btn-primary"
+        (click)="onConfirmPayment()"
+        [disabled]="!paymentInfo.method"
+      >
+        Xác nhận thanh toán
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Cancel Confirmation Popup -->
+<div class="cancel-confirm-overlay" *ngIf="showCancelConfirm" (click)="cancelCancelPayment()">
+  <div class="cancel-confirm-container" (click)="$event.stopPropagation()">
+    <div class="cancel-confirm-header">
+      <h3>Xác nhận hủy thanh toán</h3>
+      <button class="cancel-confirm-close" (click)="cancelCancelPayment()" aria-label="Đóng">
+        <span>&times;</span>
+      </button>
+    </div>
+    <div class="cancel-confirm-body">
+      <div class="cancel-confirm-icon">⚠️</div>
+      <p class="cancel-confirm-message">
+        Bạn có chắc chắn muốn hủy thanh toán? Đơn hàng của bạn sẽ không được xử lý.
+      </p>
+    </div>
+    <div class="cancel-confirm-footer">
+      <button class="btn-cancel" (click)="cancelCancelPayment()">Không</button>
+      <button class="btn-confirm" (click)="confirmCancelPayment()">Xác nhận hủy</button>
+    </div>
+  </div>
+</div>

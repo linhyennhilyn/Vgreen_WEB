@@ -1,0 +1,59 @@
+<div>
+  <!-- HEADER -->
+
+  <app-header></app-header>
+
+  <!-- CONTENT -->
+
+  <router-outlet></router-outlet>
+
+  <!-- FOOTER -->
+  <app-footer></app-footer>
+</div>
+
+<!-- Main Content -->
+<!-- <main class="main-content">
+  <router-outlet></router-outlet>
+</main> -->
+
+<!-- Cart Overlay -->
+<div
+  class="cart-overlay"
+  [class.active]="isCartOpen"
+  *ngIf="isCartOpen"
+  (click)="cartService.closeCart()"
+></div>
+
+<!-- Cart Sidebar -->
+<app-cart
+  *ngIf="isCartOpen"
+  (close)="cartService.closeCart()"
+  [cartItems]="cartService.getCartItems()()"
+  [selectedItems]="cartService.selectedItems()"
+  [totalAmount]="cartService.totalAmount()"
+  [selectedCount]="cartService.selectedCount()"
+  [totalCount]="cartService.getCartItems()().length"
+  [isCheckoutEnabled]="cartService.isCheckoutEnabled()"
+  (itemSelect)="cartService.toggleItemSelection($event)"
+  (updateQuantity)="cartService.updateQuantity($event.itemId, $event.quantity)"
+  (removeItem)="cartService.removeFromCart($event)"
+  (selectAll)="onSelectAll()"
+  (checkout)="onCheckout()"
+></app-cart>
+
+<!-- Auth Popup -->
+<app-auth-popup></app-auth-popup>
+
+<!-- Veebot Chatbot -->
+<app-veebot></app-veebot>
+
+<!-- Scroll to Top Button - Chỉ hiển thị khi không ở account routes -->
+<button
+  class="scroll-to-top"
+  [class.visible]="showScrollButton && !isAccountRoute()"
+  (click)="scrollToTop()"
+  aria-label="Scroll to top"
+  *ngIf="!isAccountRoute()"
+>
+  <img src="/asset/icons/arrowup_lightgreen.png" alt="Scroll to top" />
+</button>

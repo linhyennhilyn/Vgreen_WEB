@@ -1,0 +1,578 @@
+<!-- Blog Management Page -->
+<div class="blogs-page" (click)="closeDropdowns($event)">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <span>Quản trị viên</span>
+    <span class="separator">/</span>
+    <span class="clickable" (click)="navigateToBlogList()" *ngIf="viewMode === 'detail'">Quản lý Blogs</span>
+    <span *ngIf="viewMode === 'list'">Quản lý Blogs</span>
+    <span class="separator">/</span>
+    <span class="current" *ngIf="viewMode === 'list'">Danh sách bài viết</span>
+    <span class="current" *ngIf="viewMode === 'detail' && !isNewBlog">Chi tiết bài viết</span>
+    <span class="current" *ngIf="viewMode === 'detail' && isNewBlog">Thêm bài viết</span>
+  </div>
+
+  <!-- Page Header -->
+  <div class="page-header" *ngIf="viewMode === 'list'">
+    <div class="page-title-section">
+      <h1 class="page-title">DANH SÁCH BÀI VIẾT</h1>
+      <p class="blogs-info" *ngIf="!isLoading && blogs.length > 0">
+        Hiển thị <strong>{{blogs.length}}</strong> bài viết
+      </p>
+    </div>
+    <button class="btn-add-blog" (click)="addNewBlog()">
+      <img src="/asset/icons/plus.png" alt="Add">
+      <span>Thêm bài viết</span>
+    </button>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar" *ngIf="viewMode === 'list'">
+    <!-- Actions -->
+    <div class="actions-container">
+      <!-- Search Container -->
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Tìm kiếm" [(ngModel)]="searchQuery" (input)="searchBlogs($event)">
+        <button class="search-btn">
+          <img src="/asset/icons/search_dark.png" alt="Search">
+        </button>
+      </div>
+      
+      <span class="selected-count">{{selectedCount}} đã chọn</span>
+      
+      <button class="btn-action btn-edit" (click)="editBlogs()" [disabled]="selectedCount === 0">
+        <img src="/asset/icons/edit_dark.png" alt="Edit">
+        <span>Chỉnh</span>
+      </button>
+      
+      <button class="btn-action btn-delete" (click)="deleteBlogs()" [disabled]="selectedCount === 0">
+        <img src="/asset/icons/trash_red.png" alt="Delete">
+        <span>Xoá</span>
+      </button>
+      
+      <!-- Sort Dropdown -->
+      <div class="dropdown-container">
+        <button class="btn-action btn-sort" [class.active]="showSortDropdown" (click)="toggleSortDropdown($event)">
+          <span class="icon-sort">⇅</span>
+          <span>Sắp xếp {{showSortDropdown ? '✓' : ''}}</span>
+          <span class="dropdown-arrow">▼</span>
+        </button>
+        
+        <!-- Sort Dropdown Menu -->
+        <div class="dropdown-menu dropdown-menu-sort" *ngIf="showSortDropdown" (click)="$event.stopPropagation()">
+          <!-- Sort by Date -->
+          <div class="sort-option" 
+               [class.active]="currentSortBy === 'date'" 
+               (click)="currentSortBy === 'date' ? toggleSortOrder() : sortByDate('desc')">
+            <div class="sort-option-icon">
+              <img src="/asset/icons/calendar.png" alt="Calendar" style="width: 24px; height: 24px;">
+            </div>
+            <div class="sort-option-content">
+              <div class="sort-option-label">Ngày cập nhật</div>
+              <div class="sort-option-desc">Cũ đến mới / Mới đến cũ</div>
+            </div>
+            <div class="sort-option-indicator">
+              <span *ngIf="currentSortBy === 'date'" style="color: #10B981; font-size: 20px; margin-right: 8px;">✓</span>
+              <div class="indicator-badge" *ngIf="currentSortBy === 'date'" [class.asc]="currentSortOrder === 'asc'" [class.desc]="currentSortOrder === 'desc'">
+                <span class="indicator-icon">{{currentSortOrder === 'asc' ? '↓' : '↑'}}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sort by Views -->
+          <div class="sort-option" 
+               [class.active]="currentSortBy === 'views'" 
+               (click)="currentSortBy === 'views' ? toggleSortOrder() : sortByViews('desc')">
+            <div class="sort-option-icon">
+              <img src="/asset/icons/eye_show_dark.png" alt="Views" style="width: 24px; height: 24px;">
+            </div>
+            <div class="sort-option-content">
+              <div class="sort-option-label">Lượt xem</div>
+              <div class="sort-option-desc">Thấp đến cao / Cao đến thấp</div>
+            </div>
+            <div class="sort-option-indicator">
+              <span *ngIf="currentSortBy === 'views'" style="color: #10B981; font-size: 20px; margin-right: 8px;">✓</span>
+              <div class="indicator-badge" *ngIf="currentSortBy === 'views'" [class.asc]="currentSortOrder === 'asc'" [class.desc]="currentSortOrder === 'desc'">
+                <span class="indicator-icon">{{currentSortOrder === 'asc' ? '↓' : '↑'}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading-container" *ngIf="isLoading && viewMode === 'list'">
+    <div class="loading-spinner"></div>
+    <p>Đang tải dữ liệu...</p>
+  </div>
+
+  <!-- Error State -->
+  <div class="error-container" *ngIf="loadError && viewMode === 'list'">
+    <p class="error-message">{{ loadError }}</p>
+    <button class="btn-retry" (click)="loadBlogs()">Thử lại</button>
+  </div>
+
+  <!-- Blog Table -->
+  <div class="blogs-table-container" *ngIf="!isLoading && !loadError && viewMode === 'list'">
+    <table class="blogs-table">
+      <thead>
+        <tr>
+          <th class="col-checkbox">
+            <input 
+              type="checkbox" 
+              class="checkbox-all"
+              [checked]="selectAll"
+              (change)="toggleSelectAll()"
+            >
+          </th>
+          <th class="col-id">MÃ BÀI VIẾT</th>
+          <th class="col-title">BÀI VIẾT</th>
+          <th class="col-date">NGÀY CẬP NHẬT</th>
+          <th class="col-author">NGƯỜI VIẾT</th>
+          <th class="col-category">CATEGORY</th>
+          <th class="col-views">LƯỢT XEM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr 
+          *ngFor="let blog of blogs" 
+          [class.selected]="blog.selected"
+        >
+          <td class="col-checkbox" (click)="$event.stopPropagation()">
+            <input 
+              type="checkbox" 
+              class="checkbox-item"
+              [checked]="blog.selected"
+              (change)="toggleBlog(blog)"
+            >
+          </td>
+          <td class="col-id">{{ blog.blog_id }}</td>
+          <td class="col-title clickable" (click)="viewBlogDetail(blog)">{{ blog.title }}</td>
+          <td class="col-date">{{ blog.updated_date || formatDate(blog.created_date) }}</td>
+          <td class="col-author">{{ blog.author }}</td>
+          <td class="col-category">
+            <span class="category-badge">{{ blog.category }}</span>
+          </td>
+          <td class="col-views">{{ blog.views }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Empty State -->
+    <tr class="no-blogs" *ngIf="blogs.length === 0">
+      <td colspan="7">
+        <p>Không tìm thấy bài viết nào</p>
+      </td>
+    </tr>
+  </div>
+
+  <!-- Blog Detail View -->
+  <div class="blog-detail-container" *ngIf="viewMode === 'detail' && currentBlog">
+    <!-- Back Button at Top -->
+    <button class="btn-back-top" (click)="backToList()">
+      <img src="/asset/icons/arrowleft_dark.png" alt="Back">
+      <span>Quay lại danh sách</span>
+    </button>
+
+    <!-- Page Header -->
+    <div class="page-header detail-header">
+      <div class="page-title-section">
+        <h1 class="page-title" *ngIf="!isNewBlog">CHI TIẾT BÀI VIẾT</h1>
+        <h1 class="page-title" *ngIf="isNewBlog">THÊM BÀI VIẾT MỚI</h1>
+      </div>
+    </div>
+
+    <!-- Blog Details Content -->
+    <div class="blog-detail-content">
+      <!-- Top Section: Preview Card + Action Buttons -->
+      <div class="blog-top-section">
+        <!-- Left: Preview Card -->
+        <div class="blog-preview-card">
+          <button class="btn-edit-icon" title="Chỉnh sửa" (click)="openEditPopup()">
+            <img src="/asset/icons/edit_dark.png" alt="Edit">
+          </button>
+          
+          <div class="preview-layout">
+            <div class="preview-avatar">
+              <img src="/asset/icons/avatar_dark.png" alt="Author">
+            </div>
+            
+            <div class="preview-info">
+              <div class="preview-title">{{ currentBlog.title || 'Chưa có tiêu đề' }}</div>
+              <div class="preview-row">
+                <span class="preview-label">Tác giả:</span>
+                <span class="preview-value">{{ currentBlog.author || 'Chưa nhập' }}</span>
+              </div>
+              <div class="preview-row">
+                <span class="preview-label">Email:</span>
+                <span class="preview-value">{{ currentBlog.email || 'Chưa nhập' }}</span>
+              </div>
+              <div class="preview-row">
+                <span class="preview-label">Ngày cập nhật:</span>
+                <span class="preview-value">{{ currentBlog.updated_date || formatDate(currentBlog.created_date) }}</span>
+              </div>
+              <div class="preview-row">
+                <span class="preview-label">Category:</span>
+                <span class="preview-value">{{ currentBlog.category || 'Chưa nhập' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Action Buttons -->
+        <div class="blog-actions">
+          <button class="btn-delete-blog" (click)="deleteCurrentBlog()" *ngIf="!isNewBlog">
+            <img src="/asset/icons/trash_red.png" alt="Delete">
+            <span>Xóa bài viết</span>
+          </button>
+          <button class="btn-save-blog" (click)="saveCurrentBlog()">
+            <img src="/asset/icons/edit.png" alt="Save">
+            <span>{{ isNewBlog ? 'Thêm bài viết' : 'Lưu bài viết' }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Blog Content Section -->
+      <div class="blog-content-card">
+        <div class="content-editor-header">
+          <h3 class="content-editor-title">Nội dung bài viết</h3>
+        </div>
+        
+        <!-- Rich Text Editor Toolbar -->
+        <div class="editor-toolbar">
+          <!-- Undo/Redo -->
+          <div class="toolbar-group">
+            <button class="toolbar-btn" (click)="undo()" title="Hoàn tác (Ctrl+Z)">
+              <span class="toolbar-icon">↶</span>
+            </button>
+            <button class="toolbar-btn" (click)="redo()" title="Làm lại (Ctrl+Y)">
+              <span class="toolbar-icon">↷</span>
+            </button>
+          </div>
+
+          <div class="toolbar-divider"></div>
+
+          <!-- Format Block / Headings -->
+          <div class="toolbar-group">
+            <select class="toolbar-select" (change)="formatBlock($event)" title="Định dạng" #formatBlockSelect>
+              <option value="p">Đoạn văn</option>
+              <option value="h1">Tiêu đề 1</option>
+              <option value="h2">Tiêu đề 2</option>
+              <option value="h3">Tiêu đề 3</option>
+              <option value="h4">Tiêu đề 4</option>
+              <option value="h5">Tiêu đề 5</option>
+              <option value="h6">Tiêu đề 6</option>
+            </select>
+          </div>
+
+          <div class="toolbar-divider"></div>
+
+          <!-- Font Family -->
+          <div class="toolbar-group">
+            <select class="toolbar-select" (change)="changeFontFamily($event)" title="Phông chữ">
+              <option value="">Mặc định</option>
+              <option value="Arial">Arial</option>
+              <option value="Helvetica">Helvetica</option>
+              <option value="Times New Roman">Times New Roman</option>
+              <option value="Courier New">Courier New</option>
+              <option value="Verdana">Verdana</option>
+              <option value="Georgia">Georgia</option>
+              <option value="Palatino">Palatino</option>
+              <option value="Garamond">Garamond</option>
+              <option value="Comic Sans MS">Comic Sans MS</option>
+              <option value="Trebuchet MS">Trebuchet MS</option>
+              <option value="Impact">Impact</option>
+            </select>
+          </div>
+
+          <div class="toolbar-divider"></div>
+
+          <!-- Font Size -->
+          <div class="toolbar-group">
+            <select class="toolbar-select toolbar-select-size" (change)="changeFontSize($event)" title="Cỡ chữ" #fontSizeSelect>
+              <option value="1">8pt</option>
+              <option value="2">10pt</option>
+              <option value="3">12pt</option>
+              <option value="4">14pt</option>
+              <option value="5">18pt</option>
+              <option value="6">24pt</option>
+              <option value="7">36pt</option>
+            </select>
+          </div>
+
+          <div class="toolbar-divider"></div>
+
+          <!-- Text Formatting -->
+          <div class="toolbar-group">
+            <button class="toolbar-btn" (click)="execCommand('bold')" title="Đậm (Ctrl+B)">
+              <strong>B</strong>
+            </button>
+            <button class="toolbar-btn" (click)="execCommand('italic')" title="Nghiêng (Ctrl+I)">
+              <em>I</em>
+            </button>
+            <button class="toolbar-btn" (click)="execCommand('underline')" title="Gạch chân (Ctrl+U)">
+              <u>U</u>
+            </button>
+            <button class="toolbar-btn" (click)="execCommand('strikeThrough')" title="Gạch ngang">
+              <s>S</s>
+            </button>
+          </div>
+
+          <div class="toolbar-divider"></div>
+
+          <!-- Text Color & Highlight -->
+          <div class="toolbar-group">
+            <div class="toolbar-color-wrapper">
+              <input type="color" class="toolbar-color-input" (change)="changeTextColor($event)" title="Màu chữ" value="#000000">
+              <button class="toolbar-btn toolbar-btn-color" title="Màu chữ">
+                <span class="toolbar-icon-color">A</span>
+              </button>
+            </div>
+            <div class="toolbar-color-wrapper">
+              <input type="color" class="toolbar-color-input" (change)="changeHighlightColor($event)" title="Tô sáng" value="#FFFF00">
+              <button class="toolbar-btn toolbar-btn-highlight" title="Tô sáng">
+                <span class="toolbar-icon-highlight">▮</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="toolbar-divider"></div>
+
+          <!-- Subscript/Superscript -->
+          <div class="toolbar-group">
+            <button class="toolbar-btn" (click)="execCommand('subscript')" title="Chỉ số dưới">
+              <span style="font-size: 12px; vertical-align: sub;">x<sub>2</sub></span>
+            </button>
+            <button class="toolbar-btn" (click)="execCommand('superscript')" title="Chỉ số trên">
+              <span style="font-size: 12px; vertical-align: super;">x<sup>2</sup></span>
+            </button>
+          </div>
+
+          <div class="toolbar-divider"></div>
+
+          <!-- Text Alignment -->
+          <div class="toolbar-group">
+            <button class="toolbar-btn" (click)="execCommand('justifyLeft')" title="Căn trái">
+              <span class="align-icon">⬅</span>
+            </button>
+            <button class="toolbar-btn" (click)="execCommand('justifyCenter')" title="Căn giữa">
+              <span class="align-icon">⬌</span>
+            </button>
+            <button class="toolbar-btn" (click)="execCommand('justifyRight')" title="Căn phải">
+              <span class="align-icon">➡</span>
+            </button>
+            <button class="toolbar-btn" (click)="execCommand('justifyFull')" title="Căn đều">
+              <span class="align-icon">⬍</span>
+            </button>
+          </div>
+
+          <div class="toolbar-divider"></div>
+
+          <!-- Line Spacing -->
+          <div class="toolbar-group">
+            <select class="toolbar-select toolbar-select-size" (change)="changeLineSpacing($any($event.target).value)" title="Giãn dòng">
+              <option value="1.0">1.0</option>
+              <option value="1.15">1.15</option>
+              <option value="1.5">1.5</option>
+              <option value="2.0">2.0</option>
+              <option value="2.5">2.5</option>
+              <option value="3.0">3.0</option>
+            </select>
+          </div>
+
+          <div class="toolbar-divider"></div>
+
+          <!-- Lists -->
+          <div class="toolbar-group">
+            <button class="toolbar-btn" (click)="execCommand('insertUnorderedList')" title="Danh sách dấu đầu dòng">
+              ☰
+            </button>
+            <button class="toolbar-btn" (click)="execCommand('insertOrderedList')" title="Danh sách đánh số">
+              ≡
+            </button>
+            <button class="toolbar-btn" (click)="decreaseIndent()" title="Giảm thụt lề">
+              ←
+            </button>
+            <button class="toolbar-btn" (click)="increaseIndent()" title="Tăng thụt lề">
+              →
+            </button>
+          </div>
+
+          <div class="toolbar-divider"></div>
+
+          <!-- Insert Link & Image -->
+          <div class="toolbar-group">
+            <button class="toolbar-btn" (click)="insertLink()" title="Chèn liên kết">
+              🔗
+            </button>
+            <button class="toolbar-btn" (click)="insertImage()" title="Chèn ảnh">
+              📷
+            </button>
+          </div>
+
+          <div class="toolbar-divider"></div>
+
+          <!-- Clear Formatting -->
+          <div class="toolbar-group">
+            <button class="toolbar-btn" (click)="clearFormatting()" title="Xóa định dạng">
+              <span class="toolbar-icon">⌫</span>
+            </button>
+          </div>
+        </div>
+        
+        <div 
+          class="content-editor" 
+          contenteditable="true"
+          (blur)="updateBlogContent($event)"
+          #contentEditor
+        ></div>
+      </div>
+    </div>
+
+    <!-- Edit Popup Modal -->
+    <div class="edit-popup-overlay" *ngIf="showEditPopup" (click)="closeEditPopup()">
+      <div class="edit-popup-modal" (click)="$event.stopPropagation()">
+        <div class="popup-header">
+          <h2 class="popup-title" *ngIf="!isNewBlog">Chỉnh sửa thông tin bài viết</h2>
+          <h2 class="popup-title" *ngIf="isNewBlog">Thêm bài viết mới</h2>
+          <button class="popup-close-btn" (click)="closeEditPopup()">
+            <img src="/asset/icons/clear_dark.png" alt="Close">
+          </button>
+        </div>
+
+        <div class="popup-content" *ngIf="currentBlog">
+          <div class="form-group-inline">
+            <label class="form-label-inline">Tiêu đề bài viết:</label>
+            <input 
+              type="text" 
+              class="form-input-dark" 
+              [(ngModel)]="currentBlog.title"
+              placeholder="Nhập tiêu đề bài viết"
+            >
+          </div>
+          
+          <div class="form-group-inline">
+            <label class="form-label-inline">ID/Mã bài viết:</label>
+            <input 
+              type="text" 
+              class="form-input-dark" 
+              [(ngModel)]="currentBlog.blog_id"
+              placeholder="Mã bài viết"
+              [readonly]="!isNewBlog"
+            >
+          </div>
+          
+          <div class="form-group-inline">
+            <label class="form-label-inline">Tác giả:</label>
+            <input 
+              type="text" 
+              class="form-input-dark" 
+              [(ngModel)]="currentBlog.author"
+              placeholder="Nhập tên tác giả"
+            >
+          </div>
+          
+          <div class="form-group-inline">
+            <label class="form-label-inline">Email:</label>
+            <input 
+              type="email" 
+              class="form-input-dark" 
+              [(ngModel)]="currentBlog.email"
+              placeholder="nhập email"
+            >
+          </div>
+          
+          <div class="form-group-inline">
+            <label class="form-label-inline">Ngày tạo:</label>
+            <div class="input-with-icon date-picker-container">
+              <input 
+                type="text" 
+                class="form-input-dark" 
+                [(ngModel)]="currentBlog.created_date"
+                placeholder="DD/MM/YYYY"
+                readonly
+              >
+              <img 
+                src="/asset/icons/calender_dark.png" 
+                alt="Calendar" 
+                class="input-icon" 
+                (click)="openDatePicker()"
+                style="cursor: pointer;"
+              >
+              <!-- Date Picker -->
+              <div class="date-picker-dropdown" *ngIf="showDatePicker" (click)="$event.stopPropagation()">
+                <div class="date-picker-header">
+                  <button type="button" class="date-picker-nav" (click)="previousMonth()">‹</button>
+                  <div class="date-picker-month-year">
+                    {{ getMonthName(selectedDate.getMonth()) }} {{ selectedDate.getFullYear() }}
+                  </div>
+                  <button type="button" class="date-picker-nav" (click)="nextMonth()">›</button>
+                </div>
+                <div class="date-picker-weekdays">
+                  <div class="date-picker-weekday" *ngFor="let day of getDayNames()">{{ day }}</div>
+                </div>
+                <div class="date-picker-days">
+                  <div 
+                    class="date-picker-day" 
+                    *ngFor="let date of getDatePickerDates()"
+                    [class.today]="isToday(date)"
+                    [class.selected]="isSelectedDate(date)"
+                    [class.other-month]="!isCurrentMonth(date)"
+                    (click)="selectDate(date)"
+                  >
+                    {{ date.getDate() }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group-inline">
+            <label class="form-label-inline">Category:</label>
+            <div class="select-wrapper">
+              <select class="form-select-dark" [(ngModel)]="currentBlog.category">
+                <option *ngFor="let cat of blogCategories" [value]="cat">{{ cat }}</option>
+              </select>
+              <img src="/asset/icons/arrowdown.png" alt="Dropdown" class="select-icon">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="popup-footer">
+          <button class="btn-popup-cancel" (click)="closeEditPopup()">Hủy</button>
+          <button class="btn-popup-save" (click)="saveFromPopup()">{{ isNewBlog ? 'Thêm bài viết' : 'Lưu thay đổi' }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirmation Dialog -->
+  <div class="popup-overlay" *ngIf="showConfirmDialog" (click)="cancelDelete()">
+    <div class="confirm-dialog" (click)="$event.stopPropagation()">
+      <div class="confirm-icon">
+        <span class="icon-question">?</span>
+      </div>
+      <div class="confirm-message">{{ confirmMessage }}</div>
+      <div class="confirm-buttons">
+        <button class="btn-confirm-cancel" (click)="cancelDelete()">Hủy</button>
+        <button class="btn-confirm-ok" (click)="confirmDelete()">Xác nhận</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Popup Notification -->
+  <div class="popup-overlay" *ngIf="showPopup" (click)="closePopup()">
+    <div class="popup-container" (click)="$event.stopPropagation()">
+      <div class="popup-icon" [class.success]="popupType === 'success'" [class.error]="popupType === 'error'" [class.info]="popupType === 'info'">
+        <span class="icon-check" *ngIf="popupType === 'success'">✓</span>
+        <span class="icon-error" *ngIf="popupType === 'error'">✕</span>
+        <span class="icon-info" *ngIf="popupType === 'info'">i</span>
+      </div>
+      <div class="popup-message">{{ popupMessage }}</div>
+      <button class="popup-btn-ok" (click)="closePopup()">OK</button>
+    </div>
+  </div>
+</div>

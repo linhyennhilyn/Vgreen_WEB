@@ -1,0 +1,148 @@
+[
+	{
+		"_id": "6919716e07528c4a74c4e053",
+		"CustomerID": "CUS000001",
+		"Phone": "01208159564",
+		"Password": "$2b$10$xchukkCwuZEHmvjScBSfgurSA4R67PWp6sL0jMmagatsDMa3YSAge",
+		"FullName": "",
+		"Email": "",
+		"Address": null,
+		"RegisterDate": {
+			"$date": "2025-11-16T06:38:38.077Z"
+		},
+		"CustomerType": "",
+		"CustomerTiering": "Đồng",
+		"TotalSpent": 42400,
+		"PasswordVersion": 3,
+		"LastPasswordReset": "2025-11-16T09:36:02.042Z",
+		"updated_at": "2025-11-16T09:36:02.042Z"
+	},
+	{
+		"_id": "69198d3bfe48bde09af28352",
+		"CustomerID": "CUS000002",
+		"Phone": "0815275677",
+		"Password": "$2b$10$GqSyCw89uWIPXRxadSPVPeW8nwHnNrGEVJmWmXCmQLy6XUyfEbRXq",
+		"FullName": "",
+		"Email": "",
+		"Address": "39 Nguyễn Huệ, binh-gia, chau-duc, ba-ria-vung-tau",
+		"RegisterDate": {
+			"$date": "2025-11-16T08:37:15.419Z"
+		},
+		"CustomerType": "",
+		"CustomerTiering": "Bạc",
+		"TotalSpent": 2509665,
+		"PasswordVersion": 1,
+		"LastPasswordReset": null
+	},
+	{
+		"_id": "69198fd8fe48bde09af2835c",
+		"CustomerID": "CUS000003",
+		"Phone": "0932501459",
+		"Password": "$2b$10$Md6ZOXsVafRFvhNTZcMDOeYynU/hZHvzgzePx0nvEF82MSvmCtHKe",
+		"FullName": "",
+		"Email": "",
+		"Address": "Số nhà 99, hoa-an, cho-moi, an-giang",
+		"RegisterDate": {
+			"$date": "2025-11-16T08:48:24.537Z"
+		},
+		"CustomerType": "",
+		"CustomerTiering": "Vàng",
+		"TotalSpent": 4539490,
+		"PasswordVersion": 1,
+		"LastPasswordReset": null
+	},
+	{
+		"_id": "6919907bfe48bde09af28363",
+		"CustomerID": "CUS000004",
+		"Phone": "02183773673",
+		"Password": "$2b$10$EJDjdyZVbiopcqWF.l7/LeRgs9WYvhSEoxGNEEs36XAfpgxrU7iFy",
+		"FullName": "",
+		"Email": "",
+		"Address": "39 Nguyễn Huệ, ben-thanh, 1, ho-chi-minh",
+		"RegisterDate": {
+			"$date": "2025-11-16T08:51:07.053Z"
+		},
+		"CustomerType": "",
+		"CustomerTiering": "Bạch Kim",
+		"TotalSpent": 10149787.5,
+		"PasswordVersion": 1,
+		"LastPasswordReset": null
+	},
+	{
+		"_id": "69199aa7fe48bde09af28392",
+		"CustomerID": "CUS000005",
+		"Phone": "0879584022",
+		"Password": "$2b$10$8Dy3K94znEvG0J4AkHAGC.jgXF2hhgL3RwIRQSLM0EgMsxJw7Jai.",
+		"FullName": "",
+		"Email": "",
+		"Address": "",
+		"RegisterDate": {
+			"$date": "2025-11-16T09:34:31.178Z"
+		},
+		"CustomerType": "",
+		"CustomerTiering": "Đồng",
+		"TotalSpent": 0,
+		"PasswordVersion": 1,
+		"LastPasswordReset": null
+	},
+	{
+		"_id": "6919c59d9b3936c029e05887",
+		"CustomerID": "CUS000006",
+		"Phone": "0815275678",
+		"Password": "$2b$10$MfJWOS.IwEmaTZXa8o/LsOa.Quu.gziNUmixsZmixNb5/vW9tfyPa",
+		"FullName": "Nhuhuyen",
+		"Email": "",
+		"Address": "234 Lê Lợi, linh-xuan, thu-duc, ho-chi-minh",
+		"RegisterDate": {
+			"$date": "2025-11-16T12:37:49.363Z"
+		},
+		"CustomerType": "",
+		"CustomerTiering": "Đồng",
+		"TotalSpent": 877360,
+		"PasswordVersion": 2,
+		"LastPasswordReset": "2025-11-16T12:38:43.250Z",
+		"updated_at": "2025-11-16T12:38:43.250Z",
+		"BirthDay": "2000-06-07",
+		"Gender": "male",
+		"updatedAt": "2025-11-16T12:43:39.334Z"
+	},
+	{
+		"_id": "6919d15b9b3936c029e058b5",
+		"CustomerID": "CUS000007",
+		"Phone": "0658818000",
+		"Password": "$2b$10$OX0jowoIa8Zi5NSwjwk5Ben.M578NPekv/6LcxGlu6xjj6TuycrUq",
+		"FullName": "HuyenNhu",
+		"Email": "",
+		"Address": "33 Lê Lợi, linh-trung, thu-duc, ho-chi-minh",
+		"RegisterDate": {
+			"$date": "2025-11-16T13:27:55.049Z"
+		},
+		"CustomerType": "",
+		"CustomerTiering": "Đồng",
+		"TotalSpent": 424393.5,
+		"PasswordVersion": 2,
+		"LastPasswordReset": "2025-11-16T13:29:20.901Z",
+		"updated_at": "2025-11-16T13:29:20.901Z",
+		"BirthDay": "2000-06-07",
+		"Gender": "female",
+		"updatedAt": "2025-11-16T13:33:02.282Z"
+	},
+	{
+		"_id": "69228c7092babdac1b0a553d",
+		"CustomerID": "CUS000008",
+		"Phone": "0963420472",
+		"Password": "$2b$10$TKJ92a5.QKvChobDgdIQouzcA5d4j.sa6ISoKdx68s7Cg/JwzxocK",
+		"FullName": "",
+		"Email": "",
+		"Address": "36 hfhj dhdj, thoi-tam-thon, hoc-mon, ho-chi-minh",
+		"RegisterDate": {
+			"$date": "2025-11-23T04:24:16.552Z"
+		},
+		"CustomerType": "",
+		"CustomerTiering": "Đồng",
+		"TotalSpent": 0,
+		"PasswordVersion": 2,
+		"LastPasswordReset": "2025-12-28T14:57:10.189Z",
+		"updated_at": "2025-12-28T14:57:10.189Z"
+	}
+]

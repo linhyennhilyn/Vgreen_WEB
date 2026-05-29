@@ -1,0 +1,495 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lexend', sans-serif;
+  color: black;
+  line-height: 1.6;
+  background-color: #f2f3ed;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+/* =======================================================
+   3. FOOTER STYLES
+   ======================================================= */
+.footer {
+  background-color: #f2f3ed;
+  margin-top: 0px;
+  font-family: 'Lexend', sans-serif;
+  position: relative;
+  width: 100%;
+}
+
+/* Service Guarantees Section */
+.footer-guarantees {
+  background-color: white;
+  padding: 15px 0;
+  color: black;
+}
+
+.guarantees-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.guarantee-item {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.guarantee-item:hover {
+  transform: translateY(-5px);
+}
+
+.guarantee-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease, border-color var(--transition-speed);
+}
+
+.guarantee-icon img {
+  width: 30px;
+  transition: color 0.3s ease;
+}
+
+.guarantee-content h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+.guarantee-content p {
+  font-size: 14px;
+  color: #808080;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+/* Main Footer Section */
+.footer-main {
+  background-color: #256e05;
+  color: white;
+  padding: 30px 0 10px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+  /* Thứ tự mặc định: logo => Về VGREEN => Hỗ trợ => Chính sách => Kết nối với VGREEN */
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+/* Company Info */
+
+.footer-logo img {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer-description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: white;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+/* Footer Columns */
+.footer-column h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: white;
+  font-family: 'SF Pro';
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links .footer-link,
+.contact-info .clickable {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  display: block;
+  font-weight: 100;
+}
+
+.footer-links .footer-link:hover,
+.contact-info .clickable:hover {
+  color: #f2bf3d;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.social-icon img {
+  width: 100%;
+}
+
+/* App Download */
+.app-download {
+  margin-top: 20px;
+}
+
+.app-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.app-button {
+  display: inline-block;
+}
+
+.app-button img {
+  width: auto;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: white;
+  font-weight: 100;
+}
+
+.footer-address {
+  display: flex;
+  align-items: center;
+}
+
+/* =======================================================
+   4. RESPONSIVE DESIGN
+   ======================================================= */
+
+/* Laptop nhỏ (max-width: 1280px) */
+@media (max-width: 1280px) {
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 30px;
+  }
+
+  /* app-buttons sắp xếp theo column */
+  .app-buttons {
+    flex-direction: column;
+  }
+}
+
+/* Tablet lớn (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      'company support about'
+      'connect policy about';
+    gap: 30px;
+  }
+
+  /* footer-company chứa logo */
+  .footer-company {
+    grid-area: company;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Bên phải phần có logo là Về VGREEN */
+  .footer-column:nth-of-type(1) {
+    /* Về VGREEN */
+    grid-area: about;
+  }
+
+  /* Hàng 2: Hỗ trợ + Chính sách + Kết nối */
+  .footer-column:nth-of-type(2) {
+    /* Hỗ trợ */
+    grid-area: support;
+  }
+
+  .footer-column:nth-of-type(3) {
+    /* Chính sách */
+    grid-area: policy;
+  }
+
+  .footer-column:nth-of-type(4) {
+    /* Kết Nối với VGREEN */
+    grid-area: connect;
+  }
+
+  .app-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* Comment phần media 992 - đã bỏ */
+
+/* Tablet nhỏ (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Các phần tử trong guarantee-item xếp theo column */
+  .guarantee-item {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .guarantee-icon {
+    /* margin-right: 0; */
+    margin-bottom: 10px;
+    margin: 0 auto;
+  }
+  .guarantee-content {
+    text-align: center;
+  }
+
+  .guarantee-content h3 {
+    font-size: 14px;
+  }
+
+  .guarantee-content p {
+    font-size: 12px;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      'company support policy'
+      'connect about about';
+    gap: 30px;
+  }
+
+  /* footer-company chứa logo - HÀNG 1 CỘT 1 */
+  .footer-company {
+    grid-area: company;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* VỀ VGREEN - HÀNG 1-2 CỘT 3 (ROWSPAN 2) */
+  .footer-column:nth-of-type(1) {
+    grid-area: about;
+  }
+
+  /* HỖ TRỢ - HÀNG 1 CỘT 2 */
+  .footer-column:nth-of-type(2) {
+    grid-area: support;
+  }
+
+  /* CHÍNH SÁCH - HÀNG 2 CỘT 2 */
+  .footer-column:nth-of-type(3) {
+    grid-area: policy;
+  }
+
+  /* KẾT NỐI VỚI VGREEN - HÀNG 2 CỘT 1 */
+  .footer-column:nth-of-type(4) {
+    grid-area: connect;
+  }
+
+  .app-buttons {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* Mobile lớn (max-width: 600px) */
+@media (max-width: 600px) {
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    /* Đảm bảo connect (KẾT NỐI) luôn ở cuối cùng */
+    grid-template-areas:
+      'company company'
+      'support policy'
+      'connect about'; /* connect ở cuối hàng 3 */
+    gap: 30px;
+  }
+
+  /* footer-company chứa logo - dòng 1 */
+  .footer-company {
+    grid-area: company;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Dòng 2: Về VGREEN và Hỗ trợ */
+  .footer-column:nth-of-type(1) {
+    /* Về VGREEN */
+    grid-area: about;
+  }
+
+  .footer-column:nth-of-type(2) {
+    /* Hỗ trợ */
+    grid-area: support;
+  }
+
+  /* Dòng 3: Chính sách và Kết nối */
+  .footer-column:nth-of-type(3) {
+    /* Chính sách */
+    grid-area: policy;
+  }
+
+  .footer-column:nth-of-type(4) {
+    /* Kết Nối với VGREEN */
+    grid-area: connect;
+  }
+
+  /* app-buttons các icon xếp theo column */
+  .app-buttons {
+    flex-direction: column;
+  }
+
+  /* social-icons xếp theo column */
+  .social-icons {
+    flex-direction: row;
+  }
+}
+
+/* Mobile nhỏ (max-width: 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    /* Đảm bảo connect (KẾT NỐI) luôn ở cuối cùng */
+    grid-template-areas:
+      'company company'
+      'support policy'
+      'connect about'; /* connect ở cuối hàng 3 */
+    gap: 30px;
+  }
+
+  /* footer-company chứa logo - dòng 1 */
+  .footer-company {
+    grid-area: company;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Dòng 2: Về VGREEN và Hỗ trợ */
+  .footer-column:nth-of-type(1) {
+    /* Về VGREEN */
+    grid-area: about;
+  }
+
+  .footer-column:nth-of-type(2) {
+    /* Hỗ trợ */
+    grid-area: support;
+  }
+
+  /* Dòng 3: Chính sách và Kết nối */
+  .footer-column:nth-of-type(3) {
+    /* Chính sách */
+    grid-area: policy;
+  }
+
+  .footer-column:nth-of-type(4) {
+    /* Kết Nối với VGREEN */
+    grid-area: connect;
+  }
+
+  /* .guarantee-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .guarantee-icon {
+    margin-right: 0;
+    margin-bottom: 15px;
+  } */
+
+  .app-buttons {
+    flex-direction: column;
+  }
+}
+
+/* =======================================================
+   5. ANIMATIONS
+   ======================================================= */
+.footer-main {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.guarantee-item {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.guarantee-item:hover {
+  transform: translateY(-5px);
+}
+
+.footer-links .footer-link {
+  position: relative;
+}
+
+.footer-links .footer-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #f2bf3d;
+  transition: width 0.3s ease;
+}

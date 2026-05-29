@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'SF Pro';
+  src: url('/asset/font/sf_pro/SF-Pro-Display-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro';
+  src: url('/asset/font/sf_pro/SF-Pro-Display-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro';
+  src: url('/asset/font/sf_pro/SF-Pro-Display-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+/* You can add global styles to this file, and also import other style files */
+
+/* Reset default margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  /* width: 100%; */
+  overflow-x: hidden;
+  font-family: 'Lexend', sans-serif;
+}
+
+:root {
+  --header-height: 70px;
+}
+
+/* Giữ scrollbar, chỉ disable scroll */
+body.cart-open {
+  overflow-y: scroll; /* Giữ scrollbar */
+  position: fixed; /* Khóa scroll */
+  width: 100%;
+  top: var(--scroll-y, 0);
+}

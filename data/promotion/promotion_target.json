@@ -1,0 +1,39 @@
+[{
+  "_id": "690b1361ca42a26c89d2e85d",
+  "promotion_id": "PROMO005",
+  "target_type": "Subcategory",
+  "target_ref": [
+    "Cà phê"
+  ]
+},
+{
+  "_id": "690b1361ca42a26c89d2e85e",
+  "promotion_id": "PROMO006",
+  "target_type": "Subcategory",
+  "target_ref": [
+    "Mật ong"
+  ]
+},
+{
+  "_id": "690b1361ca42a26c89d2e85f",
+  "promotion_id": "PROMO007",
+  "target_type": "Brand",
+  "target_ref": [
+    "CO.OP SELECT"
+  ]
+},
+{
+  "_id": "690b1361ca42a26c89d2e860",
+  "promotion_id": "PROMO009",
+  "target_type": "Product",
+  "target_ref": [
+    "3150382",
+    "3330469",
+    "3284872",
+    "3319403",
+    "3535323"
+  ],
+  "updated_at": {
+    "$date": "2025-11-16T04:46:33.028Z"
+  }
+}]

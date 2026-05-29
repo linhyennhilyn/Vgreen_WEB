@@ -1,0 +1,28 @@
+<div class="notification-container">
+  <div 
+    *ngFor="let notification of notifications" 
+    class="notification"
+    [class.notification-read]="notification.read"
+    [class.notification-unread]="!notification.read"
+  >
+    <div class="notification-content">
+      <div class="notification-icon">
+        <span>📢</span>
+      </div>
+      <div class="notification-details">
+        <div class="notification-title">{{ notification.title || 'Thông báo' }}</div>
+        <div class="notification-message">{{ notification.message || '' }}</div>
+        <div class="notification-meta">
+          <span class="notification-time">{{ notification.createdAt | date:'short' }}</span>
+          <span class="notification-type" *ngIf="notification.type === 'order_cancellation_request'">Yêu cầu hủy đơn</span>
+        </div>
+      </div>
+      <button class="notification-close" (click)="closeNotification(notification._id || notification.id || '')">×</button>
+    </div>
+  </div>
+  
+  <div *ngIf="notifications.length === 0" class="notification-empty">
+    <p>Không có thông báo nào</p>
+  </div>
+</div>
+

@@ -1,0 +1,554 @@
+<!-- ==================== HERO SLIDE ===================== -->
+
+<section class="hero-slider">
+  <div class="slides-container">
+    <div class="hero-slide active">
+      <img src="/asset/image/hero_cover_1.png" alt="VGreen Hero 1" />
+    </div>
+    <div class="hero-slide">
+      <img src="/asset/image/hero_cover_2.png" alt="VGreen Hero 2" />
+    </div>
+    <div class="hero-slide">
+      <img src="/asset/image/hero_cover_3.png" alt="VGreen Hero 3" />
+    </div>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <button class="slider-btn prev-btn" aria-label="Previous slide">
+    <img src="/asset/icons/arrowleft.png" />
+  </button>
+  <button class="slider-btn next-btn" aria-label="Next slide">
+    <img src="/asset/icons/arrowright.png" />
+  </button>
+
+  <!-- Dots Indicator -->
+  <div class="slider-dots">
+    <span class="dot active" data-slide="0"></span>
+    <span class="dot" data-slide="1"></span>
+    <span class="dot" data-slide="2"></span>
+  </div>
+</section>
+
+<!-- ==================== CATEGORIES ===================== -->
+
+<section class="categories-section">
+  <div class="container">
+    <!-- Header với Navigation -->
+    <div class="section-header">
+      <div class="section-title-group">
+        <h2 class="section-title">Danh mục sản phẩm</h2>
+        <!-- <a href="#" class="view-all-link">Tất cả <img src="/asset/icons/arrowright_dark.png" alt=""></a> -->
+      </div>
+      <div class="section-controls">
+        <button class="carousel-nav-btn prev-category-btn" aria-label="Previous">
+          <img src="/asset/icons/arrowleft_dark.png" alt="" />
+        </button>
+        <button class="carousel-nav-btn next-category-btn" aria-label="Next">
+          <img src="/asset/icons/arrowright_dark.png" alt="" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Carousel -->
+    <div class="categories-carousel">
+      <div class="categories-track">
+        <!-- Category 1: Rau củ -->
+        <div class="category-card" data-category="rau-cu" (click)="onCategoryClick('rau-cu')">
+          <div class="icon-container">
+            <img src="/asset/icons/vegetable_dark.png" alt="" />
+          </div>
+          <h3 class="category-name">Rau củ</h3>
+        </div>
+
+        <!-- Category 2: Trái cây -->
+        <div class="category-card" data-category="trai-cay" (click)="onCategoryClick('trai-cay')">
+          <div class="icon-container">
+            <img src="/asset/icons/fruit_dark.png" alt="" />
+          </div>
+          <h3 class="category-name">Trái cây</h3>
+        </div>
+
+        <!-- Category 3: Lương thực ngũ cốc -->
+        <div
+          class="category-card"
+          data-category="luong-thuc"
+          (click)="onCategoryClick('luong-thuc')"
+        >
+          <div class="icon-container">
+            <img src="/asset/icons/grain_dark.png" alt="" />
+          </div>
+          <h3 class="category-name">Lương thực<br />Ngũ cốc</h3>
+        </div>
+
+        <!-- Category 4: Thực phẩm khô -->
+        <div
+          class="category-card"
+          data-category="thuc-pham-kho"
+          (click)="onCategoryClick('thuc-pham-kho')"
+        >
+          <div class="icon-container">
+            <img src="/asset/icons/dry_dark.png" alt="" />
+          </div>
+          <h3 class="category-name">Thực phẩm khô</h3>
+        </div>
+
+        <!-- Category 5: Trà & Thảo mộc -->
+        <div class="category-card" data-category="tra" (click)="onCategoryClick('tra')">
+          <div class="icon-container">
+            <img src="/asset/icons/leaf_dark.png" alt="" />
+          </div>
+          <h3 class="category-name">Trà & Thảo mộc</h3>
+        </div>
+
+        <!-- Category 6: Cà phê & Cacao -->
+        <div class="category-card" data-category="ca-phe" (click)="onCategoryClick('ca-phe')">
+          <div class="icon-container">
+            <img src="/asset/icons/coffee_dark.png" alt="" />
+          </div>
+          <h3 class="category-name">Cà phê & Cacao</h3>
+        </div>
+
+        <!-- Category 7: Thực phẩm bồi bổ -->
+        <div class="category-card" data-category="bo-bo" (click)="onCategoryClick('bo-bo')">
+          <div class="icon-container">
+            <img src="/asset/icons/nutrition_dark.png" alt="" />
+          </div>
+          <h3 class="category-name">Thực phẩm bồi bổ</h3>
+        </div>
+
+        <!-- Category 8: Rong biển -->
+        <div class="category-card" data-category="rong-bien" (click)="onCategoryClick('rong-bien')">
+          <div class="icon-container">
+            <img src="/asset/icons/seaweed_dark.png" alt="" />
+          </div>
+          <h3 class="category-name">Rong biển</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 1: KHUYẾN MÃI HOT -->
+<section class="product-section hot-deals-section">
+  <div class="section-banner">
+    <div class="container">
+      <div class="banner-content">
+        <h2 class="banner-title">KHUYẾN MÃI HOT</h2>
+        <a
+          routerLink="/products"
+          [queryParams]="{ sort: 'bestseller', promotion: 'true' }"
+          class="view-all-btn"
+        >
+          Xem tất cả
+          <img src="/asset/icons/arrowright.png" alt="" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="product-carousel-wrapper">
+      <!-- Navigation Buttons -->
+      <button class="product-carousel-btn prev-btn" aria-label="Previous">
+        <img src="/asset/icons/arrowleft_dark.png" alt="" />
+      </button>
+      <button class="product-carousel-btn next-btn" aria-label="Next">
+        <img src="/asset/icons/arrowright_dark.png" alt="" />
+      </button>
+
+      <!-- Product Carousel -->
+      <div class="product-carousel">
+        <div class="product-track">
+          <!-- Product Cards -->
+          <div
+            *ngFor="let product of hotDealsProducts"
+            class="product-card"
+            (click)="onProductClick(product)"
+          >
+            <div class="product-image-container">
+              <img
+                [src]="getProductImage(product)"
+                [alt]="product.product_name"
+                class="product-image"
+              />
+              <!-- Buy 1 Get 1 Tag -->
+              <div class="buy1get1-tag" *ngIf="hasBuy1Get1Promotion(product)">Mua 1 tặng 1</div>
+              <button
+                class="favorite-btn"
+                (click)="toggleWishlist(product, $event)"
+                [class.favorited]="isInWishlist(product)"
+              >
+                <div class="heart-icon"></div>
+              </button>
+            </div>
+
+            <div class="product-info">
+              <div class="product-header">
+                <h3 class="product-name">{{ product.product_name }}</h3>
+                <div class="product-rating" *ngIf="getRating(product) > 0">
+                  <span class="rating-number">{{ formatRating(getRating(product)) }}</span>
+                  <img src="/asset/icons/star_yellow.png" alt="star" class="star-icon" />
+                </div>
+              </div>
+
+              <div class="product-footer">
+                <div class="product-price">
+                  <!-- Hiển thị giá khuyến mãi nếu có discount hợp lệ -->
+                  <div *ngIf="hasDiscount(product)" class="price-container-promotion">
+                    <div class="discounted-price-group">
+                      <span class="discounted-price">{{
+                        formatPrice(product.discountedPrice)
+                      }}</span>
+                      <span class="unit">/{{ product.unit }}</span>
+                    </div>
+                    <div class="price-group">
+                      <span class="original-price">{{ formatPrice(product.originalPrice) }}</span>
+                      <span class="discount-badge">-{{ product.discountPercent }}%</span>
+                    </div>
+                  </div>
+                  <!-- Hiển thị giá thường nếu không có discount hợp lệ -->
+                  <div *ngIf="!hasDiscount(product)" class="price-group-normal">
+                    <span class="price">{{ formatPrice(product.price) }}</span>
+                    <span class="unit">/{{ product.unit }}</span>
+                  </div>
+                </div>
+                <button class="add-to-cart-btn" (click)="addToCart(product, $event)">
+                  <img src="/asset/icons/shop.png" alt="Cart" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: SẢN PHẨM MỚI -->
+<section class="product-section new-products-section">
+  <div class="section-banner">
+    <div class="container">
+      <div class="banner-content">
+        <h2 class="banner-title">SẢN PHẨM MỚI</h2>
+        <a routerLink="/products" [queryParams]="{ sort: 'newest' }" class="view-all-btn">
+          Xem tất cả
+          <img src="/asset/icons/arrowright.png" alt="" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="product-carousel-wrapper">
+      <!-- Navigation Buttons -->
+      <button class="product-carousel-btn prev-btn" aria-label="Previous">
+        <img src="/asset/icons/arrowleft_dark.png" alt="" />
+      </button>
+      <button class="product-carousel-btn next-btn" aria-label="Next">
+        <img src="/asset/icons/arrowright_dark.png" alt="" />
+      </button>
+
+      <!-- Product Carousel -->
+      <div class="product-carousel">
+        <div class="product-track">
+          <!-- Product Cards -->
+          <div
+            *ngFor="let product of newProducts"
+            class="product-card"
+            (click)="onProductClick(product)"
+          >
+            <div class="product-image-container">
+              <img
+                [src]="getProductImage(product)"
+                [alt]="product.product_name"
+                class="product-image"
+              />
+              <!-- Buy 1 Get 1 Tag -->
+              <div class="buy1get1-tag" *ngIf="hasBuy1Get1Promotion(product)">Mua 1 tặng 1</div>
+              <button
+                class="favorite-btn"
+                (click)="toggleWishlist(product, $event)"
+                [class.favorited]="isInWishlist(product)"
+              >
+                <div class="heart-icon"></div>
+              </button>
+            </div>
+
+            <div class="product-info">
+              <div class="product-header">
+                <h3 class="product-name">{{ product.product_name }}</h3>
+                <div class="product-rating" *ngIf="getRating(product) > 0">
+                  <span class="rating-number">{{ formatRating(getRating(product)) }}</span>
+                  <img src="/asset/icons/star_yellow.png" alt="star" class="star-icon" />
+                </div>
+              </div>
+
+              <div class="product-footer">
+                <div class="product-price">
+                  <!-- Hiển thị giá khuyến mãi nếu có discount hợp lệ -->
+                  <div *ngIf="hasDiscount(product)" class="price-container-promotion">
+                    <div class="discounted-price-group">
+                      <span class="discounted-price">{{
+                        formatPrice(product.discountedPrice)
+                      }}</span>
+                      <span class="unit">/{{ product.unit }}</span>
+                    </div>
+                    <div class="price-group">
+                      <span class="original-price">{{ formatPrice(product.originalPrice) }}</span>
+                      <span class="discount-badge">-{{ product.discountPercent }}%</span>
+                    </div>
+                  </div>
+                  <!-- Hiển thị giá thường nếu không có discount hợp lệ -->
+                  <div *ngIf="!hasDiscount(product)" class="price-group-normal">
+                    <span class="price">{{ formatPrice(product.price) }}</span>
+                    <span class="unit">/{{ product.unit }}</span>
+                  </div>
+                </div>
+                <button class="add-to-cart-btn" (click)="addToCart(product, $event)">
+                  <img src="/asset/icons/shop.png" alt="Cart" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMOTION BANNERS SECTION -->
+<section class="promotion-banners-section">
+  <div class="container">
+    <div class="banners-wrapper">
+      <!-- Banner 1: Voucher -->
+      <div class="banner-item banner-voucher">
+        <a href="#vouchers">
+          <img src="/asset/image/promotion_1.png" alt="Săn ngay voucher" />
+        </a>
+      </div>
+
+      <!-- Banner 2: Khuyến mãi -->
+      <div class="banner-item banner-promotion">
+        <a href="#promotions">
+          <img src="/asset/image/promotion_2.png" alt="Ngập tràn khuyến mãi" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS SECTION -->
+<section class="testimonials-section">
+  <div class="container">
+    <!-- Title -->
+    <div class="testimonials-header">
+      <h2 class="testimonials-title">
+        Khách hàng nói gì về <span class="brand-highlight">Vgreen</span>?
+      </h2>
+    </div>
+
+    <!-- Carousel Wrapper -->
+    <div class="testimonials-carousel-wrapper">
+      <!-- Navigation Buttons -->
+      <button class="testimonial-nav-btn prev-testimonial-btn" aria-label="Previous testimonial">
+        <img src="/asset/icons/arrowleft_dark.png" alt="" />
+      </button>
+      <button class="testimonial-nav-btn next-testimonial-btn" aria-label="Next testimonial">
+        <img src="/asset/icons/arrowright_dark.png" alt="" />
+      </button>
+
+      <!-- Testimonials Carousel -->
+      <div class="testimonials-carousel">
+        <div class="testimonials-track">
+          <!-- Testimonial Card 1 -->
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <img src="/asset/icons/quote_lightgreen.png" alt="" />
+            </div>
+            <p class="testimonial-text">
+              "Đặt buổi sáng, chiều có rồi, nhanh thật! Đỗ tươi mà còn được bonus ít rau thêm, dễ
+              thương ghê."
+            </p>
+            <div class="testimonial-rating">
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+            </div>
+            <div class="testimonial-author">
+              <h4 class="author-name">Minh Quân</h4>
+              <p class="author-role">Nhân viên Marketing</p>
+            </div>
+          </div>
+
+          <!-- Testimonial Card 2 -->
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <img src="/asset/icons/quote_lightgreen.png" alt="" />
+            </div>
+            <p class="testimonial-text">
+              "Mua mấy lần rồi mà chất lượng vẫn y như cũ, rau củ tươi rói, đóng gói gọn gàng."
+            </p>
+            <div class="testimonial-rating">
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+            </div>
+            <div class="testimonial-author">
+              <h4 class="author-name">Yến Ngọc</h4>
+              <p class="author-role">Sinh viên</p>
+            </div>
+          </div>
+
+          <!-- Testimonial Card 3 -->
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <img src="/asset/icons/quote_lightgreen.png" alt="" />
+            </div>
+            <p class="testimonial-text">
+              "Gạo sạch, nấu thơm dẻo, ăn yên tâm vì biết rõ nguồn gốc."
+            </p>
+            <div class="testimonial-rating">
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+            </div>
+            <div class="testimonial-author">
+              <h4 class="author-name">Lan Anh</h4>
+              <p class="author-role">Nội trợ</p>
+            </div>
+          </div>
+
+          <!-- Testimonial Card 4 -->
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <img src="/asset/icons/quote_lightgreen.png" alt="" />
+            </div>
+            <p class="testimonial-text">
+              "Dịch vụ giao hàng nhanh, đóng gói cẩn thận. Rau củ tươi ngon, giá cả hợp lý."
+            </p>
+            <div class="testimonial-rating">
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+            </div>
+            <div class="testimonial-author">
+              <h4 class="author-name">Thành Đạt</h4>
+              <p class="author-role">Kỹ sư</p>
+            </div>
+          </div>
+
+          <!-- Testimonial Card 5 -->
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <img src="/asset/icons/quote_lightgreen.png" alt="" />
+            </div>
+            <p class="testimonial-text">
+              "Mua trái cây ở đây luôn tươi ngon, không lo về chất lượng. Giao hàng đúng giờ."
+            </p>
+            <div class="testimonial-rating">
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+            </div>
+            <div class="testimonial-author">
+              <h4 class="author-name">Mai Linh</h4>
+              <p class="author-role">Giáo viên</p>
+            </div>
+          </div>
+
+          <!-- Testimonial Card 6 -->
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <img src="/asset/icons/quote_lightgreen.png" alt="" />
+            </div>
+            <p class="testimonial-text">
+              "Sản phẩm organic chất lượng cao, đáng tin cậy. Gia đình tôi rất hài lòng."
+            </p>
+            <div class="testimonial-rating">
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+              <img src="/asset/icons/star_yellow.png" alt="" />
+            </div>
+            <div class="testimonial-author">
+              <h4 class="author-name">Văn Hùng</h4>
+              <p class="author-role">Bác sĩ</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dots Indicator -->
+      <div class="testimonials-dots">
+        <span class="testimonial-dot active" data-slide="0"></span>
+        <span class="testimonial-dot" data-slide="1"></span>
+        <span class="testimonial-dot" data-slide="2"></span>
+        <span class="testimonial-dot" data-slide="3"></span>
+        <span class="testimonial-dot" data-slide="4"></span>
+        <span class="testimonial-dot" data-slide="5"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blog-section">
+  <div class="blog-container">
+    <!-- Cột trái - Bài viết nổi bật (60%) -->
+    <div class="blog-left-column">
+      <h2 class="section-title">Bài viết nổi bật</h2>
+      <div class="featured-post-card">
+        <div class="featured-image">
+          <img id="featured-img" src="" alt="Featured Post" />
+        </div>
+        <div class="featured-content">
+          <div class="post-meta">
+            <span class="author" id="featured-author"></span>
+            <span class="separator">|</span>
+            <span class="date" id="featured-date"></span>
+          </div>
+          <h3 class="featured-title" id="featured-title"></h3>
+          <p class="featured-excerpt" id="featured-excerpt"></p>
+          <button class="read-more-btn">
+            Đọc thêm
+            <img src="/asset/icons/arrowright.png" alt="" />
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cột phải - Danh sách bài viết (40%) -->
+    <div class="blog-right-column">
+      <div class="posts-header">
+        <h3 class="posts-title">Tất cả bài viết</h3>
+        <button routerLink="/blog" class="view-all">
+          Tất cả
+          <img src="/asset/icons/arrowright_dark.png" alt="" />
+        </button>
+      </div>
+      <div class="posts-items" id="posts-container">
+        <!-- Posts will be dynamically loaded here -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Scroll to Top Button -->
+<button
+  class="scroll-to-top"
+  [class.visible]="showScrollButton"
+  (click)="scrollToTop()"
+  aria-label="Scroll to top"
+>
+  <img src="/asset/icons/arrowup_lightgreen.png" alt="Scroll to top" />
+</button>

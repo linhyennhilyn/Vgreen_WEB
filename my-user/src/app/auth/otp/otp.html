@@ -1,0 +1,59 @@
+<div class="otp-container">
+  <div class="otp-form">
+    <!-- Back Button -->
+    <button type="button" class="back-btn" (click)="goBack()">
+      <img src="/asset/icons/arrowleft_circle_dark.png" alt="Back" class="back-icon" />
+    </button>
+
+    <h1 class="otp-title">NHẬP MÃ OTP</h1>
+    <p class="otp-description">Mã OTP đã được gửi đến {{ phoneNumber }}</p>
+
+    <form class="form" (ngSubmit)="onSubmit()">
+      <!-- OTP Input Fields -->
+      <div class="otp-inputs">
+        <input
+          *ngFor="let digit of otpDigits; let i = index"
+          #otpInput
+          type="text"
+          maxlength="1"
+          class="otp-digit"
+          [value]="otpDigits[i]"
+          name="otp{{ i }}"
+          (keydown)="onKeyDown($event, i)"
+          (input)="onInput($event, i)"
+          (paste)="onPaste($event)"
+          autocomplete="one-time-code"
+          inputmode="numeric"
+        />
+      </div>
+
+      <!-- Error Message -->
+      <div class="error-container">
+        @if (otpError) {
+        <div class="error-message">{{ otpError }}</div>
+        }
+      </div>
+
+      <!-- Timer and Resend -->
+      <div class="otp-footer">
+        <div class="timer-section">
+          @if (countdown > 0) {
+          <span class="timer-text">
+            Mã OTP hết hiệu lực sau
+            <span class="countdown-number">{{ countdown }}</span>
+            giây
+          </span>
+          } @else {
+          <div class="resend-text">
+            <span class="resend-label">Gửi lại mã?</span>
+            <button type="button" class="resend-link" (click)="resendOtp()">Gửi lại</button>
+          </div>
+          }
+        </div>
+      </div>
+
+      <!-- Submit Button - Hidden since we have auto-verify -->
+      <!-- <button type="submit" class="otp-btn" [disabled]="!isOtpComplete()">Xác thực</button> -->
+    </form>
+  </div>
+</div>

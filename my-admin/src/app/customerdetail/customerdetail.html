@@ -1,0 +1,313 @@
+<!-- Customer Detail Page -->
+<div class="customer-detail-page" [class.edit-mode]="isEditMode">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <span>Quản trị viên</span>
+    <span class="separator">/</span>
+    <span class="clickable" (click)="goBack()">Quản lý khách hàng</span>
+    <span class="separator">/</span>
+    <span class="current">Hồ sơ khách hàng</span>
+  </div>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1 class="page-title">HỒ SƠ KHÁCH HÀNG</h1>
+    <div class="header-actions" *ngIf="!isEditMode">
+      <button class="btn-edit-profile" (click)="toggleEditMode()">
+        <img src="/asset/icons/edit_dark.png" alt="Edit">
+        <span>Chỉnh sửa</span>
+      </button>
+    </div>
+    <div class="header-actions" *ngIf="isEditMode">
+      <button class="btn-cancel-edit" (click)="cancelEdit()">
+        <span>Hủy</span>
+      </button>
+      <button class="btn-save-edit" (click)="saveCustomer()">
+        <span>✓</span>
+        <span>Lưu thay đổi</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Back Button -->
+  <button class="btn-back" (click)="goBack()">
+    <img src="/asset/icons/arrowleft.png" alt="Back">
+    <span>{{isEditMode ? 'Hủy chỉnh sửa' : 'Quay lại trang khách hàng'}}</span>
+  </button>
+
+  <!-- Main Content -->
+  <div class="content-wrapper">
+    <!-- Left Column -->
+    <div class="left-column">
+      <!-- Customer Info Card -->
+      <div class="customer-info-card" [class.editing]="isEditMode">
+        <div class="edit-indicator" *ngIf="isEditMode">Chế độ chỉnh sửa</div>
+        <!-- Avatar and Basic Info -->
+        <div class="customer-header">
+          <div class="avatar-container">
+            <img src="/asset/icons/customer_dark.png" alt="Avatar" class="avatar">
+            <div class="vip-badge" *ngIf="customerData.customerType === 'VIP'">
+              <span>★</span>
+            </div>
+          </div>
+          <div class="basic-info">
+            <!-- Name - Editable -->
+            <h2 class="customer-name" *ngIf="!isEditMode">{{customerData.name}}</h2>
+            <input type="text" class="edit-input edit-name" [(ngModel)]="editableData.name" placeholder="Tên khách hàng" *ngIf="isEditMode">
+            
+            <!-- ID - Read only -->
+            <div class="info-row">
+              <strong>Mã khách hàng:</strong>
+              <span>{{customerData.id}}</span>
+            </div>
+            
+            <!-- Gender - Editable -->
+            <div class="info-row" [class.editing]="isEditMode">
+              <strong>Giới tính:</strong>
+              <span *ngIf="!isEditMode">{{customerData.gender}}</span>
+              <select class="edit-select" [(ngModel)]="editableData.gender" *ngIf="isEditMode">
+                <option value="">-- Chọn giới tính --</option>
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+              </select>
+            </div>
+            
+            <!-- Email - Editable -->
+            <div class="info-row" [class.editing]="isEditMode">
+              <strong>Email:</strong>
+              <span *ngIf="!isEditMode">{{customerData.email}}</span>
+              <input type="email" class="edit-input-inline" [(ngModel)]="editableData.email" placeholder="Nhập email khách hàng" *ngIf="isEditMode">
+            </div>
+            
+            <!-- Birthdate - Editable -->
+            <div class="info-row" [class.editing]="isEditMode">
+              <strong>Ngày sinh:</strong>
+              <span *ngIf="!isEditMode">{{customerData.birthdate}}</span>
+              <input type="text" class="edit-input-inline" [(ngModel)]="editableData.birthdate" placeholder="Ví dụ: 01/01/2000" *ngIf="isEditMode">
+            </div>
+          </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-label">Đơn hàng gần nhất</span>
+            <span class="stat-value">{{customerData.recentOrder}}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Tổng tiền đã mua</span>
+            <span class="stat-value">{{customerData.totalSpent}}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Tổng đơn hàng</span>
+            <span class="stat-value">{{customerData.totalOrders}}</span>
+          </div>
+        </div>
+
+        <!-- Member Tier Badge -->
+        <div class="member-tier-section">
+          <span class="tier-label">Hạng thành viên:</span>
+          <span class="tier-badge" [ngClass]="'tier-' + customerData.customerType.toLowerCase()">
+            {{customerData.memberTier}}
+          </span>
+          <span class="tier-type">({{customerData.customerType}})</span>
+          <span class="tier-readonly-note" *ngIf="isEditMode">(Không thể chỉnh sửa)</span>
+        </div>
+      </div>
+
+      <!-- Orders Section -->
+      <div class="orders-section">
+        <div class="section-header">
+          <h3 class="section-title">Đơn hàng</h3>
+          <a href="javascript:void(0)" class="view-all-link" (click)="viewAllOrders()" *ngIf="orders.length > 0">
+            Xem tất cả
+          </a>
+        </div>
+        <div class="orders-content">
+          <div class="empty-state" *ngIf="orders.length === 0">
+            <p>Hiện tại khách hàng chưa có đơn hàng nào</p>
+          </div>
+          
+          <!-- Orders List -->
+          <div class="orders-list" *ngIf="orders.length > 0">
+            <div class="order-item" *ngFor="let order of orders" (click)="viewOrderDetail(order.OrderID)">
+              <div class="order-header">
+                <div class="order-id">
+                  <strong>Đơn hàng #{{order.OrderID}}</strong>
+                </div>
+                <span class="order-status-badge" [ngClass]="getStatusClass(order.status)">
+                  {{getStatusLabel(order.status)}}
+                </span>
+              </div>
+              <div class="order-info">
+                <div class="order-date">
+                  <span class="label">Ngày đặt:</span>
+                  <span>{{formatOrderDate(order)}}</span>
+                </div>
+                <div class="order-products">
+                  <span class="label">Sản phẩm:</span>
+                  <span>{{order.items?.length || 0}} sản phẩm</span>
+                </div>
+                <div class="order-total">
+                  <span class="label">Tổng tiền:</span>
+                  <strong>{{formatCurrency(order.totalAmount || 0)}}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="right-column">
+      <!-- Contact Info Card -->
+      <div class="info-card" [class.editing]="isEditMode">
+        <h3 class="card-title">Thông tin liên hệ</h3>
+        <div class="edit-indicator" *ngIf="isEditMode">Chế độ chỉnh sửa</div>
+        <div class="card-content">
+          <!-- Email -->
+          <a [href]="'mailto:' + customerData.email" class="email-link" *ngIf="!isEditMode && customerData.email !== '---'">
+            {{customerData.email}}
+          </a>
+          <span *ngIf="!isEditMode && customerData.email === '---'" class="text-muted">
+            {{customerData.email}}
+          </span>
+          <input type="email" class="edit-input-full" [(ngModel)]="editableData.email" placeholder="Nhập địa chỉ email" *ngIf="isEditMode">
+          
+          <!-- Phone -->
+          <div class="info-detail" [class.editing]="isEditMode">
+            <strong>Số điện thoại:</strong>
+            <span *ngIf="!isEditMode">{{customerData.phone}}</span>
+            <input type="tel" class="edit-input-inline" [(ngModel)]="editableData.phone" placeholder="Ví dụ: 0123456789" *ngIf="isEditMode">
+          </div>
+          
+          <!-- Join Date - Read only -->
+          <div class="info-detail">
+            <strong>Ngày tham gia:</strong>
+            <span>{{customerData.joinDate}}</span>
+          </div>
+          
+          <!-- Email Consent -->
+          <div class="info-status">
+            <label class="checkbox-label" *ngIf="isEditMode">
+              <input type="checkbox" [(ngModel)]="editableData.emailConsent">
+              <span>Đồng ý nhận email quảng cáo</span>
+            </label>
+            <div *ngIf="!isEditMode && !customerData.emailConsent">Không đồng ý nhận email quảng cáo</div>
+            <div *ngIf="!isEditMode && customerData.emailConsent">Đồng ý nhận email quảng cáo</div>
+            <div *ngIf="!customerData.hasAccount">Chưa có tài khoản</div>
+            <div *ngIf="customerData.hasAccount">Đã có tài khoản</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Addresses Card -->
+      <div class="info-card" [class.editing]="isEditMode">
+        <h3 class="card-title">Địa chỉ giao hàng</h3>
+        <div class="edit-indicator" *ngIf="isEditMode">Chế độ chỉnh sửa</div>
+        <div class="card-content">
+          
+          <!-- View mode - List all addresses -->
+          <div class="addresses-list" *ngIf="!isEditMode">
+            <div class="address-item" *ngFor="let address of addresses; let i = index" [class.default-address]="address.isDefault">
+              <div class="address-item-header">
+                <strong>{{customerData.name}}</strong>
+                <span class="default-badge" *ngIf="address.isDefault">Mặc định</span>
+              </div>
+              <div class="address-text">{{address.fullAddress}}</div>
+            </div>
+            <div class="no-address" *ngIf="addresses.length === 0">
+              <p>Chưa có địa chỉ nào</p>
+            </div>
+          </div>
+
+          <!-- Edit mode - Manage addresses -->
+          <div class="addresses-management" *ngIf="isEditMode">
+            <!-- List existing addresses -->
+            <div class="address-item editable" *ngFor="let address of addresses; let i = index" [class.default-address]="address.isDefault">
+              <div class="address-item-header">
+                <strong>{{customerData.name}}</strong>
+                <span class="default-badge" *ngIf="address.isDefault">Mặc định</span>
+              </div>
+              <div class="address-text">{{address.fullAddress}}</div>
+              <div class="address-actions">
+                <button class="btn-set-default" (click)="setDefaultAddress(i)" *ngIf="!address.isDefault">
+                  Đặt làm mặc định
+                </button>
+                <button class="btn-edit-address" (click)="startEditingAddress(i)">
+                  Sửa
+                </button>
+                <button class="btn-delete-address" (click)="deleteAddress(i)" [disabled]="addresses.length === 1">
+                  Xóa
+                </button>
+              </div>
+            </div>
+
+            <!-- Add new address button -->
+            <button class="btn-add-address" (click)="startAddingAddress()" *ngIf="!isAddingNewAddress && editingAddressIndex < 0">
+              <span>+</span> Thêm địa chỉ mới
+            </button>
+
+            <!-- Address form (for adding/editing) -->
+            <div class="address-form" *ngIf="isAddingNewAddress || editingAddressIndex >= 0">
+              <h4 class="form-title">{{editingAddressIndex >= 0 ? 'Chỉnh sửa địa chỉ' : 'Thêm địa chỉ mới'}}</h4>
+              
+              <!-- Province/City -->
+              <div class="address-field">
+                <label class="address-label">Tỉnh/Thành phố:</label>
+                <select class="address-select" [(ngModel)]="selectedProvince" (change)="onProvinceChange()">
+                  <option value="">-- Chọn Tỉnh/Thành phố --</option>
+                  <option *ngFor="let province of provinces" [value]="province.code">
+                    {{province.name}}
+                  </option>
+                </select>
+              </div>
+
+              <!-- District -->
+              <div class="address-field" *ngIf="selectedProvince">
+                <label class="address-label">Quận/Huyện:</label>
+                <select class="address-select" [(ngModel)]="selectedDistrict" (change)="onDistrictChange()">
+                  <option value="">-- Chọn Quận/Huyện --</option>
+                  <option *ngFor="let district of districts" [value]="district.code">
+                    {{district.name}}
+                  </option>
+                </select>
+              </div>
+
+              <!-- Ward -->
+              <div class="address-field" *ngIf="selectedDistrict">
+                <label class="address-label">Phường/Xã:</label>
+                <select class="address-select" [(ngModel)]="selectedWard">
+                  <option value="">-- Chọn Phường/Xã --</option>
+                  <option *ngFor="let ward of wards" [value]="ward">
+                    {{ward}}
+                  </option>
+                </select>
+              </div>
+
+              <!-- Street Address -->
+              <div class="address-field">
+                <label class="address-label">Số nhà, Tên đường:</label>
+                <input type="text" class="address-input" [(ngModel)]="streetAddress" placeholder="Ví dụ: Số 10, Ngõ 5, Đường Nguyễn Trãi">
+              </div>
+
+              <!-- Preview -->
+              <div class="address-preview" *ngIf="streetAddress || selectedWard || selectedDistrict || selectedProvince">
+                <strong>Địa chỉ xem trước:</strong>
+                <div class="preview-text">{{buildFullAddress()}}</div>
+              </div>
+
+              <!-- Form actions -->
+              <div class="form-actions">
+                <button class="btn-cancel-form" (click)="cancelAddressEdit()">Hủy</button>
+                <button class="btn-save-form" (click)="saveAddress()">Lưu địa chỉ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

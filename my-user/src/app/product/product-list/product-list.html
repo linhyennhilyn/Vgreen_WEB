@@ -1,0 +1,497 @@
+<!-- Mobile Filter Button -->
+<button class="mobile-filter-btn" (click)="toggleMobileSidebar()" *ngIf="!isMobileSidebarOpen">
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+  >
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <line x1="3" y1="12" x2="21" y2="12"></line>
+    <line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</button>
+
+<!-- Mobile Overlay -->
+<div class="mobile-filter-overlay" *ngIf="isMobileSidebarOpen" (click)="onOverlayClick()"></div>
+
+<!-- Breadcrumb (Above everything) -->
+<div class="breadcrumb-container">
+  <div class="breadcrumb">
+    <span *ngFor="let item of breadcrumb; let last = last; let i = index" class="breadcrumb-item">
+      <span *ngIf="!last" class="breadcrumb-link" (click)="onBreadcrumbClick(item, i)">{{
+        item
+      }}</span>
+      <span *ngIf="last" class="breadcrumb-current">{{ item }}</span>
+      <span *ngIf="!last" class="breadcrumb-separator"> > </span>
+    </span>
+  </div>
+</div>
+
+<div class="product-list-container">
+  <div class="main-content">
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" #sidebar [class.mobile-open]="isMobileSidebarOpen">
+        <!-- Mobile Close Button -->
+        <button class="mobile-close-btn" (click)="closeMobileSidebar()" *ngIf="isMobileSidebarOpen">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <!-- Main Title -->
+        <div class="sidebar-header">
+          <h2 class="main-title">{{ getCurrentTitle() }}</h2>
+        </div>
+
+        <!-- Navigation Section -->
+        <div class="navigation-section">
+          <!-- Categories View -->
+          <div *ngIf="currentView === 'categories'" class="category-list">
+            <!-- All Products Option -->
+            <div class="all-products-option" (click)="onBreadcrumbClick('Sản phẩm', 1)">
+              <span class="all-products-text">Tất cả sản phẩm</span>
+            </div>
+
+            <div
+              *ngFor="let category of categories"
+              class="category-item"
+              (click)="onCategoryClick(category)"
+            >
+              <span class="category-name">{{ category }}</span>
+              <span class="category-arrow">
+                <img src="/asset/icons/arrowright_lightgreen.png" alt="arrow" class="arrow-icon" />
+              </span>
+            </div>
+          </div>
+
+          <!-- Subcategories View -->
+          <div *ngIf="currentView === 'subcategories'" class="subcategory-list">
+            <!-- All Products Option -->
+            <div
+              class="all-products-option"
+              [class.selected]="currentSubcategory === ''"
+              (click)="onBreadcrumbClick(currentCategory, 2)"
+            >
+              <span class="all-products-text">Tất cả sản phẩm</span>
+            </div>
+
+            <div
+              *ngFor="let subcategory of subcategories"
+              class="subcategory-item"
+              [class.selected]="currentSubcategory === subcategory"
+              (click)="onSubcategoryClick(subcategory, $event)"
+            >
+              <span class="subcategory-name">{{ subcategory }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price Range Filter -->
+        <div class="filter-section">
+          <div class="filter-section-header" (click)="toggleSection('price')">
+            <h4 class="filter-title">Khoảng giá</h4>
+            <span class="section-arrow" [class.expanded]="expandedSections['price']">
+              <img src="/asset/icons/arrowdown_lightgreen.png" alt="toggle" class="arrow-icon" />
+            </span>
+          </div>
+          <div class="price-range" *ngIf="expandedSections['price']">
+            <div class="price-range-container">
+              <div class="price-input">
+                <div class="field">
+                  <input
+                    type="text"
+                    class="input-min"
+                    [value]="formatPrice(minPrice)"
+                    (input)="onMinInputChange($event)"
+                  />
+                </div>
+                <span class="price-separator">-</span>
+                <div class="field">
+                  <input
+                    type="text"
+                    class="input-max"
+                    [value]="formatPrice(maxPrice)"
+                    (input)="onMaxInputChange($event)"
+                  />
+                </div>
+              </div>
+
+              <div class="slider">
+                <div
+                  class="progress"
+                  [style.left.%]="getSliderLeft()"
+                  [style.right.%]="getSliderRight()"
+                ></div>
+              </div>
+
+              <div class="range-input">
+                <input
+                  type="range"
+                  class="range-min"
+                  [min]="0"
+                  [max]="actualMaxPrice"
+                  [value]="minPrice"
+                  [step]="1000"
+                  (input)="onMinSliderChange($event)"
+                />
+                <input
+                  type="range"
+                  class="range-max"
+                  [min]="0"
+                  [max]="actualMaxPrice"
+                  [value]="maxPrice"
+                  [step]="1000"
+                  (input)="onMaxSliderChange($event)"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rating Filter -->
+        <div class="filter-section">
+          <div class="filter-section-header" (click)="toggleSection('rating')">
+            <h4 class="filter-title">Đánh giá</h4>
+            <span class="section-arrow" [class.expanded]="expandedSections['rating']">
+              <img src="/asset/icons/arrowdown_lightgreen.png" alt="toggle" class="arrow-icon" />
+            </span>
+          </div>
+          <div class="filter-options" *ngIf="expandedSections['rating']">
+            <label *ngFor="let rating of ratings" class="filter-option">
+              <input
+                type="radio"
+                name="rating"
+                [checked]="selectedRating === rating"
+                (change)="onRatingChange(rating)"
+              />
+              <span class="checkmark"></span>
+              <span class="option-text">
+                <img
+                  *ngFor="let star of [1, 2, 3, 4, 5]"
+                  class="star"
+                  [src]="
+                    star <= rating
+                      ? 'asset/icons/star_yellow.png'
+                      : 'asset/icons/star_outline_yellow.png'
+                  "
+                  alt="star"
+                />
+                <span *ngIf="rating !== 5"> trở lên</span>
+              </span>
+              <span class="rating-count">{{ getRatingCount(rating) }}</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Promotion Filter - Chỉ hiển thị nếu có sản phẩm có khuyến mãi -->
+        <div class="filter-section" *ngIf="hasPromotions()">
+          <div class="filter-section-header" (click)="toggleSection('promotion')">
+            <h4 class="filter-title">Khuyến mãi</h4>
+            <span class="section-arrow" [class.expanded]="expandedSections['promotion']">
+              <img src="/asset/icons/arrowdown_lightgreen.png" alt="toggle" class="arrow-icon" />
+            </span>
+          </div>
+          <div class="filter-options" *ngIf="expandedSections['promotion']">
+            <label *ngFor="let promotion of getAvailablePromotions()" class="filter-option">
+              <input
+                type="checkbox"
+                [checked]="selectedPromotions.includes(promotion)"
+                (change)="onPromotionChange(promotion, $event.target.checked)"
+              />
+              <span class="checkmark"></span>
+              <span class="option-text">{{ promotion }}</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Color Filter - Chỉ hiển thị nếu có sản phẩm có màu sắc -->
+        <div class="filter-section" *ngIf="hasColors()">
+          <div class="filter-section-header" (click)="toggleSection('color')">
+            <h4 class="filter-title">Màu sắc</h4>
+            <span class="section-arrow" [class.expanded]="expandedSections['color']">
+              <img src="/asset/icons/arrowdown_lightgreen.png" alt="toggle" class="arrow-icon" />
+            </span>
+          </div>
+          <div class="filter-options" *ngIf="expandedSections['color']">
+            <label *ngFor="let color of getAvailableColors()" class="filter-option">
+              <input
+                type="checkbox"
+                [checked]="selectedColors.includes(color)"
+                (change)="onColorChange(color, $event.target.checked)"
+              />
+              <span class="checkmark"></span>
+              <span class="option-text">{{ color }}</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-products">
+        <div class="product-main-content" #productMainContent>
+          <!-- Promotion Banner -->
+          <div class="promotion-banner">
+            <div class="promotion-header">
+              <h2 class="promotion-title">KHUYẾN MÃI SỐC</h2>
+            </div>
+
+            <div class="promotion-carousel">
+              <button
+                class="carousel-arrow carousel-prev"
+                (click)="prevPromotionBox()"
+                [disabled]="currentBoxIndex === 0"
+              >
+                <img
+                  src="/asset/icons/arrowleft_circle_blur.png"
+                  alt="previous"
+                  class="arrow-icon"
+                />
+              </button>
+
+              <div class="promotion-boxes">
+                <div
+                  *ngFor="let product of getVisibleBoxes()"
+                  class="promotion-box"
+                  (click)="goToProductDetail(product)"
+                  style="cursor: pointer"
+                >
+                  <div class="box-content">
+                    <img
+                      [src]="getProductImage(product)"
+                      [alt]="product.ProductName"
+                      class="product-image"
+                    />
+                    <div class="product-info-section">
+                      <h3 class="product-name">{{ product.ProductName }}</h3>
+                      <div class="product-price">
+                        <span class="current-price">{{ formatPrice(product.Price) }}</span>
+                      </div>
+                      <div class="original-price-group" *ngIf="hasDiscount(product)">
+                        <span class="original-price">{{
+                          formatPrice(product.OriginalPrice!)
+                        }}</span>
+                        <span class="discount-badge">-{{ getDiscountPercent(product) }}%</span>
+                      </div>
+                      <button
+                        class="addcart-btn"
+                        (click)="addToCart(product); $event.stopPropagation()"
+                      >
+                        <img src="/asset/icons/shop.png" alt="Add to cart" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                class="carousel-arrow carousel-next"
+                (click)="nextPromotionBox()"
+                [disabled]="currentBoxIndex >= promotionProducts.length - 3"
+              >
+                <img src="/asset/icons/arrowright_circle_blur.png" alt="next" class="arrow-icon" />
+              </button>
+            </div>
+
+            <div class="carousel-dots">
+              <button
+                *ngFor="let dot of getBoxDots(); let i = index"
+                class="dot"
+                [class.active]="i === currentBoxIndex"
+                (click)="goToBox(i)"
+              ></button>
+            </div>
+          </div>
+
+          <!-- Page Title Section -->
+          <div class="page-title-section">
+            <h2 class="page-title">
+              <span class="page-title-main">{{ getCurrentCategoryTitle() }}</span>
+              <span class="page-title-count">{{ getCurrentCategoryCount() }}</span>
+            </h2>
+          </div>
+
+          <!-- Sort and Filter Bar -->
+          <div class="sort-filter-bar">
+            <div class="sort-section">
+              <span class="sort-label">Sắp xếp theo</span>
+              <div class="sort-buttons">
+                <button
+                  class="sort-button"
+                  [class.active]="categorySort === 'newest'"
+                  (click)="onSortChange('newest')"
+                >
+                  Mới nhất
+                </button>
+                <button
+                  class="sort-button"
+                  [class.active]="categorySort === 'bestseller'"
+                  (click)="onSortChange('bestseller')"
+                >
+                  Bán chạy
+                </button>
+                <button
+                  class="sort-button price-sort"
+                  [class.active]="
+                    categorySort === 'name' &&
+                    (priceSort === 'price-low' || priceSort === 'price-high')
+                  "
+                  (click)="togglePriceSort()"
+                >
+                  {{ getPriceSortText() }}
+                  <span class="price-arrow" [class.asc]="priceSort === 'price-low'">
+                    <img src="/asset/icons/arrow_down.png" alt="sort" class="arrow-icon" />
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Active Filter Chips Container -->
+            <div class="filters-scroll-container" *ngIf="getActiveFilters().length > 0">
+              <div class="active-filters" #filtersContainer>
+                <div *ngFor="let filter of getActiveFilters()" class="filter-chip">
+                  <span class="chip-label">{{ filter.label }}</span>
+                  <button class="chip-remove" (click)="removeFilter(filter)">×</button>
+                </div>
+              </div>
+
+              <div class="nav-arrows">
+                <button class="nav-arrow" (click)="scrollFilters('left')">
+                  <img
+                    src="/asset/icons/arrowright_lightgreen.png"
+                    alt="left"
+                    class="arrow-icon"
+                    style="transform: rotate(180deg)"
+                  />
+                </button>
+                <button class="nav-arrow" (click)="scrollFilters('right')">
+                  <img
+                    src="/asset/icons/arrowright_lightgreen.png"
+                    alt="right"
+                    class="arrow-icon"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Loading State -->
+          <!-- <div *ngIf="isLoading" class="loading-container">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Đang tải sản phẩm...</p>
+          </div> -->
+
+          <!-- Product Grid -->
+          <div *ngIf="!isLoading && displayedProducts.length > 0" class="product-grid">
+            <div
+              *ngFor="let product of displayedProducts"
+              class="product-card"
+              [attr.data-product-id]="product.sku || product._id"
+              (click)="goToProductDetail(product._id)"
+            >
+              <div class="product-image-container">
+                <img
+                  [src]="getProductImage(product)"
+                  [alt]="product.ProductName"
+                  class="product-image"
+                />
+                <!-- Buy 1 Get 1 Tag -->
+                <div class="buy1get1-tag" *ngIf="hasBuy1Get1Promotion(product)">Mua 1 tặng 1</div>
+                <button
+                  class="favorite-btn"
+                  (click)="toggleFavorite(product); $event.stopPropagation()"
+                  [class.favorited]="isFavorite(product)"
+                >
+                  <div class="heart-icon"></div>
+                </button>
+              </div>
+
+              <div class="product-info">
+                <div class="product-header">
+                  <h3 class="product-name">{{ product.ProductName }}</h3>
+                  <div class="product-rating" *ngIf="hasReviews(product)">
+                    <span class="rating-number">{{ formatRating(product.Rating!) }}</span>
+                    <img src="/asset/icons/star_yellow.png" alt="star" class="star-icon" />
+                    <!-- <span class="review-count" *ngIf="product.ReviewCount"
+                      >({{ product.ReviewCount }})</span
+                    > -->
+                  </div>
+                </div>
+
+                <div class="product-stats">
+                  <div class="purchase-count">{{ getPurchaseCount(product) }} lượt mua</div>
+                </div>
+
+                <div class="product-price-section">
+                  <!-- Hiển thị giá khuyến mãi nếu có discount hợp lệ -->
+                  <div *ngIf="hasDiscount(product)" class="price-container-promotion">
+                    <div class="discounted-price-group">
+                      <span class="discounted-price">{{ formatPrice(product.Price) }}</span>
+                      <span class="unit">/{{ product.Weight }}</span>
+                    </div>
+                    <div class="price-group">
+                      <span class="original-price">{{
+                        formatPrice(getOriginalPrice(product))
+                      }}</span>
+                      <span class="discount-badge">-{{ getDiscountPercent(product) }}%</span>
+                    </div>
+                  </div>
+                  <!-- Hiển thị giá thường nếu không có discount hợp lệ -->
+                  <div *ngIf="!hasDiscount(product)" class="price-group-normal">
+                    <span class="price-value">{{ formatPrice(product.Price) }}</span>
+                    <span class="price-unit">/{{ product.Weight }}</span>
+                  </div>
+                </div>
+
+                <button
+                  class="add-to-cart-btn"
+                  (click)="addToCart(product); $event.stopPropagation()"
+                >
+                  Thêm vào giỏ
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Load More Button -->
+          <div *ngIf="!isLoading && hasMoreProducts" class="load-more-container">
+            <button (click)="loadMoreProducts()" class="load-more-btn">
+              <span>Xem thêm</span>
+            </button>
+          </div>
+
+          <!-- Error Message -->
+          <div *ngIf="!isLoading && hasError" class="no-products">
+            <p>Không thể tải dữ liệu sản phẩm. Vui lòng thử lại sau.</p>
+          </div>
+
+          <!-- No Products Message -->
+          <div *ngIf="!isLoading && !hasError && filteredProducts.length === 0" class="no-products">
+            <p>Không tìm thấy sản phẩm nào.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scroll to Top Button -->
+<button
+  class="scroll-to-top"
+  [class.visible]="showScrollButton"
+  (click)="scrollToTop()"
+  aria-label="Scroll to top"
+>
+  <img src="/asset/icons/arrowup_lightgreen.png" alt="Scroll to top" />
+</button>

@@ -1,0 +1,513 @@
+/* ===== NOTIFICATION PAGE LAYOUT ===== */
+.notification-page {
+  width: 100%;
+}
+
+/* ===== MAIN CONTENT ===== */
+.notification-content {
+  width: 100%;
+  padding: 0;
+  background: transparent;
+}
+
+.content-header {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content-header h1 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #1a5a04;
+  margin: 40px 0 8px;
+  font-family: 'SF Pro', sans-serif;
+}
+
+.content-header p {
+  font-size: 16px;
+  color: #808080;
+  margin: 0;
+  font-family: 'Lexend', sans-serif;
+}
+
+.delete-all-btn {
+  padding: 10px 20px;
+  background: #c42326;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Lexend', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.delete-all-btn:hover {
+  background: #a01d20;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(196, 35, 38, 0.3);
+}
+
+/* ===== TAB NAVIGATION ===== */
+.tab-navigation {
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0; /* Không có gap giữa các phần tử */
+  background: white;
+  border-radius: 12px;
+  padding: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.tab-list {
+  display: flex;
+  gap: 0;
+  justify-content: space-between; /* Dàn đều các tab trong container */
+  background: transparent; /* Không có background riêng */
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+  min-width: 0; /* Cho phép shrink */
+  /* Ẩn scrollbar nhưng vẫn cho phép scroll */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.tab-list::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Tab Scroll Buttons */
+.tab-scroll-btn {
+  display: none; /* Ẩn mặc định, chỉ hiện ở mobile */
+  flex-shrink: 0;
+  width: 32px;
+  height: 40px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+  margin: 0 2px; /* Khoảng cách nhỏ bên trong khung */
+}
+
+.tab-scroll-btn:not(.hidden) {
+  display: flex;
+}
+
+.tab-scroll-btn:hover {
+  background: #f0f0f0;
+}
+
+.tab-scroll-btn.hidden {
+  display: none;
+}
+
+.scroll-arrow {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.scroll-arrow.left {
+  transform: rotate(180deg);
+}
+
+.scroll-arrow.right {
+  transform: rotate(0deg);
+}
+
+.tab-button {
+  flex: 0 0 auto; /* Không grow, không shrink, width tự động theo nội dung */
+  padding: 16px 24px;
+  border: none;
+  background: transparent;
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: 'Lexend', sans-serif;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tab-button:hover {
+  color: #349409;
+}
+
+.tab-button.active {
+  color: #349409;
+  font-weight: 600;
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: #256e05;
+  border-radius: 2px;
+}
+
+.tab-label {
+  flex: 1;
+}
+
+.tab-badge {
+  background: #c42326;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 50%;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* ===== NOTIFICATION CONTAINER ===== */
+.notification-container {
+  overflow-y: auto;
+  max-height: calc(100vh - 300px); /* Scroll với max-height */
+  margin-bottom: 60px;
+}
+
+.notification-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.notification-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.notification-container::-webkit-scrollbar-thumb {
+  background: #256e05;
+  border-radius: 4px;
+}
+
+.notification-container::-webkit-scrollbar-thumb:hover {
+  background: #3cb018;
+}
+
+/* ===== NOTIFICATION LIST ===== */
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px; /* Padding cho content bên trong */
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(52, 148, 9, 0.1);
+  min-height: 400px;
+}
+
+.notification-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  border-left: 4px solid transparent;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.notification-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.notification-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.notification-card.unread {
+  background: #ebeeff;
+  border-left: 4px solid #0023dd;
+}
+
+.notification-content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.notification-main {
+  flex: 1;
+}
+
+.notification-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 8px 0;
+  font-family: 'Lexend', sans-serif;
+  line-height: 1.4;
+}
+
+.notification-description {
+  font-size: 14px;
+  color: #808080;
+  margin: 0 0 12px 0;
+  font-family: 'Lexend', sans-serif;
+  line-height: 1.5;
+}
+
+.notification-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.notification-timestamp {
+  font-size: 13px;
+  color: #999999;
+  font-family: 'Lexend', sans-serif;
+}
+
+.notification-indicator {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 4px;
+}
+
+.unread-dot {
+  width: 8px;
+  height: 8px;
+  background: #3498db;
+  border-radius: 50%;
+  display: block;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 20px;
+  min-height: 300px;
+}
+
+.empty-icon {
+  font-size: 64px;
+  color: #ccc;
+  margin-bottom: 24px;
+  opacity: 0.6;
+}
+
+.empty-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #c2c2c2;
+  margin: 0 0 12px;
+  font-family: 'Lexend', sans-serif;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .notification-content {
+    padding: 24px;
+  }
+
+  .content-header h1 {
+    font-size: 28px;
+  }
+
+  .notification-container {
+    padding: 24px;
+  }
+
+  .tab-button {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .notification-content {
+    padding: 0;
+  }
+
+  .content-header h1 {
+    font-size: 24px;
+  }
+
+  .notification-container {
+    padding: 0;
+  }
+
+  .tab-scroll-btn {
+    display: flex !important;
+  }
+
+  /* Chuyển tab-list thành carousel */
+  .tab-list {
+    flex-direction: row;
+    justify-content: flex-start; /* Bỏ space-between để scroll được */
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 0;
+    /* Ẩn scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .tab-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-button {
+    padding: 16px 20px;
+    text-align: center;
+    flex-shrink: 0; /* Không shrink để giữ kích thước */
+  }
+
+  .tab-button.active::after {
+    display: none;
+  }
+
+  .notification-card {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .notification-icon {
+    font-size: 28px;
+  }
+
+  .notification-icon img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .notification-content-wrapper {
+    gap: 12px;
+  }
+
+  .empty-state {
+    padding: 60px 20px;
+  }
+
+  .empty-icon {
+    font-size: 48px;
+  }
+
+  .empty-title {
+    font-size: 20px;
+  }
+
+  .empty-description {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .tab-button {
+    padding: 14px 18px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .notification-content {
+    padding: 12px;
+  }
+
+  .content-header h1 {
+    font-size: 20px;
+  }
+
+  .content-header p {
+    font-size: 14px;
+  }
+
+  .notification-container {
+    padding: 0;
+  }
+
+  .tab-button {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .notification-card {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .notification-icon {
+    font-size: 24px;
+  }
+
+  .notification-icon img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .notification-content-wrapper {
+    gap: 8px;
+  }
+
+  .notification-title {
+    font-size: 15px;
+  }
+
+  .notification-description {
+    font-size: 13px;
+  }
+
+  .notification-timestamp {
+    font-size: 12px;
+  }
+
+  .empty-state {
+    padding: 40px 16px;
+  }
+
+  .empty-icon {
+    font-size: 40px;
+  }
+
+  .empty-title {
+    font-size: 18px;
+  }
+
+  .empty-description {
+    font-size: 13px;
+  }
+}

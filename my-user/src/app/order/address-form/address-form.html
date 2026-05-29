@@ -1,0 +1,365 @@
+<!-- Modal Overlay -->
+<div class="modal-overlay" (click)="onClose()">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h2>Thông tin người nhận</h2>
+      <button class="close-btn" (click)="onClose()" aria-label="Đóng">
+        <span><img src="/asset/icons/clear_dark.png" alt="Close" class="close-icon" /></span>
+      </button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body">
+      <!-- Thông tin người nhận -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <img src="/asset/icons/person_light_green.png" alt="user" class="user-icon" />
+          <h3>Thông tin cá nhân</h3>
+        </div>
+
+        <div class="form-group">
+          <label for="fullName">Họ và tên <sup>*</sup></label>
+          <div class="input-with-clear">
+            <input
+              type="text"
+              id="fullName"
+              [(ngModel)]="addressInfo.fullName"
+              placeholder="Nhập tên người nhận"
+              [class.error]="errors.fullName"
+              [class.valid]="isFullNameValid"
+              (blur)="validateFullName()"
+              (input)="onFullNameInput()"
+              #fullNameInput
+            />
+            <button
+              *ngIf="addressInfo.fullName?.trim()"
+              class="clear-btn"
+              (click)="clearFullName(fullNameInput)"
+              type="button"
+              aria-label="Xóa tên"
+            >
+              <img src="/asset/icons/clear_dark.png" alt="Clear" class="clear-icon" />
+            </button>
+          </div>
+          <div class="error-message" *ngIf="errors.fullName">{{ errors.fullName }}</div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Số điện thoại <sup>*</sup></label>
+          <div class="input-with-clear">
+            <input
+              type="tel"
+              id="phone"
+              [(ngModel)]="addressInfo.phone"
+              placeholder="Nhập số điện thoại"
+              [class.error]="errors.phone"
+              [class.valid]="isPhoneValid"
+              (blur)="validatePhone()"
+              (input)="onPhoneInput()"
+              #phoneInput
+            />
+            <button
+              *ngIf="addressInfo.phone?.trim()"
+              class="clear-btn"
+              (click)="clearPhone(phoneInput)"
+              type="button"
+              aria-label="Xóa số điện thoại"
+            >
+              <img src="/asset/icons/clear_dark.png" alt="Clear" class="clear-icon" />
+            </button>
+          </div>
+          <div class="error-message" *ngIf="errors.phone">{{ errors.phone }}</div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-with-clear">
+            <input
+              type="email"
+              id="email"
+              [(ngModel)]="addressInfo.email"
+              placeholder="Nhập email"
+              [class.error]="errors.email"
+              [class.valid]="isEmailValid"
+              (blur)="validateEmail()"
+              (input)="onEmailInput()"
+              #emailInput
+            />
+            <button
+              *ngIf="addressInfo.email?.trim()"
+              class="clear-btn"
+              (click)="clearEmail(emailInput)"
+              type="button"
+              aria-label="Xóa email"
+            >
+              <img src="/asset/icons/clear_dark.png" alt="Clear" class="clear-icon" />
+            </button>
+          </div>
+          <div class="error-message" *ngIf="errors.email">{{ errors.email }}</div>
+        </div>
+      </div>
+
+      <!-- Địa chỉ nhận hàng -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <img src="/asset/icons/posiotion_light_green.png" alt="location" class="location-icon" />
+          <h3>Địa chỉ nhận hàng</h3>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city">Tỉnh/Thành phố <sup>*</sup></label>
+            <div class="custom-select">
+              <div
+                class="select-selected"
+                [class.error]="errors.city"
+                [class.active]="showCityDropdown"
+                (click)="toggleCityDropdown()"
+                tabindex="0"
+                (keydown.enter)="toggleCityDropdown()"
+                (keydown.escape)="closeCityDropdown()"
+              >
+                <span>{{ getSelectedCityName() || 'Chọn' }}</span>
+                <img src="/asset/icons/arrowdown_dark.png" alt="Down" class="down-icon" />
+              </div>
+              <div class="select-items" [class.show]="showCityDropdown">
+                <!-- Search input for cities -->
+                <div class="select-search">
+                  <input
+                    type="text"
+                    [(ngModel)]="citySearchQuery"
+                    (input)="onCitySearchInput()"
+                    placeholder="Tìm kiếm tỉnh/thành phố..."
+                    class="search-input"
+                    (click)="$event.stopPropagation()"
+                  />
+                  <button
+                    *ngIf="citySearchQuery"
+                    type="button"
+                    class="clear-search-btn"
+                    (click)="clearCitySearch(); $event.stopPropagation()"
+                    title="Xóa"
+                  >
+                    <img src="/asset/icons/clear_dark.png" alt="Clear" class="clear-icon" />
+                  </button>
+                </div>
+                <!-- Cities list -->
+                <div class="select-items-list">
+                  <div
+                    *ngFor="let city of filteredCities"
+                    [class.selected]="addressInfo.city === city.id"
+                    (click)="selectCity(city)"
+                  >
+                    {{ city.name }}
+                  </div>
+                  <div *ngIf="filteredCities.length === 0" class="no-results">
+                    Không tìm thấy kết quả
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="error-message" *ngIf="errors.city">{{ errors.city }}</div>
+          </div>
+
+          <div class="form-group">
+            <label for="district">Quận/Huyện <sup>*</sup></label>
+            <div class="custom-select">
+              <div
+                class="select-selected"
+                [class.error]="errors.district"
+                [class.disabled]="!addressInfo.city"
+                [class.active]="showDistrictDropdown"
+                (click)="toggleDistrictDropdown()"
+                tabindex="0"
+                (keydown.enter)="toggleDistrictDropdown()"
+                (keydown.escape)="closeDistrictDropdown()"
+              >
+                <span>{{ getSelectedDistrictName() || 'Chọn' }}</span>
+                <img src="/asset/icons/arrowdown_dark.png" alt="Down" class="down-icon" />
+              </div>
+              <div class="select-items" [class.show]="showDistrictDropdown">
+                <!-- Search input for districts -->
+                <div class="select-search">
+                  <input
+                    type="text"
+                    [(ngModel)]="districtSearchQuery"
+                    (input)="onDistrictSearchInput()"
+                    placeholder="Tìm kiếm quận/huyện..."
+                    class="search-input"
+                    (click)="$event.stopPropagation()"
+                  />
+                  <button
+                    *ngIf="districtSearchQuery"
+                    type="button"
+                    class="clear-search-btn"
+                    (click)="clearDistrictSearch(); $event.stopPropagation()"
+                    title="Xóa"
+                  >
+                    <img src="/asset/icons/clear_dark.png" alt="Clear" class="clear-icon" />
+                  </button>
+                </div>
+                <!-- Districts list -->
+                <div class="select-items-list">
+                  <div
+                    *ngFor="let district of filteredDistricts"
+                    [class.selected]="addressInfo.district === district.id"
+                    (click)="selectDistrict(district)"
+                    [class.disabled]="!addressInfo.city"
+                  >
+                    {{ district.name }}
+                  </div>
+                  <div *ngIf="filteredDistricts.length === 0" class="no-results">
+                    Không tìm thấy kết quả
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="error-message" *ngIf="errors.district">{{ errors.district }}</div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ward">Phường/Xã <sup>*</sup></label>
+            <div class="custom-select">
+              <div
+                class="select-selected"
+                [class.error]="errors.ward"
+                [class.disabled]="!addressInfo.district"
+                [class.active]="showWardDropdown"
+                (click)="toggleWardDropdown()"
+                tabindex="0"
+                (keydown.enter)="toggleWardDropdown()"
+                (keydown.escape)="closeWardDropdown()"
+              >
+                <span>{{ getSelectedWardName() || 'Chọn' }}</span>
+                <img src="/asset/icons/arrowdown_dark.png" alt="Down" class="down-icon" />
+              </div>
+              <div class="select-items" [class.show]="showWardDropdown">
+                <!-- Search input for wards -->
+                <div class="select-search">
+                  <input
+                    type="text"
+                    [(ngModel)]="wardSearchQuery"
+                    (input)="onWardSearchInput()"
+                    placeholder="Tìm kiếm phường/xã..."
+                    class="search-input"
+                    (click)="$event.stopPropagation()"
+                  />
+                  <button
+                    *ngIf="wardSearchQuery"
+                    type="button"
+                    class="clear-search-btn"
+                    (click)="clearWardSearch(); $event.stopPropagation()"
+                    title="Xóa"
+                  >
+                    <img src="/asset/icons/clear_dark.png" alt="Clear" class="clear-icon" />
+                  </button>
+                </div>
+                <!-- Wards list -->
+                <div class="select-items-list">
+                  <div
+                    *ngFor="let ward of filteredWards"
+                    [class.selected]="addressInfo.ward === ward.id"
+                    (click)="selectWard(ward)"
+                    [class.disabled]="!addressInfo.district"
+                  >
+                    {{ ward.name }}
+                  </div>
+                  <div *ngIf="filteredWards.length === 0" class="no-results">
+                    Không tìm thấy kết quả
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="error-message" *ngIf="errors.ward">{{ errors.ward }}</div>
+          </div>
+
+          <!-- <div class="form-group">
+            <label for="deliveryMethod">Phương thức giao hàng <sup>*</sup></label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input
+                  type="radio"
+                  name="deliveryMethod"
+                  value="standard"
+                  [(ngModel)]="addressInfo.deliveryMethod"
+                />
+                <span>Giao hàng tiêu chuẩn</span>
+              </label>
+              <label class="radio-label">
+                <input
+                  type="radio"
+                  name="deliveryMethod"
+                  value="express"
+                  [(ngModel)]="addressInfo.deliveryMethod"
+                />
+                <span>Giao hàng nhanh</span>
+              </label>
+            </div>
+          </div> -->
+
+          <div class="form-group">
+            <label for="detail">Địa chỉ cụ thể <sup>*</sup></label>
+            <div class="input-with-clear">
+              <input
+                type="text"
+                id="detail"
+                [(ngModel)]="addressInfo.detail"
+                placeholder="Số nhà, tên đường,..."
+                [class.error]="errors.detail"
+                (blur)="validateDetail()"
+                (input)="onDetailInput()"
+                #detailInput
+              />
+              <button
+                *ngIf="addressInfo.detail?.trim()"
+                class="clear-btn"
+                (click)="clearDetail(detailInput)"
+                type="button"
+                aria-label="Xóa địa chỉ"
+              >
+                <img src="/asset/icons/clear_dark.png" alt="Clear" class="clear-icon" />
+              </button>
+            </div>
+            <div class="error-message" *ngIf="errors.detail">{{ errors.detail }}</div>
+          </div>
+        </div>
+
+        <!-- <div class="form-group">
+          <label for="notes">Ghi chú</label>
+          <textarea
+            id="notes"
+            [(ngModel)]="addressInfo.notes"
+            placeholder="Nhập ghi chú cho người bán"
+            rows="3"
+          ></textarea>
+        </div> -->
+      </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="modal-footer">
+      <!-- Checkbox "Đặt làm địa chỉ mặc định" ở góc trái -->
+      <label class="default-address-checkbox">
+        <input type="checkbox" [(ngModel)]="setAsDefault" id="default-address-checkbox" />
+        <span>Đặt làm địa chỉ mặc định</span>
+      </label>
+
+      <!-- Buttons ở góc phải -->
+      <div class="footer-buttons">
+        <button type="button" class="btn-secondary" (click)="onClose()">Hủy</button>
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="onSubmit()"
+          [disabled]="isSubmitting || !isFormValid()"
+        >
+          <span *ngIf="isSubmitting" class="spinner"></span>
+          {{ isSubmitting ? 'Đang xử lý...' : 'Hoàn thành' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

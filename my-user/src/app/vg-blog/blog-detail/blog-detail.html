@@ -1,0 +1,245 @@
+<!-- Blog Detail Page -->
+<div *ngIf="!isLoading && !error" class="blog-detail-container">
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a routerLink="/" class="breadcrumb-link">Trang chủ</a>
+    <span class="breadcrumb-separator">›</span>
+    <a routerLink="/blog" class="breadcrumb-link">Blog</a>
+    <span class="breadcrumb-separator">›</span>
+    <span class="breadcrumb-current">{{ currentPost?.title }}</span>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <!-- Category Tag -->
+        <div class="category-tag">
+          {{ currentPost?.categoryTag }}
+        </div>
+
+        <!-- Title -->
+        <h1 class="hero-title">{{ currentPost?.title }}</h1>
+
+        <!-- Meta Info -->
+        <div class="hero-meta">
+          <span class="author">{{ currentPost?.author || '' }}</span>
+          <span class="date">{{
+            currentPost?.pubDate ? formatDate(currentPost?.pubDate) : ''
+          }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="main-container">
+    <div class="content-wrapper">
+      <!-- Content Column (70%) -->
+      <article class="content-column">
+        <div class="content-card">
+          <!-- Featured Image -->
+          <div class="featured-image" *ngIf="currentPost?.img">
+            <img
+              [src]="currentPost?.img"
+              [alt]="currentPost?.title"
+              (load)="onImageLoad($event)"
+              (error)="onImageError($event)"
+              class="content-img"
+            />
+          </div>
+
+          <!-- Article Content -->
+          <div
+            class="article-content"
+            [innerHTML]="currentPost?.content"
+            style="font-family: 'SF Pro', sans-serif"
+          ></div>
+
+          <!-- Article Footer -->
+          <div class="article-footer">
+            <!-- Hashtags -->
+            <div class="hashtags-section" *ngIf="hasHashtags()">
+              <span class="hashtags-label">Hashtags:</span>
+              <div class="hashtags-list">
+                <span *ngFor="let hashtag of getHashtags()" class="hashtag-badge">
+                  {{ hashtag }}
+                </span>
+              </div>
+            </div>
+
+            <!-- Category Tag -->
+            <div class="tags-section" *ngIf="shouldShowCategoryTag()">
+              <span class="tags-label">Tags:</span>
+              <span class="tag">{{ currentPost?.categoryTag }}</span>
+            </div>
+
+            <!-- Share Buttons -->
+            <div class="share-section">
+              <span class="share-label">Chia sẻ:</span>
+              <button class="share-btn facebook" (click)="sharePost('facebook')">
+                <img src="/asset/icons/share_fb.png" alt="Facebook" />
+              </button>
+              <button class="share-btn twitter" (click)="sharePost('twitter')">
+                <img src="/asset/icons/share_twitter.png" alt="Twitter" />
+              </button>
+              <button class="share-btn linkedin" (click)="sharePost('linkedin')">
+                <img src="/asset/icons/share_linkedin.png" alt="LinkedIn" />
+              </button>
+              <button class="share-btn copy" (click)="copyLink()">
+                <img src="/asset/icons/share_link.png" alt="Copy link" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <section class="post-navigation">
+    <div class="nav-container">
+      <div class="nav-item prev" *ngIf="prevPost" (click)="navigateToPost(prevPost.id)">
+        <div class="arrow">
+          <img src="/asset/icons/arrowleft_lightgreen.png" alt="" />
+        </div>
+        <div class="nav-thumbnail prev">
+          <img [src]="prevPost.img" [alt]="prevPost.title" class="nav-img" />
+        </div>
+        <div class="nav-content">
+          <span class="nav-label">Bài trước</span>
+          <h4 class="nav-title">{{ prevPost.title }}</h4>
+        </div>
+      </div>
+
+      <div class="nav-item next" *ngIf="nextPost" (click)="navigateToPost(nextPost.id)">
+        <div class="arrow">
+          <img src="/asset/icons/arrowright_lightgreen.png" alt="" />
+        </div>
+        <div class="nav-thumbnail next">
+          <img [src]="nextPost.img" [alt]="nextPost.title" class="nav-img" />
+        </div>
+        <div class="nav-content">
+          <span class="nav-label">Bài tiếp</span>
+          <h4 class="nav-title">{{ nextPost.title }}</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Products Section - Chỉ hiển thị nếu có sản phẩm liên quan -->
+  <section class="related-products-section" *ngIf="hasRelatedProducts()">
+    <div class="section-container">
+      <h2 class="section-title">Sản phẩm liên quan</h2>
+
+      <div class="products-carousel">
+        <button class="carousel-btn prev" (click)="scrollProducts('prev')">
+          <img src="/asset/icons/arrowleft_dark.png" alt="" />
+        </button>
+
+        <div class="products-container" #productsContainer>
+          <div
+            *ngFor="let product of relatedProducts"
+            class="product-card related-product-card"
+            (click)="goToProductDetail(product)"
+            style="cursor: pointer"
+          >
+            <div class="product-image-container">
+              <img [src]="product.image" [alt]="product.name" class="product-image" />
+              <!-- Buy 1 Get 1 Tag -->
+              <div class="buy1get1-tag" *ngIf="hasBuy1Get1Promotion(product)">Mua 1 tặng 1</div>
+              <button
+                class="favorite-btn"
+                (click)="toggleWishlist(product, $event)"
+                [class.favorited]="isInWishlist(product)"
+              >
+                <div class="heart-icon"></div>
+              </button>
+            </div>
+
+            <div class="product-info">
+              <div class="product-header">
+                <h3 class="product-name">{{ product.name }}</h3>
+                <!-- Rating - chỉ hiển thị nếu có reviews -->
+                <div class="product-rating" *ngIf="hasReviews(product)">
+                  <span class="rating-number">{{ formatRating(product.rating) }}</span>
+                  <img src="/asset/icons/star_yellow.png" alt="star" class="star-icon" />
+                </div>
+              </div>
+
+              <div class="product-stats">
+                <!-- Purchase count - chỉ hiển thị nếu > 0 -->
+                <div
+                  class="purchase-count"
+                  *ngIf="product.purchase_count && product.purchase_count > 0"
+                >
+                  {{ getPurchaseCount(product) }} lượt mua
+                </div>
+              </div>
+
+              <div class="product-price-section">
+                <!-- Hiển thị giá khuyến mãi nếu có -->
+                <div
+                  *ngIf="product.originalPrice && product.originalPrice > product.price"
+                  class="price-container-promotion"
+                >
+                  <!-- Giá khuyến mãi (price) ở trên -->
+                  <div class="discounted-price-group">
+                    <span class="discounted-price">{{ formatPrice(product.price) }}</span>
+                    <span class="unit" *ngIf="product.unit">/{{ product.unit }}</span>
+                  </div>
+                  <!-- Giá gốc gạch ngang + phần trăm giảm ở dưới -->
+                  <div class="price-group">
+                    <span class="original-price">{{ formatPrice(product.originalPrice) }}</span>
+                    <span class="discount-badge" *ngIf="product.discountPercent"
+                      >-{{ product.discountPercent }}%</span
+                    >
+                  </div>
+                </div>
+                <!-- Hiển thị giá thường nếu không có khuyến mãi -->
+                <div
+                  *ngIf="!product.originalPrice || product.originalPrice <= product.price"
+                  class="price-group-normal"
+                >
+                  <span class="price-value">{{ formatPrice(product.price) }}</span>
+                  <span class="price-unit" *ngIf="product.unit">/{{ product.unit }}</span>
+                </div>
+              </div>
+
+              <button class="add-to-cart-btn" (click)="addToCart(product, $event)">
+                Thêm vào giỏ
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-btn next" (click)="scrollProducts('next')">
+          <img src="/asset/icons/arrowright_dark.png" alt="" />
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Loading State -->
+<div *ngIf="isLoading" class="loading-container">
+  <div class="loading-spinner"></div>
+  <p>Đang tải bài viết...</p>
+</div>
+
+<!-- Error State -->
+<div *ngIf="error" class="error-container">
+  <h2>Không tìm thấy bài viết</h2>
+  <p>{{ error }}</p>
+  <button routerLink="/blog" class="back-btn">Quay lại Blog</button>
+</div>
+
+<!-- Scroll to Top Button -->
+<button
+  class="scroll-to-top"
+  [class.visible]="showScrollButton"
+  (click)="scrollToTop()"
+  aria-label="Scroll to top"
+>
+  <img src="/asset/icons/arrowup_lightgreen.png" alt="Scroll to top" />
+</button>

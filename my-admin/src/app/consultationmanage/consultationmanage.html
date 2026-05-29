@@ -1,0 +1,140 @@
+<!-- Consultation Management Page -->
+<div class="consultation-page">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <span>Quản trị viên</span>
+    <span class="separator">/</span>
+    <span>Quản lý tư vấn</span>
+    <span class="separator">/</span>
+    <span class="current">Danh sách tư vấn</span>
+  </div>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1 class="page-title">QUẢN LÝ TƯ VẤN SẢN PHẨM</h1>
+  </div>
+
+  <!-- Statistics Cards -->
+  <div class="statistics-grid">
+    <div class="stat-card clickable stat-all" 
+         [class.active]="currentFilter === 'all'"
+         (click)="onFilterChange('all')"
+         title="Hiển thị tất cả câu hỏi">
+      <h3 class="stat-title">TỔNG CÂU HỎI</h3>
+      <p class="stat-value">{{statistics.total}}</p>
+    </div>
+    <div class="stat-card clickable stat-pending" 
+         [class.active]="currentFilter === 'pending'"
+         (click)="onFilterChange('pending')"
+         title="Lọc câu hỏi chờ trả lời">
+      <h3 class="stat-title">CHỜ TRẢ LỜI</h3>
+      <p class="stat-value">{{statistics.pending}}</p>
+    </div>
+    <div class="stat-card clickable stat-answered" 
+         [class.active]="currentFilter === 'answered'"
+         (click)="onFilterChange('answered')"
+         title="Lọc câu hỏi đã trả lời">
+      <h3 class="stat-title">ĐÃ TRẢ LỜI</h3>
+      <p class="stat-value">{{statistics.answered}}</p>
+    </div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <!-- Search Container -->
+    <div class="search-container">
+      <input 
+        type="text" 
+        class="search-input" 
+        placeholder="Tìm kiếm theo sản phẩm, câu hỏi, khách hàng..." 
+        [(ngModel)]="searchQuery"
+        (input)="onSearchChange()">
+      <button class="search-btn">
+        <img src="/asset/icons/search_dark.png" alt="Search">
+      </button>
+    </div>
+    
+    <!-- Filter Dropdown -->
+    <div class="filter-container">
+      <button class="filter-btn" (click)="toggleFilterDropdown(); $event.stopPropagation()">
+        <img src="/asset/icons/filter_dark.png" alt="Filter">
+        <span>{{ getFilterLabel(currentFilter) }}</span>
+        <img src="/asset/icons/arrowdown_lightgreen.png" alt="Arrow" class="arrow-icon" [class.rotated]="showFilterDropdown">
+      </button>
+      
+      <div class="filter-dropdown" *ngIf="showFilterDropdown" (click)="$event.stopPropagation()">
+        <div class="filter-option" 
+             [class.active]="currentFilter === 'all'"
+             (click)="onFilterChange('all')">
+          <input type="checkbox" [checked]="currentFilter === 'all'" (click)="$event.stopPropagation()">
+          <span>Tất cả</span>
+        </div>
+        <div class="filter-option" 
+             [class.active]="currentFilter === 'pending'"
+             (click)="onFilterChange('pending')">
+          <input type="checkbox" [checked]="currentFilter === 'pending'" (click)="$event.stopPropagation()">
+          <span>Chờ trả lời</span>
+        </div>
+        <div class="filter-option" 
+             [class.active]="currentFilter === 'answered'"
+             (click)="onFilterChange('answered')">
+          <input type="checkbox" [checked]="currentFilter === 'answered'" (click)="$event.stopPropagation()">
+          <span>Đã trả lời</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error Message -->
+  <div class="error-message" *ngIf="loadError">
+    {{ loadError }}
+  </div>
+
+  <!-- Products List (Compact View) -->
+  <div class="products-list" *ngIf="!loadError">
+    <div class="product-item" 
+         *ngFor="let consultation of consultations"
+         (click)="viewConsultationDetail(consultation)">
+      <div class="product-info">
+        <h3 class="product-name">{{ consultation.productName }}</h3>
+        <span class="product-sku">SKU: {{ consultation.sku }}</span>
+      </div>
+      <div class="product-stats">
+        <div class="stat-item">
+          <span class="stat-label">Tổng:</span>
+          <span class="stat-value total">{{ consultation.questions.length }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Chờ trả lời:</span>
+          <span class="stat-value pending">{{ getPendingCount(consultation) }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Đã trả lời:</span>
+          <span class="stat-value answered">{{ getAnsweredCount(consultation) }}</span>
+        </div>
+      </div>
+      <div class="product-arrow">
+        <img src="/asset/icons/arrowright_lightgreen.png" alt="View" class="arrow-icon">
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="consultations.length === 0">
+      <p>Không có sản phẩm nào có câu hỏi tư vấn</p>
+    </div>
+  </div>
+</div>
+
+<!-- Popup Notification -->
+<div class="popup-overlay" *ngIf="showPopup" (click)="closePopup()">
+  <div class="popup-container" [class.success]="popupType === 'success'" [class.error]="popupType === 'error'" [class.info]="popupType === 'info'" (click)="$event.stopPropagation()">
+    <div class="popup-icon">
+      <span *ngIf="popupType === 'success'">✓</span>
+      <span *ngIf="popupType === 'error'">✕</span>
+      <span *ngIf="popupType === 'info'">ℹ</span>
+    </div>
+    <p class="popup-message">{{ popupMessage }}</p>
+    <button class="popup-close" (click)="closePopup()">Đóng</button>
+  </div>
+</div>
+

@@ -1,0 +1,344 @@
+[
+  {
+    "_id": "6910599cccc63afec95a10d7",
+    "sessionId": "session_1762677190159_94qzv3d5u",
+    "userId": "CUS000003",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello",
+        "timestamp": "2025-11-09T09:06:36.633Z",
+        "_id": "6910599cccc63afec95a10d8"
+      },
+      {
+        "role": "assistant",
+        "content": "Xin chào! 👋 Tôi là Veebot, trợ lý ảo của VGreen. Rất vui được gặp bạn!\n\nTôi có thể giúp bạn:\n\n🛒 Về sản phẩm và giá cả\n📦 Về đơn hàng và giao hàng\n💰 Về phí giao hàng và thanh toán\n🔄 Về chính sách đổi trả\n❓ Các câu hỏi thường gặp\n\nBạn muốn hỏi gì? Tôi sẵn sàng giúp bạn!",
+        "timestamp": "2025-11-09T09:06:36.983Z",
+        "_id": "6910599cccc63afec95a10d9"
+      },
+      {
+        "role": "user",
+        "content": "Tôi muốn hỏi về chính sách đổi",
+        "timestamp": "2025-11-09T09:07:00.766Z",
+        "_id": "691059b4ccc63afec95a10de"
+      },
+      {
+        "role": "assistant",
+        "content": "Cảm ơn bạn đã liên hệ! Tôi hiểu bạn đang hỏi về: \"Tôi muốn hỏi về chính sách đổi\".\n📞 **Để được hỗ trợ tốt hơn, bạn có thể:**\n• Gọi hotline: 0125 456 789\n• Email: vgreenhotro@gmail.com\n• Truy cập trang \"Hỗ trợ\" để xem các câu hỏi thường gặp\n\nNếu bạn có câu hỏi cụ thể về sản phẩm, đơn hàng, giao hàng, phí, hoặc đổi trả, tôi sẽ cố gắng trả lời chi tiết hơn!",
+        "timestamp": "2025-11-09T09:07:01.024Z",
+        "_id": "691059b5ccc63afec95a10df"
+      },
+      {
+        "role": "user",
+        "content": "phí",
+        "timestamp": "2025-11-09T09:07:08.573Z",
+        "_id": "691059bcccc63afec95a10e6"
+      },
+      {
+        "role": "assistant",
+        "content": "VGreen có nhiều loại phí khác nhau tùy theo dịch vụ:\n\n📦 **Phí giao hàng:**\n• Miễn phí cho đơn từ 200.000₫\n• 20.000₫ - 100.000₫ tùy khu vực (đơn dưới 200.000₫)\n\n💰 **Giá sản phẩm:**\n• Hiển thị trên từng trang sản phẩm\n• Cam kết giá cả hợp lý, chất lượng tốt\n\nBạn muốn biết về phí nào cụ thể? Tôi có thể giúp bạn!",
+        "timestamp": "2025-11-09T09:07:08.749Z",
+        "_id": "691059bcccc63afec95a10e7"
+      },
+      {
+        "role": "user",
+        "content": "gợi ý cho tôi một số sản",
+        "timestamp": "2025-11-09T09:07:30.902Z",
+        "_id": "691059d2ccc63afec95a10f0"
+      },
+      {
+        "role": "assistant",
+        "content": "Cảm ơn bạn đã liên hệ! Tôi hiểu bạn đang hỏi về: \"gợi ý cho tôi một số sản\".\n📞 **Để được hỗ trợ tốt hơn, bạn có thể:**\n• Gọi hotline: 0125 456 789\n• Email: vgreenhotro@gmail.com\n• Truy cập trang \"Hỗ trợ\" để xem các câu hỏi thường gặp\n\nNếu bạn có câu hỏi cụ thể về sản phẩm, đơn hàng, giao hàng, phí, hoặc đổi trả, tôi sẽ cố gắng trả lời chi tiết hơn!",
+        "timestamp": "2025-11-09T09:07:31.189Z",
+        "_id": "691059d3ccc63afec95a10f1"
+      },
+      {
+        "role": "user",
+        "content": "hãy gợi ý cho tôi sản phầm để nấu",
+        "timestamp": "2025-11-09T09:13:50.491Z",
+        "_id": "69105b4eea79fdddd165d656"
+      },
+      {
+        "role": "assistant",
+        "content": "Cảm ơn bạn đã liên hệ! Tôi hiểu bạn đang hỏi về: \"hãy gợi ý cho tôi sản phầm để nấu\".\n📞 **Để được hỗ trợ tốt hơn, bạn có thể:**\n• Gọi hotline: 0125 456 789\n• Email: vgreenhotro@gmail.com\n• Truy cập trang \"Hỗ trợ\" để xem các câu hỏi thường gặp\n\nNếu bạn có câu hỏi cụ thể về sản phẩm, đơn hàng, giao hàng, phí, hoặc đổi trả, tôi sẽ cố gắng trả lời chi tiết hơn!",
+        "timestamp": "2025-11-09T09:13:50.814Z",
+        "_id": "69105b4eea79fdddd165d658"
+      },
+      {
+        "role": "user",
+        "content": "Hãy gợi ý cho tôi một số sản phẩm về",
+        "timestamp": "2025-11-09T09:22:41.223Z",
+        "_id": "69105d6129608c5d53329c2a"
+      },
+      {
+        "role": "assistant",
+        "content": "VGreen cung cấp nhiều sản phẩm chất lượng cao như rau củ hữu cơ, trái cây tươi, thực phẩm khô, trà và cà phê. Bạn có thể:\n\n• Xem danh sách sản phẩm tại trang chủ\n• Tìm kiếm sản phẩm cụ thể\n• Lọc theo danh mục, giá, hoặc đánh giá\n\nBạn muốn tìm sản phẩm nào? Tôi có thể giúp bạn!",
+        "timestamp": "2025-11-09T09:22:41.980Z",
+        "_id": "69105d6129608c5d53329c2f"
+      },
+      {
+        "role": "user",
+        "content": "Tôi muốn mua cà",
+        "timestamp": "2025-11-09T09:23:00.880Z",
+        "_id": "69105d7429608c5d53329c3e"
+      },
+      {
+        "role": "assistant",
+        "content": "VGreen cung cấp nhiều sản phẩm chất lượng cao như rau củ hữu cơ, trái cây tươi, thực phẩm khô, trà và cà phê. Bạn có thể:\n\n• Xem danh sách sản phẩm tại trang chủ\n• Tìm kiếm sản phẩm cụ thể\n• Lọc theo danh mục, giá, hoặc đánh giá\n\nBạn muốn tìm sản phẩm nào? Tôi có thể giúp bạn!",
+        "timestamp": "2025-11-09T09:23:01.354Z",
+        "_id": "69105d7529608c5d53329c3f"
+      },
+      {
+        "role": "user",
+        "content": "Tôi muốn mua",
+        "timestamp": "2025-11-09T09:31:59.996Z",
+        "_id": "69105f8f9c87168958cf9f0f"
+      },
+      {
+        "role": "assistant",
+        "content": "VGreen cung cấp nhiều sản phẩm chất lượng cao như rau củ hữu cơ, trái cây tươi, thực phẩm khô, trà và cà phê. Bạn có thể:\n\n• Xem danh sách sản phẩm tại trang chủ\n• Tìm kiếm sản phẩm cụ thể\n• Lọc theo danh mục, giá, hoặc đánh giá\n\nBạn muốn tìm sản phẩm nào? Tôi có thể giúp bạn!",
+        "timestamp": "2025-11-09T09:32:00.329Z",
+        "_id": "69105f909c87168958cf9f12"
+      },
+      {
+        "role": "user",
+        "content": "Tôi muốn mua rau",
+        "timestamp": "2025-11-09T09:33:19.493Z",
+        "_id": "69105fdf1e003bcfe9a74dc0"
+      },
+      {
+        "role": "assistant",
+        "content": "VGreen cung cấp nhiều sản phẩm chất lượng cao như rau củ hữu cơ, trái cây tươi, thực phẩm khô, trà và cà phê. Bạn có thể:\n\n• Xem danh sách sản phẩm tại trang chủ\n• Tìm kiếm sản phẩm cụ thể\n• Lọc theo danh mục, giá, hoặc đánh giá\n\nBạn muốn tìm sản phẩm nào? Tôi có thể giúp bạn!",
+        "timestamp": "2025-11-09T09:33:19.730Z",
+        "_id": "69105fdf1e003bcfe9a74dc3"
+      },
+      {
+        "role": "user",
+        "content": "Cà",
+        "timestamp": "2025-11-09T09:33:28.951Z",
+        "_id": "69105fe81e003bcfe9a74dd8"
+      },
+      {
+        "role": "assistant",
+        "content": "VGreen cung cấp nhiều sản phẩm chất lượng cao như rau củ hữu cơ, trái cây tươi, thực phẩm khô, trà và cà phê. Bạn có thể:\n\n• Xem danh sách sản phẩm tại trang chủ\n• Tìm kiếm sản phẩm cụ thể\n• Lọc theo danh mục, giá, hoặc đánh giá\n\nBạn muốn tìm sản phẩm nào? Tôi có thể giúp bạn!",
+        "timestamp": "2025-11-09T09:33:29.155Z",
+        "_id": "69105fe91e003bcfe9a74dd9"
+      },
+      {
+        "role": "user",
+        "content": "Tôi muốn mua cà",
+        "timestamp": "2025-11-09T09:33:34.048Z",
+        "_id": "69105fee1e003bcfe9a74df0"
+      },
+      {
+        "role": "assistant",
+        "content": "Cảm ơn bạn đã liên hệ! Tôi hiểu bạn đang hỏi về: \"Tôi muốn mua cà\".\n\n💡 **Gợi ý:**\n• Sản phẩm: Rau củ hữu cơ, trái cây, thực phẩm khô, trà và cà phê\n\n📞 **Để được hỗ trợ tốt hơn, bạn có thể:**\n• Gọi hotline: 0125 456 789\n• Email: vgreenhotro@gmail.com\n• Truy cập trang \"Hỗ trợ\" để xem các câu hỏi thường gặp\n\nNếu bạn có câu hỏi cụ thể về sản phẩm, đơn hàng, giao hàng, phí, hoặc đổi trả, tôi sẽ cố gắng trả lời chi tiết hơn!",
+        "timestamp": "2025-11-09T09:33:34.152Z",
+        "_id": "69105fee1e003bcfe9a74df3"
+      },
+      {
+        "role": "user",
+        "content": "Tôi muốn mua",
+        "timestamp": "2025-11-09T09:33:44.114Z",
+        "_id": "69105ff81e003bcfe9a74e0c"
+      },
+      {
+        "role": "assistant",
+        "content": "Cảm ơn bạn đã liên hệ! Tôi hiểu bạn đang hỏi về: \"Tôi muốn mua\".\n\n💡 **Gợi ý:**\n• Sản phẩm: Rau củ hữu cơ, trái cây, thực phẩm khô, trà và cà phê\n\n📞 **Để được hỗ trợ tốt hơn, bạn có thể:**\n• Gọi hotline: 0125 456 789\n• Email: vgreenhotro@gmail.com\n• Truy cập trang \"Hỗ trợ\" để xem các câu hỏi thường gặp\n\nNếu bạn có câu hỏi cụ thể về sản phẩm, đơn hàng, giao hàng, phí, hoặc đổi trả, tôi sẽ cố gắng trả lời chi tiết hơn!",
+        "timestamp": "2025-11-09T09:33:44.314Z",
+        "_id": "69105ff81e003bcfe9a74e0f"
+      },
+      {
+        "role": "user",
+        "content": "hello",
+        "timestamp": "2025-11-09T12:57:50.593Z",
+        "_id": "69108fcec00ec7dd5f8cc5b1"
+      },
+      {
+        "role": "assistant",
+        "content": "Xin chào! 👋 Tôi là Veebot, trợ lý ảo của VGreen. Rất vui được gặp bạn!\n\nTôi có thể giúp bạn:\n\n🛒 Về sản phẩm và giá cả\n📦 Về đơn hàng và giao hàng\n💰 Về phí giao hàng và thanh toán\n🔄 Về chính sách đổi trả\n❓ Các câu hỏi thường gặp\n\nBạn muốn hỏi gì? Tôi sẵn sàng giúp bạn!",
+        "timestamp": "2025-11-09T12:57:50.897Z",
+        "_id": "69108fcec00ec7dd5f8cc5b2"
+      },
+      {
+        "role": "user",
+        "content": "tôi muốn mua trái",
+        "timestamp": "2025-11-09T12:58:06.183Z",
+        "_id": "69108fdec00ec7dd5f8cc5cf"
+      },
+      {
+        "role": "assistant",
+        "content": "Cảm ơn bạn đã liên hệ! Tôi hiểu bạn đang hỏi về: \"tôi muốn mua trái\".\n\n💡 **Gợi ý:**\n• Sản phẩm: Rau củ hữu cơ, trái cây, thực phẩm khô, trà và cà phê\n\n📞 **Để được hỗ trợ tốt hơn, bạn có thể:**\n• Gọi hotline: 0125 456 789\n• Email: vgreenhotro@gmail.com\n• Truy cập trang \"Hỗ trợ\" để xem các câu hỏi thường gặp\n\nNếu bạn có câu hỏi cụ thể về sản phẩm, đơn hàng, giao hàng, phí, hoặc đổi trả, tôi sẽ cố gắng trả lời chi tiết hơn!",
+        "timestamp": "2025-11-09T12:58:06.409Z",
+        "_id": "69108fdec00ec7dd5f8cc5d2"
+      },
+      {
+        "role": "user",
+        "content": "tôi muốn mua",
+        "timestamp": "2025-11-09T12:58:25.510Z",
+        "_id": "69108ff1c00ec7dd5f8cc5f1"
+      },
+      {
+        "role": "assistant",
+        "content": "Cảm ơn bạn đã liên hệ! Tôi hiểu bạn đang hỏi về: \"tôi muốn mua\".\n\n💡 **Gợi ý:**\n• Sản phẩm: Rau củ hữu cơ, trái cây, thực phẩm khô, trà và cà phê\n\n📞 **Để được hỗ trợ tốt hơn, bạn có thể:**\n• Gọi hotline: 0125 456 789\n• Email: vgreenhotro@gmail.com\n• Truy cập trang \"Hỗ trợ\" để xem các câu hỏi thường gặp\n\nNếu bạn có câu hỏi cụ thể về sản phẩm, đơn hàng, giao hàng, phí, hoặc đổi trả, tôi sẽ cố gắng trả lời chi tiết hơn!",
+        "timestamp": "2025-11-09T12:58:25.701Z",
+        "_id": "69108ff1c00ec7dd5f8cc5f4"
+      },
+      {
+        "role": "user",
+        "content": "tôi muốn mua nấm",
+        "timestamp": "2025-11-09T12:58:50.178Z",
+        "_id": "6910900ac00ec7dd5f8cc615"
+      },
+      {
+        "role": "assistant",
+        "content": "Cảm ơn bạn đã liên hệ! Tôi hiểu bạn đang hỏi về: \"tôi muốn mua nấm\".\n\n💡 **Gợi ý:**\n• Sản phẩm: Rau củ hữu cơ, trái cây, thực phẩm khô, trà và cà phê\n\n📞 **Để được hỗ trợ tốt hơn, bạn có thể:**\n• Gọi hotline: 0125 456 789\n• Email: vgreenhotro@gmail.com\n• Truy cập trang \"Hỗ trợ\" để xem các câu hỏi thường gặp\n\nNếu bạn có câu hỏi cụ thể về sản phẩm, đơn hàng, giao hàng, phí, hoặc đổi trả, tôi sẽ cố gắng trả lời chi tiết hơn!",
+        "timestamp": "2025-11-09T12:58:50.358Z",
+        "_id": "6910900ac00ec7dd5f8cc618"
+      },
+      {
+        "role": "user",
+        "content": "tôi muốn mua",
+        "timestamp": "2025-11-09T12:59:05.174Z",
+        "_id": "69109019c00ec7dd5f8cc63b"
+      },
+      {
+        "role": "assistant",
+        "content": "Cảm ơn bạn đã liên hệ! Tôi hiểu bạn đang hỏi về: \"tôi muốn mua\".\n\n💡 **Gợi ý:**\n• Sản phẩm: Rau củ hữu cơ, trái cây, thực phẩm khô, trà và cà phê\n\n📞 **Để được hỗ trợ tốt hơn, bạn có thể:**\n• Gọi hotline: 0125 456 789\n• Email: vgreenhotro@gmail.com\n• Truy cập trang \"Hỗ trợ\" để xem các câu hỏi thường gặp\n\nNếu bạn có câu hỏi cụ thể về sản phẩm, đơn hàng, giao hàng, phí, hoặc đổi trả, tôi sẽ cố gắng trả lời chi tiết hơn!",
+        "timestamp": "2025-11-09T12:59:05.333Z",
+        "_id": "69109019c00ec7dd5f8cc63e"
+      }
+    ],
+    "updatedAt": "2025-11-09T12:59:05.339Z",
+    "createdAt": "2025-11-09T09:06:36.990Z",
+    "__v": 16
+  },
+  {
+    "_id": "6910ae0f792a873720343e8f",
+    "sessionId": "session_1762700801364_e6ja9jksn",
+    "userId": "CUS000004",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello",
+        "timestamp": "2025-11-09T15:06:55.022Z",
+        "_id": "6910ae0f792a873720343e90"
+      },
+      {
+        "role": "assistant",
+        "content": "Xin chào! 👋 Tôi là Veebot, trợ lý ảo của VGreen. Rất vui được gặp bạn!\n\nTôi có thể giúp bạn:\n\n🛒 Về sản phẩm và giá cả\n📦 Về đơn hàng và giao hàng\n💰 Về phí giao hàng và thanh toán\n🔄 Về chính sách đổi trả\n❓ Các câu hỏi thường gặp\n\nBạn muốn hỏi gì? Tôi sẵn sàng giúp bạn!",
+        "timestamp": "2025-11-09T15:06:55.344Z",
+        "_id": "6910ae0f792a873720343e91"
+      },
+      {
+        "role": "user",
+        "content": "tôi muốn mua",
+        "timestamp": "2025-11-09T15:07:04.792Z",
+        "_id": "6910ae18792a873720343e96"
+      },
+      {
+        "role": "assistant",
+        "content": "Cảm ơn bạn đã liên hệ! Tôi hiểu bạn đang hỏi về: \"tôi muốn mua\".\n\n💡 **Gợi ý:**\n• Sản phẩm: Rau củ hữu cơ, trái cây, thực phẩm khô, trà và cà phê\n\n📞 **Để được hỗ trợ tốt hơn, bạn có thể:**\n• Gọi hotline: 0125 456 789\n• Email: vgreenhotro@gmail.com\n• Truy cập trang \"Hỗ trợ\" để xem các câu hỏi thường gặp\n\nNếu bạn có câu hỏi cụ thể về sản phẩm, đơn hàng, giao hàng, phí, hoặc đổi trả, tôi sẽ cố gắng trả lời chi tiết hơn!",
+        "timestamp": "2025-11-09T15:07:04.999Z",
+        "_id": "6910ae18792a873720343e99"
+      },
+      {
+        "role": "user",
+        "content": "tôi muốn mua nấm",
+        "timestamp": "2025-11-09T15:07:16.048Z",
+        "_id": "6910ae24792a873720343ea0"
+      },
+      {
+        "role": "assistant",
+        "content": "Cảm ơn bạn đã liên hệ! Tôi hiểu bạn đang hỏi về: \"tôi muốn mua nấm\".\n\n💡 **Gợi ý:**\n• Sản phẩm: Rau củ hữu cơ, trái cây, thực phẩm khô, trà và cà phê\n\n📞 **Để được hỗ trợ tốt hơn, bạn có thể:**\n• Gọi hotline: 0125 456 789\n• Email: vgreenhotro@gmail.com\n• Truy cập trang \"Hỗ trợ\" để xem các câu hỏi thường gặp\n\nNếu bạn có câu hỏi cụ thể về sản phẩm, đơn hàng, giao hàng, phí, hoặc đổi trả, tôi sẽ cố gắng trả lời chi tiết hơn!",
+        "timestamp": "2025-11-09T15:07:16.214Z",
+        "_id": "6910ae24792a873720343ea3"
+      },
+      {
+        "role": "user",
+        "content": "nấm",
+        "timestamp": "2025-11-09T15:07:50.498Z",
+        "_id": "6910ae46792a873720343ead"
+      },
+      {
+        "role": "assistant",
+        "content": "Cảm ơn bạn đã liên hệ! Tôi hiểu bạn đang hỏi về: \"nấm\".\n📞 **Để được hỗ trợ tốt hơn, bạn có thể:**\n• Gọi hotline: 0125 456 789\n• Email: vgreenhotro@gmail.com\n• Truy cập trang \"Hỗ trợ\" để xem các câu hỏi thường gặp\n\nNếu bạn có câu hỏi cụ thể về sản phẩm, đơn hàng, giao hàng, phí, hoặc đổi trả, tôi sẽ cố gắng trả lời chi tiết hơn!",
+        "timestamp": "2025-11-09T15:07:51.128Z",
+        "_id": "6910ae47792a873720343eae"
+      },
+      {
+        "role": "user",
+        "content": "cacao",
+        "timestamp": "2025-11-09T15:07:54.250Z",
+        "_id": "6910ae4a792a873720343eb9"
+      },
+      {
+        "role": "assistant",
+        "content": "Cảm ơn bạn đã liên hệ! Tôi hiểu bạn đang hỏi về: \"cacao\".\n📞 **Để được hỗ trợ tốt hơn, bạn có thể:**\n• Gọi hotline: 0125 456 789\n• Email: vgreenhotro@gmail.com\n• Truy cập trang \"Hỗ trợ\" để xem các câu hỏi thường gặp\n\nNếu bạn có câu hỏi cụ thể về sản phẩm, đơn hàng, giao hàng, phí, hoặc đổi trả, tôi sẽ cố gắng trả lời chi tiết hơn!",
+        "timestamp": "2025-11-09T15:07:54.345Z",
+        "_id": "6910ae4a792a873720343eba"
+      },
+      {
+        "role": "user",
+        "content": "tôi muốn mua cacao",
+        "timestamp": "2025-11-09T15:08:11.389Z",
+        "_id": "6910ae5b792a873720343ec7"
+      },
+      {
+        "role": "assistant",
+        "content": "Cảm ơn bạn đã liên hệ! Tôi hiểu bạn đang hỏi về: \"tôi muốn mua cacao\".\n\n💡 **Gợi ý:**\n• Sản phẩm: Rau củ hữu cơ, trái cây, thực phẩm khô, trà và cà phê\n\n📞 **Để được hỗ trợ tốt hơn, bạn có thể:**\n• Gọi hotline: 0125 456 789\n• Email: vgreenhotro@gmail.com\n• Truy cập trang \"Hỗ trợ\" để xem các câu hỏi thường gặp\n\nNếu bạn có câu hỏi cụ thể về sản phẩm, đơn hàng, giao hàng, phí, hoặc đổi trả, tôi sẽ cố gắng trả lời chi tiết hơn!",
+        "timestamp": "2025-11-09T15:08:11.932Z",
+        "_id": "6910ae5b792a873720343eca"
+      },
+      {
+        "role": "user",
+        "content": "tôi muốn mua cacao",
+        "timestamp": "2025-11-09T15:08:36.002Z",
+        "_id": "6910ae74792a873720343ee2"
+      },
+      {
+        "role": "assistant",
+        "content": "Cảm ơn bạn đã liên hệ! Tôi hiểu bạn đang hỏi về: \"tôi muốn mua cacao\".\n\n💡 **Gợi ý:**\n• Sản phẩm: Rau củ hữu cơ, trái cây, thực phẩm khô, trà và cà phê\n\n📞 **Để được hỗ trợ tốt hơn, bạn có thể:**\n• Gọi hotline: 0125 456 789\n• Email: vgreenhotro@gmail.com\n• Truy cập trang \"Hỗ trợ\" để xem các câu hỏi thường gặp\n\nNếu bạn có câu hỏi cụ thể về sản phẩm, đơn hàng, giao hàng, phí, hoặc đổi trả, tôi sẽ cố gắng trả lời chi tiết hơn!",
+        "timestamp": "2025-11-09T15:08:36.169Z",
+        "_id": "6910ae74792a873720343ee5"
+      }
+    ],
+    "updatedAt": "2025-11-09T15:08:36.172Z",
+    "createdAt": "2025-11-09T15:06:55.350Z",
+    "__v": 6
+  },
+  {
+    "_id": "6911aa1cd315a6ae1370f2b9",
+    "sessionId": "session_1762765054788_72sc593h0",
+    "userId": "CUS000004",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hi",
+        "timestamp": "2025-11-10T09:02:20.356Z",
+        "_id": "6911aa1cd315a6ae1370f2ba"
+      },
+      {
+        "role": "assistant",
+        "content": "Xin chào! 👋 Tôi là Veebot, trợ lý ảo của VGreen. Rất vui được gặp bạn!\n\nTôi có thể giúp bạn:\n\n🛒 Về sản phẩm và giá cả\n📦 Về đơn hàng và giao hàng\n💰 Về phí giao hàng và thanh toán\n🔄 Về chính sách đổi trả\n❓ Các câu hỏi thường gặp\n\nBạn muốn hỏi gì? Tôi sẵn sàng giúp bạn!",
+        "timestamp": "2025-11-10T09:02:20.975Z",
+        "_id": "6911aa1cd315a6ae1370f2bb"
+      },
+      {
+        "role": "user",
+        "content": "tôi muốn mua nấm",
+        "timestamp": "2025-11-10T09:02:31.566Z",
+        "_id": "6911aa27d315a6ae1370f2c0"
+      },
+      {
+        "role": "assistant",
+        "content": "Cảm ơn bạn đã liên hệ! Tôi hiểu bạn đang hỏi về: \"tôi muốn mua nấm\".\n\n💡 **Gợi ý:**\n• Sản phẩm: Rau củ hữu cơ, trái cây, thực phẩm khô, trà và cà phê\n\n📞 **Để được hỗ trợ tốt hơn, bạn có thể:**\n• Gọi hotline: 0125 456 789\n• Email: vgreenhotro@gmail.com\n• Truy cập trang \"Hỗ trợ\" để xem các câu hỏi thường gặp\n\nNếu bạn có câu hỏi cụ thể về sản phẩm, đơn hàng, giao hàng, phí, hoặc đổi trả, tôi sẽ cố gắng trả lời chi tiết hơn!",
+        "timestamp": "2025-11-10T09:02:31.837Z",
+        "_id": "6911aa27d315a6ae1370f2c3"
+      }
+    ],
+    "updatedAt": "2025-11-10T09:02:31.839Z",
+    "createdAt": "2025-11-10T09:02:20.982Z",
+    "__v": 1
+  }
+]

@@ -1,0 +1,158 @@
+<!-- ===== WISHLIST PAGE LAYOUT ===== -->
+<div class="wishlist-page">
+  <!-- Main Content -->
+  <div class="wishlist-content">
+    <!-- Header -->
+    <div class="content-header">
+      <div>
+        <h1>Sản phẩm yêu thích</h1>
+        <p>Quản lý các sản phẩm bạn đã yêu thích</p>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar" *ngIf="hasProducts">
+      <div class="filter-group">
+        <!-- Promotion Checkbox -->
+        <div class="filter-item">
+          <label class="checkbox-container">
+            <input type="checkbox" [(ngModel)]="showPromotionOnly" class="checkbox-input" />
+            <span class="checkmark">
+              <svg
+                class="check-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="20,6 9,17 4,12"></polyline>
+              </svg>
+            </span>
+            <span class="checkbox-label">Khuyến mãi</span>
+          </label>
+        </div>
+
+        <!-- Price Sort Button -->
+        <div class="filter-item">
+          <button
+            class="sort-button price-sort"
+            [class.active]="priceSort !== 'default'"
+            (click)="togglePriceSort()"
+          >
+            {{ getPriceSortText() }}
+            <span class="price-arrow" [class.asc]="priceSort === 'low-to-high'">
+              <img src="/asset/icons/arrow_down.png" alt="sort" class="arrow-icon" />
+            </span>
+          </button>
+        </div>
+
+        <!-- Date Sort Button -->
+        <div class="filter-item">
+          <button
+            class="sort-button date-sort"
+            [class.active]="dateSort !== 'default'"
+            (click)="toggleDateSort()"
+          >
+            {{ getDateSortText() }}
+            <span class="date-arrow" [class.asc]="dateSort === 'oldest'">
+              <img src="/asset/icons/arrow_down.png" alt="sort" class="arrow-icon" />
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product List -->
+    <div class="product-container">
+      <!-- Có sản phẩm -->
+      <div *ngIf="hasProducts" class="product-list">
+        <div *ngFor="let product of filteredProducts" class="product-card">
+          <!-- Favorite Button -->
+          <div class="favorite-section">
+            <button
+              class="favorite-btn"
+              [class.favorited]="product.isFavorite"
+              (click)="toggleFavorite(product)"
+            >
+              <svg
+                *ngIf="product.isFavorite"
+                class="heart-icon filled"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                />
+              </svg>
+              <svg
+                *ngIf="!product.isFavorite"
+                class="heart-icon outline"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Product Image -->
+          <div class="product-image" (click)="goToProductDetail(product)" style="cursor: pointer">
+            <img
+              [src]="product.Image"
+              [alt]="product.ProductName"
+              class="product-img"
+              (error)="
+                $event.target.src =
+                  'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjVGNUY1Ii8+CjxwYXRoIGQ9Ik04NSAxMDBIMTE1VjEzMEg4NVYxMDBaIiBmaWxsPSIjQ0NDQ0NDIi8+CjxwYXRoIGQ9Ik0xMDAgNzVMMTE1IDEwMEg4NUwxMDAgNzVaIiBmaWxsPSIjQ0NDQ0NDIi8+Cjwvc3ZnPgo='
+              "
+            />
+          </div>
+
+          <!-- Product Info -->
+          <div class="product-info" (click)="goToProductDetail(product)" style="cursor: pointer">
+            <h3 class="product-name">{{ product.ProductName }}</h3>
+            <!-- <p class="product-category">{{ product.Category }} - {{ product.Subcategory }}</p> -->
+            <p class="product-weight">{{ product.Weight }} / {{ product.Unit }}</p>
+          </div>
+
+          <!-- Product Price -->
+          <div class="product-price">
+            <!-- Hiển thị giá khuyến mãi nếu có -->
+            <div *ngIf="hasPromotion(product)" class="price-container-promotion">
+              <div class="discounted-price">{{ formatPrice(product.Price) }}</div>
+              <div class="price-group">
+                <span class="original-price">{{ formatPrice(product.OriginalPrice!) }}</span>
+                <span class="discount-badge">-{{ getDiscountPercentage(product) }}%</span>
+              </div>
+            </div>
+            <!-- Hiển thị giá thường nếu không có khuyến mãi -->
+            <div *ngIf="!hasPromotion(product)" class="price-value">
+              {{ formatPrice(product.Price) }}
+            </div>
+          </div>
+
+          <!-- Product Actions -->
+          <div class="product-actions">
+            <button class="add-to-cart-btn" (click)="addToCart(product)">
+              <span class="add-to-cart-text">Thêm vào giỏ</span>
+              <img src="/asset/icons/shop_lightgreen.png" alt="Add to cart" class="cart-icon" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div *ngIf="!hasProducts" class="empty-state">
+        <div class="empty-icon">
+          <img src="/asset/icons/no_heart.png" alt="Heart Empty" />
+        </div>
+        <h2 class="empty-title">Bạn chưa có sản phẩm yêu thích nào</h2>
+        <button class="shop-now-btn" (click)="goToProductList()">Mua sắm ngay</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,271 @@
+<!-- Consultation Detail Page -->
+<div class="consultation-detail-page">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <span>Quản trị viên</span>
+    <span class="separator">/</span>
+    <span class="clickable" (click)="goBack()">Quản lý tư vấn</span>
+    <span class="separator">/</span>
+    <span class="current">{{ consultation?.productName || 'Chi tiết tư vấn' }}</span>
+  </div>
+
+  <!-- Back Link -->
+  <button class="btn-back" (click)="goBack()">
+    <img src="/asset/icons/arrowleft.png" alt="Back" />
+    <span>Quay lại trang quản lý tư vấn</span>
+  </button>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1 class="page-title">{{ consultation?.productName || 'Chi tiết tư vấn' }}</h1>
+    <div class="header-right" *ngIf="consultation">
+      <span class="product-sku-header">SKU: {{ consultation.sku }}</span>
+    </div>
+  </div>
+
+  <!-- Statistics Cards -->
+  <div class="statistics-grid" *ngIf="consultation">
+    <div
+      class="stat-card clickable stat-all"
+      [class.active]="currentFilter === 'all'"
+      (click)="onFilterChange('all')"
+      title="Hiển thị tất cả câu hỏi"
+    >
+      <h3 class="stat-title">TỔNG CÂU HỎI</h3>
+      <p class="stat-value">{{ statistics.total }}</p>
+    </div>
+    <div
+      class="stat-card clickable stat-pending"
+      [class.active]="currentFilter === 'pending'"
+      (click)="onFilterChange('pending')"
+      title="Lọc câu hỏi chờ trả lời"
+    >
+      <h3 class="stat-title">CHỜ TRẢ LỜI</h3>
+      <p class="stat-value">{{ statistics.pending }}</p>
+    </div>
+    <div
+      class="stat-card clickable stat-answered"
+      [class.active]="currentFilter === 'answered'"
+      (click)="onFilterChange('answered')"
+      title="Lọc câu hỏi đã trả lời"
+    >
+      <h3 class="stat-title">ĐÃ TRẢ LỜI</h3>
+      <p class="stat-value">{{ statistics.answered }}</p>
+    </div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar" *ngIf="consultation">
+    <!-- Search Container -->
+    <div class="search-container">
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Tìm kiếm theo câu hỏi, khách hàng..."
+        [(ngModel)]="searchQuery"
+        (input)="onSearchChange()"
+      />
+      <button class="search-btn">
+        <img src="/asset/icons/search_dark.png" alt="Search" />
+      </button>
+    </div>
+
+    <!-- Filter Dropdown -->
+    <div class="filter-container">
+      <button class="filter-btn" (click)="toggleFilterDropdown(); $event.stopPropagation()">
+        <img src="/asset/icons/filter_dark.png" alt="Filter" />
+        <span>{{ getFilterLabel(currentFilter) }}</span>
+        <img
+          src="/asset/icons/arrowdown_lightgreen.png"
+          alt="Arrow"
+          class="arrow-icon"
+          [class.rotated]="showFilterDropdown"
+        />
+      </button>
+
+      <div class="filter-dropdown" *ngIf="showFilterDropdown" (click)="$event.stopPropagation()">
+        <div
+          class="filter-option"
+          [class.active]="currentFilter === 'all'"
+          (click)="onFilterChange('all')"
+        >
+          <input
+            type="radio"
+            name="filterOption"
+            [checked]="currentFilter === 'all'"
+            (click)="$event.stopPropagation()"
+          />
+          <span>Tất cả</span>
+        </div>
+        <div
+          class="filter-option"
+          [class.active]="currentFilter === 'pending'"
+          (click)="onFilterChange('pending')"
+        >
+          <input
+            type="radio"
+            name="filterOption"
+            [checked]="currentFilter === 'pending'"
+            (click)="$event.stopPropagation()"
+          />
+          <span>Chờ trả lời</span>
+        </div>
+        <div
+          class="filter-option"
+          [class.active]="currentFilter === 'answered'"
+          (click)="onFilterChange('answered')"
+        >
+          <input
+            type="radio"
+            name="filterOption"
+            [checked]="currentFilter === 'answered'"
+            (click)="$event.stopPropagation()"
+          />
+          <span>Đã trả lời</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error Message -->
+  <div class="error-message" *ngIf="loadError">
+    {{ loadError }}
+  </div>
+
+  <!-- Questions List -->
+  <div class="questions-list" *ngIf="!loadError && consultation">
+    <div
+      class="question-item"
+      *ngFor="let question of getDisplayedQuestions()"
+      [class.pending]="question.status === 'pending'"
+      [class.answered]="question.status === 'answered'"
+    >
+      <div class="question-status-badge" [class.pending]="question.status === 'pending'">
+        {{ question.status === 'pending' ? 'Chờ trả lời' : 'Đã trả lời' }}
+      </div>
+
+      <div class="question-content">
+        <div class="question-section">
+          <div class="section-label">Câu hỏi:</div>
+          <p class="question-text">{{ question.question }}</p>
+          <div class="question-meta">
+            <span class="customer-name">{{ question.customerName }}</span>
+            <span class="question-time">{{ formatTimeAgo(question.createdAt) }}</span>
+          </div>
+        </div>
+
+        <div class="answer-section" *ngIf="question.answer">
+          <div class="section-label">Trả lời:</div>
+          <p class="answer-text">{{ question.answer }}</p>
+          <div class="answer-meta">
+            <span class="answer-by" *ngIf="question.answeredBy">{{ question.answeredBy }}</span>
+            <span class="answer-time" *ngIf="question.answeredAt">
+              {{ formatTimeAgo(question.answeredAt) }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-actions">
+        <button
+          class="btn-answer"
+          *ngIf="question.status === 'pending'"
+          (click)="openAnswerDialog(question)"
+        >
+          Trả lời
+        </button>
+        <button
+          class="btn-edit-answer"
+          *ngIf="question.status === 'answered'"
+          (click)="openAnswerDialog(question)"
+        >
+          Sửa trả lời
+        </button>
+        <button class="btn-delete" (click)="deleteQuestion(question)">Xóa</button>
+      </div>
+    </div>
+
+    <!-- Load More Button -->
+    <div class="load-more-questions" *ngIf="hasMoreQuestions()">
+      <button class="btn-load-more" (click)="toggleExpandQuestions()">
+        <span>Xem thêm {{ getRemainingQuestionsCount() }} câu hỏi</span>
+        <img src="/asset/icons/arrowdown_lightgreen.png" alt="Expand" class="expand-icon" />
+      </button>
+    </div>
+
+    <!-- Collapse Button -->
+    <div
+      class="collapse-questions"
+      *ngIf="expandedQuestions && getTotalFilteredCount() > questionsPerPage"
+    >
+      <button class="btn-collapse" (click)="toggleExpandQuestions()">
+        <span>Thu gọn</span>
+        <img src="/asset/icons/arrowdown_lightgreen.png" alt="Collapse" class="collapse-icon" />
+      </button>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="getDisplayedQuestions().length === 0">
+      <p>Không có câu hỏi nào phù hợp</p>
+    </div>
+  </div>
+</div>
+
+<!-- Answer Dialog -->
+<div class="answer-dialog-overlay" *ngIf="selectedQuestion" (click)="closeAnswerDialog()">
+  <div class="answer-dialog-container" (click)="$event.stopPropagation()">
+    <div class="dialog-header">
+      <h3>Trả lời câu hỏi</h3>
+      <button class="dialog-close" (click)="closeAnswerDialog()">×</button>
+    </div>
+
+    <div class="dialog-body">
+      <div class="question-preview">
+        <p class="preview-label">Câu hỏi:</p>
+        <p class="preview-text">{{ selectedQuestion.question }}</p>
+        <p class="preview-customer">Khách hàng: {{ selectedQuestion.customerName }}</p>
+      </div>
+
+      <div class="answer-input">
+        <label for="answer-text">Câu trả lời:</label>
+        <textarea
+          id="answer-text"
+          class="answer-textarea"
+          [(ngModel)]="answerText"
+          placeholder="Nhập câu trả lời..."
+          rows="6"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="dialog-footer">
+      <button class="btn-cancel" (click)="closeAnswerDialog()">Hủy</button>
+      <button
+        class="btn-submit"
+        (click)="submitAnswer()"
+        [disabled]="isSubmittingAnswer || !answerText.trim()"
+      >
+        {{ isSubmittingAnswer ? 'Đang gửi...' : 'Gửi trả lời' }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Popup Notification -->
+<div class="popup-overlay" *ngIf="showPopup" (click)="closePopup()">
+  <div
+    class="popup-container"
+    [class.success]="popupType === 'success'"
+    [class.error]="popupType === 'error'"
+    [class.info]="popupType === 'info'"
+    (click)="$event.stopPropagation()"
+  >
+    <div class="popup-icon">
+      <span *ngIf="popupType === 'success'">✓</span>
+      <span *ngIf="popupType === 'error'">✕</span>
+      <span *ngIf="popupType === 'info'">ℹ</span>
+    </div>
+    <p class="popup-message">{{ popupMessage }}</p>
+    <button class="popup-close" (click)="closePopup()">Đóng</button>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+/* App Root Styles */
+:host {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+app-root {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Ensure layout displays */
+app-layout {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

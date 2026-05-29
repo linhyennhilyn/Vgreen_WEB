@@ -1,0 +1,290 @@
+<!-- Login Page - VGreen Admin -->
+<div class="login-page">
+  <div class="login-container">
+    
+    <!-- ĐĂNG NHẬP -->
+    @if (currentView() === 'login') {
+      <div class="login-box">
+        <h2 class="login-title">ĐĂNG NHẬP</h2>
+        
+        <form (ngSubmit)="onLogin()" class="login-form">
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Email<span class="required">*</span></label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email"
+              [(ngModel)]="loginForm.email"
+              class="form-input"
+              required
+            />
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label for="password">Password<span class="required">*</span></label>
+            <div class="password-input-wrapper">
+              <input 
+                [type]="showPassword() ? 'text' : 'password'"
+                id="password" 
+                name="password"
+                [(ngModel)]="loginForm.password"
+                class="form-input"
+                required
+              />
+              <button 
+                type="button" 
+                class="password-toggle"
+                (click)="togglePasswordVisibility()"
+              >
+                <img 
+                  [src]="showPassword() ? '/asset/icons/eye_show.png' : '/asset/icons/eye_hide.png'" 
+                  alt="Toggle password"
+                />
+              </button>
+            </div>
+          </div>
+
+          <!-- Forgot Password -->
+          <div class="forgot-password-wrapper">
+            <a href="javascript:void(0)" class="forgot-link" (click)="goToForgotPassword()">
+              Quên mật khẩu?
+            </a>
+          </div>
+
+          <!-- Error Message -->
+          @if (errorMessage()) {
+            <div class="error-message">{{ errorMessage() }}</div>
+          }
+
+          <!-- Submit Button -->
+          <button 
+            type="submit" 
+            class="submit-btn"
+            [disabled]="isLoading()"
+          >
+            {{ isLoading() ? 'Đang xử lý...' : 'Đăng nhập' }}
+          </button>
+        </form>
+      </div>
+    }
+
+    <!-- QUÊN MẬT KHẨU - BƯỚC 1 -->
+    @if (currentView() === 'forgot-1') {
+      <div class="login-box">
+        <h2 class="login-title">QUÊN MẬT KHẨU</h2>
+        <p class="forgot-description">
+          Nhập địa chỉ email bạn đã đăng ký.<br>
+          Chúng tôi sẽ gửi mã xác nhận để đặt lại mật khẩu cho bạn.
+        </p>
+
+        <form (ngSubmit)="onSendResetEmail()" class="login-form">
+          <div class="form-group">
+            <label for="forgot-email">Email<span class="required">*</span></label>
+            <input 
+              type="email" 
+              id="forgot-email"
+              [(ngModel)]="forgotPasswordEmail"
+              name="forgotEmail"
+              class="form-input"
+              required
+            />
+          </div>
+
+          @if (errorMessage()) {
+            <div class="error-message">{{ errorMessage() }}</div>
+          }
+
+          <button 
+            type="submit" 
+            class="submit-btn"
+            [disabled]="isLoading()"
+          >
+            {{ isLoading() ? 'Đang gửi...' : 'Tiếp tục' }}
+          </button>
+
+          <div class="back-to-login">
+            <a href="javascript:void(0)" (click)="goToLogin()" class="back-link">
+              ← Quay lại đăng nhập
+            </a>
+          </div>
+        </form>
+      </div>
+    }
+
+    <!-- QUÊN MẬT KHẨU - BƯỚC 2: NHẬP OTP -->
+    @if (currentView() === 'forgot-2') {
+      <div class="login-box">
+        <h2 class="login-title">QUÊN MẬT KHẨU</h2>
+        <p class="forgot-description">
+          Vui lòng nhập mã xác nhận vào các ô bên dưới.<br>
+          (Mã OTP có hiệu lực trong 10 phút)
+        </p>
+
+        <form (ngSubmit)="onContinueWithOTP()" class="login-form">
+          <div class="form-group">
+            <label>Email</label>
+            <input 
+              type="text" 
+              class="form-input"
+              [value]="resetPasswordForm.email"
+              readonly
+              disabled
+            />
+          </div>
+
+          <!-- OTP Input -->
+          <div class="otp-group">
+            @for (digit of resetPasswordForm.otp; track $index) {
+              <input 
+                type="text" 
+                maxlength="1"
+                class="otp-input"
+                [(ngModel)]="resetPasswordForm.otp[$index]"
+                [name]="'otp' + $index"
+                (input)="onOtpInput($index, $event)"
+                (keydown)="onOtpKeydown($index, $event)"
+              />
+            }
+          </div>
+
+          @if (errorMessage()) {
+            <div class="error-message">{{ errorMessage() }}</div>
+          }
+
+          <button 
+            type="submit" 
+            class="submit-btn"
+            [disabled]="isLoading()"
+          >
+            Tiếp tục
+          </button>
+
+          <div class="back-to-login">
+            <div style="margin-bottom: 10px;">
+              Bạn chưa nhận được mã? <a href="javascript:void(0)" (click)="resendOTP()">Gửi lại mã</a>
+            </div>
+            <a href="javascript:void(0)" (click)="goToLogin()" class="back-link">
+              ← Quay lại đăng nhập
+            </a>
+          </div>
+        </form>
+      </div>
+    }
+
+    <!-- ĐẶT LẠI MẬT KHẨU -->
+    @if (currentView() === 'reset') {
+      <div class="login-box">
+        <h2 class="login-title">ĐẶT LẠI MẬT KHẨU</h2>
+        <p class="forgot-description">
+          Tạo mật khẩu mới cho tài khoản <strong>{{ resetPasswordForm.email }}</strong><br>
+          (Mật khẩu phải có ít nhất 6 ký tự)
+        </p>
+
+        <form (ngSubmit)="onResetPassword()" class="login-form">
+          <div class="form-group">
+            <label for="reset-email">Email</label>
+            <input 
+              type="text" 
+              id="reset-email"
+              class="form-input"
+              [value]="resetPasswordForm.email"
+              readonly
+              disabled
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="new-password">Mật khẩu mới<span class="required">*</span></label>
+            <div class="password-input-wrapper">
+              <input 
+                [type]="showPassword() ? 'text' : 'password'"
+                id="new-password"
+                [(ngModel)]="resetPasswordForm.newPassword"
+                name="newPassword"
+                class="form-input"
+                required
+              />
+              <button 
+                type="button" 
+                class="password-toggle"
+                (click)="togglePasswordVisibility()"
+              >
+                <img 
+                  [src]="showPassword() ? '/asset/icons/eye_show.png' : '/asset/icons/eye_hide.png'" 
+                  alt="Toggle password"
+                />
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirm-password">Xác nhận mật khẩu<span class="required">*</span></label>
+            <div class="password-input-wrapper">
+              <input 
+                [type]="showPassword() ? 'text' : 'password'"
+                id="confirm-password"
+                [(ngModel)]="resetPasswordForm.confirmPassword"
+                name="confirmPassword"
+                class="form-input"
+                required
+              />
+              <button 
+                type="button" 
+                class="password-toggle"
+                (click)="togglePasswordVisibility()"
+              >
+                <img 
+                  [src]="showPassword() ? '/asset/icons/eye_show.png' : '/asset/icons/eye_hide.png'" 
+                  alt="Toggle password"
+                />
+              </button>
+            </div>
+          </div>
+
+          @if (errorMessage()) {
+            <div class="error-message">{{ errorMessage() }}</div>
+          }
+
+          <button 
+            type="submit" 
+            class="submit-btn"
+            [disabled]="isLoading()"
+          >
+            {{ isLoading() ? 'Đang xử lý...' : 'Tiếp tục' }}
+          </button>
+
+          <div class="back-to-login">
+            <a href="javascript:void(0)" (click)="goToLogin()" class="back-link">
+              ← Quay lại đăng nhập
+            </a>
+          </div>
+        </form>
+      </div>
+    }
+
+  </div>
+</div>
+
+<!-- Custom Popup -->
+@if (showPopup()) {
+  <div class="popup-overlay" (click)="closePopup()">
+    <div class="popup-container" (click)="$event.stopPropagation()">
+      <div class="popup-icon" [class.success]="popupType() === 'success'" [class.error]="popupType() === 'error'" [class.info]="popupType() === 'info'">
+        @if (popupType() === 'success') {
+          <span class="icon-check">✓</span>
+        } @else if (popupType() === 'error') {
+          <span class="icon-error">✕</span>
+        } @else {
+          <span class="icon-info">i</span>
+        }
+      </div>
+      
+      <div class="popup-message">{{ popupMessage() }}</div>
+      
+      <button class="popup-btn-ok" (click)="closePopup()">OK</button>
+    </div>
+  </div>
+}
+

@@ -1,0 +1,302 @@
+<!-- Reviews Component -->
+<div class="reviews-container">
+  <!-- Title -->
+  <div class="reviews-title-container">
+    <h1 class="reviews-title">Đánh giá đơn hàng</h1>
+    <p class="reviews-title-description">Hãy chia sẻ cảm nhận của bạn về những sản phẩm đã mua</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs-container">
+    <div class="tab-list">
+      <button class="tab" [class.active]="!showReviewed" (click)="showReviewed = false">
+        Chưa đánh giá
+      </button>
+      <button class="tab" [class.active]="showReviewed" (click)="showReviewed = true">
+        Đã đánh giá
+      </button>
+    </div>
+  </div>
+
+  <!-- Filter and Sort Section -->
+  <div class="filter-sort-section" *ngIf="showReviewed">
+    <!-- Star Rating Filters - Desktop -->
+    <div class="star-filters desktop-only">
+      <label class="star-filter" *ngFor="let level of [5, 4, 3, 2, 1]">
+        <input
+          type="checkbox"
+          [checked]="filterRatings[level]"
+          (change)="toggleRatingFilter(level)"
+        />
+        <div class="stars-display">
+          <img
+            *ngFor="let i of getStarArray(level)"
+            src="/asset/icons/star_yellow.png"
+            alt="filled star"
+            class="filter-star filled"
+          />
+          <img
+            *ngFor="let i of getStarArray(5 - level)"
+            src="/asset/icons/star_outline_yellow.png"
+            alt="empty star"
+            class="filter-star empty"
+          />
+        </div>
+      </label>
+    </div>
+
+    <!-- Star Rating Filters - Mobile Dropdown -->
+    <div class="star-filters-dropdown mobile-only">
+      <button class="filter-dropdown-btn" (click)="toggleFilterDropdown()">
+        <span>Lọc đánh giá</span>
+        <span class="filter-count" *ngIf="getSelectedFiltersCount() > 0"
+          >({{ getSelectedFiltersCount() }})</span
+        >
+        <img
+          src="/asset/icons/arrowdown_dark.png"
+          alt="dropdown"
+          class="dropdown-arrow"
+          [class.rotated]="isFilterDropdownOpen"
+        />
+      </button>
+      <div class="filter-dropdown-menu" *ngIf="isFilterDropdownOpen">
+        <label class="star-filter" *ngFor="let level of [5, 4, 3, 2, 1]">
+          <input
+            type="checkbox"
+            [checked]="filterRatings[level]"
+            (change)="toggleRatingFilter(level)"
+          />
+          <div class="stars-display">
+            <img
+              *ngFor="let i of getStarArray(level)"
+              src="/asset/icons/star_yellow.png"
+              alt="filled star"
+              class="filter-star filled"
+            />
+            <img
+              *ngFor="let i of getStarArray(5 - level)"
+              src="/asset/icons/star_outline_yellow.png"
+              alt="empty star"
+              class="filter-star empty"
+            />
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Sort Button -->
+    <div class="sort-container">
+      <button class="sort-btn" (click)="toggleSort()">
+        <span>{{ getSortLabel() }}</span>
+        <img
+          [src]="sortBy === 'high' ? 'asset/icons/arrow_down.png' : 'asset/icons/arrow_up.png'"
+          [alt]="sortBy === 'high' ? 'Descending' : 'Ascending'"
+          class="sort-arrow-icon"
+        />
+      </button>
+    </div>
+  </div>
+
+  <!-- Content Area -->
+  <div class="content-wrapper">
+    <!-- Reviews List -->
+    <div class="reviews-list" *ngIf="showReviewed && reviewedItems.length > 0">
+      <div *ngFor="let item of reviewedItems" class="review-item-card">
+        <!-- Product Info -->
+        <div class="product-info-section" (click)="viewOrderDetails(item)" style="cursor: pointer">
+          <div class="product-left">
+            <div class="product-image-placeholder" *ngIf="item.productImage">
+              <img [src]="item.productImage" [alt]="item.productName" class="product-img" />
+            </div>
+            <div>
+              <h3 class="product-name">{{ item.productName }}</h3>
+              <p class="product-price" *ngIf="item.price">
+                {{ formatPriceNumber(item.price) }}{{ item.unit ? '/' + item.unit : '' }}
+              </p>
+              <p class="product-meta" *ngIf="item.orderNumber">Đơn hàng: {{ item.orderNumber }}</p>
+              <p class="product-meta" *ngIf="!item.orderNumber && item.orderId">
+                Đơn hàng: {{ item.orderId }}
+              </p>
+            </div>
+          </div>
+          <!-- Rating & Date -->
+          <div class="rating-date-container">
+            <div class="rating-display">
+              <img
+                *ngFor="let i of getStarArray(item.rating || 0)"
+                src="/asset/icons/star_yellow.png"
+                alt="Filled star"
+                class="star-icon"
+              />
+              <img
+                *ngFor="let i of getStarArray(5 - (item.rating || 0))"
+                src="/asset/icons/star_outline_yellow.png"
+                alt="Empty star"
+                class="star-icon"
+              />
+            </div>
+            <span class="user-name">{{ item.reviewDate }}</span>
+          </div>
+        </div>
+
+        <!-- Review Text - Đã ẩn -->
+        <!-- <div class="review-text" *ngIf="item.reviewText">
+          <p>{{ item.reviewText }}</p>
+        </div> -->
+
+        <!-- Review Images - Đã ẩn -->
+        <!-- <div class="review-images" *ngIf="item.images && item.images.length > 0">
+          <div class="review-image-item" *ngFor="let image of item.images">
+            <img
+              [src]="image"
+              [alt]="'Review image from ' + item.productName"
+              class="review-image"
+            />
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <!-- No Data Message -->
+    <div class="no-data" *ngIf="showReviewed && reviewedItems.length === 0">
+      <div class="no-data-icon">
+        <img src="/asset/icons/no_info.png" alt="empty" class="empty-icon-img" />
+      </div>
+      <p class="no-data-text">Không có dữ liệu</p>
+    </div>
+
+    <!-- Unreviewed Items -->
+    <div class="unreviewed-list" *ngIf="!showReviewed && unreviewedItems.length > 0">
+      <div *ngFor="let item of unreviewedItems" class="order-wrapper-unreviewed">
+        <!-- Status Card -->
+        <div class="order-status-card status-completed">
+          <div class="status-left">
+            <span class="status-text">{{ getStatusLabel(item.orderStatus) }}</span>
+          </div>
+          <div class="status-right">
+            <span class="status-date">{{ formatDate(item.orderDate || '') }}</span>
+            <span class="status-separator">|</span>
+            <!-- <span class="status-order-info"
+              >{{ item.products?.length || 1 }} sản phẩm ({{ getTotalQuantity(item) }})</span
+            >
+            <span class="status-separator">|</span> -->
+            <span class="status-order-code">{{ item.orderNumber }}</span>
+          </div>
+        </div>
+
+        <!-- Order Card -->
+        <div class="order-card-unreviewed" (click)="viewOrderDetails(item)" style="cursor: pointer">
+          <!-- Products List -->
+          <div class="products-section">
+            <div *ngFor="let product of getDisplayProducts(item)">
+              <div class="product-item">
+                <div
+                  class="product-left"
+                  (click)="viewOrderDetails(item); $event.stopPropagation()"
+                  style="cursor: pointer"
+                >
+                  <div class="product-image">
+                    <img
+                      [src]="product.image || 'asset/image/placeholder.png'"
+                      [alt]="product.name"
+                      class="product-img"
+                    />
+                  </div>
+                  <div class="product-details">
+                    <h3 class="product-name">{{ product.name }}</h3>
+                    <p class="product-price">{{ product.price | number }} ₫/{{ product.unit }}</p>
+                  </div>
+                </div>
+                <div class="product-right">
+                  <div class="product-quantity">Số lượng: {{ product.quantity }}</div>
+                  <div class="product-total">{{ product.totalPrice | number }} ₫</div>
+                </div>
+              </div>
+
+              <!-- Khung sản phẩm tặng kèm cho buy1get1 - hiển thị gifted product nếu có -->
+              <div class="free-item-container" *ngIf="hasGiftedProduct(product, item)">
+                <div
+                  class="free-item-image"
+                  *ngIf="getGiftedProduct(product, item) as giftedProduct"
+                >
+                  <img
+                    [src]="giftedProduct.image || 'asset/image/placeholder.png'"
+                    [alt]="giftedProduct.name"
+                  />
+                </div>
+                <div
+                  class="free-item-details"
+                  *ngIf="getGiftedProduct(product, item) as giftedProduct"
+                >
+                  <div class="free-item-name">
+                    <span class="free-item-badge">Tặng kèm</span>{{ giftedProduct.name }}
+                  </div>
+                  <div class="free-item-price">
+                    <!-- <span class="free-price">Miễn phí</span> -->
+                    <span class="original-price-striked"
+                      >{{ giftedProduct.originalPrice || giftedProduct.price | number }}₫</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="free-item-right"
+                  *ngIf="getGiftedProduct(product, item) as giftedProduct"
+                >
+                  <div class="free-item-quantity">Số lượng: {{ giftedProduct.quantity }}</div>
+                  <div class="free-item-total">Miễn phí</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+          <div class="summary-left">
+            <button
+              class="action-btn view-more"
+              (click)="toggleViewMore(item)"
+              *ngIf="hasMoreProducts(item)"
+            >
+              <span>{{ isOrderExpanded(item) ? 'Thu gọn' : 'Xem thêm' }}</span>
+              <img
+                src="/asset/icons/arrowdown_dark.png"
+                alt="arrow"
+                class="arrow-icon"
+                [class.rotated]="isOrderExpanded(item)"
+              />
+            </button>
+          </div>
+          <div class="summary-center">
+            <div class="total-section">
+              <span class="total-label">Tổng tiền ({{ getTotalQuantity(item) }} sản phẩm):</span>
+              <span class="total-amount">{{ item.orderTotal || '722.700' }} ₫</span>
+            </div>
+          </div>
+          <div class="summary-right" *ngIf="!isOrderReviewed(item)">
+            <button class="action-btn rate-btn" (click)="onAddReview(item)">Đánh giá</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="no-data" *ngIf="!showReviewed && unreviewedItems.length === 0">
+      <div class="no-data-icon">
+        <img src="/asset/icons/no_info.png" alt="empty" class="empty-icon-img" />
+      </div>
+      <p class="no-data-text">Không có dữ liệu</p>
+    </div>
+  </div>
+</div>
+
+<!-- Review Form Modal -->
+<app-review-form
+  [showModal]="showReviewModal"
+  [products]="selectedProductsForReview"
+  (close)="onCloseReviewModal()"
+  (submit)="onSubmitReview($event)"
+>
+</app-review-form>
+
+<!-- Order Detail Modal Component -->
+<app-order-detail-modal></app-order-detail-modal>

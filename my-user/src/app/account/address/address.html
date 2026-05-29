@@ -1,0 +1,106 @@
+<!-- Address Book Content -->
+<div class="address-content">
+  <!-- Header -->
+  <div class="content-header">
+    <div>
+      <h1>Sổ địa chỉ</h1>
+      <p>Quản lý địa chỉ giao hàng của bạn</p>
+    </div>
+  </div>
+
+  <!-- Empty State - Hiển thị khi chưa có địa chỉ -->
+  <div class="empty-state" *ngIf="addresses.length === 0">
+    <div class="empty-icon">
+      <img src="/asset/icons/no_info.png" alt="No Address" />
+    </div>
+    <h3 class="empty-title">Chưa có địa chỉ nào</h3>
+    <p class="empty-description">
+      Bạn chưa có địa chỉ giao hàng nào. Hãy thêm địa chỉ để đặt hàng dễ dàng hơn.
+    </p>
+    <button class="add-first-address-btn" (click)="onAddNewAddress()">
+      <img src="/asset/icons/plus.png" alt="Add" class="add-icon" />
+      <span>Thêm địa chỉ đầu tiên</span>
+    </button>
+  </div>
+
+  <!-- Address List -->
+  <div class="address-list" *ngIf="addresses.length > 0">
+    <div
+      class="address-card"
+      [class.default-address]="address.isDefault"
+      *ngFor="let address of addresses"
+    >
+      <div class="address-info">
+        <h3 class="address-name">
+          {{ address.name }}
+          <span class="default-badge" *ngIf="address.isDefault">Địa chỉ mặc định</span>
+        </h3>
+        <p class="address-text">{{ getFullAddress(address) }}</p>
+      </div>
+      <div class="address-details">
+        <div class="detail-item" *ngIf="address.phone">
+          <span class="detail-label">Số điện thoại:</span>
+          <span class="detail-value">{{ address.phone }}</span>
+        </div>
+        <div class="detail-item" *ngIf="address.email">
+          <span class="detail-label">Email:</span>
+          <span class="detail-value">{{ address.email }}</span>
+        </div>
+      </div>
+      <div class="address-actions">
+        <div class="action-buttons-row">
+          <button class="edit-btn" (click)="onEditAddress(address)">
+            <img src="/asset/icons/edit.png" alt="Edit" class="edit-icon" />
+            <span>Chỉnh sửa</span>
+          </button>
+          <button class="delete-btn" (click)="onDeleteAddress(address)">
+            <img src="/asset/icons/trash_red.png" alt="Delete" class="delete-icon" />
+            <!-- <span>Xóa</span> -->
+          </button>
+        </div>
+        <button
+          *ngIf="!address.isDefault"
+          class="default-btn"
+          (click)="onSetDefaultAddress(address)"
+        >
+          <span>Đặt làm mặc định</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add New Address Button - Chỉ hiện khi đã có địa chỉ -->
+  <div class="add-address-section" *ngIf="addresses.length > 0">
+    <button class="add-address-btn" (click)="onAddNewAddress()">
+      <img src="/asset/icons/plus.png" alt="Add" class="add-icon" />
+      <span style="font-family: 'SF Pro', sans-serif !important">Thêm địa chỉ mới</span>
+    </button>
+  </div>
+
+  <!-- Address Form Modal -->
+  <app-address-form
+    *ngIf="showAddressFormModal"
+    [addressInfo]="addressInfoForForm"
+    (addressComplete)="onAddressComplete($event)"
+    (closeModal)="closeAddressFormModal()"
+  ></app-address-form>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal-overlay" *ngIf="showDeleteConfirm" (click)="onCancelDelete()">
+    <div class="delete-modal" (click)="$event.stopPropagation()">
+      <div class="delete-header">
+        <h3 class="delete-title">
+          <img src="/asset/icons/trash_red.png" alt="Delete" class="delete-icon" />
+          Xác nhận xóa
+        </h3>
+      </div>
+      <div class="delete-body">
+        <p class="delete-message">Bạn có chắc chắn muốn xóa địa chỉ này?</p>
+      </div>
+      <div class="delete-footer">
+        <button class="btn-cancel" (click)="onCancelDelete()">Hủy</button>
+        <button class="btn-delete" (click)="onConfirmDelete()">Xóa địa chỉ</button>
+      </div>
+    </div>
+  </div>
+</div>

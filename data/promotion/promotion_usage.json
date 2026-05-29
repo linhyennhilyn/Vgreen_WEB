@@ -1,0 +1,86 @@
+[
+  {
+    "_id": "690b1361ca42a26c89d2e861",
+    "promotion_id": "PROMO001",
+    "user_id": [
+      "U001",
+      "U002",
+      "U005",
+      "U007"
+    ],
+    "order_id": [
+      "ORD1001",
+      "ORD1003",
+      "ORD1010",
+      "ORD1015"
+    ]
+  },
+  {
+    "_id": "690b1361ca42a26c89d2e862",
+    "promotion_id": "PROMO002",
+    "user_id": [
+      "U003",
+      "U004",
+      "U005",
+      "U006",
+      "U007"
+    ],
+    "order_id": [
+      "ORD1020",
+      "ORD1021",
+      "ORD1022",
+      "ORD1023",
+      "ORD1024"
+    ]
+  },
+  {
+    "_id": "690b1361ca42a26c89d2e863",
+    "promotion_id": "PROMO003",
+    "user_id": [
+      "U001",
+      "U004"
+    ],
+    "order_id": [
+      "ORD1030",
+      "ORD1031"
+    ]
+  },
+  {
+    "_id": "690b1361ca42a26c89d2e864",
+    "promotion_id": "PROMO004",
+    "user_id": [
+      "U002"
+    ],
+    "order_id": [
+      "ORD1040"
+    ]
+  },
+  {
+    "_id": "690b1361ca42a26c89d2e865",
+    "promotion_id": "PROMO008",
+    "user_id": [
+      "U009",
+      "U010"
+    ],
+    "order_id": [
+      "ORD2001",
+      "ORD2002"
+    ]
+  },
+  {
+    "_id": "69121696ad36ba153f790bb1",
+    "promotion_id": "690b1361ca42a26c89d2e857",
+    "user_id": "CUS000004",
+    "order_id": "ORD93110096922",
+    "used_at": "2025-11-10T16:45:10.189Z",
+    "__v": 0
+  },
+  {
+    "_id": "69143e4654b86251c02d5c9c",
+    "promotion_id": "690b1361ca42a26c89d2e855",
+    "user_id": "CUS000003",
+    "order_id": "ORD34342624231",
+    "used_at": "2025-11-12T07:59:02.665Z",
+    "__v": 0
+  }
+]

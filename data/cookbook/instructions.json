@@ -1,0 +1,6253 @@
+[{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782a8"
+  },
+  "ID": "M001",
+  "DishName": "Cơm gạo lứt trộn rau củ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/12/com-gao-luc-tron-rau-cu-880.jpg",
+  "Ingredient": "gạo lứt",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782aa"
+  },
+  "ID": "M002",
+  "DishName": "Bánh nếp nhân sò điệp",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/08/banh-nep-nhan-so-diep-880.jpg",
+  "Ingredient": "nếp",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782ac"
+  },
+  "ID": "M003",
+  "DishName": "Cháo tôm nếp cẩm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0092-chao-tom-nep-cam.png",
+  "Ingredient": "nếp",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782ae"
+  },
+  "ID": "M004",
+  "DishName": "Cơm sen gạo lứt chay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/08/com-sen-gao-lut-chay.jpg",
+  "Ingredient": "gạo lứt",
+  "CookingTime": "5 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782b0"
+  },
+  "ID": "M005",
+  "DishName": "Cơm gạo lứt trộn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/01/com-gao-lut.jpg",
+  "Ingredient": "gạo lứt",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "2 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782b2"
+  },
+  "ID": "M006",
+  "DishName": "Cơm gạo lứt hạt sen",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/04/com-gao-lut-hat-sen.webp",
+  "Ingredient": "gạo lứt",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782b4"
+  },
+  "ID": "M007",
+  "DishName": "Cơm gạo lứt trộn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/03/com-gao-lut-tron.webp",
+  "Ingredient": "gạo lứt",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782b6"
+  },
+  "ID": "M008",
+  "DishName": "Cơm gạo lứt bí đỏ hấp",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/01/com-gao-luc-bi-do-500.jpg",
+  "Ingredient": "gạo lứt",
+  "CookingTime": "45 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782b8"
+  },
+  "ID": "M009",
+  "DishName": "Súp gạo lứt tóc tiên",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/04/sup-gao-lut-toc-tien-500.jpg",
+  "Ingredient": "gạo lứt",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782ba"
+  },
+  "ID": "M010",
+  "DishName": "Bánh rán sữa chua ngũ cốc",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/12/Thumbnail-template-1.png",
+  "Ingredient": "ngũ cốc",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782bc"
+  },
+  "ID": "M011",
+  "DishName": "Cánh gà chiên ngũ cốc",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/05/2705_CQC3640_CanhGaChienNguCoc-540-360.jpg",
+  "Ingredient": "ngũ cốc",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782be"
+  },
+  "ID": "M012",
+  "DishName": "Cháo yến mạch thịt bò",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/11/chao-yen-mach-thit-bo-500.jpg",
+  "Ingredient": "yến mạch",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782c0"
+  },
+  "ID": "M013",
+  "DishName": "Xôi gà đậu xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/12/xoi-ga-dau-xanh-880.jpg",
+  "Ingredient": "đậu xanh",
+  "CookingTime": "45 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782c2"
+  },
+  "ID": "M014",
+  "DishName": "Pancake đậu xanh cốt dừa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/04/pancake-dau-xanh-cot-dua.webp",
+  "Ingredient": "đậu xanh",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782c4"
+  },
+  "ID": "M015",
+  "DishName": "Miến đậu xanh xào thập cẩm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/09/mien-dau-xanh-xao-thap-cam-500.jpg",
+  "Ingredient": "đậu xanh",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782c6"
+  },
+  "ID": "M016",
+  "DishName": "Cháo hàu sữa đậu xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/12/chao-540.png",
+  "Ingredient": "đậu xanh",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782c8"
+  },
+  "ID": "M017",
+  "DishName": "Canh bí đỏ đậu xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/canh-bi-do-dau-xanh-42av4942.jpg",
+  "Ingredient": "đậu xanh",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782ca"
+  },
+  "ID": "M018",
+  "DishName": "Cháo lươn khoai môn đậu xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_9133-chao-luon-khoai-mon-dau-xanh.png",
+  "Ingredient": "đậu xanh",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782cc"
+  },
+  "ID": "M019",
+  "DishName": "Salad cam đậu đỏ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/08/salad-cam-dau-do.jpg",
+  "Ingredient": "đậu đỏ",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782ce"
+  },
+  "ID": "M020",
+  "DishName": "Pancake hạnh nhân đậu đỏ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/08/pancake-hanh-nhan-dau-do-880.jpg",
+  "Ingredient": "đậu đỏ",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782d0"
+  },
+  "ID": "M021",
+  "DishName": "Bánh rán chocolate đậu đỏ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/06/banh-ran-chocolate-dau-do-500-min.jpg",
+  "Ingredient": "đậu đỏ",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782d2"
+  },
+  "ID": "M022",
+  "DishName": "Chân gà tiềm đậu đen",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/07/chan-ga-tiem-dau-den-880.webp",
+  "Ingredient": "đậu đen",
+  "CookingTime": "45 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782d4"
+  },
+  "ID": "M023",
+  "DishName": "Canh sườn đậu phộng xá bấu",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/07/canh-suon-dau-phong-xa-bau.jpg",
+  "Ingredient": "đậu phộng",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782d6"
+  },
+  "ID": "M024",
+  "DishName": "Sườn bò hầm đậu phộng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/03/Suon-bo-om-dau-phong.jpg",
+  "Ingredient": "đậu phộng",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782d8"
+  },
+  "ID": "M025",
+  "DishName": "Canh bí đỏ đậu phộng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/12/canh-bi-do-dau-phong.jpg",
+  "Ingredient": "đậu phộng",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782da"
+  },
+  "ID": "M026",
+  "DishName": "Mướp xào đậu phộng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/07/muop-xao-dau-phong-880.webp",
+  "Ingredient": "đậu phộng",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782dc"
+  },
+  "ID": "M027",
+  "DishName": "Gà hon đậu phộng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/04/ga-hon-dau-phong-rang-500.jpg",
+  "Ingredient": "đậu phộng",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782de"
+  },
+  "ID": "M028",
+  "DishName": "Thịt kho đậu phộng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/08/thit-kho-dau-phong-500.jpg",
+  "Ingredient": "đậu phộng",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782e0"
+  },
+  "ID": "M029",
+  "DishName": "Gà nướng xiên xốt đậu phộng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/06/246_CQC3767_GaNuongXienXotDauPhong-540-360.jpg",
+  "Ingredient": "đậu phộng",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782e2"
+  },
+  "ID": "M030",
+  "DishName": "Phô mai que đậu phộng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/12_PhoMaiQueDauPhong_CQC5157.png",
+  "Ingredient": "đậu phộng",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782e4"
+  },
+  "ID": "M031",
+  "DishName": "Lẩu sữa đậu nành hải sản",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/01/lau-sua-dau-nanh-hai-san-500.jpg",
+  "Ingredient": "đậu nành",
+  "CookingTime": "40 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782e6"
+  },
+  "ID": "M032",
+  "DishName": "Miến xào giá đậu nành",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/08/mien-xao-gia-dau-nanh-500.jpg",
+  "Ingredient": "giá",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782e8"
+  },
+  "ID": "M033",
+  "DishName": "Cuốn rong biển chay chấm xốt đậu phộng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/08/goi-cuon-chay.jpg",
+  "Ingredient": "đậu phộng",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782ea"
+  },
+  "ID": "M034",
+  "DishName": "Pancake xốt đậu gà",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/08/pancake-xot-dau-1024x584.jpg",
+  "Ingredient": "đậu gà",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782ec"
+  },
+  "ID": "M035",
+  "DishName": "Mực xào đậu Hà Lan",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/muc-xao-dau-ha-lan.jpg",
+  "Ingredient": "đậu hà lan",
+  "CookingTime": "5 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782ee"
+  },
+  "ID": "M036",
+  "DishName": "Lẩu cháo chim cút hạt sen",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/01/lau-chao-chim-cut-hat-sen.jpg",
+  "Ingredient": "hạt sen",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782f0"
+  },
+  "ID": "M037",
+  "DishName": "Bánh khọt lá cẩm nhân nấm hạt sen",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/09/banh-khot-la-cam-nhan-hat-sen.jpg",
+  "Ingredient": "hạt sen",
+  "CookingTime": "45 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782f2"
+  },
+  "ID": "M038",
+  "DishName": "Canh nấm hạt sen",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/canh-nam-hat-sen-880.jpg",
+  "Ingredient": "hạt sen",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782f4"
+  },
+  "ID": "M039",
+  "DishName": "Cháo hạt sen nấu bò viên",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/05/chao-hat-sen-nau-bo-vien-880.webp",
+  "Ingredient": "hạt sen",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782f6"
+  },
+  "ID": "M040",
+  "DishName": "Bí đỏ hấp hạt sen",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/02/bi-do-hap-hat-sen-880.webp",
+  "Ingredient": "hạt sen",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782f8"
+  },
+  "ID": "M041",
+  "DishName": "Canh tôm mọc hạt sen",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/01/canh-tom-moc-hat-sen-500.jpg",
+  "Ingredient": "hạt sen",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782fa"
+  },
+  "ID": "M042",
+  "DishName": "Cháo hạt sen bạch quả",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CH%C3%81O-H%E1%BA%A0T-SEN-B%E1%BA%A0CH-QU%E1%BA%A2_CQC1307.png",
+  "Ingredient": "hạt sen",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782fc"
+  },
+  "ID": "M043",
+  "DishName": "Canh rong biển hạt sen",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/09/canh-rong-bien-hat-sen.jpg",
+  "Ingredient": "hạt sen",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e782fe"
+  },
+  "ID": "M044",
+  "DishName": "Tim heo hầm hạt sen",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0082-tim-ham-hat-sen.png",
+  "Ingredient": "hạt sen",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78300"
+  },
+  "ID": "M045",
+  "DishName": "Khoai môn hạt sen chiên xù",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/04_CQC4219_KhoaiMonHatSenChienXu.png",
+  "Ingredient": "hạt sen",
+  "CookingTime": "35 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78302"
+  },
+  "ID": "M046",
+  "DishName": "Gà tây cuộn hạt sen",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/4.gataycuonhatsen2.png",
+  "Ingredient": "hạt sen",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78304"
+  },
+  "ID": "M047",
+  "DishName": "Bánh flan hạt chia matcha",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/01/23.-BANH-FLAN-HAT-CHIA-MATCHA.png",
+  "Ingredient": "hạt chia",
+  "CookingTime": "50 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "8 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78306"
+  },
+  "ID": "M048",
+  "DishName": "Súp thanh cua hạt chia",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/06/sup-thanh-cua-hat-chia-880.webp",
+  "Ingredient": "hạt chia",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78308"
+  },
+  "ID": "M049",
+  "DishName": "Trà sữa thạch kem hạt chia",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/08/tra-sua-thach-kem-hat-chia-880.webp",
+  "Ingredient": "hạt chia",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7830a"
+  },
+  "ID": "M050",
+  "DishName": "Salad hạt chia",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/02/salad-hat-chia.jpg",
+  "Ingredient": "hạt chia",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7830c"
+  },
+  "ID": "M051",
+  "DishName": "Mì ý cá hồi xốt mè rang",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/03/22.png",
+  "Ingredient": "mè",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7830e"
+  },
+  "ID": "M052",
+  "DishName": "Sandwiches bò xốt mè rang",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/03/25.png",
+  "Ingredient": "mè",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78310"
+  },
+  "ID": "M053",
+  "DishName": "Salad mì udon cá hồi xốt mè rang",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/01/6.-SALAD-MI-UDON-CA-HOI-XOT-ME-RANG.png",
+  "Ingredient": "mè",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78312"
+  },
+  "ID": "M054",
+  "DishName": "Salad rong nho xốt mè rang",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/06/salad-rong-nho-me-rang.jpg",
+  "Ingredient": "mè",
+  "CookingTime": "5 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78314"
+  },
+  "ID": "M055",
+  "DishName": "Đậu trộn dầu giấm xốt mè rang",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/01/salad-dau-giam.jpg",
+  "Ingredient": "mè",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78316"
+  },
+  "ID": "M056",
+  "DishName": "Ba rọi nướng mè rau củ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/11/ba-roi-nuong-me-rau-cu.jpg",
+  "Ingredient": "mè",
+  "CookingTime": "45 Phút",
+  "Difficulty": "Trung bình",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78318"
+  },
+  "ID": "M057",
+  "DishName": "Khoai chiên lắc mayo mè lá quế",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/08/khoai-chien-lac-mayo-me.jpg",
+  "Ingredient": "mè",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7831a"
+  },
+  "ID": "M058",
+  "DishName": "Cá kèo chiên mè",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/ca-keo-chien-me.jpg",
+  "Ingredient": "mè",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7831c"
+  },
+  "ID": "M059",
+  "DishName": "Cá cơm than chiên mè xốt mắm tắc",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/06/ca-com-than-chien-me-sauce-mam-tac-880.jpg",
+  "Ingredient": "mè",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7831e"
+  },
+  "ID": "M060",
+  "DishName": "Bánh gà chiên xốt mè",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/03/banh-ga-chien-xo-me-880.jpg",
+  "Ingredient": "mè",
+  "CookingTime": "35 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78320"
+  },
+  "ID": "M061",
+  "DishName": "Rau củ xào đậu hũ xốt mè",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/08/rau-cu-xao-dau-hu-xot-me-880.webp",
+  "Ingredient": "mè",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78322"
+  },
+  "ID": "M062",
+  "DishName": "Thịt bò nướng mè kiểu Hàn Quốc",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/04/thit-bo-nuong-me-kieu-han-quoc-880.webp",
+  "Ingredient": "mè",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78324"
+  },
+  "ID": "M063",
+  "DishName": "Ba rọi sả ớt tẩm bột chiên giòn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/07/ba-roi-chien-sa-ot.jpg",
+  "Ingredient": "bột chiên giòn",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78326"
+  },
+  "ID": "M064",
+  "DishName": "Cá tẩm bột cay chiên giòn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/10/710-C%C3%A1-t%E1%BA%A9m-b%E1%BB%99t-cay-chi%C3%AAn-gi%C3%B2n-540-360.jpg",
+  "Ingredient": "bột chiên giòn",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78328"
+  },
+  "ID": "M065",
+  "DishName": "Bánh rán xiên que",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/09/pancake-xien-que-500.jpg",
+  "Ingredient": "bột bánh rán",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7832a"
+  },
+  "ID": "M066",
+  "DishName": "Bánh rán vị chanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/05/banh-ran-vi-chanh-540.jpg",
+  "Ingredient": "bột bánh rán",
+  "CookingTime": "35 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7832c"
+  },
+  "ID": "M067",
+  "DishName": "Canh Bí Đao Rong Biển",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/11/Thumbnail-template-1-1.png",
+  "Ingredient": "bí đao",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7832e"
+  },
+  "ID": "M068",
+  "DishName": "Canh bí đao dồn thịt",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_0016_1-canh-bi-don-thit.png",
+  "Ingredient": "bí đao",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78330"
+  },
+  "ID": "M069",
+  "DishName": "Súp tóc tiên bí đao",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-5980-sup-toc-tien-bi-dao.png",
+  "Ingredient": "bí đao",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78332"
+  },
+  "ID": "M070",
+  "DishName": "Canh bí đao nấu sườn non",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/AGF-1791-canh-bi-dao-nau-suon-non.png",
+  "Ingredient": "bí đao",
+  "CookingTime": "40 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78334"
+  },
+  "ID": "M071",
+  "DishName": "Canh bí đỏ hạnh nhân",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/04/canh-bi-do-hanh-nhan.jpg",
+  "Ingredient": "bí đỏ",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78336"
+  },
+  "ID": "M072",
+  "DishName": "Salad bí đỏ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/04/salad-bi-do-880.webp",
+  "Ingredient": "bí đỏ",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78338"
+  },
+  "ID": "M073",
+  "DishName": "Canh sườn bí đỏ rong biển",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/05/canh-suon-bi-do-rong-bien.webp",
+  "Ingredient": "bí đỏ",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7833a"
+  },
+  "ID": "M074",
+  "DishName": "Canh bạch quả bí đỏ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/03/canh-bach-qua-bi-do.webp",
+  "Ingredient": "bí đỏ",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7833c"
+  },
+  "ID": "M075",
+  "DishName": "Pancake xốt bí đỏ phô mai",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/10/pancake-xot-bi-do-pho-mai-500.jpg",
+  "Ingredient": "bí đỏ",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7833e"
+  },
+  "ID": "M076",
+  "DishName": "Bí đỏ kho rong biển",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/07/bi-do-kho-rong-bien-500.jpg",
+  "Ingredient": "bí đỏ",
+  "CookingTime": "45 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78340"
+  },
+  "ID": "M077",
+  "DishName": "Bí đỏ hấp hải sản",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/05/bi-do-hap-hai-san-540.jpg",
+  "Ingredient": "bí đỏ",
+  "CookingTime": "45 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78342"
+  },
+  "ID": "M078",
+  "DishName": "Bánh bí đỏ tôm thịt",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/12/Banh-bi-do-540.png",
+  "Ingredient": "bí đỏ",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78344"
+  },
+  "ID": "M079",
+  "DishName": "Bí đỏ xào thịt xông khói",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/10/2810-Bi-Do-Xao-Thit-Xong-Khoi-540-360.jpg",
+  "Ingredient": "bí đỏ",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78346"
+  },
+  "ID": "M080",
+  "DishName": "Canh mọc bí ngòi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/10/canh-moc-bi-ngoi-880.webp",
+  "Ingredient": "bí ngòi",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78348"
+  },
+  "ID": "M081",
+  "DishName": "Canh bóng cuộn bí ngòi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/03/canh-bong-cuon-bi-ngoi.webp",
+  "Ingredient": "bí ngòi",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7834a"
+  },
+  "ID": "M082",
+  "DishName": "Bí ngòi hấp chả chay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/05/bi-ngoi-hap-cha-chay-500.jpg",
+  "Ingredient": "bí ngòi",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7834c"
+  },
+  "ID": "M083",
+  "DishName": "Nấm xào bí ngòi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/12/nam-xao-b-i-ngoi.jpg",
+  "Ingredient": "bí ngòi",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7834e"
+  },
+  "ID": "M084",
+  "DishName": "Salad bí ngòi nướng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/11/salad-bi-ngoi-nuong-500.jpg",
+  "Ingredient": "bí ngòi",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78350"
+  },
+  "ID": "M085",
+  "DishName": "Salad bí ngòi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/201505290259380000005_monngonmoingay.com-saladbingoi-1.jpg",
+  "Ingredient": "bí ngòi",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78352"
+  },
+  "ID": "M086",
+  "DishName": "Cật heo xào bí ngòi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0112-cat-heo-xao-bi-ngoi.png",
+  "Ingredient": "bí ngòi",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78354"
+  },
+  "ID": "M087",
+  "DishName": "Bí ngòi xào hải sản",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/25.png",
+  "Ingredient": "bí ngòi",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78356"
+  },
+  "ID": "M088",
+  "DishName": "Bí ngòi hấp xốt nấm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/10_CQC4282_BiNgoiHapSotNAm.png",
+  "Ingredient": "bí ngòi",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78358"
+  },
+  "ID": "M089",
+  "DishName": "Canh bí ngòi nấu nấm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0426-canh-bi-ngoi-nau-nam.png",
+  "Ingredient": "bí ngòi",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7835a"
+  },
+  "ID": "M090",
+  "DishName": "Canh bí ngòi quấn tôm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0262-canh-bi-ngoi-quan-tom.png",
+  "Ingredient": "bí ngòi",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7835c"
+  },
+  "ID": "M091",
+  "DishName": "Canh bầu mồng tơi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/11/Canh-bau-mong-toi.png",
+  "Ingredient": "bầu",
+  "CookingTime": "0 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7835e"
+  },
+  "ID": "M092",
+  "DishName": "Bánh bầu",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/07/banh-bau-500.jpg",
+  "Ingredient": "bầu",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78360"
+  },
+  "ID": "M093",
+  "DishName": "Bầu xào giò thủ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/04/bao-xao-gio-thu-500.jpg",
+  "Ingredient": "bầu",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78362"
+  },
+  "ID": "M094",
+  "DishName": "Lẩu bầu cua",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/11/lau-bau-cua.jpg",
+  "Ingredient": "bầu",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78364"
+  },
+  "ID": "M095",
+  "DishName": "Canh hến nấu bầu",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0233-canh-hen-nau-bau.png",
+  "Ingredient": "bầu",
+  "CookingTime": "5 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78366"
+  },
+  "ID": "M096",
+  "DishName": "Bầu non trộn heo quay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_0289-bau-non-tron-heo-quay.png",
+  "Ingredient": "bầu",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78368"
+  },
+  "ID": "M097",
+  "DishName": "Thịt vịt xào bầu",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/thit-vit-xao-bau-1.png",
+  "Ingredient": "bầu",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7836a"
+  },
+  "ID": "M098",
+  "DishName": "Cá lóc hấp bầu",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-2122-ca-loc-hap-bau.png",
+  "Ingredient": "bầu",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7836c"
+  },
+  "ID": "M099",
+  "DishName": "Canh bầu nấu riêu tép",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_4661-canh-bau-nau-rieu-tep.png",
+  "Ingredient": "bầu",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7836e"
+  },
+  "ID": "M100",
+  "DishName": "Tôm chiên dừa xốt bạc hà",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/03/tom-chien-dua-xot-bac-ha-880.webp",
+  "Ingredient": "bạc hà",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78370"
+  },
+  "ID": "M101",
+  "DishName": "Bao tử cá basa xào bạc hà",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_9887_bao-tu-ca-basa-xao-bac-ha.png",
+  "Ingredient": "bạc hà",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78372"
+  },
+  "ID": "M102",
+  "DishName": "Hotdog bắp cải",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/12/hotdog-bap-cai.jpg",
+  "Ingredient": "bắp cải",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "2 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78374"
+  },
+  "ID": "M103",
+  "DishName": "Bún bò bắp cải chua",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/02/bun-bap-bo-cai-chua.jpg",
+  "Ingredient": "bắp cải",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78376"
+  },
+  "ID": "M104",
+  "DishName": "Bắp cải tím trộn tôm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/bap-cai-tim-tron-tom-880.jpg",
+  "Ingredient": "bắp cải",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78378"
+  },
+  "ID": "M105",
+  "DishName": "Bắp cải hấp nấm tôm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/01/bap-cai-hap-nam-tom-880.jpg",
+  "Ingredient": "bắp cải",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7837a"
+  },
+  "ID": "M106",
+  "DishName": "Bắp cải cuộn kho chay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/12/bap-cai-cuon-kho-chay-880.webp",
+  "Ingredient": "bắp cải",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7837c"
+  },
+  "ID": "M107",
+  "DishName": "Bò xào khổ qua bắp cải tím",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/10/bo-xao-kho-qua-bap-cai-tim-500.jpg",
+  "Ingredient": "bắp cải",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7837e"
+  },
+  "ID": "M108",
+  "DishName": "Dồi trường xào bắp cải tím",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/05/doi-truong-xao-bap-cai-tim-540.jpg",
+  "Ingredient": "bắp cải",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78380"
+  },
+  "ID": "M109",
+  "DishName": "Bánh mì thịt nguội bắp cải",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-6287-banh-mi-thit-nguoi-bap-cai.png",
+  "Ingredient": "bắp cải",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78382"
+  },
+  "ID": "M110",
+  "DishName": "Gỏi bưởi bắp cải gà xé",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/Goi-buoi-540-360.jpg",
+  "Ingredient": "bắp cải",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78384"
+  },
+  "ID": "M111",
+  "DishName": "Canh bắp cải thịt xông khói",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0164-canh-bap-cai-thit-ong-khoi.png",
+  "Ingredient": "bắp cải",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78386"
+  },
+  "ID": "M112",
+  "DishName": "Canh chua bắp cải tím",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/10_CanhChuaBapCaiTim_CQC5211.png",
+  "Ingredient": "bắp cải",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78388"
+  },
+  "ID": "M113",
+  "DishName": "Bắp cải cuộn thịt kho bơ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/BapCaiCuonThitKhoBo_CQC2191.png",
+  "Ingredient": "bắp cải",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7838a"
+  },
+  "ID": "M114",
+  "DishName": "Mì căn xào bắp non",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/01/my-can-xao-bap-non-500.jpg",
+  "Ingredient": "bắp non",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7838c"
+  },
+  "ID": "M115",
+  "DishName": "Cánh gà kho bắp non",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/01/ga-kho-bap-non-500.jpg",
+  "Ingredient": "bắp non",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7838e"
+  },
+  "ID": "M116",
+  "DishName": "Sườn kho bắp non",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/09/suon-kho-bap-non-500.jpg",
+  "Ingredient": "bắp non",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78390"
+  },
+  "ID": "M117",
+  "DishName": "Sườn xào bắp non",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_6814-suon-xao-bap-non.png",
+  "Ingredient": "bắp non",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78392"
+  },
+  "ID": "M118",
+  "DishName": "Bắp non xào mực cay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/bap-non-xao-muc-cay_CQC8292.png",
+  "Ingredient": "bắp non",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78394"
+  },
+  "ID": "M119",
+  "DishName": "Canh bông bí nấm kim châm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/11/411-CanhBongBiNamKimCham-540-360.jpg",
+  "Ingredient": "bông bí",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78396"
+  },
+  "ID": "M120",
+  "DishName": "Bông bí chiên giòn chay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/AGF_0547-bong-bi-chien-gion-chay.png",
+  "Ingredient": "bông bí",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78398"
+  },
+  "ID": "M121",
+  "DishName": "Gỏi bông bí",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-6046-goi-bong-bi.png",
+  "Ingredient": "bông bí",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7839a"
+  },
+  "ID": "M122",
+  "DishName": "Cơm chiên tôm bông cải",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/07/Com-chien-tom-bong-cai.png",
+  "Ingredient": "bông cải",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7839c"
+  },
+  "ID": "M123",
+  "DishName": "Bông cải xào nước tương",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/01/bong-cai-xao-nuoc-tuong.jpg",
+  "Ingredient": "bông cải",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7839e"
+  },
+  "ID": "M124",
+  "DishName": "Hàu xào bông cải",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/08/hau-xao-bong-cai-880.webp",
+  "Ingredient": "bông cải",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783a0"
+  },
+  "ID": "M125",
+  "DishName": "Bacon xào bông cải măng tây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/03/ba-con-xao-mang-tay-500.jpg",
+  "Ingredient": "bông cải",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783a2"
+  },
+  "ID": "M126",
+  "DishName": "Gà xào thơm bông cải",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/17-Ga-xao-bong-cai-540-360.jpg",
+  "Ingredient": "bông cải",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783a4"
+  },
+  "ID": "M127",
+  "DishName": "Tôm trộn bông cải",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-5521-tom-tron-bong-cai.png",
+  "Ingredient": "bông cải",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783a6"
+  },
+  "ID": "M128",
+  "DishName": "Canh gà nấu bông cải",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/canh-ga-nau-bong-cai-15an172.jpg",
+  "Ingredient": "bông cải",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783a8"
+  },
+  "ID": "M129",
+  "DishName": "Salad bông cải thịt nguội",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/salad-bong-cai-thit-nguoi-1.png",
+  "Ingredient": "bông cải",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783aa"
+  },
+  "ID": "M130",
+  "DishName": "Tôm xào bông cải",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-1286-tom-xao-bong-cai.png",
+  "Ingredient": "bông cải",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783ac"
+  },
+  "ID": "M131",
+  "DishName": "Bông cải trộn tôm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0159-bong-cai-tron-tom.png",
+  "Ingredient": "bông cải",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783ae"
+  },
+  "ID": "M132",
+  "DishName": "CANH CHUA TÔM BỒN BỒN BÔNG ĐIÊN ĐIỂN",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/08/Canh-chua-tom-bon-bon-bong-dien-dien.png",
+  "Ingredient": "bông điên điển",
+  "CookingTime": "5 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "0 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783b0"
+  },
+  "ID": "M133",
+  "DishName": "HỦ TIẾU SA ĐÉC XÀO TÉP BÔNG ĐIÊN ĐIỂN",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/08/Hu-tieu-Sa-Dec-xao.png",
+  "Ingredient": "bông điên điển",
+  "CookingTime": "5 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783b2"
+  },
+  "ID": "M134",
+  "DishName": "Tép ruộng xào khế – Bông điên điển",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/07/tep-ruong-xao-khe-bong-dien-dien.jpg",
+  "Ingredient": "bông điên điển",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783b4"
+  },
+  "ID": "M135",
+  "DishName": "Cá chiên bông điên điển",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/12/ca-chien-bong-dien-dien.jpg",
+  "Ingredient": "bông điên điển",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783b6"
+  },
+  "ID": "M136",
+  "DishName": "Dồi trường xào bông hẹ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/doi-truong-xao-bong-he.jpg",
+  "Ingredient": "bông hẹ",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783b8"
+  },
+  "ID": "M137",
+  "DishName": "Cá cơm chiên bông hẹ mắm me",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/02/ca-com-chien-bong-he-880.jpg",
+  "Ingredient": "bông hẹ",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783ba"
+  },
+  "ID": "M138",
+  "DishName": "Ếch xào bông hẹ sa tế",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CQC6579-ech-xao-bong-he-sa-te.png",
+  "Ingredient": "bông hẹ",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783bc"
+  },
+  "ID": "M139",
+  "DishName": "Sò điệp xào bông hẹ mayonnaise",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0121-so-diep-xao-bong-he-xot-mayonnaise.png",
+  "Ingredient": "bông hẹ",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783be"
+  },
+  "ID": "M140",
+  "DishName": "Nhộng xào bông hẹ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_3939-nhong-xao-bong-he.png",
+  "Ingredient": "bông hẹ",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783c0"
+  },
+  "ID": "M141",
+  "DishName": "Thịt bò xào bông so đũa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/08/thit-bo-xao-bong-so-dua.jpg",
+  "Ingredient": "bông so đũa",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783c2"
+  },
+  "ID": "M142",
+  "DishName": "Lẩu cá lăng bông so đũa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/12/lau-ca-lang-bong-so-dua-880.webp",
+  "Ingredient": "bông so đũa",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783c4"
+  },
+  "ID": "M143",
+  "DishName": "Canh chua cá kèo bông so đũa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/05/canh-chua-ca-keo-bong-so-dua-500.jpg",
+  "Ingredient": "bông so đũa",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783c6"
+  },
+  "ID": "M144",
+  "DishName": "Canh chua gà bông so đũa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/02/canh-chua-540.png",
+  "Ingredient": "bông so đũa",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783c8"
+  },
+  "ID": "M145",
+  "DishName": "Tôm xào bông so đũa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/09/TomSuXaoBongSoDua_540-1024x683.jpg",
+  "Ingredient": "bông so đũa",
+  "CookingTime": "Phút",
+  "Difficulty": "Dễ",
+  "Servings": "0 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783ca"
+  },
+  "ID": "M146",
+  "DishName": "Bông so đũa chiên giòn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CQC1681_bong-so-dua.png",
+  "Ingredient": "bông so đũa",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783cc"
+  },
+  "ID": "M147",
+  "DishName": "Canh chua bông so đũa chay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_4117-canh-chua-bong-so-dua-chay.png",
+  "Ingredient": "bông so đũa",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783ce"
+  },
+  "ID": "M148",
+  "DishName": "Canh chua bông thiên lý",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/05/canh-chua-bong-thien-ky-500-min.jpg",
+  "Ingredient": "bông thiên lý",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783d0"
+  },
+  "ID": "M149",
+  "DishName": "Bông thiên lý xào tôm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0143-bong-thien-ly-xao-tom.png",
+  "Ingredient": "bông thiên lý",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783d2"
+  },
+  "ID": "M150",
+  "DishName": "Bông thiên lý xào hải sản",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/bong-thien-ly-xao-hai-san.png",
+  "Ingredient": "bông thiên lý",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783d4"
+  },
+  "ID": "M151",
+  "DishName": "Gỏi bông thiên lý chay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-1468-goi-bong-thien-ly-chay.png",
+  "Ingredient": "bông thiên lý",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783d6"
+  },
+  "ID": "M152",
+  "DishName": "Gỏi nghêu bông thiên lý",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/201210180926580000008_mon-ngon-moi-ngay-goi-nghe-bong-thien-ly-1.jpg",
+  "Ingredient": "bông thiên lý",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783d8"
+  },
+  "ID": "M153",
+  "DishName": "Canh cà chua thịt bò",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/05/canh-ca-chua-thit-bo-540.jpg",
+  "Ingredient": "cà chua",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783da"
+  },
+  "ID": "M154",
+  "DishName": "Canh cà chua nấu đậu",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/08/268-CanhChuaNauDau-540-360.jpg",
+  "Ingredient": "cà chua",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783dc"
+  },
+  "ID": "M155",
+  "DishName": "Cá đối kho cà chua",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CaDoiKhoCaChua_CQC9514.png",
+  "Ingredient": "cà chua",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783de"
+  },
+  "ID": "M156",
+  "DishName": "Cà chua nhồi đậu hũ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-2341-ca-chua-nhoi-dau-hu.png",
+  "Ingredient": "cà chua",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783e0"
+  },
+  "ID": "M157",
+  "DishName": "Cà chua nhồi thịt ghẹ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CQC7796_cachua.png",
+  "Ingredient": "cà chua",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783e2"
+  },
+  "ID": "M158",
+  "DishName": "Canh chua tôm cà ri",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/10/1410-Canh-chua-Tom-540-360.jpg",
+  "Ingredient": "cà chua",
+  "CookingTime": "35 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783e4"
+  },
+  "ID": "M159",
+  "DishName": "Cà tím cuộn thịt chiên",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/01/21.-CA-TIM-CUON-THIT-CHIEN.png",
+  "Ingredient": "cà tím",
+  "CookingTime": "35 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783e6"
+  },
+  "ID": "M160",
+  "DishName": "Cà tím nhồi thịt áp chảo",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/ca-tim-nhoi-thit-ap-chao.jpg",
+  "Ingredient": "cà tím",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783e8"
+  },
+  "ID": "M161",
+  "DishName": "Lươn kho cà tím",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/07/luon-kho-ca-tim-880.webp",
+  "Ingredient": "cà tím",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783ea"
+  },
+  "ID": "M162",
+  "DishName": "Cà tím kho nấm thịt băm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/01/ca-tim-kho-nam-thit-bam-880.webp",
+  "Ingredient": "cà tím",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783ec"
+  },
+  "ID": "M163",
+  "DishName": "Cà tím nướng tôm cháy mỡ hẹ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/05/ca-tim-nuong-tom-chay-mo-he.webp",
+  "Ingredient": "cà tím",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783ee"
+  },
+  "ID": "M164",
+  "DishName": "Cà tím xào tôm thịt",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/10/ca-tim-xao-tom-thit-500.jpg",
+  "Ingredient": "cà tím",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783f0"
+  },
+  "ID": "M165",
+  "DishName": "Cà tím kẹp thịt gà chiên",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/02/ca-tim-kep-thit-ga-chien-500.jpg",
+  "Ingredient": "cà tím",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783f2"
+  },
+  "ID": "M166",
+  "DishName": "Cà tím áp chảo xốt cay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/11/411-CaTimApChaoXotCay-540-360.jpg",
+  "Ingredient": "cà tím",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783f4"
+  },
+  "ID": "M167",
+  "DishName": "Cà tím hấp nước tương tỏi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/ca-tim-hap-tuong-toi-500.jpg",
+  "Ingredient": "cà tím",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783f6"
+  },
+  "ID": "M168",
+  "DishName": "Cà tím đậu hũ chiên xù",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0016-ca-tim-dau-hu-chien-xu.png",
+  "Ingredient": "cà tím",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783f8"
+  },
+  "ID": "M169",
+  "DishName": "Cá thu kho cà tím",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CQC6822-ca-thu-kho-ca-tim.png",
+  "Ingredient": "cà tím",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783fa"
+  },
+  "ID": "M170",
+  "DishName": "Cà tím tay cầm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/Catimtaycam-540-360.jpg",
+  "Ingredient": "cà tím",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783fc"
+  },
+  "ID": "M171",
+  "DishName": "Thịt quay kho cà pháo",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/08/Thit-Quay-Kho-Ca-Phao-500.jpg",
+  "Ingredient": "cà pháo",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e783fe"
+  },
+  "ID": "M172",
+  "DishName": "Gỏi gà cần tây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/03/goi-ga-can-tay.jpg",
+  "Ingredient": "cần tây",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78400"
+  },
+  "ID": "M173",
+  "DishName": "Cần tây bóp xổi sụn gà",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/02/can-tay-bop-xoi-sun-ga-500-min.jpg",
+  "Ingredient": "cần tây",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78402"
+  },
+  "ID": "M174",
+  "DishName": "Gỏi ớt chuông cần tây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/GoiOtChuongCanTay_CQC8073-2.jpg",
+  "Ingredient": "cần tây",
+  "CookingTime": "5 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "0 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78404"
+  },
+  "ID": "M175",
+  "DishName": "Sò điệp xào cần tây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/201306060327350000007_mn-ngon-mi-ngy-s-ip-xo-cn-ty-1.jpg",
+  "Ingredient": "cần tây",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78406"
+  },
+  "ID": "M176",
+  "DishName": "Vịt quay trộn cần tây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/03_VitQuayTronCanTay_CQC0515.png",
+  "Ingredient": "cần tây",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78408"
+  },
+  "ID": "M177",
+  "DishName": "Cá đối kho cần tàu",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/4.cadoikhocantau_IMG_9596.png",
+  "Ingredient": "cần tàu",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7840a"
+  },
+  "ID": "M178",
+  "DishName": "TẾT 3 MIỀN – Miền Nam: Cải bẹ xanh cuốn củ hủ dừa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/02/cai-be-xanh-cuon-cu-hu-dua.jpg",
+  "Ingredient": "cải bẹ xanh",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7840c"
+  },
+  "ID": "M179",
+  "DishName": "Canh cá rô nấu cải bẹ xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/201206051112090000007_canh-ca-ro-cai-be-xanh-03av026.jpg",
+  "Ingredient": "cải bẹ xanh",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7840e"
+  },
+  "ID": "M180",
+  "DishName": "Gà hấp cải bẹ xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/915.jpg",
+  "Ingredient": "cải bẹ xanh",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78410"
+  },
+  "ID": "M181",
+  "DishName": "Gà cuộn cải bó xôi đút lò",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/10/GaCuonCaiBoXoi_540-1024x683.jpg",
+  "Ingredient": "cải bó xôi",
+  "CookingTime": "Phút",
+  "Difficulty": "Dễ",
+  "Servings": "0 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78412"
+  },
+  "ID": "M182",
+  "DishName": "Cải bó xôi xào thịt",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CQC6811-cai-bo-xoi-xao-thit.png",
+  "Ingredient": "cải bó xôi",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78414"
+  },
+  "ID": "M183",
+  "DishName": "Canh gà cải bó xôi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/3-Canh-ga-cai-bo-xoi-540-360.jpg",
+  "Ingredient": "cải bó xôi",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78416"
+  },
+  "ID": "M184",
+  "DishName": "Cải ngồng trộn gà xé",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/cai-ngong-tron-ga-xe.jpg",
+  "Ingredient": "cải ngồng",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78418"
+  },
+  "ID": "M185",
+  "DishName": "Cải ngồng xào nấm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/08/cai-ngong-xao-nam-880.webp",
+  "Ingredient": "cải ngồng",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7841a"
+  },
+  "ID": "M186",
+  "DishName": "Ngồng cải hấp tôm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/AGF-1467-ngong-cai-hap-tom.png",
+  "Ingredient": "cải ngồng",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7841c"
+  },
+  "ID": "M187",
+  "DishName": "Ngồng cải xào bao tử cá basa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/Ngong-cai-xao-bao-tu-ca-basa.png",
+  "Ingredient": "cải ngồng",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7841e"
+  },
+  "ID": "M188",
+  "DishName": "Thịt bò xào ngồng cải",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0130-thit-bo-xao-ngong-cai.png",
+  "Ingredient": "cải ngồng",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78420"
+  },
+  "ID": "M189",
+  "DishName": "Cải thìa xào nấm đông cô thịt cua",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/11/cai-thia-xao-nam-dong-co-thit-cua-500.jpg",
+  "Ingredient": "cải thìa",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78422"
+  },
+  "ID": "M190",
+  "DishName": "Ốc giác xào cải thìa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/12-OcGiacXaoCaiThia_CQC5578.png",
+  "Ingredient": "cải thìa",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78424"
+  },
+  "ID": "M191",
+  "DishName": "Nấm đùi gà hấp cải xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/11/nam-dui-ga-hap-cai-xanh-500.jpg",
+  "Ingredient": "cải xanh",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78426"
+  },
+  "ID": "M192",
+  "DishName": "Cá nục hấp cuốn cải xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/09/CaNucHapCuonCaiXanh_540-1024x683.jpg",
+  "Ingredient": "cải xanh",
+  "CookingTime": "Phút",
+  "Difficulty": "Dễ",
+  "Servings": "0 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78428"
+  },
+  "ID": "M193",
+  "DishName": "Canh cải xoăn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/11/canh-cai-xoan-500.jpg",
+  "Ingredient": "cải xoắn",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7842a"
+  },
+  "ID": "M194",
+  "DishName": "Bánh tôm chiên củ sắn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/01/banh-tom-chien-cu-san-880.webp",
+  "Ingredient": "củ sắn",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7842c"
+  },
+  "ID": "M195",
+  "DishName": "Bánh chả củ sắn chay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/08/banh-cha-cu-san-chay-500.jpg",
+  "Ingredient": "củ sắn",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7842e"
+  },
+  "ID": "M196",
+  "DishName": "Củ sắn xào thịt",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/Cu-san-xao-thit-540-360.jpg",
+  "Ingredient": "củ sắn",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78430"
+  },
+  "ID": "M197",
+  "DishName": "Mít non om sườn chay củ sen",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/05/mit-non-om-suon-chay-cu-sen.jpg",
+  "Ingredient": "củ sen",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Trung bình",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78432"
+  },
+  "ID": "M198",
+  "DishName": "Canh sườn bò củ sen",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/03/canh-suon-bo-cu-sen-880.jpg",
+  "Ingredient": "củ sen",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78434"
+  },
+  "ID": "M199",
+  "DishName": "Canh ghẹ củ sen chua cay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/01/canh-ghe-cu-sen-chua-cay-880.jpg",
+  "Ingredient": "củ sen",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78436"
+  },
+  "ID": "M200",
+  "DishName": "Sườn non kho củ sen",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/10/suon-non-kho-cu-sen-880.jpg",
+  "Ingredient": "củ sen",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78438"
+  },
+  "ID": "M201",
+  "DishName": "Canh củ sen rong biển",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/02/canh-cu-sen-rong-bien-880.webp",
+  "Ingredient": "củ sen",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7843a"
+  },
+  "ID": "M202",
+  "DishName": "Củ sen kẹp chả cá basa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/04/cu-sen-kep-cha-ca-basa-500.jpg",
+  "Ingredient": "củ sen",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7843c"
+  },
+  "ID": "M203",
+  "DishName": "Củ sen xào ngũ vị",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/01/cu-sen-xao-ngu-vi-500.jpg",
+  "Ingredient": "củ sen",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7843e"
+  },
+  "ID": "M204",
+  "DishName": "Xôi tôm củ sen",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/07/17-X%C3%B4i-t%C3%B4m-c%E1%BB%A7-sen-540-360.jpg",
+  "Ingredient": "củ sen",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78440"
+  },
+  "ID": "M205",
+  "DishName": "Cá hấp củ sen",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/10/0065-ca-hap-cu-sen1.png",
+  "Ingredient": "củ sen",
+  "CookingTime": "45 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78442"
+  },
+  "ID": "M206",
+  "DishName": "Gỏi củ sen",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/AGF-1513-goi-cu-sen1.png",
+  "Ingredient": "củ sen",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78444"
+  },
+  "ID": "M207",
+  "DishName": "Salad củ sen khoai tây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-5291-salad-cu-sen-khoai-tay.png",
+  "Ingredient": "củ sen",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78446"
+  },
+  "ID": "M208",
+  "DishName": "Gỏi dưa leo khô cá cơm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/10/goi-dua-leo-kho-ca-com-500.jpg",
+  "Ingredient": "dưa leo",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78448"
+  },
+  "ID": "M209",
+  "DishName": "Gỏi gà dưa leo",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/10/goi-ga-dua-leo-500.jpg",
+  "Ingredient": "dưa leo",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7844a"
+  },
+  "ID": "M210",
+  "DishName": "Salad dưa leo trộn xúc xích",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/03/salad-dua-leo-500-min.jpg",
+  "Ingredient": "dưa leo",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7844c"
+  },
+  "ID": "M211",
+  "DishName": "Canh dưa leo nhồi thịt",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CanhDuaLeoNhoiThit_CQC8401.png",
+  "Ingredient": "dưa leo",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7844e"
+  },
+  "ID": "M212",
+  "DishName": "Salad dưa leo thịt gà",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CQC7860_DualeoThitGa.png",
+  "Ingredient": "dưa leo",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78450"
+  },
+  "ID": "M213",
+  "DishName": "Gỏi dưa leo khô cá",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-1524-goi-dua-leo-kho-ca.png",
+  "Ingredient": "dưa leo",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78452"
+  },
+  "ID": "M214",
+  "DishName": "Mực ống hấp củ đậu",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/08/muc-ong-hap-cu-dau.jpg",
+  "Ingredient": "củ đậu",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78454"
+  },
+  "ID": "M215",
+  "DishName": "Váng đậu cuộn rau củ chiên",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/09/vang-dau-cuon-rau-cu-chien-500.jpg",
+  "Ingredient": "củ đậu",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78456"
+  },
+  "ID": "M216",
+  "DishName": "Đậu bắp nhồi chả cá chiên",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/12/dau-bap-nhoi-cha-ca-chien-880.jpg",
+  "Ingredient": "đậu bắp",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78458"
+  },
+  "ID": "M217",
+  "DishName": "Đậu bắp nhồi chiên giòn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/03/dau-bap-nhoi-chien-gion.webp",
+  "Ingredient": "đậu bắp",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7845a"
+  },
+  "ID": "M218",
+  "DishName": "Đậu bắp xào hải sản",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/06/dau-bap-xao-hai-san-500.jpg",
+  "Ingredient": "đậu bắp",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7845c"
+  },
+  "ID": "M219",
+  "DishName": "Đậu bắp xào tôm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-4019-dau-bap-xao-tom.png",
+  "Ingredient": "đậu bắp",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7845e"
+  },
+  "ID": "M220",
+  "DishName": "Đậu bắp kho nước tương",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/10-dau-bap-kho-nuoc-tuong-540-360.jpg",
+  "Ingredient": "đậu bắp",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78460"
+  },
+  "ID": "M221",
+  "DishName": "Đậu bắp thịt gà xào chao",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_6941-dau-bap-thit-ga-xao-chao.png",
+  "Ingredient": "đậu bắp",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78462"
+  },
+  "ID": "M222",
+  "DishName": "Thịt xay kho bắp đậu",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/thit-xay-kho-bap-dau0423.png",
+  "Ingredient": "đậu bắp",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78464"
+  },
+  "ID": "M223",
+  "DishName": "Đậu cove xào tim gan",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/05/dau-cove-xao-tim-gan-880.webp",
+  "Ingredient": "đậu cove",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78466"
+  },
+  "ID": "M224",
+  "DishName": "Đậu cove xào ba rọi xông khói",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/09/dau-cove-xao-ba-roi-xong-khoi-500.jpg",
+  "Ingredient": "đậu cove",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78468"
+  },
+  "ID": "M225",
+  "DishName": "Thịt bò xào đậu cove",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0008-thit-bo-xao-dau-cove.png",
+  "Ingredient": "đậu cove",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7846a"
+  },
+  "ID": "M226",
+  "DishName": "Đậu que xào thịt",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0716-dau-que-xao-thit.png",
+  "Ingredient": "đậu que",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7846c"
+  },
+  "ID": "M227",
+  "DishName": "Đậu hũ Croquette",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/09/dau-hu-croquette-500.jpg",
+  "Ingredient": "đậu que",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7846e"
+  },
+  "ID": "M228",
+  "DishName": "Salad bò đậu rồng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/08/Salad-dau-rong.png",
+  "Ingredient": "đậu rồng",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "0 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78470"
+  },
+  "ID": "M229",
+  "DishName": "Bắp bò xào đậu rồng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/11/bap-bo-xao-dau-rong.jpg",
+  "Ingredient": "đậu rồng",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78472"
+  },
+  "ID": "M230",
+  "DishName": "Đậu rồng xào tép",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/%C4%90%C3%A2%CC%A3u-r%C3%B4%CC%80ng-xa%CC%80o-te%CC%81p-540-360.jpg",
+  "Ingredient": "đậu rồng",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78474"
+  },
+  "ID": "M231",
+  "DishName": "Đậu rồng xào trứng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0017-dau-rong-xao-trung.png",
+  "Ingredient": "đậu rồng",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78476"
+  },
+  "ID": "M232",
+  "DishName": "Dồi trường hấp hành gừng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/doi-truong-hap-hanh-gung-880.jpg",
+  "Ingredient": "gừng",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78478"
+  },
+  "ID": "M233",
+  "DishName": "Bắp bò om gừng sả",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/03/bap-bo-om-gung-sa-880.webp",
+  "Ingredient": "gừng",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7847a"
+  },
+  "ID": "M234",
+  "DishName": "Cá trê kho gừng nghệ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/01/ca-tre-kho-gung-nghe-880.webp",
+  "Ingredient": "gừng",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7847c"
+  },
+  "ID": "M235",
+  "DishName": "Cá hố kho hành gừng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/09/caho500.jpg",
+  "Ingredient": "gừng",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7847e"
+  },
+  "ID": "M236",
+  "DishName": "Bạch tuộc xào rượu gừng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/06/bach-tuoc-xao-ruou-gung.jpg",
+  "Ingredient": "gừng",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78480"
+  },
+  "ID": "M237",
+  "DishName": "Vịt kho dưa gừng non",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/04/vit-kho-dua-gung-non-500-min.jpg",
+  "Ingredient": "gừng",
+  "CookingTime": "40 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78482"
+  },
+  "ID": "M238",
+  "DishName": "Đậu kho gừng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/12/dau-kho-gung-500.jpg",
+  "Ingredient": "gừng",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78484"
+  },
+  "ID": "M239",
+  "DishName": "Thịt rang gừng lá chanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/09/thit-rang-gung-la-chanh-500.jpg",
+  "Ingredient": "gừng",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78486"
+  },
+  "ID": "M240",
+  "DishName": "Nghêu kho gừng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/09/99-NgeuKhoGung-540-360.jpg",
+  "Ingredient": "gừng",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78488"
+  },
+  "ID": "M241",
+  "DishName": "Cá chim kho gừng ớt",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/01/CaChimKhoGungOt_540-e1452774666492.jpg",
+  "Ingredient": "gừng",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7848a"
+  },
+  "ID": "M242",
+  "DishName": "Cuốn đậu hủ kho gừng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CQC6603-cuon-dau-hu-kho-gung.png",
+  "Ingredient": "gừng",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7848c"
+  },
+  "ID": "M243",
+  "DishName": "Thịt heo xào nước tương gừng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/10.thitheoxaonuoctuonggung1.png",
+  "Ingredient": "gừng",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7848e"
+  },
+  "ID": "M244",
+  "DishName": "Canh ghẹ húng quế",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/03/canhghehungque540-e1458918693242.jpg",
+  "Ingredient": "húng quế",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78490"
+  },
+  "ID": "M245",
+  "DishName": "Salad cá hồi húng quế",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/02/Salad-ca-hoi-hung-que_540-e1456420054574.jpg",
+  "Ingredient": "húng quế",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78492"
+  },
+  "ID": "M246",
+  "DishName": "Chả nghêu húng quế",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/201507310411490000004_monngonmoingay.com-cha-ngheu-hung-que-1.jpg",
+  "Ingredient": "húng quế",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78494"
+  },
+  "ID": "M247",
+  "DishName": "Gà nướng lá húng lủi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/12/GaNuongLaHungLui_540-e1451470850410.jpg",
+  "Ingredient": "húng lủi",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78496"
+  },
+  "ID": "M248",
+  "DishName": "Lẩu cá thác lác khổ qua",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/03/3.png",
+  "Ingredient": "khổ qua",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78498"
+  },
+  "ID": "M249",
+  "DishName": "Canh cua khổ qua",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/canh-cua-kho-qua.jpg",
+  "Ingredient": "khổ qua",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7849a"
+  },
+  "ID": "M250",
+  "DishName": "Khổ qua nhồi nấm kho nước tương",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/kho-qua-nhoi-nam-kho-nuoc-tuong.jpg",
+  "Ingredient": "khổ qua",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7849c"
+  },
+  "ID": "M251",
+  "DishName": "Canh khổ qua hầm thịt",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2012/05/canh-kho-qua-ham-thit-880.jpg",
+  "Ingredient": "khổ qua",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7849e"
+  },
+  "ID": "M252",
+  "DishName": "Gỏi khổ qua cá khô",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/12/goi-kho-qua-ca-kho-500.jpg",
+  "Ingredient": "khổ qua",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784a0"
+  },
+  "ID": "M253",
+  "DishName": "Khổ qua xào chả cá",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/08/kho-qua-xao-cha-ca-500.jpg",
+  "Ingredient": "khổ qua",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784a2"
+  },
+  "ID": "M254",
+  "DishName": "Lẩu khổ qua hải sản",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/03/lau-kho-qua-hai-san-500-min.jpg",
+  "Ingredient": "khổ qua",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784a4"
+  },
+  "ID": "M255",
+  "DishName": "Khổ qua hấp tam cô",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/02/kho-qua-hap-tam-co-500-min.jpg",
+  "Ingredient": "khổ qua",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784a6"
+  },
+  "ID": "M256",
+  "DishName": "Khổ qua xào chay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/06/kho-qua-xao-chay-500.jpg",
+  "Ingredient": "khổ qua",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784a8"
+  },
+  "ID": "M257",
+  "DishName": "Canh đọt khổ qua rừng tôm thả",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/03/CANH-%C4%90O%CC%A3T-KHO%CC%82%CC%89-QUA-RU%CC%9B%CC%80NG-TO%CC%82M-THA%CC%89-540.jpg",
+  "Ingredient": "khổ qua",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784aa"
+  },
+  "ID": "M258",
+  "DishName": "Khổ qua chiên me cay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/03/kho-qua-540.png",
+  "Ingredient": "khổ qua",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784ac"
+  },
+  "ID": "M259",
+  "DishName": "Bánh rán nhân khoai lang",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/11/banh-ran-nhan-khoai-lang-800.jpg",
+  "Ingredient": "khoai lang",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784ae"
+  },
+  "ID": "M260",
+  "DishName": "Pancake khoai lang mật ong",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/02/pancake-khoai-lang-mat-ong.webp",
+  "Ingredient": "khoai lang",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784b0"
+  },
+  "ID": "M261",
+  "DishName": "Đuông khoai lang cốt dừa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/05/duong-khoai-lang-cot-dua-500.jpg",
+  "Ingredient": "khoai lang",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784b2"
+  },
+  "ID": "M262",
+  "DishName": "Khoai lang kho rong biển",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/10/khoai-lang-kho-rong-bien-500.jpg",
+  "Ingredient": "khoai lang",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784b4"
+  },
+  "ID": "M263",
+  "DishName": "Canh rau má khoai lang",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/03/canh-rau-ma-540.jpg",
+  "Ingredient": "khoai lang",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784b6"
+  },
+  "ID": "M264",
+  "DishName": "Lẩu sườn khoai môn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/06/lau-suon-khoai-mon.jpg",
+  "Ingredient": "khoai môn",
+  "CookingTime": "35 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784b8"
+  },
+  "ID": "M265",
+  "DishName": "Trà sữa matcha khoai môn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/05/tra-sua-matcha-khoai-mon.jpg",
+  "Ingredient": "khoai môn",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784ba"
+  },
+  "ID": "M266",
+  "DishName": "Gỏi sứa khoai môn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/06/goi-sua-khoai-mon-500-min.jpg",
+  "Ingredient": "khoai môn",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784bc"
+  },
+  "ID": "M267",
+  "DishName": "Bánh khoai môn đút lò",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/03/banh-khoai-mon-dut-lo-500-min.jpg",
+  "Ingredient": "khoai môn",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784be"
+  },
+  "ID": "M268",
+  "DishName": "Gỏi khoai môn chiên giòn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/02/1_GoiKhoaiMonChienGion540-e1454591592450.jpg",
+  "Ingredient": "khoai môn",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784c0"
+  },
+  "ID": "M269",
+  "DishName": "Canh gà nấu khoai môn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0258-canh-ga-nau-khoai-mon.png",
+  "Ingredient": "khoai môn",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784c2"
+  },
+  "ID": "M270",
+  "DishName": "Bánh mực khoai môn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CQC6849-banh-muc-khoai-mon.png",
+  "Ingredient": "khoai môn",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784c4"
+  },
+  "ID": "M271",
+  "DishName": "Cánh gà kho khoai môn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-2431-canh-ga-kho-khoai-mon.png",
+  "Ingredient": "khoai môn",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784c6"
+  },
+  "ID": "M272",
+  "DishName": "Vịt om dưa cải khoai sọ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/12/vit-om-dua-cai-khoai-so-500-min.jpg",
+  "Ingredient": "khoai sọ",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784c8"
+  },
+  "ID": "M273",
+  "DishName": "Bò kho khoai sọ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/02/bo-kho-khoai-so-540.png",
+  "Ingredient": "khoai sọ",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784ca"
+  },
+  "ID": "M274",
+  "DishName": "Canh sườn khoai sọ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0295-canh-suon-khoai-so.png",
+  "Ingredient": "khoai sọ",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784cc"
+  },
+  "ID": "M275",
+  "DishName": "Canh rau dền khoai sọ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_0888-canh-rau-den-nau-khoai-so.png",
+  "Ingredient": "khoai sọ",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784ce"
+  },
+  "ID": "M276",
+  "DishName": "Canh rau muống khoai sọ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-2541-canh-rau-muong-khoai-so.png",
+  "Ingredient": "khoai sọ",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784d0"
+  },
+  "ID": "M277",
+  "DishName": "Thịt ba rọi kho khoai sọ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CQC1560_thit-ba-roi-kho-khoai-so.png",
+  "Ingredient": "khoai sọ",
+  "CookingTime": "35 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784d2"
+  },
+  "ID": "M278",
+  "DishName": "Lươn om khoai sọ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_0270-luon-om-khoai-so.png",
+  "Ingredient": "khoai sọ",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784d4"
+  },
+  "ID": "M279",
+  "DishName": "Canh vịt khoai sọ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CanhVitKhoaiSo_CQC8325.png",
+  "Ingredient": "khoai sọ",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784d6"
+  },
+  "ID": "M280",
+  "DishName": "Lẩu khoai mỡ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/04/lau-540.jpg",
+  "Ingredient": "khoai mỡ",
+  "CookingTime": "35 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784d8"
+  },
+  "ID": "M281",
+  "DishName": "Canh khoai mì nấu tôm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/02/canh-khoai-mi-nau-tom.jpg",
+  "Ingredient": "khoai mì",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784da"
+  },
+  "ID": "M282",
+  "DishName": "Bánh khoai mì trứng cút",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CQC8250_KhoaiMiTrungCut.png",
+  "Ingredient": "khoai mì",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784dc"
+  },
+  "ID": "M283",
+  "DishName": "Khoai tây lắc lazy",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/04/Thumbnail-template-3.png",
+  "Ingredient": "khoai tây",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "2 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784de"
+  },
+  "ID": "M284",
+  "DishName": "Khoai tây xào thịt bò phô mai",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/01/22.-KHOAI-TAY-XAO-THIT-BO-PHO-MAI.png",
+  "Ingredient": "khoai tây",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784e0"
+  },
+  "ID": "M285",
+  "DishName": "Sườn kho khoai tây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/08/suon-kho-khoai-tay.jpg",
+  "Ingredient": "khoai tây",
+  "CookingTime": "5 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784e2"
+  },
+  "ID": "M286",
+  "DishName": "Pizza khoai tây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/12/pizza-khoai-tay.jpg",
+  "Ingredient": "khoai tây",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "2 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784e4"
+  },
+  "ID": "M287",
+  "DishName": "Salad khoai tây trứng cút",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/12/salad-khoai-tay.jpg",
+  "Ingredient": "khoai tây",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "2 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784e6"
+  },
+  "ID": "M288",
+  "DishName": "Khoai tây nướng phô mai",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/07/khoai-tay-nuong-pho-mai.jpg",
+  "Ingredient": "khoai tây",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784e8"
+  },
+  "ID": "M289",
+  "DishName": "Khoai tây viên chiên xù",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/12/khoai-tay-vien-chien-xu-880.jpg",
+  "Ingredient": "khoai tây",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784ea"
+  },
+  "ID": "M290",
+  "DishName": "Bánh cá khoai tây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/11/banh-ca-khoai-tay-880.webp",
+  "Ingredient": "khoai tây",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784ec"
+  },
+  "ID": "M291",
+  "DishName": "Cật xào khoai tây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/01/cat-xao-khoai-tay-500.jpg",
+  "Ingredient": "khoai tây",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784ee"
+  },
+  "ID": "M292",
+  "DishName": "Khoai tây chiên bò nướng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/09/khoai-tay-chien-bo-nuong-500.jpg",
+  "Ingredient": "khoai tây",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784f0"
+  },
+  "ID": "M293",
+  "DishName": "Khoai tây xào thạch Konnyaku",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/06/khoai-tay-xao-thach-konyaku-500.jpg",
+  "Ingredient": "khoai tây",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784f2"
+  },
+  "ID": "M294",
+  "DishName": "Chả giò khoai tây trứng muối",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/09/cha-gio-khoai-tay-trung-muoi-500-min.jpg",
+  "Ingredient": "khoai tây",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784f4"
+  },
+  "ID": "M295",
+  "DishName": "Cá diêu hồng xiên que chiên lá chanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/03/12.png",
+  "Ingredient": "lá chanh",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784f6"
+  },
+  "ID": "M296",
+  "DishName": "Cánh gà chiên lá chanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/02/canh-ga-chien-la-chanh.jpg",
+  "Ingredient": "lá chanh",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784f8"
+  },
+  "ID": "M297",
+  "DishName": "Lươn nướng lá chanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/01/luon-nuong-la-chanh.jpg",
+  "Ingredient": "lá chanh",
+  "CookingTime": "55 Phút",
+  "Difficulty": "Trung bình",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784fa"
+  },
+  "ID": "M298",
+  "DishName": "Cánh gà chiên tỏi lá chanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/04/canh-ga-chien-toi-la-chanh-880.webp",
+  "Ingredient": "lá chanh",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784fc"
+  },
+  "ID": "M299",
+  "DishName": "Gà chiên sả lá chanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/12/ga-chien-sa-la-chanh-500.jpg",
+  "Ingredient": "lá chanh",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e784fe"
+  },
+  "ID": "M300",
+  "DishName": "Ếch xào sả lá chanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/12/ech-xao-xa-la-chanh-500.jpg",
+  "Ingredient": "lá chanh",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78500"
+  },
+  "ID": "M301",
+  "DishName": "Thịt ba rọi nướng lá chanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/03/2-540.jpg",
+  "Ingredient": "lá chanh",
+  "CookingTime": "45 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78502"
+  },
+  "ID": "M302",
+  "DishName": "Bún chay lá chanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/19.png",
+  "Ingredient": "lá chanh",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78504"
+  },
+  "ID": "M303",
+  "DishName": "Đậu đũa xào lá chanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/5_CQC0019_DauDuaXaoLaChanh.png",
+  "Ingredient": "lá chanh",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78506"
+  },
+  "ID": "M304",
+  "DishName": "Nhộng rang lá chanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0114-nhong-rang-la-chanh1.png",
+  "Ingredient": "lá chanh",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78508"
+  },
+  "ID": "M305",
+  "DishName": "CANH CÁ KHOAI LÁ GIANG",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/09/Canh-ca%CC%81-khoai-la%CC%81-giang-1.png",
+  "Ingredient": "lá giang",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7850a"
+  },
+  "ID": "M306",
+  "DishName": "Canh nấm gà lá giang",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/07/canh-nam-ga-la-giang-880.webp",
+  "Ingredient": "lá giang",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7850c"
+  },
+  "ID": "M307",
+  "DishName": "Canh măng sườn lá giang",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/03/canh-mang-suon-la-giang-500.jpg",
+  "Ingredient": "lá giang",
+  "CookingTime": "35 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7850e"
+  },
+  "ID": "M308",
+  "DishName": "Canh gà măng chua lá giang",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/01/canh-ga-mang-chua-la-giang-500.jpg",
+  "Ingredient": "lá giang",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78510"
+  },
+  "ID": "M309",
+  "DishName": "Canh ếch lá giang",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/10/canh-ech-la-giang.jpg",
+  "Ingredient": "lá giang",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78512"
+  },
+  "ID": "M310",
+  "DishName": "Canh cá lóc lá giang",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/03/Canh-ca-loc-la-giang_540-e1457652295964.jpg",
+  "Ingredient": "lá giang",
+  "CookingTime": "35 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78514"
+  },
+  "ID": "M311",
+  "DishName": "Lẩu cá kèo lá giang",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/3.laucakeolagiang_IMG_9999_4.png",
+  "Ingredient": "lá giang",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78516"
+  },
+  "ID": "M312",
+  "DishName": "Lẩu cá đuối lá giang",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CQC6700_lau-caduoi.png",
+  "Ingredient": "lá giang",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78518"
+  },
+  "ID": "M313",
+  "DishName": "Canh cá khoai lá giang",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0066-canh-ca-khoai-la-giang.png",
+  "Ingredient": "lá giang",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7851a"
+  },
+  "ID": "M314",
+  "DishName": "Mì căn kho nấm – Cháo lá dứa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/07/mi-can-kho-nam-chao-la-dua-880.webp",
+  "Ingredient": "lá dứa",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7851c"
+  },
+  "ID": "M315",
+  "DishName": "Pancake lá dứa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/09/pancake-la-dua-880.webp",
+  "Ingredient": "lá dứa",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7851e"
+  },
+  "ID": "M316",
+  "DishName": "Lươn nướng lá dứa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/03/luonnuongladua540-e1458919538725.jpg",
+  "Ingredient": "lá dứa",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78520"
+  },
+  "ID": "M317",
+  "DishName": "Gà chiên lá dứa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/09_GaChienLaDua_CQC0211.png",
+  "Ingredient": "lá dứa",
+  "CookingTime": "35 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78522"
+  },
+  "ID": "M318",
+  "DishName": "Phèo nướng lá hẹ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/08/pheo-nuong-la-he-500.jpg",
+  "Ingredient": "lá hẹ",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78524"
+  },
+  "ID": "M319",
+  "DishName": "Ếch kho măng lá quế",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/02/ech-kho-mang-la-que-880.jpg",
+  "Ingredient": "măng lá",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78526"
+  },
+  "ID": "M320",
+  "DishName": "Salad mực măng tây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/09/salad-muc-mang-tay-1024x584.jpg",
+  "Ingredient": "măng tây",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78528"
+  },
+  "ID": "M321",
+  "DishName": "Gà xào măng tây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/03/ga-xao-mang-tay.jpg",
+  "Ingredient": "măng tây",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7852a"
+  },
+  "ID": "M322",
+  "DishName": "Măng tây chiên bia xốt cá ngừ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/08/mang-tay-chien-bia-xot-ca-ngu.jpg",
+  "Ingredient": "măng tây",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7852c"
+  },
+  "ID": "M323",
+  "DishName": "Tim heo xào măng tây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/07/tim-heo-xao-mang-tay-880.jpg",
+  "Ingredient": "măng tây",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7852e"
+  },
+  "ID": "M324",
+  "DishName": "Măng tây xào tôm mực",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/07/mang-tay-xao-tom-muc-880.webp",
+  "Ingredient": "măng tây",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78530"
+  },
+  "ID": "M325",
+  "DishName": "Súp tôm măng tây vị lẩu Thái",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/09/sup-tom-mang-tay-vi-lau-thai-880.webp",
+  "Ingredient": "măng tây",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78532"
+  },
+  "ID": "M326",
+  "DishName": "Nấm đùi gà kho măng tây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/01/Nam-dui-ga-540.png",
+  "Ingredient": "măng tây",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78534"
+  },
+  "ID": "M327",
+  "DishName": "Măng tây xào tôm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/03/mangtayxaotom540-e1458916670954.jpg",
+  "Ingredient": "măng tây",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78536"
+  },
+  "ID": "M328",
+  "DishName": "Cá hồi cuộn măng tây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-5936-ca-hoi-cuon-mang-tay.png",
+  "Ingredient": "măng tây",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78538"
+  },
+  "ID": "M329",
+  "DishName": "Cua nấm xào măng tây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0071-cua-nam-xao-mang-tay1.png",
+  "Ingredient": "măng tây",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7853a"
+  },
+  "ID": "M330",
+  "DishName": "Măng trúc kho ruốc Huế",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/11/411-MangTrucKhoRuocHue-540-360.jpg",
+  "Ingredient": "măng trúc",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7853c"
+  },
+  "ID": "M331",
+  "DishName": "Sườn heo om mít non",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/09/suon-heo-om-mit-non-1024x584.jpg",
+  "Ingredient": "mít non",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7853e"
+  },
+  "ID": "M332",
+  "DishName": "Mít non kho nấm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/08/mit-non-kho-nam.jpg",
+  "Ingredient": "mít non",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78540"
+  },
+  "ID": "M333",
+  "DishName": "Canh sườn mít non trái vả",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/02/canh-suon-mit-non-trai-va-880.webp",
+  "Ingredient": "mít non",
+  "CookingTime": "45 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78542"
+  },
+  "ID": "M334",
+  "DishName": "Mít non om chao đỏ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/07/mit-non-om-chao-do-500.jpg",
+  "Ingredient": "mít non",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78544"
+  },
+  "ID": "M335",
+  "DishName": "Mít non om nước cốt dừa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/05/Mit-Non-Om-Nuoc-Cot-Dua-540.jpg",
+  "Ingredient": "mít non",
+  "CookingTime": "45 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78546"
+  },
+  "ID": "M336",
+  "DishName": "Cá chuồn kho mít non",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/03/3-540.jpg",
+  "Ingredient": "mít non",
+  "CookingTime": "45 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78548"
+  },
+  "ID": "M337",
+  "DishName": "Canh mít non củ năng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_0356-canh-mit-non-cu-mang.png",
+  "Ingredient": "mít non",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7854a"
+  },
+  "ID": "M338",
+  "DishName": "Mít non trộn đậu hũ ky",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/201206051116120000004_mit-non-tron-tau-hu-ky-03ls031.jpg",
+  "Ingredient": "mít non",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7854c"
+  },
+  "ID": "M339",
+  "DishName": "Mướp hương nhồi tôm hấp",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/05/muop-huong-nhoi-tom-hap-500.jpg",
+  "Ingredient": "mướp hương",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7854e"
+  },
+  "ID": "M340",
+  "DishName": "Mướp hương xào tim",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/07/muop-huong-xao-tim-500.jpg",
+  "Ingredient": "mướp hương",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78550"
+  },
+  "ID": "M341",
+  "DishName": "Canh mướp hương thịt viên",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CanhMuopHuongThitVien_CQC8492.png",
+  "Ingredient": "mướp hương",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78552"
+  },
+  "ID": "M342",
+  "DishName": "Chả tôm thịt mắc khén",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/12/Cha-tom-thit-mac-khen-5401.png",
+  "Ingredient": "mướp hương",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78554"
+  },
+  "ID": "M343",
+  "DishName": "Mướp khía xào mực",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/10/muop-khia-xao-muc-500.jpg",
+  "Ingredient": "mướp khía",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78556"
+  },
+  "ID": "M344",
+  "DishName": "Nấm bào ngư hấp sả",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/09/nam-bao-ngu-hap-sa-500-min.jpg",
+  "Ingredient": "nấm bào ngư",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78558"
+  },
+  "ID": "M345",
+  "DishName": "Đậu hũ nhồi nấm bào ngư",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/08/dau-hu-nhoi-nam-bao-ngu-500-min.jpg",
+  "Ingredient": "nấm bào ngư",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7855a"
+  },
+  "ID": "M346",
+  "DishName": "Nấm bào ngư xào xốt mè",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/1_CQC9579-nam-bao-ngu-xot-me.png",
+  "Ingredient": "nấm bào ngư",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7855c"
+  },
+  "ID": "M347",
+  "DishName": "Gỏi nấm bào ngư",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/8_CQC1495_GoiNamBaoNgu.png",
+  "Ingredient": "nấm bào ngư",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7855e"
+  },
+  "ID": "M348",
+  "DishName": "Nấm bào ngư xào sả ớt",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_0114-nam-bao-ngu-xao-sa-ot.png",
+  "Ingredient": "nấm bào ngư",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78560"
+  },
+  "ID": "M349",
+  "DishName": "Sườn chay om nấm đùi gà",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/05/suon-chay-kho-nam-dui-ga.jpg",
+  "Ingredient": "nấm đùi gà",
+  "CookingTime": "5 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78562"
+  },
+  "ID": "M350",
+  "DishName": "Nấm đùi gà hấp tía tô",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/08/nam-dui-ga-hap-tia-to-500.jpg",
+  "Ingredient": "nấm đùi gà",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78564"
+  },
+  "ID": "M351",
+  "DishName": "Nấm đùi gà kho gừng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_6908-nam-dui-ga-kho-gung.png",
+  "Ingredient": "nấm đùi gà",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78566"
+  },
+  "ID": "M352",
+  "DishName": "Gà tiềm nấm đông cô",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/GaTiem_CQC4879.png",
+  "Ingredient": "nấm đông cô",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78568"
+  },
+  "ID": "M353",
+  "DishName": "Giò heo kho nấm đông cô",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/6_CQC0245_GioHeoKhoNamDongCo.png",
+  "Ingredient": "nấm đông cô",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7856a"
+  },
+  "ID": "M354",
+  "DishName": "Súp nấm hải sản chua cay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/03/sup-nam-hai-san-chua-cay.webp",
+  "Ingredient": "nấm hải sản",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7856c"
+  },
+  "ID": "M355",
+  "DishName": "Súp gà mọc nấm hương",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/07/sup-ga-moc-nam-huong.jpg",
+  "Ingredient": "nấm hương",
+  "CookingTime": "5 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7856e"
+  },
+  "ID": "M356",
+  "DishName": "Chả cua nấm hương",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/12/cha-cua-nam-huong-500.jpg",
+  "Ingredient": "nấm hương",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78570"
+  },
+  "ID": "M357",
+  "DishName": "Canh cải gói thịt gà nấm hương",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/10/2110-Canh-Cai-Goi-Nam-540-360.jpg",
+  "Ingredient": "nấm hương",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78572"
+  },
+  "ID": "M358",
+  "DishName": "Cơm rau củ nấm hương",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/02/ComRauCuNamHuong_540-e1454586223333.jpg",
+  "Ingredient": "nấm hương",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78574"
+  },
+  "ID": "M359",
+  "DishName": "Mực xào nấm hương",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/12/1_MucXaoNamHuong_540-e1451525328505.jpg",
+  "Ingredient": "nấm hương",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78576"
+  },
+  "ID": "M360",
+  "DishName": "Rong biển cuộn nấm kim châm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/03/rong-bien-cuon-nam-kim-cham-880.webp",
+  "Ingredient": "nấm kim châm",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78578"
+  },
+  "ID": "M361",
+  "DishName": "Bò cuộn nấm kim châm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-4149-bo-cuon-nam-kim-cham.png",
+  "Ingredient": "nấm kim châm",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7857a"
+  },
+  "ID": "M362",
+  "DishName": "Salad nấm linh chi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/07/salad-nam-linh-chi-500.jpg",
+  "Ingredient": "nấm linh chi",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7857c"
+  },
+  "ID": "M363",
+  "DishName": "Gà nướng nấm linh chi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CQC5492_GaNuongNam.png",
+  "Ingredient": "nấm linh chi",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7857e"
+  },
+  "ID": "M364",
+  "DishName": "Súp gấc nấm mỡ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/12/sup-gac-nam-mo.jpg",
+  "Ingredient": "nấm mỡ",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78580"
+  },
+  "ID": "M365",
+  "DishName": "Canh gà nấm mỡ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/05/canh-ga-nam-mo-880.webp",
+  "Ingredient": "nấm mỡ",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78582"
+  },
+  "ID": "M366",
+  "DishName": "Nấm mỡ khìa nước dừa",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/01/nam-mo-khia-nuoc-dua-500.jpg",
+  "Ingredient": "nấm mỡ",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78584"
+  },
+  "ID": "M367",
+  "DishName": "Canh gà nấm mỡ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/03/canh-ga-nam-mo-500-min.jpg",
+  "Ingredient": "nấm mỡ",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78586"
+  },
+  "ID": "M368",
+  "DishName": "Bò xào nấm mỡ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/02/Than-bo-540.png",
+  "Ingredient": "nấm mỡ",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78588"
+  },
+  "ID": "M369",
+  "DishName": "Súp nấm ngưu bàng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/08/sup-nam-nguu-bang-1024x584.jpg",
+  "Ingredient": "nấm mèo",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7858a"
+  },
+  "ID": "M370",
+  "DishName": "Bánh xèo nấm mối chay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/10/banh-xeo-nam-moi-chay-nam-bo-500.jpg",
+  "Ingredient": "nấm mối",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7858c"
+  },
+  "ID": "M371",
+  "DishName": "Đậu hủ kho nấm rơm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/01/2.-DAU-HU-KHO-NAM-ROM.png",
+  "Ingredient": "nấm rơm",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "0 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7858e"
+  },
+  "ID": "M372",
+  "DishName": "Trứng đúc nấm rơm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/07/297-trung-dut-nam-rom-540-360.jpg",
+  "Ingredient": "nấm rơm",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78590"
+  },
+  "ID": "M373",
+  "DishName": "Đậu hũ kho nấm rơm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/04/dau-hu-kho-nam-rom-500.jpg",
+  "Ingredient": "nấm rơm",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78592"
+  },
+  "ID": "M374",
+  "DishName": "Gỏi sò huyết nấm tuyết",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_0121-goi-so-huyet-nam-tuyet.png",
+  "Ingredient": "nấm sò",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78594"
+  },
+  "ID": "M375",
+  "DishName": "Mẹt hải sản chấm muối ngò gai",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/05/met-hai-san-cham-muoi-ngo-gai-880.webp",
+  "Ingredient": "ngò gai",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78596"
+  },
+  "ID": "M376",
+  "DishName": "Canh cua rau đay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/01/19.-CANH-CUA-RAU-DAY.png",
+  "Ingredient": "rau đay",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78598"
+  },
+  "ID": "M377",
+  "DishName": "Canh cá rau đay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-5184-canh-ca-rau-day.png",
+  "Ingredient": "rau đay",
+  "CookingTime": "5 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7859a"
+  },
+  "ID": "M378",
+  "DishName": "Salad bò rau má",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/04/salad-bo-rau-ma.jpg",
+  "Ingredient": "rau má",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7859c"
+  },
+  "ID": "M379",
+  "DishName": "Gỏi rau má tai heo",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/01/goi-tai-heo-rau-ma-880.jpg",
+  "Ingredient": "rau má",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7859e"
+  },
+  "ID": "M380",
+  "DishName": "Gỏi rau má tôm khô chiên giòn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/12/goi-rau-ma-tom-kho-500.jpg",
+  "Ingredient": "rau má",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785a0"
+  },
+  "ID": "M381",
+  "DishName": "Gỏi rau má",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-4822-goi-rau-ma.png",
+  "Ingredient": "rau má",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785a2"
+  },
+  "ID": "M382",
+  "DishName": "Canh chua tôm rau muống",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/07/canh-tom-rau-muong.jpg",
+  "Ingredient": "rau muống",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785a4"
+  },
+  "ID": "M383",
+  "DishName": "Canh cá rau muống",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/09/18-Canh-ca-rau-muong-540-360.jpg",
+  "Ingredient": "rau muống",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785a6"
+  },
+  "ID": "M384",
+  "DishName": "Rau muống xào mắm ruốc",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-5311-rau-muong-xao-mam-ruoc.png",
+  "Ingredient": "rau muống",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785a8"
+  },
+  "ID": "M385",
+  "DishName": "Thịt bò trộn rau muống chẻ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/thit-bo-tron-rau-muong-che.png",
+  "Ingredient": "rau muống",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785aa"
+  },
+  "ID": "M386",
+  "DishName": "Bạch tuộc xào rau muống",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/201205230456250000007_bach-tuoc-xao-rau-muong-1.png",
+  "Ingredient": "rau muống",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785ac"
+  },
+  "ID": "M387",
+  "DishName": "Gỏi rau muống chiên giòn",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/261.jpg",
+  "Ingredient": "rau muống",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785ae"
+  },
+  "ID": "M388",
+  "DishName": "Rau muống ngâm chua",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-2214-rau-muong-ngam-chua.png",
+  "Ingredient": "rau muống",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785b0"
+  },
+  "ID": "M389",
+  "DishName": "Thăn heo chiên giòn rau quế",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/10/than-heo-chien-gion-rau-que-880.webp",
+  "Ingredient": "rau quế",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785b2"
+  },
+  "ID": "M390",
+  "DishName": "Mực trứng xào rau răm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/03/muc-trung-xao-rau-ram-500-min.jpg",
+  "Ingredient": "rau răm",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785b4"
+  },
+  "ID": "M391",
+  "DishName": "Gỏi gà rau răm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_8885-goi-ga-rau-ram.png",
+  "Ingredient": "rau răm",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785b6"
+  },
+  "ID": "M392",
+  "DishName": "Cá điêu hồng nướng rau răm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/CQC6750-ca-dieu-hong-nuong-rau-ram.png",
+  "Ingredient": "rau răm",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785b8"
+  },
+  "ID": "M393",
+  "DishName": "Cá kèo kho rau răm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/Ca-keo-kho-rau-ram.png",
+  "Ingredient": "rau răm",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785ba"
+  },
+  "ID": "M394",
+  "DishName": "Thịt gà kho rau răm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-2781-thit-ga-kho-rau-ram.png",
+  "Ingredient": "rau răm",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785bc"
+  },
+  "ID": "M395",
+  "DishName": "Cá trê kho rau răm",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/201307041103220000004_mon-ngon-moi-ngay-c-tr-kho-rau-rm-1.jpg",
+  "Ingredient": "rau răm",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785be"
+  },
+  "ID": "M396",
+  "DishName": "Canh tôm rau cần nước",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/11/canh-tom-rau-can-nuoc-880.webp",
+  "Ingredient": "rau cần nước",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785c0"
+  },
+  "ID": "M397",
+  "DishName": "Cá lóc xào rau cần nước",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/7_CQC0034_CaLocXaoRauCanNuoc.png",
+  "Ingredient": "rau cần nước",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785c2"
+  },
+  "ID": "M398",
+  "DishName": "Salad bò rau đắng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/02/salad-bo-rau-dang-500-min.jpg",
+  "Ingredient": "rau đắng",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785c4"
+  },
+  "ID": "M399",
+  "DishName": "Canh cá kèo rau đắng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/Cha_Ca_Chien_Com_540x360.jpg",
+  "Ingredient": "rau đắng",
+  "CookingTime": "Phút",
+  "Difficulty": "Dễ",
+  "Servings": "0 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785c6"
+  },
+  "ID": "M400",
+  "DishName": "Canh khoai rau đắng",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-9751-canh-khoai-rau-dang.png",
+  "Ingredient": "rau đắng",
+  "CookingTime": "40 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785c8"
+  },
+  "ID": "M401",
+  "DishName": "Tôm mực xào rau nhút",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/09/tom-muc-xao-rau-nhut-500.jpg",
+  "Ingredient": "rau nhút",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785ca"
+  },
+  "ID": "M402",
+  "DishName": "Canh cua rau nhút",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/01/Canh-cua-540.png",
+  "Ingredient": "rau nhút",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785cc"
+  },
+  "ID": "M403",
+  "DishName": "Gỏi hải sản rau nhút",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/AGF-1552-goi-hai-san-rau-nhut.png",
+  "Ingredient": "rau nhút",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785ce"
+  },
+  "ID": "M404",
+  "DishName": "Canh cá rô rau nhút",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/5.png",
+  "Ingredient": "rau nhút",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785d0"
+  },
+  "ID": "M405",
+  "DishName": "Canh chua cá lăng rau nhút",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/2_CQC1443-canh-chua-ca-lang-rau-nhut.png",
+  "Ingredient": "rau nhút",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785d2"
+  },
+  "ID": "M406",
+  "DishName": "Canh cá rau cần",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/03/canh-ca-rau-can.jpg",
+  "Ingredient": "rau cần",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785d4"
+  },
+  "ID": "M407",
+  "DishName": "Canh cua rau cần",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/02/canh-cua-rau-can-500-min.jpg",
+  "Ingredient": "rau cần",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785d6"
+  },
+  "ID": "M408",
+  "DishName": "Gỏi rau cần thịt bò",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/Goi-rau-can-thit-bo-540-360.jpg",
+  "Ingredient": "rau cần",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785d8"
+  },
+  "ID": "M409",
+  "DishName": "Canh cá lóc rau cần",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/canh-ca-loc-rau-can-2.png",
+  "Ingredient": "rau cần",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785da"
+  },
+  "ID": "M410",
+  "DishName": "Canh cá rau cần",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0495-canh-ca-rau-can.png",
+  "Ingredient": "rau cần",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785dc"
+  },
+  "ID": "M411",
+  "DishName": "Chạo chay sả cây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/05/chao-chay-quan-sa-cay-500.jpg",
+  "Ingredient": "sả cây",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785de"
+  },
+  "ID": "M412",
+  "DishName": "Salad su su",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/1106.jpg",
+  "Ingredient": "su su",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785e0"
+  },
+  "ID": "M413",
+  "DishName": "Nộm lưỡi lợn su hào",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/01/nom-luoi-heo-su-hao-880.jpg",
+  "Ingredient": "su hào",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785e2"
+  },
+  "ID": "M414",
+  "DishName": "TẾT 3 MIỀN – Miền Bắc: Cuốn đậu mơ su hào",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/02/cuon-dau-mo-su-hao.jpg",
+  "Ingredient": "su hào",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785e4"
+  },
+  "ID": "M415",
+  "DishName": "Gỏi su hào",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-3870-goi-su-hao.png",
+  "Ingredient": "su hào",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785e6"
+  },
+  "ID": "M416",
+  "DishName": "Tôm hấp su hào",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/TomHapSuHao_CQC8538.png",
+  "Ingredient": "su hào",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785e8"
+  },
+  "ID": "M417",
+  "DishName": "Su hào xào hải sản",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0229-su-hao-xao-hai-san.png",
+  "Ingredient": "su hào",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785ea"
+  },
+  "ID": "M418",
+  "DishName": "GÀ CHIÊN VỊ BƠ TỎI",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/07/Ga-chien-vi-bo-toi.png",
+  "Ingredient": "tỏi",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785ec"
+  },
+  "ID": "M419",
+  "DishName": "Tôm né bơ tỏi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/09/tom-ne-bo-toi-1024x584.jpg",
+  "Ingredient": "tỏi",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785ee"
+  },
+  "ID": "M420",
+  "DishName": "Ếch om tỏi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/06/ech-om-toi-880.jpg",
+  "Ingredient": "tỏi",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785f0"
+  },
+  "ID": "M421",
+  "DishName": "Bánh mì nướng tỏi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/11/banh-mi-nuong-toi-880.jpg",
+  "Ingredient": "tỏi",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785f2"
+  },
+  "ID": "M422",
+  "DishName": "Cá chiên xóc tỏi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/02/ca-chien-xoc-toi-880.webp",
+  "Ingredient": "tỏi",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785f4"
+  },
+  "ID": "M423",
+  "DishName": "Ếch chiên bơ tỏi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/08/ech-chien-bo-toi-880.webp",
+  "Ingredient": "tỏi",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785f6"
+  },
+  "ID": "M424",
+  "DishName": "Sò lông nướng bơ tỏi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/08/so-long-nuong-bo-toi-880.webp",
+  "Ingredient": "tỏi",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785f8"
+  },
+  "ID": "M425",
+  "DishName": "Gan chiên cháy tỏi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/02/gan-chien-chay-toi-500.jpg",
+  "Ingredient": "tỏi",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785fa"
+  },
+  "ID": "M426",
+  "DishName": "Sườn xóc tỏi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/03/suon-xoc-toi-500.jpg",
+  "Ingredient": "tỏi",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785fc"
+  },
+  "ID": "M427",
+  "DishName": "Ngồng tỏi xào hải sản",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/04/ngong-toi-xao-hai-san-500-min.jpg",
+  "Ingredient": "tỏi",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e785fe"
+  },
+  "ID": "M428",
+  "DishName": "Vịt rang tỏi",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/09/vit-rang-toi-500.jpg",
+  "Ingredient": "tỏi",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78600"
+  },
+  "ID": "M429",
+  "DishName": "Hàu chén nướng sốt tiêu xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/03/hau-chen-nuoc-xot-tieu-xanh.jpg",
+  "Ingredient": "tiêu xanh",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78602"
+  },
+  "ID": "M430",
+  "DishName": "Mực xào xốt tiêu xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/11/muc-xao-xot-tieu-xanh.jpg",
+  "Ingredient": "tiêu xanh",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78604"
+  },
+  "ID": "M431",
+  "DishName": "Lòng gà xào tiêu xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/01/long-ga-xao-xot-tieu-880.jpg",
+  "Ingredient": "tiêu xanh",
+  "CookingTime": "40 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78606"
+  },
+  "ID": "M432",
+  "DishName": "Mực nhồi tôm xốt tiêu xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/03/muc-nhoi-tom-xot-tieu-xanh-880.webp",
+  "Ingredient": "tiêu xanh",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78608"
+  },
+  "ID": "M433",
+  "DishName": "Ốc bươu xào tiêu xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/03/oc-buou-xao-tieu-xanh-880.webp",
+  "Ingredient": "tiêu xanh",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7860a"
+  },
+  "ID": "M434",
+  "DishName": "Nấm xốt tiêu xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/12/nam-xot-tieu-tay-cam-500.jpg",
+  "Ingredient": "tiêu xanh",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7860c"
+  },
+  "ID": "M435",
+  "DishName": "Tôm mực xào tiêu xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/12/Toom-540.png",
+  "Ingredient": "tiêu xanh",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7860e"
+  },
+  "ID": "M436",
+  "DishName": "Bắp bò xào xốt tiêu xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/05/20May_BapBoXotTieuXanh-540-360.jpg",
+  "Ingredient": "tiêu xanh",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78610"
+  },
+  "ID": "M437",
+  "DishName": "Bò nấu pate tiêu xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/09/BoNauPateTieuXanh_5401-1024x683.jpg",
+  "Ingredient": "tiêu xanh",
+  "CookingTime": "Phút",
+  "Difficulty": "Dễ",
+  "Servings": "0 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78612"
+  },
+  "ID": "M438",
+  "DishName": "Mì căn kho tiêu xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/Mi-can_CQC5120.png",
+  "Ingredient": "tiêu xanh",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78614"
+  },
+  "ID": "M439",
+  "DishName": "Ốc móng tay xào tiêu xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/OcMongTayXaoTieuXanh_CQC0280.png",
+  "Ingredient": "tiêu xanh",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78616"
+  },
+  "ID": "M440",
+  "DishName": "Ếch kho tiêu xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/2.echkhotieuxanh_IMG_9627.png",
+  "Ingredient": "tiêu xanh",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78618"
+  },
+  "ID": "M441",
+  "DishName": "Cá hồi hạnh nhân xốt chanh dây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/06/ca-hoi-hanh-nhan-xot-chanh-day.jpg",
+  "Ingredient": "chanh",
+  "CookingTime": "5 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7861a"
+  },
+  "ID": "M442",
+  "DishName": "Cốt lết chiên sốt húng chanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/07/cot-let-chien-xot-hung-chanh-880.jpg",
+  "Ingredient": "chanh",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7861c"
+  },
+  "ID": "M443",
+  "DishName": "Sườn non xào chanh sả",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/03/suon-non-xao-chanh-sa-880.webp",
+  "Ingredient": "chanh",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7861e"
+  },
+  "ID": "M444",
+  "DishName": "Cá kèo chiên xốt chanh dây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/01/ca-keo-chien-xot-chanh-day-880.webp",
+  "Ingredient": "chanh",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78620"
+  },
+  "ID": "M445",
+  "DishName": "Gà chiên mè xốt chanh muối Mayo",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/11/ga-chien-me-xot-chanh-muoi-mayo-880.webp",
+  "Ingredient": "chanh",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78622"
+  },
+  "ID": "M446",
+  "DishName": "Cơm chanh ấn độ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/10/com-chanh-an-do-880.webp",
+  "Ingredient": "chanh",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78624"
+  },
+  "ID": "M447",
+  "DishName": "Salad thanh long chanh dây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/07/salad-thanh-long-chanh-day-880.webp",
+  "Ingredient": "chanh",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78626"
+  },
+  "ID": "M448",
+  "DishName": "Lẩu cá hồi chanh dây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/01/lau-ca-hoi-chanh-day-500.jpg",
+  "Ingredient": "chanh",
+  "CookingTime": "35 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e78628"
+  },
+  "ID": "M449",
+  "DishName": "Cá dứa chiên giòn – xốt chanh dây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/12/ca-dua-chien-gion-xot-chanh-day-500.jpg",
+  "Ingredient": "chanh dây",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7862a"
+  },
+  "ID": "M450",
+  "DishName": "Nấm chiên giòn xốt chanh dây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/05/nam-chien-gion-xot-chanh-day-500.jpg",
+  "Ingredient": "chanh dây",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7862c"
+  },
+  "ID": "M451",
+  "DishName": "Bánh rán chocolate jelly chanh dây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/06/banh-ran-an-kem-jelly-chanh-day-500-min.jpg",
+  "Ingredient": "chanh dây",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d60cdbd32288e7862e"
+  },
+  "ID": "M452",
+  "DishName": "Cá thu chiên giòn xốt chanh dây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2018/04/ca-thu-chien-gion-xot-chanh-day-500.jpg",
+  "Ingredient": "chanh dây",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78630"
+  },
+  "ID": "M453",
+  "DishName": "Cá điêu hồng chiên xốt chanh dây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/07/ca-500.jpg",
+  "Ingredient": "chanh dây",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78632"
+  },
+  "ID": "M454",
+  "DishName": "Bò áp chảo chanh dây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2016/09/169-BoNuongChanhDay-540-360.jpg",
+  "Ingredient": "chanh dây",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78634"
+  },
+  "ID": "M455",
+  "DishName": "Sườn chiên xốt chanh dây",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/07_SuonChienXotChanhDay_CQC0245.png",
+  "Ingredient": "chanh dây",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78636"
+  },
+  "ID": "M456",
+  "DishName": "Matcha cà phê",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/09/tra-sua-matcha-ca-phe-1024x584.jpg",
+  "Ingredient": "cà phê",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78638"
+  },
+  "ID": "M457",
+  "DishName": "Matcha sữa cacao",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/10/matcha-sua-cacao.jpg",
+  "Ingredient": "ca cao",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e7863a"
+  },
+  "ID": "M458",
+  "DishName": "Pancake socola trà xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2019/08/pancake-socola-tra-xanh-500.jpg",
+  "Ingredient": "trà xanh",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e7863c"
+  },
+  "ID": "M459",
+  "DishName": "Chả tôm chiên lá trà xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/3-ChaTomChienLaTraXanh_CQC2029.png",
+  "Ingredient": "trà xanh",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e7863e"
+  },
+  "ID": "M460",
+  "DishName": "Cá thu rim nước trà xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2008/04/ca-thu-rim-nuoc-tra-xanh-1.jpg",
+  "Ingredient": "trà xanh",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78640"
+  },
+  "ID": "M461",
+  "DishName": "Pudding trà xanh",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/01/no-image.jpg",
+  "Ingredient": "trà xanh",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78642"
+  },
+  "ID": "M462",
+  "DishName": "Chả cá lóc xốt mayo mật ong",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/03/26.png",
+  "Ingredient": "mật ong",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78644"
+  },
+  "ID": "M463",
+  "DishName": "Sườn nướng mật ong",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/02/Suon-nuong-mat-ong.png",
+  "Ingredient": "mật ong",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78646"
+  },
+  "ID": "M464",
+  "DishName": "Cá hồi nướng tắc mật ong",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/07/ca-hoi-nuong-tac-mat-ong-880.webp",
+  "Ingredient": "mật ong",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78648"
+  },
+  "ID": "M465",
+  "DishName": "Gà xốt mật ong mù tạt",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2021/01/ga-xot-mat-ong-mu-tat-880.webp",
+  "Ingredient": "mật ong",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e7864a"
+  },
+  "ID": "M466",
+  "DishName": "Bánh rán cam mật ong",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2020/11/banh-ran-cam-mat-ong-880.webp",
+  "Ingredient": "mật ong",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e7864c"
+  },
+  "ID": "M467",
+  "DishName": "Sườn kho quế mật ong",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2017/11/suon-kho-que-mat-ong-500.jpg",
+  "Ingredient": "mật ong",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e7864e"
+  },
+  "ID": "M468",
+  "DishName": "Đùi gà mật ong",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/11/dui-ga-mat-ong540-e1448112903239.jpg",
+  "Ingredient": "mật ong",
+  "CookingTime": "35 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78650"
+  },
+  "ID": "M469",
+  "DishName": "Gan xốt mật ong",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG_3697-gan-xot-mat-ong.png",
+  "Ingredient": "mật ong",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78652"
+  },
+  "ID": "M470",
+  "DishName": "Sườn kho giấm mật ong",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/7_CQC3190_SuonKhoGiamMatOng.png",
+  "Ingredient": "mật ong",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78654"
+  },
+  "ID": "M471",
+  "DishName": "Sườn chay rim mật ong",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2015/08/IMG-0324-suon-chay-rim-mat-ong.png",
+  "Ingredient": "mật ong",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78656"
+  },
+  "ID": "M472",
+  "DishName": "Snack rong biển thanh cua",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/08/SNACK-RONG-BIEN-THANH-CUA-1-1024x584.png",
+  "Ingredient": "rong biển",
+  "CookingTime": "5 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "2 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78658"
+  },
+  "ID": "M473",
+  "DishName": "RONG BIỂN CUỘN CHIÊN XÙ",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/06/RONG-BIEN-CUON-CHIEN-XU.png",
+  "Ingredient": "rong biển",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e7865a"
+  },
+  "ID": "M474",
+  "DishName": "Rong biển cuộn thịt xốt mayo",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/03/24.png",
+  "Ingredient": "rong biển",
+  "CookingTime": "45 Phút",
+  "Difficulty": "Trung bình",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e7865c"
+  },
+  "ID": "M475",
+  "DishName": "Cơm nắm rong biển Mayo",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/04/Thumbnail-template-1.png",
+  "Ingredient": "rong biển",
+  "CookingTime": "10 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "2 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e7865e"
+  },
+  "ID": "M476",
+  "DishName": "Salad rong biển thanh cua",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2025/01/18.-SALAD-RONG-BIEN-THANH-CUA.png",
+  "Ingredient": "rong biển",
+  "CookingTime": "25 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78660"
+  },
+  "ID": "M477",
+  "DishName": "Bò cuộn lá rong biển",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/12/Thumbnail-template.png",
+  "Ingredient": "rong biển",
+  "CookingTime": "15 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "0 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78662"
+  },
+  "ID": "M478",
+  "DishName": "Chả giò rong biển chay",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/08/cha-gio-rong-bien-chay.jpg",
+  "Ingredient": "rong biển",
+  "CookingTime": "5 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78664"
+  },
+  "ID": "M479",
+  "DishName": "Bò cuộn rong biển",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2024/03/bo-cuon-rong-bien.jpg",
+  "Ingredient": "rong biển",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78666"
+  },
+  "ID": "M480",
+  "DishName": "Súp đậu non trứng rong biển",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2023/07/sup-dau-non-trung-rong-bien.jpg",
+  "Ingredient": "rong biển",
+  "CookingTime": "30 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690952d70cdbd32288e78668"
+  },
+  "ID": "M481",
+  "DishName": "Trứng hấp hàu rong biển",
+  "Image": "https://monngonmoingay.com/wp-content/uploads/2022/12/trung-hap-hau-rong-bien.jpg",
+  "Ingredient": "rong biển",
+  "CookingTime": "20 Phút",
+  "Difficulty": "Dễ",
+  "Servings": "4 Người",
+  "__v": 0
+}]

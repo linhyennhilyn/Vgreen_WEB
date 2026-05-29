@@ -1,0 +1,207 @@
+<!-- Cart Overlay -->
+<div class="cart-overlay" [class.active]="isCartOpen" (click)="onClose()"></div>
+
+<!-- Cart Sidebar -->
+<div class="cart-sidebar" [class.open]="isCartOpen">
+  <!-- Header -->
+  <div class="cart-header">
+    <div class="cart-icon">
+      <img src="/asset/icons/shop_lightgreen.png" alt="Cart" />
+    </div>
+    <h2>GIỎ HÀNG ({{ totalCount }})</h2>
+    <button class="close-btn" (click)="onClose()">
+      <img src="/asset/icons/clear_dark.png" alt="Đóng" />
+    </button>
+  </div>
+
+  <!-- Cart Items -->
+  <div class="cart-items">
+    <div class="items-table">
+      <div class="table-header">
+        <div class="item-checkbox">
+          <input
+            type="checkbox"
+            [checked]="isAllSelected"
+            (change)="onSelectAll()"
+            class="checkbox-input"
+          />
+        </div>
+        <div class="col-item">Sản phẩm</div>
+        <div class="col-quantity">Số lượng</div>
+        <div class="col-total">Tổng tiền</div>
+      </div>
+
+      <div class="items-list" *ngIf="getPurchasedItems().length > 0; else emptyCart">
+        <div *ngFor="let item of getPurchasedItems(); trackBy: trackByItemId">
+          <div class="cart-item">
+            <div class="item-checkbox">
+              <input
+                type="checkbox"
+                [checked]="item.selected"
+                (change)="onItemSelect(item.id)"
+                class="checkbox-input"
+              />
+            </div>
+
+            <div class="item-image" (click)="goToProductDetail(item)" style="cursor: pointer">
+              <img [src]="item.image" [alt]="item.name" />
+            </div>
+
+            <div class="item-info" (click)="goToProductDetail(item)" style="cursor: pointer">
+              <div class="item-name">{{ item.name }}</div>
+              <div class="item-price" *ngIf="!item.hasPromotion || !item.originalPrice">
+                {{ formatPrice(item.price) }}
+              </div>
+              <div class="item-price-promotion" *ngIf="item.hasPromotion && item.originalPrice">
+                <span class="current-price">{{ formatPrice(item.price) }}</span>
+                <span class="original-price">{{ formatPrice(item.originalPrice) }}</span>
+              </div>
+            </div>
+
+            <div class="item-quantity">
+              <button
+                class="quantity-btn minus"
+                [class.disabled]="item.quantity <= 1"
+                [disabled]="item.quantity <= 1"
+                (click)="onUpdateQuantity(item.id, item.quantity - 1)"
+              >
+                <img src="/asset/icons/minus.png" alt="minus" />
+              </button>
+              <span class="quantity">{{ item.quantity }}</span>
+              <button
+                class="quantity-btn plus"
+                (click)="onUpdateQuantity(item.id, item.quantity + 1)"
+              >
+                <img src="/asset/icons/plus_.png" alt="plus" />
+              </button>
+            </div>
+
+            <div class="item-total">
+              {{ formatPrice(item.price * item.quantity) }}
+            </div>
+
+            <div class="item-remove">
+              <button class="remove-btn" (click)="onRemoveItem(item.id)">
+                <img src="/asset/icons/clear_dark.png" alt="Xóa" />
+              </button>
+            </div>
+          </div>
+
+          <!-- Khung sản phẩm tặng kèm cho buy1get1 - hiển thị gifted item nếu có -->
+          <div class="free-item-container" *ngIf="hasGiftedItem(item) && item.selected">
+            <div class="free-item-details" *ngIf="getGiftedItem(item) as giftedItem">
+              <div class="free-item-image">
+                <img [src]="giftedItem.image" [alt]="giftedItem.name" />
+              </div>
+              <div class="free-item-info">
+                <div class="free-item-name">
+                  <span class="free-item-badge">Tặng kèm</span>{{ giftedItem.name }}
+                </div>
+                <div class="free-item-price">
+                  <span class="free-price">Miễn phí</span>
+                  <span class="original-price-striked">{{
+                    formatPrice(giftedItem.originalPrice || giftedItem.price)
+                  }}</span>
+                </div>
+              </div>
+              <div class="free-item-quantity">
+                <span class="free-quantity">x{{ giftedItem.quantity }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #emptyCart>
+        <div class="empty-cart">
+          <div class="empty-icon">
+            <img src="/asset/icons/shop_lightgreen.png" alt="Cart" />
+          </div>
+          <p>Giỏ hàng trống</p>
+          <button class="shop-now-btn" (click)="goToProductList()">Mua sắm ngay</button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="line-cart-actions">
+    <!-- Delete Selected Items Button -->
+    <button
+      *ngIf="selectedCount > 0"
+      class="delete-selected-btn"
+      (click)="onDeleteSelected(); $event.stopPropagation()"
+    >
+      <img src="/asset/icons/trash_dark.png" alt="Xóa đã chọn" />
+    </button>
+
+    <!-- VGreen Promotion -->
+    <div class="summary-section">
+      <!-- Hiển thị promotion-header chỉ khi có sản phẩm -->
+      <div *ngIf="totalCount > 0" class="promotion-header" (click)="onPromotionClick()">
+        <div class="promotion-title">
+          <img src="/asset/icons/sale_dark.png" alt="leaf" class="leaf-icon" />
+          <h2>VGreen khuyến mãi</h2>
+        </div>
+        <div class="promotion-action">
+          <span *ngIf="selectedPromotion">{{ selectedPromotion.name }}</span>
+          <span *ngIf="!selectedPromotion" class="placeholder-text"></span>
+          <img src="/asset/icons/arrowright_dark.png" alt="arrow" class="arrow" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="cart-summary">
+    <div class="summary-text">Đã chọn ({{ selectedCount }}) sản phẩm</div>
+    <div class="amount">
+      <div class="total-amount">
+        {{ formatPrice(selectedPromotion ? finalAmount : totalAmount) }}
+      </div>
+      <div class="savings" *ngIf="totalSavings > 0">Tiết kiệm {{ formatPrice(totalSavings) }}</div>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="cart-actions">
+    <button
+      class="checkout-btn"
+      [class.enabled]="isCheckoutEnabled"
+      [class.disabled]="!isCheckoutEnabled"
+      [disabled]="!isCheckoutEnabled"
+      (click)="onCheckout()"
+    >
+      ĐẶT HÀNG
+    </button>
+  </div>
+</div>
+
+<!-- Promotion Modal - Chỉ hiển thị khi có sản phẩm và modal được mở -->
+<app-promotion-modal
+  *ngIf="showPromotionModal() && totalCount > 0"
+  [cartAmount]="totalAmount"
+  [availablePromotions]="availablePromotions"
+  [currentSelectedPromotion]="selectedPromotion"
+  (promotionApplied)="onPromotionApplied($event)"
+  (closeModal)="onClosePromotionModal()"
+></app-promotion-modal>
+
+<!-- Delete Confirm Modal -->
+<div
+  class="modal-overlay delete-confirm-overlay"
+  *ngIf="showDeleteConfirmModal"
+  (click)="cancelDeleteSelected()"
+>
+  <div class="delete-confirm-modal" (click)="$event.stopPropagation()">
+    <div class="delete-confirm-content">
+      <h3 class="delete-confirm-title">Xác nhận xóa</h3>
+      <p class="delete-confirm-message">
+        Bạn chắc muốn xóa <strong>{{ selectedCount }}</strong> sản phẩm trong giỏ hàng của bạn?
+      </p>
+    </div>
+    <div class="delete-confirm-actions">
+      <button class="delete-confirm-btn cancel-btn" (click)="cancelDeleteSelected()">Hủy</button>
+      <button class="delete-confirm-btn delete-btn" (click)="confirmDeleteSelected()">Xóa</button>
+    </div>
+  </div>
+</div>

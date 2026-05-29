@@ -1,0 +1,342 @@
+<!-- Admin Layout - VGreen -->
+<div class="admin-layout" [class.dark-mode]="isDarkMode()">
+  <!-- Top Header Bar -->
+  <header class="top-header-bar">
+    <div class="top-header-left">
+      <button class="menu-toggle-btn" (click)="toggleSidebarCollapse()">
+        <img src="/asset/icons/list.png" alt="Menu" />
+      </button>
+    </div>
+
+    <div class="top-header-right">
+      <!-- Dark Mode / Light Mode Toggle -->
+      <button
+        class="theme-toggle-btn"
+        (click)="toggleTheme()"
+        [attr.aria-label]="isDarkMode() ? 'Chuyển sang light mode' : 'Chuyển sang dark mode'"
+      >
+        <div class="theme-toggle-switch" [class.dark-mode]="isDarkMode()">
+          <span class="theme-toggle-thumb"></span>
+        </div>
+      </button>
+
+      <!-- Notification Bell -->
+      <div
+        class="dropdown-wrapper"
+        (mouseenter)="showNotificationDropdown = true"
+        (mouseleave)="showNotificationDropdown = false"
+      >
+        <button class="top-icon-btn notification-btn" [class.active]="showNotificationDropdown">
+          <img src="/asset/icons/notice.png" alt="Notifications" />
+          <span class="notification-badge" *ngIf="unreadCount > 0">{{ unreadCount }}</span>
+        </button>
+
+        <!-- Spacer để tạo vùng đệm giữa button và dropdown -->
+        <div class="notification-dropdown-spacer" *ngIf="showNotificationDropdown"></div>
+
+        <!-- Notification Dropdown -->
+        <div class="notification-dropdown" *ngIf="showNotificationDropdown">
+          <div class="dropdown-header">
+            <h3>Thông báo</h3>
+            <span class="notification-count" *ngIf="unreadCount > 0">{{ unreadCount }} mới</span>
+          </div>
+
+          <div class="dropdown-body">
+            <!-- Notification Items -->
+            <div
+              *ngFor="let notification of notifications"
+              class="notification-item"
+              [class.unread]="!notification.read"
+              [class.read]="notification.read"
+              [class.clickable]="notification.orderId"
+            >
+              <div
+                class="notification-item-content"
+                (click)="onNotificationClick(notification, $event)"
+              >
+                <div
+                  class="notification-icon"
+                  [class.order-cancel]="notification.type === 'order_cancellation_request'"
+                  [class.new-order]="notification.type === 'new_order'"
+                  [class.return-request]="notification.type === 'return_request'"
+                  [class.consultation]="notification.type === 'consultation'"
+                >
+                  <img
+                    [src]="getNotificationIcon(notification)"
+                    alt="Notification"
+                    onerror="this.src='/asset/icons/order.png'"
+                  />
+                </div>
+                <div class="notification-content">
+                  <p class="notification-title">{{ getNotificationTitle(notification) }}</p>
+                  <p
+                    class="notification-text"
+                    [innerHTML]="getNotificationMessage(notification)"
+                  ></p>
+                  <span class="notification-time">{{ formatTimeAgo(notification.createdAt) }}</span>
+                </div>
+              </div>
+              <button
+                class="notification-close-btn"
+                (click)="markAsRead(notification._id || notification.id || '', $event)"
+                title="Đánh dấu đã đọc"
+                *ngIf="!notification.read"
+              >
+                ×
+              </button>
+              <span class="unread-dot" *ngIf="!notification.read"></span>
+            </div>
+
+            <!-- Empty state -->
+            <div *ngIf="notifications.length === 0" class="notification-empty">
+              <p>Không có thông báo nào</p>
+            </div>
+          </div>
+
+          <!-- <div class="dropdown-footer" *ngIf="notifications.length > 0">
+              <button class="view-all-btn" (click)="viewAllNotifications()">
+                Xem tất cả thông báo
+              </button>
+            </div> -->
+        </div>
+      </div>
+
+      <div class="dropdown-wrapper" #userDropdownWrapper>
+        <div
+          class="top-user-info"
+          (click)="onUserInfoClick($event)"
+          [class.clickable]="!isAuthenticated()"
+          [class.active]="showUserDropdown"
+        >
+          <img src="/asset/icons/person.png" alt="Admin" class="top-avatar" />
+          <span class="user-name">{{ userDisplayName() }}</span>
+        </div>
+
+        <!-- User Dropdown Menu -->
+        <div
+          class="user-dropdown"
+          *ngIf="showUserDropdown && isAuthenticated()"
+          (click)="$event.stopPropagation()"
+        >
+          <div class="user-dropdown-header">
+            <div class="user-dropdown-info">
+              <img src="/asset/icons/person.png" alt="Admin" class="user-dropdown-avatar" />
+              <div class="user-dropdown-details">
+                <p class="user-dropdown-name">{{ userDisplayName() }}</p>
+                <p class="user-dropdown-email">{{ currentUser()?.email }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="user-dropdown-body">
+            <button class="user-dropdown-item logout-item" (click)="logout()">
+              <img src="/asset/icons/logout_dark.png" alt="Logout" class="logout-icon" />
+              <span class="logout-text">Đăng xuất</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content Wrapper -->
+  <div class="admin-layout-content">
+    <!-- Sidebar Left -->
+    <aside class="sidebar" [class.collapsed]="isSidebarCollapsed">
+      <!-- Navigation Menu -->
+      <nav class="sidebar-menu">
+        <ul class="menu-list">
+          <li class="menu-item">
+            <a
+              [routerLink]="'/dashboard'"
+              routerLinkActive="active"
+              class="menu-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <img src="/asset/icons/home.png" alt="Dashboard" class="menu-icon" />
+              <span class="menu-text">Tổng quan</span>
+            </a>
+          </li>
+
+          <li class="menu-item">
+            <a [routerLink]="'/orders'" routerLinkActive="active" class="menu-link">
+              <img src="/asset/icons/order.png" alt="Orders" class="menu-icon" />
+              <span class="menu-text">Đơn hàng</span>
+            </a>
+          </li>
+
+          <li class="menu-item">
+            <a [routerLink]="'/products'" routerLinkActive="active" class="menu-link">
+              <img src="/asset/icons/shop.png" alt="Products" class="menu-icon" />
+              <span class="menu-text">Sản phẩm</span>
+            </a>
+          </li>
+
+          <li class="menu-item">
+            <a [routerLink]="'/customers'" routerLinkActive="active" class="menu-link">
+              <img src="/asset/icons/customer.png" alt="Customers" class="menu-icon" />
+              <span class="menu-text">Khách hàng</span>
+            </a>
+          </li>
+
+          <li class="menu-item">
+            <a [routerLink]="'/posts'" routerLinkActive="active" class="menu-link">
+              <img src="/asset/icons/edit.png" alt="Posts" class="menu-icon" />
+              <span class="menu-text">Bài viết</span>
+            </a>
+          </li>
+
+          <li class="menu-item">
+            <a [routerLink]="'/promotions'" routerLinkActive="active" class="menu-link">
+              <img src="/asset/icons/promotion.png" alt="Promotions" class="menu-icon" />
+              <span class="menu-text">Khuyến mãi</span>
+            </a>
+          </li>
+
+          <li class="menu-item">
+            <a [routerLink]="'/consultations'" routerLinkActive="active" class="menu-link">
+              <img src="/asset/icons/clinical_notes.png" alt="Consultations" class="menu-icon" />
+              <span class="menu-text">Tư vấn</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content Right -->
+    <main class="main-area">
+      <!-- Content Area with Router Outlet -->
+      <div class="content-area">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Logout Confirmation Popup -->
+<div class="logout-popup-overlay" *ngIf="showLogoutPopup" (click)="cancelLogout()">
+  <div class="logout-popup-container" (click)="$event.stopPropagation()">
+    <div class="logout-popup-icon">
+      <span class="icon-warning">?</span>
+    </div>
+
+    <h3 class="logout-popup-title">Xác nhận đăng xuất</h3>
+    <p class="logout-popup-message">Bạn có chắc chắn muốn đăng xuất?</p>
+
+    <div class="logout-popup-buttons">
+      <button class="logout-btn-cancel" (click)="cancelLogout()">Hủy</button>
+      <button class="logout-btn-confirm" (click)="confirmLogout()">Đăng xuất</button>
+    </div>
+  </div>
+</div>
+
+<!-- New Order Notification Popup -->
+<div
+  class="new-order-popup-overlay"
+  *ngIf="showNewOrderPopup && newOrderNotification"
+  (click)="closeNewOrderPopup()"
+>
+  <div class="new-order-popup-container" (click)="$event.stopPropagation()">
+    <button class="new-order-popup-close" (click)="closeNewOrderPopup()" aria-label="Đóng">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="new-order-popup-icon">
+      <img src="/asset/icons/order.png" alt="New Order" class="new-order-icon-img" />
+    </div>
+
+    <h3 class="new-order-popup-title">{{ getNotificationTitle(newOrderNotification) }}</h3>
+    <p
+      class="new-order-popup-message"
+      [innerHTML]="getNotificationMessage(newOrderNotification)"
+    ></p>
+
+    <div class="new-order-popup-buttons">
+      <button class="new-order-btn-close" (click)="closeNewOrderPopup()">Đóng</button>
+      <button class="new-order-btn-view" (click)="goToOrderFromPopup()">Xem đơn hàng</button>
+    </div>
+  </div>
+</div>
+
+<!-- Pending Orders Notification on Login -->
+<div
+  class="pending-orders-notification-overlay"
+  *ngIf="showPendingOrdersNotification"
+  (click)="closePendingOrdersNotification()"
+>
+  <div class="pending-orders-notification-container" (click)="$event.stopPropagation()">
+    <button
+      class="pending-orders-notification-close"
+      (click)="closePendingOrdersNotification()"
+      aria-label="Đóng"
+    >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="pending-orders-notification-icon">
+      <img src="/asset/icons/order.png" alt="Pending Orders" class="pending-orders-icon-img" />
+    </div>
+
+    <!-- <h3 class="pending-orders-notification-title">Có đơn hàng đang chờ xác nhận</h3> -->
+    <p class="pending-orders-notification-message">
+      <span *ngIf="outOfStockCount > 0">
+        Hiện có <strong class="out-of-stock-count">{{ outOfStockCount }}</strong> sản phẩm hết hàng.
+      </span>
+      <span *ngIf="outOfStockCount > 0 && (pendingOrdersCount > 0 || processingReturnCount > 0)"
+        ><br
+      /></span>
+      <span *ngIf="pendingOrdersCount > 0">
+        Hiện có <strong>{{ pendingOrdersCount }}</strong> đơn hàng đang chờ xác nhận.
+      </span>
+      <span *ngIf="pendingOrdersCount > 0 && processingReturnCount > 0"><br /></span>
+      <span *ngIf="processingReturnCount > 0">
+        Hiện có <strong class="processing-return-count">{{ processingReturnCount }}</strong> đơn yêu
+        cầu Trả hàng/Hoàn tiền.
+      </span>
+    </p>
+
+    <div class="pending-orders-notification-buttons">
+      <button class="pending-orders-btn-close" (click)="closePendingOrdersNotification()">
+        Đóng
+      </button>
+      <button
+        *ngIf="outOfStockCount > 0"
+        class="pending-orders-btn-view-products"
+        (click)="goToProductsFromNotification()"
+      >
+        Xem sản phẩm
+      </button>
+      <button
+        *ngIf="pendingOrdersCount > 0 || processingReturnCount > 0"
+        class="pending-orders-btn-view"
+        (click)="goToOrdersFromNotification()"
+      >
+        Xem đơn hàng
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,654 @@
+<div class="breadcrumb-container">
+  <div class="breadcrumb">
+    <a routerLink="/product-list" class="breadcrumb-link" (click)="navigateToProductList()"
+      >Sản phẩm</a
+    >
+    <span class="breadcrumb-separator">></span>
+    <span class="breadcrumb-current">{{ product?.ProductName || 'Đang tải...' }}</span>
+  </div>
+</div>
+
+<div class="product-detail-container">
+  <div *ngIf="product">
+    <!-- Top Section: Product Info Only -->
+    <div class="product-header-section">
+      <div class="product-image-section">
+        <div class="main-image">
+          <img
+            [src]="
+              productImages[currentImageIndex] || product.Image || 'asset/image/placeholder.png'
+            "
+            [alt]="product.ProductName"
+            class="product-main-image"
+          />
+          <!-- Buy 1 Get 1 Tag -->
+          <div class="buy1get1-tag" *ngIf="hasBuy1Get1Promotion(product)">Mua 1 tặng 1</div>
+        </div>
+        <div class="image-gallery" *ngIf="productImages && productImages.length > 0">
+          <div class="gallery-nav">
+            <!-- Chỉ hiển thị nút left khi có nhiều hơn 1 ảnh -->
+            <button
+              class="nav-arrow left-arrow"
+              (click)="previousImage()"
+              *ngIf="hasMultipleImages()"
+            >
+              <img src="/asset/icons/arrowleft_circle_fill.png" alt="Previous" />
+            </button>
+            <div class="thumbnail-container">
+              <div
+                class="thumbnail"
+                *ngFor="let image of productImages; let i = index"
+                [class.active]="i === currentImageIndex"
+                (click)="selectImage(i)"
+              >
+                <img [src]="image" [alt]="product.ProductName" />
+              </div>
+            </div>
+            <!-- Chỉ hiển thị nút right khi có nhiều hơn 1 ảnh -->
+            <button class="nav-arrow right-arrow" (click)="nextImage()" *ngIf="hasMultipleImages()">
+              <img src="/asset/icons/arrowright_circle_fill.png" alt="Next" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-info-section">
+        <h1 class="product-title">{{ product.ProductName }}</h1>
+
+        <div class="product-metadata">
+          <div class="metadata-item" *ngIf="hasReviews(product)">
+            <img src="/asset/icons/star_yellow.png" alt="Star" class="star-icon" />
+            <span class="rating">{{ getDisplayRating() }}</span>
+            <span class="review-count" *ngIf="product.ReviewCount"
+              >({{ product.ReviewCount }})</span
+            >
+          </div>
+          <div class="metadata-item">
+            <span class="purchase-count">{{ getPurchaseCount(product) }} lượt mua</span>
+          </div>
+          <div class="metadata-item">
+            <span class="sku">SKU: {{ product.sku }}</span>
+          </div>
+        </div>
+
+        <!-- Đơn vị tính -->
+        <div class="unit-section">
+          <span class="unit-label">Đơn vị tính: {{ product.Unit }}</span>
+        </div>
+
+        <div class="pricing-section">
+          <div class="current-price">{{ formatPrice(product.Price) }}</div>
+          <!-- Chỉ hiển thị pricing-details khi có discount hợp lệ (OriginalPrice > Price và Discount > 0) -->
+          <div class="pricing-details" *ngIf="hasDiscount(product)">
+            <div
+              class="original-price"
+              *ngIf="product.OriginalPrice && product.OriginalPrice > product.Price"
+            >
+              {{ formatPrice(product.OriginalPrice) }}
+            </div>
+            <div class="discount-tag" *ngIf="product.Discount && product.Discount > 0">
+              -{{ product.Discount }}%
+            </div>
+          </div>
+        </div>
+
+        <div class="quantity-section">
+          <label>Số lượng:</label>
+          <div class="quantity-controls">
+            <button class="quantity-btn minus" (click)="decreaseQuantity()">-</button>
+            <input type="number" [(ngModel)]="quantity" min="1" class="quantity-input" />
+            <button class="quantity-btn plus" (click)="increaseQuantity()">+</button>
+          </div>
+        </div>
+
+        <!-- Hiển thị thông tin tồn kho khi stock < 20 -->
+        <div
+          class="stock-info"
+          *ngIf="product && product.Stock !== undefined && product.Stock < 20"
+        >
+          Tồn kho: {{ product.Stock }}
+        </div>
+
+        <div class="action-buttons">
+          <button class="buy-now-btn" (click)="buyNow()">MUA NGAY</button>
+          <button class="add-to-cart-btn" (click)="addToCart()">THÊM VÀO GIỎ HÀNG</button>
+        </div>
+
+        <div class="share-section">
+          <div class="share-link">
+            <img src="/asset/icons/share_dark.png" alt="Share" class="share-icon" />
+            <span>Chia sẻ</span>
+          </div>
+          <div
+            class="favorite-section"
+            (click)="toggleFavorite()"
+            [class.favorited]="isProductFavorited()"
+          >
+            <div class="heart-icon"></div>
+            <span>{{ getFavoriteCount() }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Middle Section: Product Description + Cookbook (Side by Side) -->
+    <div class="middle-section">
+      <!-- Product Information Tabs -->
+      <div class="product-info-card" #productInfoCard>
+        <div class="product-info-tabs">
+          <div class="tab-navigation">
+            <button
+              class="tab-btn"
+              [class.active]="activeTab === 'details'"
+              (click)="setActiveTab('details')"
+            >
+              Chi tiết
+            </button>
+            <button
+              class="tab-btn"
+              [class.active]="activeTab === 'reviews'"
+              (click)="setActiveTab('reviews')"
+            >
+              Đánh giá ({{ product.ReviewCount || 0 }})
+            </button>
+            <button
+              class="tab-btn"
+              [class.active]="activeTab === 'consultation'"
+              (click)="setActiveTab('consultation')"
+            >
+              Tư vấn
+            </button>
+          </div>
+
+          <div class="tab-content">
+            <div class="tab-panel" *ngIf="activeTab === 'details'">
+              <div class="product-description">
+                <h3>Mô tả sản phẩm</h3>
+                <p [innerHTML]="formatTextWithLineBreaks(product.Description)"></p>
+              </div>
+
+              <div class="product-specifications">
+                <div class="spec-table">
+                  <div class="spec-row">
+                    <span class="spec-label">Xuất xứ:</span>
+                    <span class="spec-value">{{ product.Origin }}</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-label">Trọng lượng/Khối lượng:</span>
+                    <span class="spec-value">{{ product.Weight || product.Unit }}</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-label">Hạn sử dụng:</span>
+                    <span class="spec-value">{{ product.ExpiryDate }}</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-label">Thành phần:</span>
+                    <span
+                      class="spec-value"
+                      [innerHTML]="formatTextWithLineBreaks(product.Ingredients)"
+                    ></span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-label">Cách sử dụng:</span>
+                    <span
+                      class="spec-value usage-bullets"
+                      [innerHTML]="formatTextWithBullets(product.Usage)"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-panel" *ngIf="activeTab === 'reviews'">
+              <div class="reviews-section">
+                <!-- Rating Summary - Chỉ hiển thị nếu có đánh giá -->
+                <div class="rating-summary" *ngIf="hasReviews(product)">
+                  <div class="rating-overview">
+                    <div class="overall-rating">
+                      <div class="rating-score">{{ getDisplayRating() }}/5</div>
+                      <div class="rating-stars">
+                        <img
+                          *ngFor="let star of [1, 2, 3, 4, 5]"
+                          class="star"
+                          [src]="
+                            star <= getOverallRating()
+                              ? 'asset/icons/star_yellow.png'
+                              : 'asset/icons/star_outline_yellow.png'
+                          "
+                          alt="star"
+                        />
+                      </div>
+                      <div class="rating-count">{{ product.ReviewCount || 0 }} đánh giá</div>
+                    </div>
+
+                    <div class="rating-breakdown">
+                      <div class="rating-bar" *ngFor="let rating of ratingBreakdown">
+                        <span class="rating-label">{{ rating.stars }} sao</span>
+                        <div class="progress-bar">
+                          <div class="progress-fill" [style.width.%]="rating.percentage"></div>
+                        </div>
+                        <span class="rating-count">{{ rating.count }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Individual Reviews -->
+                <div class="reviews-list">
+                  <div class="reviews-header">
+                    <h3>{{ product.ReviewCount || 0 }} Đánh giá</h3>
+                    <div class="sort-dropdown">
+                      <div class="dropdown-trigger" (click)="toggleSortDropdown()">
+                        <span class="dropdown-text">{{ selectedSortOption }}</span>
+                        <img
+                          src="/asset/icons/arrowdown_lightgreen.png"
+                          alt="dropdown"
+                          class="dropdown-arrow"
+                          [class.rotated]="isSortDropdownOpen"
+                        />
+                      </div>
+                      <div class="dropdown-menu" [class.open]="isSortDropdownOpen">
+                        <div class="dropdown-item" (click)="selectSortOption('Mới nhất')">
+                          Mới nhất
+                        </div>
+                        <div class="dropdown-item" (click)="selectSortOption('Cũ nhất')">
+                          Cũ nhất
+                        </div>
+                        <div class="dropdown-item" (click)="selectSortOption('Đánh giá cao nhất')">
+                          Đánh giá cao nhất
+                        </div>
+                        <div class="dropdown-item" (click)="selectSortOption('Đánh giá thấp nhất')">
+                          Đánh giá thấp nhất
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="review-item" *ngFor="let review of displayedReviews">
+                    <div class="review-content">
+                      <div class="review-avatar">
+                        <div class="avatar-placeholder"></div>
+                      </div>
+                      <div class="review-details">
+                        <div class="review-header">
+                          <span class="reviewer-name">{{ review.name }}</span>
+                          <div class="review-rating">
+                            <img
+                              *ngFor="let star of [1, 2, 3, 4, 5]"
+                              class="star"
+                              [src]="
+                                star <= review.rating
+                                  ? 'asset/icons/star_yellow.png'
+                                  : 'asset/icons/star_outline_yellow.png'
+                              "
+                              alt="star"
+                            />
+                          </div>
+                        </div>
+                        <div class="review-text">{{ review.text }}</div>
+                        <!-- Review Images -->
+                        <div
+                          class="review-images"
+                          *ngIf="review.images && review.images.length > 0"
+                        >
+                          <div class="review-image-item" *ngFor="let image of review.images">
+                            <img
+                              [src]="image"
+                              [alt]="'Review image from ' + review.name"
+                              class="review-image"
+                            />
+                          </div>
+                        </div>
+                        <div class="review-meta">
+                          <span class="review-time">{{ formatTime(review.time) }}</span>
+                          <div class="review-actions">
+                            <a
+                              href="#"
+                              class="action-link"
+                              [class.liked]="isReviewLiked(review)"
+                              (click)="likeReview(review); $event.preventDefault()"
+                            >
+                              Thích
+                              <span *ngIf="getLikeCount(review) > 0" class="like-count"
+                                >({{ getLikeCount(review) }})</span
+                              >
+                            </a>
+                            <a
+                              href="#"
+                              class="action-link"
+                              (click)="toggleReplyForm(review); $event.preventDefault()"
+                            >
+                              Trả lời
+                              <span
+                                *ngIf="review.replies && review.replies.length > 0"
+                                class="reply-count"
+                                >({{ review.replies.length }})</span
+                              >
+                            </a>
+                          </div>
+                        </div>
+
+                        <!-- Reply Form -->
+                        <div class="reply-form-container" *ngIf="showReplyForm[review.id]">
+                          <textarea
+                            [(ngModel)]="replyTexts[review.id]"
+                            class="reply-textarea"
+                            placeholder="Nhập trả lời của bạn..."
+                            rows="3"
+                            maxlength="500"
+                          ></textarea>
+                          <div class="reply-form-actions">
+                            <button
+                              class="reply-submit-btn"
+                              (click)="submitReply(review)"
+                              [disabled]="
+                                replyingReviews.has(review.id) || !replyTexts[review.id]?.trim()
+                              "
+                            >
+                              {{ replyingReviews.has(review.id) ? 'Đang gửi...' : 'Gửi trả lời' }}
+                            </button>
+                            <button class="reply-cancel-btn" (click)="toggleReplyForm(review)">
+                              Hủy
+                            </button>
+                          </div>
+                        </div>
+
+                        <!-- Replies List -->
+                        <div
+                          class="replies-list"
+                          *ngIf="review.replies && review.replies.length > 0"
+                        >
+                          <div
+                            class="reply-item"
+                            *ngFor="let reply of review.replies; let replyIndex = index"
+                          >
+                            <div class="reply-avatar">
+                              <div class="avatar-placeholder"></div>
+                            </div>
+                            <div class="reply-content">
+                              <div class="reply-header">
+                                <span class="reply-author">{{ reply.fullname }}</span>
+                                <span class="reply-time">{{ formatReplyTime(reply.time) }}</span>
+                              </div>
+                              <div class="reply-text">{{ reply.content }}</div>
+                              <div class="reply-actions">
+                                <a
+                                  href="#"
+                                  class="action-link reply-like-link"
+                                  [class.liked]="isReplyLiked(reply)"
+                                  (click)="likeReply(review, replyIndex); $event.preventDefault()"
+                                >
+                                  Thích
+                                  <span *ngIf="getReplyLikeCount(reply) > 0" class="like-count"
+                                    >({{ getReplyLikeCount(reply) }})</span
+                                  >
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="load-more-section"
+                    *ngIf="
+                      hasMoreReviews ||
+                      (isReviewsExpanded && displayedReviews.length > reviewsPerPage)
+                    "
+                  >
+                    <button
+                      *ngIf="hasMoreReviews"
+                      class="load-more-btn"
+                      (click)="loadMoreReviews()"
+                    >
+                      <span>Xem thêm</span>
+                    </button>
+                    <button
+                      *ngIf="isReviewsExpanded && displayedReviews.length > reviewsPerPage"
+                      class="load-more-btn collapse-btn"
+                      (click)="collapseReviews()"
+                    >
+                      <span>Rút gọn</span>
+                      <span class="load-more-arrow">
+                        <img
+                          src="/asset/icons/arrowdown_lightgreen.png"
+                          alt="collapse"
+                          class="arrow-icon"
+                          style="transform: rotate(180deg)"
+                        />
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-panel" *ngIf="activeTab === 'consultation'">
+              <div class="consultation-section">
+                <!-- Ask Question Section -->
+                <div class="ask-question-section">
+                  <h3 class="section-title">Đặt câu hỏi về sản phẩm</h3>
+                  <div class="question-form">
+                    <textarea
+                      class="question-input"
+                      placeholder="Câu hỏi"
+                      [(ngModel)]="newQuestion"
+                    >
+                    </textarea>
+                    <button
+                      class="submit-btn"
+                      (click)="submitQuestion()"
+                      [disabled]="isSubmittingQuestion || !newQuestion.trim()"
+                    >
+                      {{ isSubmittingQuestion ? 'Đang gửi...' : 'Gửi' }}
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Questions List Section -->
+                <div class="questions-list-section">
+                  <h3 class="section-title">Danh sách câu hỏi ({{ questions.length }})</h3>
+                  <div class="questions-list" *ngIf="questions.length > 0">
+                    <div class="question-item" *ngFor="let question of questions">
+                      <div class="question-column">
+                        <div class="column-header">Câu hỏi</div>
+                        <div class="question-content">{{ question.question }}</div>
+                        <div class="question-sender">{{ question.customerName }}</div>
+                        <div class="question-time" *ngIf="question.createdAt">
+                          {{ formatTime(question.createdAt) }}
+                        </div>
+                      </div>
+                      <div class="answer-column">
+                        <div class="column-header">Trả lời</div>
+                        <div class="answer-content" *ngIf="question.answer; else noAnswer">
+                          {{ question.answer }}
+                          <div class="answer-meta" *ngIf="question.answeredBy">
+                            <span class="answer-by">- {{ question.answeredBy }}</span>
+                            <span class="answer-time" *ngIf="question.answeredAt">
+                              ({{ formatTime(question.answeredAt) }})
+                            </span>
+                          </div>
+                        </div>
+                        <ng-template #noAnswer>
+                          <div class="answer-pending">Đang chờ trả lời...</div>
+                        </ng-template>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Loading state -->
+                  <div class="loading-state" *ngIf="isLoadingConsultations">
+                    <p>Đang tải câu hỏi...</p>
+                  </div>
+                  <!-- Empty state - show headers when no questions -->
+                  <div
+                    class="question-item empty-state"
+                    *ngIf="!isLoadingConsultations && questions.length === 0"
+                  >
+                    <div class="question-column">
+                      <div class="column-header">Câu hỏi</div>
+                      <div class="empty-message">Chưa có câu hỏi nào</div>
+                    </div>
+                    <div class="answer-column">
+                      <div class="column-header">Trả lời</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recipe Handbook Section - Chỉ hiển thị nếu có recipes liên quan -->
+      <div class="cookbook-container" *ngIf="allCookbookRecipes && allCookbookRecipes.length > 0">
+        <div class="cookbook-header">
+          <div class="cookbook-title">
+            <img src="/asset/icons/chef.png" alt="Chef" class="chef-icon" />
+            <h3>SỔ TAY NẤU ĂN</h3>
+          </div>
+          <div class="cookbook-pagination">
+            <button
+              class="pagination-btn prev"
+              (click)="prevRecipePage()"
+              [disabled]="!canPrevRecipePage()"
+            >
+              <img src="/asset/icons/arrowleft_lightgreen.png" alt="Previous" />
+            </button>
+            <span class="page-info">{{ allCookbookRecipes.length }} món</span>
+            <button
+              class="pagination-btn next"
+              (click)="nextRecipePage()"
+              [disabled]="!canNextRecipePage()"
+            >
+              <img src="/asset/icons/arrowright_lightgreen.png" alt="Next" />
+            </button>
+          </div>
+        </div>
+        <div class="recipe-list">
+          <div
+            *ngFor="let recipe of cookbookRecipes"
+            class="recipe-item"
+            (click)="onRecipeClick(recipe)"
+          >
+            <div class="recipe-image">
+              <img [src]="recipe.Image" [alt]="recipe.DishName" />
+            </div>
+            <div class="recipe-content">
+              <h4 class="recipe-name">{{ recipe.DishName }}</h4>
+              <!-- <p class="recipe-ingredients">{{ recipe.Ingredient }}</p> -->
+              <div class="recipe-meta">
+                <div class="meta-item">
+                  <img src="/asset/icons/time_2.png" alt="Time" class="meta-icon" />
+                  <span>{{ recipe.CookingTime }}</span>
+                </div>
+                <div class="meta-item">
+                  <img src="/asset/icons/person_lightgreen.png" alt="Servings" class="meta-icon" />
+                  <span>{{ recipe.Servings }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Section: Related Products -->
+    <!-- Related Products Title Box -->
+    <div class="related-products-title-box">
+      <h3>Sản phẩm liên quan</h3>
+    </div>
+
+    <!-- Related Products Grid (without wrapper box) -->
+    <div class="related-products-grid">
+      <div
+        class="related-product-card"
+        *ngFor="let relatedProduct of displayedRelatedProducts"
+        (click)="goToProductDetail(relatedProduct._id)"
+      >
+        <div class="product-image-container">
+          <img
+            [src]="getProductImage(relatedProduct) || 'asset/image/placeholder.png'"
+            [alt]="relatedProduct.ProductName"
+            class="product-image"
+          />
+          <!-- Buy 1 Get 1 Tag -->
+          <div class="buy1get1-tag" *ngIf="hasBuy1Get1Promotion(relatedProduct)">Mua 1 tặng 1</div>
+          <button
+            class="favorite-btn"
+            (click)="toggleRelatedFavorite(relatedProduct); $event.stopPropagation()"
+            [class.favorited]="isFavorite(relatedProduct)"
+          >
+            <div class="heart-icon"></div>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-header">
+            <h3 class="product-name">{{ relatedProduct.ProductName }}</h3>
+            <div class="product-rating" *ngIf="hasReviews(relatedProduct)">
+              <span class="rating-number">{{ formatRating(relatedProduct.Rating!) }}</span>
+              <img src="/asset/icons/star_yellow.png" alt="Star" class="star-icon" />
+              <!-- <span class="review-count" *ngIf="relatedProduct.ReviewCount"
+                >({{ relatedProduct.ReviewCount }})</span
+              > -->
+            </div>
+          </div>
+          <div class="product-stats">
+            <div class="purchase-count">{{ getPurchaseCount(relatedProduct) }} lượt mua</div>
+          </div>
+          <div class="product-price-section">
+            <!-- Hiển thị giá khuyến mãi nếu có -->
+            <div *ngIf="hasDiscount(relatedProduct)" class="price-container-promotion">
+              <div class="discounted-price-group">
+                <span class="discounted-price">{{ formatPrice(relatedProduct.Price) }}</span>
+                <span class="unit">/{{ relatedProduct.Unit }}</span>
+              </div>
+              <div class="price-group">
+                <span class="original-price">{{
+                  formatPrice(getOriginalPrice(relatedProduct))
+                }}</span>
+                <span class="discount-badge">-{{ getDiscountPercent(relatedProduct) }}%</span>
+              </div>
+            </div>
+            <!-- Hiển thị giá thường nếu không có khuyến mãi -->
+            <div *ngIf="!hasDiscount(relatedProduct)" class="price-group-normal">
+              <span class="price-value">{{ formatPrice(relatedProduct.Price) }}</span>
+              <span class="price-unit">/{{ relatedProduct.Unit }}</span>
+            </div>
+          </div>
+          <button
+            class="add-to-cart-btn"
+            (click)="addToCart(relatedProduct); $event.stopPropagation()"
+          >
+            Thêm vào giỏ
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load More Button for Related Products -->
+    <div *ngIf="hasMoreRelatedProducts" class="load-more-container">
+      <button (click)="loadMoreRelatedProducts()" class="load-more-btn">
+        <span>Xem thêm</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Cookbook Detail Popup -->
+  <app-cookbook-detail
+    [recipe]="selectedRecipe"
+    [isOpen]="isRecipePopupOpen"
+    (closePopup)="closeRecipePopup()"
+  ></app-cookbook-detail>
+</div>
+
+<!-- Scroll to Top Button -->
+<button
+  class="scroll-to-top"
+  [class.visible]="showScrollButton"
+  (click)="scrollToTop()"
+  aria-label="Scroll to top"
+>
+  <img src="/asset/icons/arrowup_lightgreen.png" alt="Scroll to top" />
+</button>

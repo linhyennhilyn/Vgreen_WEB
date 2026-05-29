@@ -1,0 +1,145 @@
+<!-- Popup Overlay (chỉ hiển thị khi isOpen = true) -->
+<div class="popup-overlay" *ngIf="isOpen && recipe" (click)="closeOnOverlay($event)">
+  <!-- Popup Container -->
+  <div class="popup-container">
+    <!-- Close Button -->
+    <button class="close-btn" (click)="close()">
+      <img src="/asset/icons/clear.png" alt="Close" />
+    </button>
+
+    <!-- Header Section (nền đen) -->
+    <div class="popup-header">
+      <h1 class="recipe-title">{{ recipe.DishName }}</h1>
+      <!-- <div class="recipe-meta">
+        <div class="meta-box">
+          <img src="/asset/icons/person_lightgreen.png" alt="Servings" class="meta-icon" />
+          <div class="meta-content">
+            <span class="meta-label">Khẩu phần</span>
+            <span class="meta-value">{{ recipe.Servings || '2 người' }}</span>
+          </div>
+        </div>
+        <div class="meta-box">
+          <img src="/asset/icons/time_2.png" alt="Time" class="meta-icon" />
+          <div class="meta-content">
+            <span class="meta-label">Thời gian thực hiện</span>
+            <span class="meta-value">{{ recipe.CookingTime || '5 Phút' }}</span>
+          </div>
+        </div>
+        <div class="meta-box">
+          <img src="/asset/icons/difficult.png" alt="Difficulty" class="meta-icon" />
+          <div class="meta-content">
+            <span class="meta-label">Độ khó</span>
+            <span class="meta-value">{{ recipe.Difficulty || 'Dễ' }}</span>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <!-- Image/Video Section -->
+    <div class="image-section">
+      <!-- Nếu có Video và đang phát: hiển thị iframe -->
+      <iframe
+        *ngIf="recipe.Video && isVideoPlaying && safeVideoUrl"
+        [src]="safeVideoUrl"
+        class="recipe-video"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+
+      <!-- Nếu có Video nhưng chưa phát: hiển thị thumbnail + nút play -->
+      <div
+        *ngIf="recipe.Video && !isVideoPlaying"
+        class="video-thumbnail-container"
+        (click)="playVideo()"
+      >
+        <img
+          [src]="getYouTubeThumbnail(recipe.Video)"
+          [alt]="recipe.DishName"
+          class="recipe-image"
+        />
+        <button class="play-btn" (click)="playVideo(); $event.stopPropagation()">
+          <div class="play-icon"></div>
+        </button>
+      </div>
+
+      <!-- Nếu không có Video: hiển thị Image -->
+      <img
+        *ngIf="!recipe.Video"
+        [src]="recipe.Image"
+        [alt]="recipe.DishName"
+        class="recipe-image"
+      />
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tab-navigation">
+      <button
+        *ngFor="let tab of tabs"
+        class="tab-btn"
+        [class.active]="activeTab === tab.id"
+        (click)="setActiveTab(tab.id)"
+      >
+        {{ tab.label }}
+      </button>
+    </div>
+
+    <!-- Content Section (scrollable - hiển thị tất cả) -->
+    <div class="content-section">
+      <!-- Section: Mô Tả -->
+      <div class="tab-content" id="section-description">
+        <h3 class="content-title">Mô Tả</h3>
+        <p class="description-text">{{ recipe.Description || 'Chưa có mô tả.' }}</p>
+      </div>
+
+      <!-- Section: Nguyên Liệu -->
+      <div class="tab-content" id="section-ingredients">
+        <h3 class="content-title">Nguyên Liệu:</h3>
+        <div class="ingredients-list">
+          <div
+            class="ingredient-item"
+            *ngFor="let ingredient of getIngredientsList(); let i = index"
+          >
+            <input type="checkbox" [id]="'ingredient-' + i" class="ingredient-checkbox" />
+            <label [for]="'ingredient-' + i" class="ingredient-label">{{ ingredient }}</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Thực Hiện -->
+      <div class="tab-content" id="section-instructions">
+        <h3 class="content-title">Thực Hiện:</h3>
+
+        <!-- Ghi chú (UnitNote) -->
+        <div class="unit-note" *ngIf="recipe.UnitNote">
+          <span class="note-label">Ghi chú:</span>
+          <span class="note-text">{{ recipe.UnitNote }}</span>
+        </div>
+
+        <!-- Phần Chuẩn bị (nếu có) -->
+        <div class="preparation-section" *ngIf="recipe.Preparation">
+          <h4 class="sub-title">Chuẩn Bị:</h4>
+          <p class="preparation-text">{{ recipe.Preparation }}</p>
+        </div>
+        <!-- Phần Chế biến -->
+        <h4 class="sub-title" *ngIf="recipe.Preparation">Chế Biến:</h4>
+        <div class="instructions-list">
+          <div class="instruction-step" *ngFor="let step of getInstructionSteps(); let i = index">
+            <div class="step-number">{{ i + 1 }}</div>
+            <p class="step-text">{{ step }}.</p>
+          </div>
+        </div>
+        <div class="decoration-text" *ngIf="recipe.DecorationTip">
+          <h4>Trang trí:</h4>
+          <p>{{ recipe.DecorationTip }}</p>
+        </div>
+      </div>
+
+      <!-- Section: Cách Dùng -->
+      <div class="tab-content" id="section-usage">
+        <h3 class="content-title">Cách Dùng:</h3>
+        <p class="usage-text">{{ getFormattedUsage() }}</p>
+      </div>
+    </div>
+  </div>
+</div>

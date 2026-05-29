@@ -1,0 +1,193 @@
+<section class="support-section">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <h2 class="section-title">HỖ TRỢ KHÁCH HÀNG</h2>
+      <p class="section-description">
+        Cần giúp đỡ? VGreen luôn sẵn sàng đồng hành cùng bạn trong mọi bước mua sắm – từ đặt hàng,
+        thanh toán đến đổi trả.
+      </p>
+    </div>
+
+    <!-- Accordion -->
+    <div class="accordion-wrapper">
+      <div
+        *ngFor="let support of supportItems; let i = index"
+        class="accordion-item"
+        [class.expanded]="support.isExpanded"
+      >
+        <!-- Accordion Header -->
+        <div class="accordion-header" (click)="toggleAccordion(support.id)">
+          <div class="header-left">
+            <div class="support-icon">
+              <img [src]="support.iconPath" [alt]="support.title" />
+            </div>
+            <h3 class="support-title">{{ support.title }}</h3>
+          </div>
+          <button class="accordion-toggle" [class.rotate]="support.isExpanded">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M6 9L12 15L18 9"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Accordion Content -->
+        <div class="accordion-content" [class.show]="support.isExpanded">
+          <div class="accordion-body" [innerHTML]="support.content" *ngIf="support.id !== 1"></div>
+
+          <!-- FAQ Accordion for support item 1 -->
+          <div class="accordion-body" *ngIf="support.id === 1">
+            <div class="faq-accordion">
+              <div
+                class="faq-accordion-item"
+                *ngFor="let faq of faqItems; let i = index"
+                [class.expanded]="faq.isExpanded"
+              >
+                <div class="faq-question" (click)="toggleFAQ(faq.id)">
+                  <div class="faq-plus" [class.rotate]="faq.isExpanded">+</div>
+                  <h4>{{ faq.question }}</h4>
+                </div>
+                <div class="faq-answer" [class.show]="faq.isExpanded">
+                  <div [innerHTML]="faq.answer"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section">
+      <div class="contact-container">
+        <div class="contact-left">
+          <h3 class="contact-title">Cần thêm hỗ trợ? Liên hệ với chúng tôi</h3>
+          <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+            <div class="form-group">
+              <label for="name">Họ và tên <sup>*</sup></label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                [(ngModel)]="contactData.name"
+                #nameInput="ngModel"
+                required
+                minlength="2"
+              />
+              <div class="error-message" *ngIf="nameInput.invalid && nameInput.touched">
+                <span *ngIf="nameInput.errors?.['required']">Họ và tên là bắt buộc</span>
+                <span *ngIf="nameInput.errors?.['minlength']"
+                  >Họ và tên phải có ít nhất 2 ký tự</span
+                >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email <sup>*</sup></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                [(ngModel)]="contactData.email"
+                #emailInput="ngModel"
+                required
+                email
+                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+              />
+              <div class="error-message" *ngIf="emailInput.invalid && emailInput.touched">
+                <span *ngIf="emailInput.errors?.['required']">Email là bắt buộc</span>
+                <span *ngIf="emailInput.errors?.['email'] || emailInput.errors?.['pattern']"
+                  >Email không chính xác</span
+                >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Nội dung <sup>*</sup></label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                [(ngModel)]="contactData.message"
+                #messageInput="ngModel"
+                required
+                minlength="10"
+              ></textarea>
+              <div class="error-message" *ngIf="messageInput.invalid && messageInput.touched">
+                <span *ngIf="messageInput.errors?.['required']">Nội dung là bắt buộc</span>
+                <span *ngIf="messageInput.errors?.['minlength']"
+                  >Nội dung phải có ít nhất 10 ký tự</span
+                >
+              </div>
+            </div>
+            <button type="submit" class="submit-btn" [disabled]="!contactForm.valid || isSubmitting">
+              <span *ngIf="!isSubmitting">Gửi ngay</span>
+              <span *ngIf="isSubmitting">Đang gửi...</span>
+            </button>
+          </form>
+        </div>
+
+        <div class="contact-right">
+          <div class="contact-info">
+            <h4>Thông tin liên hệ</h4>
+            <div class="info-item">
+              <div class="info-icon">
+                <img src="/asset/icons/headphone_dark.png" alt="phone" />
+              </div>
+              <div class="info-text"><strong>Hotline:</strong> 0123 456 789</div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <img src="/asset/icons/mail_dark.png" alt="email" />
+              </div>
+              <div class="info-text"><strong>Email:</strong> vgreenhotro@gmail.com</div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <img src="/asset/icons/history_dark.png" alt="time" />
+              </div>
+              <div class="info-text"><strong>Thời gian:</strong> 8h – 21h (T2–CN)</div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <img src="/asset/icons/map_dark.png" alt="address" />
+              </div>
+              <div class="info-text">
+                <strong>Địa chỉ:</strong> 669 QL1A, khu phố 6, Thủ Đức, Hồ Chí Minh
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Popup Notification -->
+<div class="popup-overlay" *ngIf="showPopup" (click)="closePopup()">
+  <div class="popup-container" [class.success]="popupType === 'success'" [class.error]="popupType === 'error'" (click)="$event.stopPropagation()">
+    <div class="popup-header">
+      <div class="popup-icon-wrapper">
+        <div class="popup-icon" [class.success-icon]="popupType === 'success'" [class.error-icon]="popupType === 'error'">
+          <span *ngIf="popupType === 'success'">✓</span>
+          <span *ngIf="popupType === 'error'">✕</span>
+        </div>
+      </div>
+      <button class="popup-close-btn" (click)="closePopup()" aria-label="Đóng">
+        <span>&times;</span>
+      </button>
+    </div>
+    <div class="popup-body">
+      <h3 class="popup-title" *ngIf="popupType === 'success'">Thành công!</h3>
+      <h3 class="popup-title" *ngIf="popupType === 'error'">Có lỗi xảy ra</h3>
+      <p class="popup-message">{{ popupMessage }}</p>
+    </div>
+    <div class="popup-footer">
+      <button class="popup-close" (click)="closePopup()">Đóng</button>
+    </div>
+  </div>
+</div>

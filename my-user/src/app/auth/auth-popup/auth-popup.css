@@ -1,0 +1,139 @@
+/* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px); /* Thêm blur effect, càng lớn càng mờ */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Popup Content */
+.popup-content {
+  position: relative;
+  background: transparent; /* Thay đổi từ rgba(255, 255, 255, 0) thành transparent */
+  border-radius: 12px;
+  box-shadow: none; /* Bỏ shadow vì container trong suốt */
+  max-width: 780px; /* Tăng từ 480px lên 780px để chứa register-form 700px + padding */
+  width: auto; /* Thay đổi từ 80% thành auto để fit với content */
+  min-width: 600px; /* Đảm bảo popup có width tối thiểu để chứa login-form */
+  margin: 0 auto;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+  max-height: 90vh;
+  /* overflow-y: auto; */
+}
+
+/* Close Button - Điều chỉnh để nổi bật hơn */
+.close-btn {
+  position: absolute;
+  top: 30px; /* Đưa lên trên form một chút */
+  right: 50px;
+  background: rgba(255, 255, 255, 0.9); /* Nền trắng mờ */
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  z-index: 11;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  background: #ffffff;
+  transform: scale(1.1);
+}
+
+.close-btn img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0.3); /* Làm icon tối hơn để dễ nhìn */
+}
+
+/* Make login-container transparent in popup */
+.popup-content .login-container {
+  background: transparent; /* Thay đổi từ yellow thành transparent */
+  padding: 0; /* Bỏ padding */
+  position: relative; /* Giữ position relative */
+  width: 100%; /* Đảm bảo container có full width */
+  max-width: none; /* Không giới hạn max-width */
+  display: flex; /* Giữ flex để center form */
+  justify-content: center; /* Center form */
+  align-items: center; /* Center form */
+}
+
+/* Adjust form styling for popup - Giữ lại box shadow và border radius */
+.popup-content .login-form,
+.popup-content .register-form,
+.popup-content .forgot-password-form,
+.popup-content .otp-form {
+  padding: 40px; /* Thêm lại padding */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Thêm lại shadow */
+  border-radius: 20px; /* Thêm lại border radius */
+  background: #ffffff; /* Đảm bảo form có nền trắng */
+  width: 100%; /* Đảm bảo form sử dụng full width của popup-content */
+  max-width: 700px;
+}
+
+/* Đặt width cụ thể cho từng form trong popup */
+.popup-content .login-form {
+  width: 600px !important;
+  max-width: 600px !important;
+}
+
+.popup-content .register-form {
+  width: 700px !important;
+  max-width: 700px !important;
+}
+/* Responsive */
+@media (max-width: 480px) {
+  .popup-content {
+    width: 95%;
+    min-width: auto; /* Bỏ min-width trên mobile */
+    margin: 20px auto;
+    max-height: 95vh;
+  }
+
+  .close-btn {
+    top: -35px;
+    width: 28px;
+    height: 28px;
+    padding: 6px;
+  }
+
+  .close-btn img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .popup-content .login-title,
+  .popup-content .register-title,
+  .popup-content .forgot-password-title,
+  .popup-content .otp-title {
+    font-size: 20px;
+  }
+
+  .popup-content .login-form,
+  .popup-content .register-form,
+  .popup-content .forgot-password-form,
+  .popup-content .otp-form {
+    padding: 25px;
+  }
+}

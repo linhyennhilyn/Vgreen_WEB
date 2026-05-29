@@ -1,0 +1,52 @@
+<div class="register-container">
+  <div class="register-form">
+    @if (isPopupMode) {
+    <button type="button" class="close-btn" (click)="onClosePopup()" title="Đóng">
+      <img src="/asset/icons/clear_dark.png" alt="Đóng" class="close-icon" />
+    </button>
+    }
+    <h1 class="register-title">ĐĂNG KÝ</h1>
+
+    <form class="form" (ngSubmit)="onSubmit()">
+      <!-- Phone Number Field -->
+      <div class="form-group">
+        <label for="phone" class="form-label">Số điện thoại <sup>*</sup></label>
+        <div class="input-container">
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="form-input"
+            placeholder="Nhập số điện thoại của bạn"
+            #phoneInput
+            [value]="phoneNumber"
+            (input)="onPhoneInput($event)"
+            required
+          />
+          @if (phoneNumber) {
+          <button type="button" class="clear-btn" (click)="clearPhone()">
+            <img src="/asset/icons/clear_dark.png" alt="Clear" class="icon" />
+          </button>
+          }
+        </div>
+        <div class="error-container">
+          @if (phoneError) {
+          <div class="error-message">{{ phoneError }}</div>
+          }
+        </div>
+      </div>
+
+      <!-- Send OTP Button -->
+      <button type="submit" class="register-btn" [disabled]="!isPhoneValid()">Gửi mã OTP</button>
+    </form>
+
+    <div class="register-footer">
+      <span class="register-text">Bạn đã có tài khoản?&nbsp;</span>
+      @if (isPopupMode) {
+      <a href="#" (click)="onLoginClick($event)" class="register-link">Đăng nhập ngay</a>
+      } @else {
+      <a routerLink="/login" class="register-link">Đăng nhập ngay</a>
+      }
+    </div>
+  </div>
+</div>

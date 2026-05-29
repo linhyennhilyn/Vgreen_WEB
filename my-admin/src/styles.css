@@ -1,0 +1,172 @@
+/* VGreen Admin Global Styles */
+
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+
+
+:root {
+  /* ========== PRIMARY / SUCCESS COLORS (VGreen Identity) ========== */
+  /* Màu chính - Nhận diện thương hiệu VGreen */
+  --primary-main: #3CB018;
+  --primary-bg-color: #EDFFE5;
+  --primary-pressed: #256E05;
+  --primary-hover: #349409;
+  --primary-focus: #C8ECAC;
+  --primary-border: #68CB3C;
+
+  /* ========== SECONDARY / WARNING COLORS ========== */
+  /* Màu phụ - Cảnh báo */
+  --secondary-main: #F2BF3D;
+  --secondary-bg-color: #FFF8E5;
+  --secondary-pressed: #855B1F;
+  --secondary-hover: #ECAC09;
+  --secondary-focus: #FFE7AA;
+  --secondary-border: #FFD875;
+
+  /* ========== DANGER COLORS ========== */
+  /* Màu nguy hiểm - Lỗi */
+  --danger-main: #C42326;
+  --danger-bg-color: #FFE8E8;
+  --danger-pressed: #541212;
+  --danger-hover: #8C1F1F;
+  --danger-focus: #FFDFDF;
+  --danger-border: #E2B6B6;
+
+  /* ========== INFO COLORS ========== */
+  /* Màu thông tin */
+  --info-main: #0023DD;
+  --info-bg-color: #EBEEFF;
+  --info-pressed: #001793;
+  --info-hover: #001DB8;
+  --info-focus: #E2E7FF;
+  --info-border: #AAB6F4;
+
+  /* ========== NEUTRAL COLORS ========== */
+  /* Màu trung tính - Xám đen đến trắng */
+  --neutral-100: #0A0A0A;
+  --neutral-90: #424242;
+  --neutral-80: #616161;
+  --neutral-70: #757575;
+  --neutral-60: #9E9E9E;
+  --neutral-50: #C2C2C2;
+  --neutral-40: #E0E0E0;
+  --neutral-30: #EDEDED;
+  --neutral-20: #F5F5F5;
+  --neutral-10: #FFFFFF;
+
+  /* ========== ALIASES FOR BACKWARD COMPATIBILITY ========== */
+  /* Giữ tương thích với code cũ */
+  --primary-green: var(--primary-main);
+  --primary-bg: var(--primary-bg-color);
+  --bg-white: var(--neutral-10);
+  --bg-light: var(--neutral-20);
+  --text-dark: var(--neutral-100);
+  --text-gray: var(--neutral-70);
+  --border-color: var(--neutral-40);
+}
+
+@font-face {
+  font-family: 'SF Pro';
+  src: url('/asset/font/sf_pro/SF-Pro-Display-Medium.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'SF Pro';
+  src: url('/asset/font/sf_pro/SF-Pro-Display-Semibold.otf') format('opentype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'SF Pro';
+  src: url('/asset/font/sf_pro/SF-Pro-Display-Bold.otf') format('opentype');
+  font-weight: 700;
+}
+
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-light);
+}
+
+html {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Lexend', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'SF Pro', sans-serif;
+}
+
+/* Favicon Styling - Force circular display */
+link[rel="icon"],
+link[rel="shortcut icon"],
+link[rel="apple-touch-icon"] {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+.favicon-container {
+  aspect-ratio: 1 / 1;
+  clip-path: circle(50%);
+  -webkit-mask: radial-gradient(circle, black 0%, black 100%);
+  mask: radial-gradient(circle, black 0%, black 100%);
+  object-fit: cover;
+  object-position: center center;
+  min-width: 16px;
+  min-height: 16px;
+  max-width: 512px;
+  max-height: 512px;
+}
+
+img[src*="favicon"] {
+  aspect-ratio: 1 / 1 !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  border-radius: 50% !important;
+  clip-path: circle(50%) !important;
+}
+
+
+.page-container-base {
+  padding: 32px 40px;
+  background: linear-gradient(135deg, #F5F7FA 0%, #EDFFE5 100%);
+  min-height: calc(100vh - var(--topbar-height, 90px));
+  width: 100%;
+  position: relative;
+  display: block;
+}
+
+.page-container-base::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(180deg, rgba(60, 176, 24, 0.05) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-container-base > * {
+  position: relative;
+  z-index: 1;
+}

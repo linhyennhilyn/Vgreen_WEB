@@ -1,0 +1,589 @@
+/* ===== SECTION ===== */
+.policy-section {
+  padding: 80px 20px;
+  background: #F2F3ED;
+  min-height: 100vh;
+}
+  
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  /* ===== HEADER ===== */
+  .section-header {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+    animation: fadeInDown 0.8s ease;
+  }
+  
+  .section-header::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: #3CB018;
+    border-radius: 2px;
+  }
+  
+  .section-title {
+    font-family: "SF Pro";
+    font-size: 45px;
+    font-weight: 1000;
+    color: black;
+    margin-bottom: 20px;
+    letter-spacing: -.3px;
+    line-height: 1.2;
+  }
+  
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #F2BF3D;
+    margin: 20px auto 0;
+    border-radius: 2px;
+  }
+  
+  .section-description {
+    font-size: 20px;
+    color: #808080;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-weight: 400;
+  }
+  
+  /* ===== ACCORDION WRAPPER ===== */
+  .accordion-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* ===== ACCORDION ITEM ===== */
+  .accordion-item {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 2px solid transparent;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, box-shadow;
+  }
+  
+  
+  .accordion-item:hover {
+    box-shadow: 0 8px 30px rgba(52, 148, 9, 0.15);
+    transform: translateY(-4px);
+  }
+  
+  .accordion-item.expanded {
+    box-shadow: 0 12px 40px rgba(52, 148, 9, 0.2);
+    border-color: #349409;
+    transform: translateY(0);
+  }
+  
+  .accordion-item.expanded::before {
+    opacity: 1;
+  }
+  
+  /* ===== ACCORDION HEADER ===== */
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    cursor: pointer;
+    user-select: none;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    transition: background 0.3s ease;
+  }
+  
+  .accordion-item.expanded .accordion-header {
+    background: #EDFFE5;}
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+  }
+  
+  /* ===== POLICY ICON ===== */
+  .policy-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+    border-radius: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(52, 148, 9, 0.15);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform, background;
+  }
+  
+  .policy-icon img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    filter: brightness(0.7);
+    transition: all 0.3s ease;
+  }
+  
+  .accordion-item.expanded .policy-icon {
+    background: linear-gradient(135deg, #349409 0%, #3CB018 100%);
+    transform: scale(1.05) rotate(-5deg);
+    box-shadow: 0 6px 20px rgba(52, 148, 9, 0.3);
+  }
+  
+  .accordion-item.expanded .policy-icon img {
+    filter: brightness(0) invert(1);
+    transform: scale(1.1);
+  }
+  
+  /* ===== POLICY TITLE ===== */
+  .policy-title {
+    font-family: "SF Pro";
+    font-size: 24px;
+    font-weight: 800;
+    color: black;
+    margin: 0;
+    letter-spacing: -0.5px;
+    transition: color 0.3s ease;
+    letter-spacing: 0.4px;
+  }
+  
+  .accordion-item.expanded .policy-title {
+    color: #349409;
+  }
+  
+  /* ===== TOGGLE BUTTON ===== */
+  .accordion-toggle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #F2BF3D 0%, #E8A909 100%);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(242, 191, 61, 0.3);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform, background;
+  }
+  
+  .accordion-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(232, 169, 9, 0.5);
+  }
+  
+  .accordion-item.expanded .accordion-toggle {
+    background: linear-gradient(135deg, #349409 0%, #3CB018 100%);
+    box-shadow: 0 6px 20px rgba(52, 148, 9, 0.4);
+  }
+  
+  .accordion-toggle svg {
+    color: white;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .accordion-toggle.rotate svg {
+    transform: rotate(180deg);
+  }
+  
+  /* ===== ACCORDION CONTENT ===== */
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    
+  }
+  
+  .accordion-content.show {
+    max-height: 5000px;
+  }
+  
+  .accordion-body {
+    padding: 32px;
+    color: #333;
+  }
+  
+
+  /* ===== CONTENT STYLING FOR INNERHTML ===== */
+  ::ng-deep .accordion-body h4 {
+    font-family: "SF Pro";
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #349409 !important;
+    margin: 24px 0 12px !important;
+    border-left: 4px solid #349409 !important;
+    padding-left: 12px !important;
+    letter-spacing: 0.4px;
+  }
+
+  ::ng-deep .accordion-body h4:first-child {
+    margin-top: 0 !important;
+  }
+
+  ::ng-deep .accordion-body p {
+    font-size: 16px !important;
+    line-height: 1.8 !important;
+    margin-bottom: 16px !important;
+    color: #333 !important;
+  }
+
+  ::ng-deep .accordion-body ul, ::ng-deep .accordion-body ol {
+    margin: 16px 0 !important;
+    padding-left: 24px !important;
+  }
+
+  ::ng-deep .accordion-body li {
+    margin-bottom: 12px !important;
+    line-height: 1.8 !important;
+    color: #333 !important;
+  }
+
+  ::ng-deep .accordion-body strong {
+    color: #349409 !important;
+    font-weight: 600 !important;
+  }
+
+  /* ===== TABLE STYLING ===== */
+  ::ng-deep .accordion-body .shipping-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 16px 0 !important;
+    background: #F2F3ED !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+  }
+
+  ::ng-deep .shipping-table th, ::ng-deep .shipping-table td {
+    padding: 12px 16px !important;
+    text-align: left !important;
+    border-bottom: 1px solid #E5E5E5 !important;
+  }
+
+  ::ng-deep .shipping-table th {
+    background: #349409 !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+  }
+
+  ::ng-deep .shipping-table td {
+    color: #333 !important;
+  }
+
+  ::ng-deep .shipping-table tr:last-child td {
+    border-bottom: none !important;
+  }
+
+  /* Note/Highlight Boxes */
+  ::ng-deep .accordion-body .note {
+    background: #FFF9E6 !important;
+    border-left: 4px solid #F2BF3D !important;
+    padding: 16px 20px !important;
+    border-radius: 8px !important;
+    margin: 20px 0 !important;
+    font-size: 15px !important;
+    color: #333 !important;
+  }
+
+  ::ng-deep .accordion-body .highlight {
+    background: #E8F5E9 !important;
+    border-left: 4px solid #349409 !important;
+    padding: 16px 20px !important;
+    border-radius: 8px !important;
+    margin: 20px 0 !important;
+    font-size: 15px !important;
+    color: #333 !important;
+  }
+
+  /* Storage Guide */
+  ::ng-deep .storage-guide {
+    display: grid !important;
+    gap: 16px !important;
+    margin: 20px 0 !important;
+  }
+
+  ::ng-deep .guide-item {
+    background: #F2F3ED !important;
+    padding: 20px !important;
+    border-radius: 12px !important;
+    border-left: 4px solid #3CB018 !important;
+  }
+
+  ::ng-deep .guide-item strong {
+    display: block !important;
+    font-size: 16px !important;
+    margin-bottom: 8px !important;
+    color: #349409 !important;
+  }
+
+  ::ng-deep .guide-item p {
+    margin: 0 !important;
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+    color: #333 !important;
+  }
+  
+  .accordion-body .shipping-table th,
+  .accordion-body .shipping-table td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid #E8E8E8;
+    color: #333;
+  }
+  
+  .accordion-body .shipping-table th {
+    background: linear-gradient(135deg, #349409 0%, #3CB018 100%);
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .accordion-body .shipping-table tbody tr {
+    transition: background 0.3s ease;
+  }
+  
+  .accordion-body .shipping-table tbody tr:hover {
+    background: rgba(52, 148, 9, 0.05);
+  }
+  
+  .accordion-body .shipping-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  /* ===== HIGHLIGHT BOXES ===== */
+  .accordion-body .note {
+    background: linear-gradient(135deg, #FFF9E6 0%, #FFFBF0 100%);
+    border-left: 5px solid #F2BF3D;
+    padding: 20px 24px;
+    border-radius: 12px;
+    margin: 24px 0;
+    font-size: 15px;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(242, 191, 61, 0.15);
+    position: relative;
+  }
+  
+  .accordion-body .note::before {
+    content: '💡';
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    font-size: 60px;
+    opacity: 0.1;
+  }
+  
+  .accordion-body .highlight {
+    background: linear-gradient(135deg, #E8F5E9 0%, #F1F8F4 100%);
+    border-left: 5px solid #349409;
+    padding: 20px 24px;
+    border-radius: 12px;
+    margin: 24px 0;
+    font-size: 15px;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(52, 148, 9, 0.15);
+    position: relative;
+  }
+  
+  .accordion-body .highlight::before {
+    content: '✨';
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    font-size: 60px;
+    opacity: 0.1;
+  }
+  
+  /* ===== STORAGE GUIDE ===== */
+  .accordion-body .storage-guide {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 24px 0;
+  }
+  
+  .accordion-body .guide-item {
+    background: linear-gradient(135deg, #F2F3ED 0%, #FAFAF8 100%);
+    padding: 24px;
+    border-radius: 16px;
+    border-left: 5px solid #3CB018;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+  
+  .accordion-body .guide-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(60, 176, 24, 0.2);
+    border-left-width: 8px;
+  }
+  
+  .accordion-body .guide-item strong {
+    display: block;
+    font-size: 17px;
+    margin-bottom: 12px;
+    color: #349409;
+  }
+  
+  .accordion-body .guide-item p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #333;
+  }
+  
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .accordion-item {
+    animation: slideInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+  }
+  
+  .accordion-item:nth-child(1) { animation-delay: 0.1s; }
+  .accordion-item:nth-child(2) { animation-delay: 0.2s; }
+  .accordion-item:nth-child(3) { animation-delay: 0.3s; }
+  .accordion-item:nth-child(4) { animation-delay: 0.4s; }
+  .accordion-item:nth-child(5) { animation-delay: 0.5s; }
+  
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .policy-section {
+      padding: 60px 16px;
+    }
+    
+    .section-title {
+      font-size: 36px;
+    }
+    
+    .section-description {
+      font-size: 17px;
+    }
+    
+    .accordion-header {
+      padding: 20px;
+    }
+    
+    .header-left {
+      gap: 16px;
+    }
+    
+    .policy-icon {
+      width: 52px;
+      height: 52px;
+    }
+    
+    .policy-icon img {
+      width: 30px;
+      height: 30px;
+    }
+    
+    .policy-title {
+      font-size: 18px;
+    }
+    
+    .accordion-toggle {
+      width: 44px;
+      height: 44px;
+    }
+    
+    .accordion-body {
+      padding: 24px 20px;
+    }
+    
+    .accordion-body h4 {
+      font-size: 18px;
+    }
+    
+    .accordion-body p,
+    .accordion-body li {
+      font-size: 15px;
+    }
+    
+    .accordion-body .shipping-table {
+      font-size: 14px;
+    }
+    
+    .accordion-body .shipping-table th,
+    .accordion-body .shipping-table td {
+      padding: 12px 14px;
+    }
+    
+    .accordion-body .storage-guide {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .section-title {
+      font-size: 30px;
+    }
+    
+    .accordion-header {
+      padding: 18px 16px;
+    }
+    
+    .policy-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+    }
+    
+    .policy-icon img {
+      width: 26px;
+      height: 26px;
+    }
+    
+    .policy-title {
+      font-size: 16px;
+    }
+    
+    .accordion-body {
+      padding: 20px 16px;
+    }
+    
+    .accordion-body .shipping-table {
+      font-size: 13px;
+    }
+    
+    .accordion-body .shipping-table th,
+    .accordion-body .shipping-table td {
+      padding: 10px 12px;
+    }
+  }

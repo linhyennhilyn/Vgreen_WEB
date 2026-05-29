@@ -1,0 +1,43 @@
+<section class="policy-section">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <h2 class="section-title">CHÍNH SÁCH & ĐIỀU KHOẢN</h2>
+      <p class="section-description">
+        Khám phá các chính sách của VGreen để có trải nghiệm mua sắm trọn vẹn hơn – nơi mọi cam kết đều minh bạch và đáng tin cậy.
+      </p>
+    </div>
+
+    <!-- Accordion -->
+    <div class="accordion-wrapper">
+      <div 
+        *ngFor="let policy of policies; let i = index" 
+        class="accordion-item"
+        [class.expanded]="policy.isExpanded">
+        
+        <!-- Accordion Header -->
+        <div 
+          class="accordion-header" 
+          (click)="toggleAccordion(policy.id)">
+          <div class="header-left">
+            <div class="policy-icon">
+              <img [src]="policy.iconPath" [alt]="policy.title">
+            </div>
+            <h3 class="policy-title">{{ policy.title }}</h3>
+          </div>
+          <button class="accordion-toggle" [class.rotate]="policy.isExpanded">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2.5" 
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Accordion Content -->
+        <div class="accordion-content" [class.show]="policy.isExpanded">
+          <div class="accordion-body" [innerHTML]="policy.content"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

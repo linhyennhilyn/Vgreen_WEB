@@ -1,0 +1,633 @@
+/* ============================================
+   RECIPE DETAIL POPUP COMPONENT
+   Colors: Primary #349409, Background #ffffff
+   ============================================ */
+
+/* Overlay - làm mờ phần phía sau và khóa tương tác */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  /* backdrop-filter: blur(1px); */
+  -webkit-backdrop-filter: blur(3px); /* Safari support */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+  overflow-y: auto;
+  /* padding: 20px; */
+  /* Đảm bảo overlay chặn tất cả interaction với background */
+  pointer-events: auto;
+  /* Chặn scroll propagation */
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Popup Container - nền trắng với animation */
+.popup-container {
+  background: #ffffff;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 98vh;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: scaleIn 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
+}
+
+.close-btn img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+}
+
+/* ============================================
+   HEADER SECTION (Nền đen)
+   ============================================ */
+.popup-header {
+  /* background: #1a1a1a; */
+  padding: 15px;
+  text-align: center;
+}
+
+.recipe-title {
+  /* color: #ffffff; */
+  font-family: 'Lexend', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  /* margin: 0 0 15pSx 0; */
+  letter-spacing: 0.5px;
+}
+
+/* Meta Info - 3 boxes ngang hàng */
+.recipe-meta {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.meta-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  /* Border xanh bao quanh */
+  border: 1px solid #349409;
+  border-radius: 8px;
+  padding: 8px 12px;
+  /* background: rgba(52, 148, 9, 0.05); */
+}
+
+.meta-icon {
+  width: 20px;
+  height: 20px;
+  /* filter: brightness(0) invert(1); */
+}
+
+.meta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.meta-label {
+  /* color: #cccccc; */
+  font-size: 12px;
+  padding-bottom: 4px;
+  font-family: 'Lexend', sans-serif;
+}
+
+.meta-value {
+  /* color: #ffffff; */
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Lexend', sans-serif;
+}
+
+/* ============================================
+   IMAGE SECTION
+   ============================================ */
+.image-section {
+  position: relative;
+  width: 100%;
+  height: 260px; /* Chiều cao cố định cho video - tỷ lệ 16:9 tốt */
+  min-height: 260px; /* Đảm bảo chiều cao tối thiểu */
+  max-height: 260px; /* Đảm bảo chiều cao tối đa */
+  overflow: hidden;
+  background: #000000; /* Nền đen cho loading state */
+  /* border-radius: 8px; */
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
+}
+
+.recipe-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Giữ tỷ lệ, fill toàn bộ khung */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Video iframe (YouTube) */
+.recipe-video {
+  width: 100%;
+  height: 260px; /* Chiều cao 100% của container */
+  min-height: 250px; /* Đảm bảo chiều cao tối thiểu */
+  border: none;
+  display: block;
+  object-fit: contain; /* Giữ tỷ lệ video, không bị méo */
+}
+
+/* Video thumbnail container (chứa thumbnail + nút play) */
+.video-thumbnail-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Overlay gradient tối cho video thumbnail (làm nổi bật nút play) */
+.video-thumbnail-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  z-index: 1;
+  pointer-events: none; /* Cho phép click qua overlay */
+  transition: opacity 0.3s ease;
+  opacity: 0.7;
+}
+
+/* Hover effect cho video thumbnail */
+.video-thumbnail-container:hover::before {
+  opacity: 1;
+}
+
+.video-thumbnail-container:hover .recipe-image {
+  transform: scale(1.05); /* Zoom nhẹ khi hover */
+}
+
+/* Play button phải nằm trên overlay */
+.video-thumbnail-container .play-btn {
+  z-index: 2;
+}
+
+/* Play Button (nút tròn đỏ) */
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 0, 0, 0.9);
+  border: 4px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4), 0 0 0 0 rgba(255, 0, 0, 0.7);
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite; /* Animation pulse để thu hút chú ý */
+}
+
+.play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+  background: rgba(255, 0, 0, 1);
+  box-shadow: 0 8px 20px rgba(255, 0, 0, 0.6), 0 0 0 8px rgba(255, 255, 255, 0.2);
+  animation: none; /* Tắt pulse khi hover */
+}
+
+.play-icon {
+  width: 0;
+  height: 0;
+  border-left: 24px solid #ffffff;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  margin-left: 6px;
+}
+
+/* Pulse animation cho nút play */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4), 0 0 0 0 rgba(255, 0, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4), 0 0 0 10px rgba(255, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4), 0 0 0 0 rgba(255, 0, 0, 0);
+  }
+}
+
+/* ============================================
+   TAB NAVIGATION
+   ============================================ */
+.tab-navigation {
+  display: flex;
+  background: #f5f5f5;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: 'Lexend', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  background: #eeeeee;
+  color: #349409;
+}
+
+.tab-btn.active {
+  color: #349409;
+  font-weight: 700;
+  border-bottom-color: #349409;
+  background: #ffffff;
+}
+
+/* ============================================
+   CONTENT SECTION (Scrollable)
+   ============================================ */
+.content-section {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 20px;
+  background: #ffffff;
+  /* Cho phép scroll trong content section */
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  /* Scroll padding để section không bị che bởi fixed elements */
+  scroll-padding-top: 20px;
+  /* Ngăn scroll chaining - Không cho scroll lan ra body */
+  overscroll-behavior: contain;
+}
+
+.tab-content {
+  /* Xóa animation vì content luôn hiển thị */
+  /* animation: fadeInContent 0.3s ease; */
+  margin-bottom: 32px; /* Spacing giữa các sections */
+  scroll-margin-top: 20px; /* Offset khi scroll đến section */
+}
+
+.tab-content:last-child {
+  margin-bottom: 0; /* Bỏ margin cho section cuối */
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-title {
+  font-family: 'Lexend', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #222222;
+  margin: 0 0 16px 0;
+}
+
+/* Sub-title (cho Chuẩn bị, Chế biến, v.v.) */
+.sub-title {
+  font-family: 'Lexend', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #349409;
+  margin: 20px 0 12px 0;
+}
+
+/* Ghi chú (UnitNote) */
+.unit-note {
+  background: #fff9e6;
+  border-left: 4px solid #ffc107;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: 'Lexend', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.note-label {
+  font-weight: 600;
+  color: #f57c00;
+  flex-shrink: 0;
+}
+
+.note-text {
+  color: #555555;
+  flex: 1;
+}
+
+/* Phần Chuẩn bị */
+.preparation-section {
+  margin-bottom: 20px;
+}
+
+.preparation-text {
+  font-family: 'Lexend', sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #555555;
+  margin: 0;
+}
+
+/* Mô Tả */
+.description-text {
+  font-family: 'Lexend', sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #444444;
+  margin: 0;
+}
+
+/* Nguyên Liệu - List với checkbox */
+.ingredients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ingredient-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ingredient-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #349409;
+}
+
+.ingredient-label {
+  font-family: 'Lexend', sans-serif;
+  font-size: 14px;
+  color: #333333;
+  cursor: pointer;
+}
+
+.ingredient-checkbox:checked + .ingredient-label {
+  text-decoration: line-through;
+  color: #999999;
+}
+
+/* Thực Hiện - Steps với số */
+.instructions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.instruction-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.step-number {
+  width: 25px;
+  height: 25px;
+  background: #349409;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lexend', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.step-text {
+  font-family: 'Lexend', sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #444444;
+  margin: 0;
+  flex: 1;
+}
+
+.decoration-text {
+  margin-top: 24px;
+  padding: 16px;
+  background: #f9fff5;
+  border-left: 4px solid #349409;
+  border-radius: 4px;
+}
+
+.decoration-text h4 {
+  font-family: 'Lexend', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #349409;
+  margin: 0 0 8px 0;
+}
+
+.decoration-text p {
+  font-family: 'Lexend', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #444444;
+  margin: 0;
+}
+
+/* Cách Dùng */
+.usage-text {
+  font-family: 'Lexend', sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #444444;
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+  .popup-overlay {
+    padding: 10px;
+  }
+
+  .popup-container {
+    max-height: 95vh;
+    border-radius: 12px;
+  }
+
+  .recipe-title {
+    font-size: 20px;
+  }
+
+  .recipe-meta {
+    gap: 20px;
+  }
+
+  .meta-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .meta-value {
+    font-size: 13px;
+  }
+
+  .image-section {
+    height: 300px; /* Chiều cao cố định cho tablet */
+    min-height: 300px;
+    max-height: 300px;
+  }
+
+  .recipe-video {
+    min-height: 300px;
+  }
+
+  .tab-btn {
+    font-size: 12px;
+    padding: 12px 8px;
+  }
+
+  .content-section {
+    padding: 20px 16px;
+  }
+
+  .content-title {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .recipe-meta {
+    gap: 15px;
+  }
+
+  .meta-box {
+    gap: 6px;
+  }
+
+  .meta-label {
+    font-size: 11px;
+  }
+
+  .meta-value {
+    font-size: 12px;
+  }
+
+  .image-section {
+    height: 280px; /* Chiều cao cố định cho mobile */
+    min-height: 280px;
+    max-height: 280px;
+  }
+
+  .recipe-video {
+    min-height: 280px;
+  }
+
+  .play-btn {
+    width: 52px;
+    height: 52px;
+  }
+
+  .play-icon {
+    border-left-width: 16px;
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+  }
+}
+
+/* Scrollbar styling */
+.content-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.content-section::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.content-section::-webkit-scrollbar-thumb {
+  background: #349409;
+  border-radius: 3px;
+}
+
+.content-section::-webkit-scrollbar-thumb:hover {
+  background: #2a7507;
+}

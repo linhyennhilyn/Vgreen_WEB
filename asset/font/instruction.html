@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FONT</title>
+
+    <!-- Import Lexend từ Google Fonts, offline thì không thể load được -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Khai báo SF Pro trong style */
+      @font-face {
+        font-family: "SF Pro";
+        src: url("./sf_pro/SF-Pro-Display-Medium.otf")
+          /* Đổi đường dẫn phù hợp */ format("opentype");
+        font-weight: 500;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "SF Pro";
+        src: url("./sf_pro/SF-Pro-Display-Semibold.otf")
+          /* Đổi đường dẫn phù hợp */ format("opentype");
+        font-weight: 600;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "SF Pro";
+        src: url("./sf_pro/SF-Pro-Display-Bold.otf") /* Đổi đường dẫn phù hợp */
+          format("opentype");
+        font-weight: 700;
+        font-style: normal;
+      }
+
+      /* Áp dụng font */
+      h1 {
+        font-family: "SF Pro";
+        font-weight: 700; /* Phải khai báo thêm font-weight để cho nó biết là dùng bản BOLD, SEMIBOLD hay MEDIUM */
+      }
+
+      p {
+        font-family: "Lexend";
+      }
+    </style>
+  </head>
+  <body>
+    <h1>LẬP TRÌNH WEB KINH DOANH</h1>
+
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa accusamus,
+      magni quos iusto quasi ab! Perspiciatis, libero quisquam! Ipsa,
+      temporibus! At, tempora! Vitae pariatur libero nam rerum ea amet, unde
+      corporis, exercitationem
+    </p>
+  </body>
+</html>
