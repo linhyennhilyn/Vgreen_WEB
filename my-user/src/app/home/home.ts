@@ -599,7 +599,7 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
   // Force reload blog data từ backend API
   private async forceReloadBlogData(): Promise<void> {
     try {
-      const response = await fetch('http://localhost:3000/api/blogs');
+      const response = await fetch('/api/blogs');
       if (!response.ok) {
         throw new Error('Không thể tải dữ liệu blog từ backend');
       }
@@ -1442,7 +1442,7 @@ let blogData: BlogPost[] = [];
 // Load data từ backend API
 async function loadBlogData(): Promise<void> {
   try {
-    const response = await fetch('http://localhost:3000/api/blogs');
+    const response = await fetch('/api/blogs');
     if (!response.ok) {
       throw new Error('Không thể tải dữ liệu blog từ backend');
     }

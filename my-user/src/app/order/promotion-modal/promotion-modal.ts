@@ -134,7 +134,7 @@ export class PromotionModalComponent implements OnInit, OnDestroy, OnChanges {
     // Gọi API MongoDB để lấy promotions đang diễn ra
     this.http
       .get<{ success: boolean; data: PromotionJson[]; count: number }>(
-        'http://localhost:3000/api/promotions/active'
+        '/api/promotions/active'
       )
       .subscribe({
         next: (response) => {
@@ -560,7 +560,7 @@ export class PromotionModalComponent implements OnInit, OnDestroy, OnChanges {
       // Gọi API để tìm promotion theo code
       const response = await this.http
         .get<{ success: boolean; data: PromotionJson }>(
-          `http://localhost:3000/api/promotions/code/${code}`
+          `/api/promotions/code/${code}`
         )
         .toPromise();
 

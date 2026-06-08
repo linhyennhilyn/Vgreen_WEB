@@ -145,7 +145,7 @@ export class AddressFormComponent implements OnInit, OnChanges, OnDestroy {
     console.log('🔄 Loading address data from MongoDB tree_complete collection (63 tỉnh thành)...');
 
     // Load tree data from MongoDB API
-    this.http.get<any>('http://localhost:3000/api/tree_complete').subscribe({
+    this.http.get<any>('/api/tree_complete').subscribe({
       next: (treeData: any) => {
         console.log('✅ Loaded tree_complete from MongoDB API');
         console.log(

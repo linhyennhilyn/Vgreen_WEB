@@ -874,7 +874,7 @@ export class CartService {
 
   // Load promotions và targets để check buy1get1
   private loadPromotionsAndTargets(): void {
-    const apiUrl = 'http://localhost:3000/api';
+    const apiUrl = '/api';
     this.http
       .get<any>(`${apiUrl}/promotions`)
       .pipe(

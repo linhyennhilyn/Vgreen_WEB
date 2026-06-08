@@ -352,7 +352,7 @@ export class SidebarCustomer implements OnInit, OnChanges, OnDestroy {
       // Load từ backend trước (MongoDB) - thêm timestamp để tránh cache
       // Sử dụng full URL để đảm bảo request đến đúng backend server
       const timestamp = new Date().getTime();
-      const apiUrl = `http://localhost:3000/api/auth/user/${customerID}?t=${timestamp}`;
+      const apiUrl = `/api/auth/user/${customerID}?t=${timestamp}`;
       console.log(`\n🔄 [Sidebar] Loading user profile for CustomerID: ${customerID}`);
       console.log(`📡 [Sidebar] API URL: ${apiUrl}`);
       this.http.get<any>(apiUrl).subscribe({

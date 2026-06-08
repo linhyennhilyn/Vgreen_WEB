@@ -317,7 +317,7 @@ export class Support implements OnInit {
 
     // Gửi email qua API
     this.http
-      .post<any>('http://localhost:3000/api/contact/send', {
+      .post<any>('/api/contact/send', {
         name: this.contactData.name,
         email: this.contactData.email,
         message: this.contactData.message,

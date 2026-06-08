@@ -450,7 +450,7 @@ export class CartComponent implements OnInit, OnDestroy, OnChanges {
 
   // Load promotions và targets để check buy1get1
   private loadPromotionsAndTargets(): void {
-    const apiUrl = 'http://localhost:3000/api';
+    const apiUrl = '/api';
     forkJoin({
       promotions: this.http.get<any>(`${apiUrl}/promotions`),
       targets: this.http.get<any>(`${apiUrl}/promotion-targets`),

@@ -9,7 +9,7 @@ export class ApiConfigService {
 
   constructor() {
     // Use environment config, fallback to localhost for dev
-    this.baseApiUrl = environment.apiUrl || 'http://localhost:3000';
+    this.baseApiUrl = environment.apiUrl || '';
   }
 
   getBaseApiUrl(): string {

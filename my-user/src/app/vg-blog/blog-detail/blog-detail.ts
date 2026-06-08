@@ -231,13 +231,13 @@ export class BlogDetail implements OnInit, OnDestroy, AfterViewInit {
     try {
       console.log(
         ' [BlogDetail] Fetching blog post from API:',
-        `http://localhost:3000/api/blogs/${normalizedPostId}`
+        `/api/blogs/${normalizedPostId}`
       );
 
       // Load blog post từ backend API
       const response = await this.http
         .get<{ success: boolean; data: BlogPost }>(
-          `http://localhost:3000/api/blogs/${normalizedPostId}`
+          `/api/blogs/${normalizedPostId}`
         )
         .toPromise();
 
@@ -259,7 +259,7 @@ export class BlogDetail implements OnInit, OnDestroy, AfterViewInit {
         // Load all blogs để tìm prev/next posts
         try {
           const allBlogsResponse = await this.http
-            .get<{ success: boolean; data: BlogPost[] }>('http://localhost:3000/api/blogs')
+            .get<{ success: boolean; data: BlogPost[] }>('/api/blogs')
             .toPromise();
 
           if (allBlogsResponse && allBlogsResponse.success && allBlogsResponse.data) {
@@ -387,7 +387,7 @@ export class BlogDetail implements OnInit, OnDestroy, AfterViewInit {
     }
 
     const normalizedPostId = this.currentPost.id.trim().replace(/,$/, '').trim();
-    const apiUrl = 'http://localhost:3000/api';
+    const apiUrl = '/api';
 
     // Call new API endpoint to get related products based on blog content keywords
     this.http
@@ -949,7 +949,7 @@ export class BlogDetail implements OnInit, OnDestroy, AfterViewInit {
       if (!sku) return;
 
       // Load reviews count from API
-      this.http.get<any>(`http://localhost:3000/api/reviews/${sku}`).subscribe({
+      this.http.get<any>(`/api/reviews/${sku}`).subscribe({
         next: (response) => {
           if (response.success && response.data && response.data.reviews) {
             product.ReviewCount = response.data.reviews.length;

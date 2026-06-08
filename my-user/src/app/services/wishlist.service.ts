@@ -19,7 +19,7 @@ export interface UserWishlist {
   providedIn: 'root',
 })
 export class WishlistService {
-  private apiUrl = 'http://localhost:3000/api/wishlist';
+  private apiUrl = '/api/wishlist';
   private wishlistSubject = new BehaviorSubject<WishlistItem[]>([]);
   public wishlist$ = this.wishlistSubject.asObservable();
 

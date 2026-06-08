@@ -1456,7 +1456,7 @@ export class OrdersComponent implements OnInit, OnDestroy, AfterViewInit {
 
       // Gọi API để lưu review
       return this.http
-        .post(`http://localhost:3000/api/reviews/${sku}`, reviewData)
+        .post(`/api/reviews/${sku}`, reviewData)
         .toPromise()
         .then((response: any) => {
           // console.log(` Review submitted successfully for SKU: ${sku}`, response);
@@ -2142,7 +2142,7 @@ export class OrdersComponent implements OnInit, OnDestroy, AfterViewInit {
 
   loadReviewedOrders(): void {
     // Load tất cả reviews từ backend để check order nào đã được review đầy đủ
-    this.http.get<any>('http://localhost:3000/api/reviews/').subscribe({
+    this.http.get<any>('/api/reviews/').subscribe({
       next: (response) => {
         if (response.success && response.data && Array.isArray(response.data)) {
           this.reviewedOrderIds.clear();
@@ -2230,7 +2230,7 @@ export class OrdersComponent implements OnInit, OnDestroy, AfterViewInit {
 
   // Load promotions and targets for buy1get1
   private loadPromotionsAndTargets(): void {
-    const apiUrl = 'http://localhost:3000/api';
+    const apiUrl = '/api';
     forkJoin({
       promotions: this.http.get<any>(`${apiUrl}/promotions`),
       targets: this.http.get<any>(`${apiUrl}/promotion-targets`),
