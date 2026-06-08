@@ -2,13 +2,10 @@ services:
   - type: web
     name: vgreen-backend
     runtime: node
-    rootDir: backend
-    buildCommand: npm install
-    startCommand: node server.supabase.js
+    buildCommand: cd backend && npm install
+    startCommand: node backend/server.supabase.js
     envVars:
-      - key: PORT
-        value: 3000
       - key: SUPABASE_URL
-        value: https://njaxwrkyvztzpjfnvxli.supabase.co
+        sync: false
       - key: SUPABASE_KEY
-        value: sb_secret_ik7pOSdztDjHkYddBmH2lw_m2RlIbyf
+        sync: false
