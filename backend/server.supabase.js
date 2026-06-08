@@ -33,11 +33,11 @@ app.use("/api/users", createTableRouter("users", "CustomerID"));
 app.use("/api/promotions", createTableRouter("promotions", "id"));
 app.use("/api/promotion-targets", createTableRouter("promotion_target", "id"));
 app.use("/api/blogs", createTableRouter("blogs", "id"));
-app.use("/api/reviews", createTableRouter("reviews", "id"));
+app.use("/api/reviews", createTableRouter("reviews", "_id"));
 app.use("/api/dishes", createTableRouter("dishes", "id"));
 app.use("/api/instructions", createTableRouter("instructions", "id"));
-app.use("/api/chat", createTableRouter("chat_conversations", "id"));
-app.use("/api/consultations", createTableRouter("consultations", "id"));
+app.use("/api/chat", createTableRouter("chat_conversations", "_id"));
+app.use("/api/consultations", createTableRouter("consultations", "_id"));
 app.use("/api/contact", createTableRouter("contact", "id"));
 app.use("/api/addresses", createTableRouter("addresses", "id"));
 
