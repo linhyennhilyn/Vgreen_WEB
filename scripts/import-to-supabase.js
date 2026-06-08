@@ -6,10 +6,22 @@
 
 const fs = require('fs');
 const path = require('path');
+const dotenv = require('dotenv');
 const { createClient } = require('@supabase/supabase-js');
 
+const rootEnvPath = path.resolve(__dirname, '..', '.env');
+const backendEnvPath = path.resolve(__dirname, '..', 'backend', '.env');
+const envPath = fs.existsSync(rootEnvPath) ? rootEnvPath : backendEnvPath;
+
+if (fs.existsSync(envPath)) {
+  dotenv.config({ path: envPath });
+  console.log(`Loaded environment variables from: ${envPath}`);
+} else {
+  console.warn('No .env file found in root or backend folder. Please set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY manually.');
+}
+
 const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_KEY;
 
 if (!SUPABASE_URL || !SUPABASE_KEY) {
   console.error('Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY environment variables.');
@@ -19,36 +31,36 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const repoRoot = path.resolve(__dirname, '..');
+const dataRoot = path.join(repoRoot, 'data');
 
-// Map source JSON files to Supabase table names.
-// Adjust table names as needed to match your Supabase schema.
-const mappings = [
-  { file: 'data/admins.json', table: 'admins' },
-  { file: 'data/blogs.json', table: 'blogs' },
-  { file: 'data/chat_conversations.json', table: 'chat_conversations' },
-  { file: 'data/consultations.json', table: 'consultations' },
-  { file: 'data/orders.json', table: 'orders' },
-  { file: 'data/products.json', table: 'products' },
-  { file: 'data/reviews.json', table: 'reviews' },
-  { file: 'data/users.json', table: 'users' },
-  { file: 'data/blogs/blogs.json', table: 'blogs' },
-  { file: 'data/cookbook/dishes.json', table: 'dishes' },
-  { file: 'data/cookbook/instructions.json', table: 'instructions' },
-  { file: 'data/promotion/promotion_target.json', table: 'promotion_target' },
-  { file: 'data/promotion/promotions.json', table: 'promotions' }
-];
+function findJsonFiles(dir) {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  const files = [];
 
-function readJson(relPath) {
-  const abs = path.join(repoRoot, relPath);
-  if (!fs.existsSync(abs)) {
-    console.warn(`File not found: ${relPath}, skipping.`);
-    return null;
+  for (const entry of entries) {
+    const entryPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...findJsonFiles(entryPath));
+    } else if (entry.isFile() && entry.name.toLowerCase().endsWith('.json')) {
+      files.push(entryPath);
+    }
   }
-  const raw = fs.readFileSync(abs, 'utf8');
+
+  return files;
+}
+
+function getTableName(filePath) {
+  const relative = path.relative(dataRoot, filePath);
+  const parsed = path.parse(relative);
+  return parsed.name;
+}
+
+function readJson(filePath) {
+  const raw = fs.readFileSync(filePath, 'utf8');
   try {
     return JSON.parse(raw);
   } catch (err) {
-    console.error(`Failed to parse JSON ${relPath}:`, err.message);
+    console.error(`Failed to parse JSON ${filePath}:`, err.message);
     return null;
   }
 }
@@ -65,7 +77,6 @@ async function importArray(table, items) {
   }
 
   console.log(`Importing ${items.length} rows into table '${table}'`);
-  // Use upsert to avoid duplicates when running multiple times.
   const { error } = await supabase.from(table).upsert(items, { returning: 'minimal' });
   if (error) {
     console.error(`Supabase upsert error for table ${table}:`, error.message || error);
@@ -74,11 +85,61 @@ async function importArray(table, items) {
   }
 }
 
+async function importTreeComplete(data) {
+  if (!data) return;
+
+  // Restore legacy behavior: store a single document for tree_complete
+  console.log(`Importing tree_complete as a single document (legacy format)`);
+
+  // Unwrap array-wrapped payloads produced by some JSON exports
+  if (Array.isArray(data) && data.length === 1) {
+    data = data[0];
+  }
+
+  // Upsert the entire object as one row. This assumes the Supabase table
+  // accepts a JSON-like record (previously used for legacy import).
+  try {
+    const payload = data;
+
+    // Upsert into a dedicated table that stores a single JSONB document.
+    // Table schema expected:
+    //   CREATE TABLE tree_complete_doc (id text PRIMARY KEY, tree jsonb);
+    const doc = { id: 'tree', tree: payload };
+    const { error } = await supabase.from('tree_complete_doc').upsert([doc], { returning: 'minimal' });
+    if (error) {
+      console.error(`Supabase upsert error for table tree_complete:`, error.message || error);
+    } else {
+      console.log(`Imported tree_complete as single document successfully.`);
+    }
+  } catch (err) {
+    console.error('Unexpected error importing tree_complete:', err.message || err);
+  }
+}
+
 async function main() {
-  for (const m of mappings) {
-    const data = readJson(m.file);
+  if (!fs.existsSync(dataRoot)) {
+    console.error('Data directory not found:', dataRoot);
+    process.exit(1);
+  }
+
+  const files = findJsonFiles(dataRoot);
+  if (files.length === 0) {
+    console.log('Không tìm thấy file JSON nào trong thư mục data/.');
+    return;
+  }
+
+  console.log(`Found ${files.length} JSON file(s) to import.`);
+  for (const filePath of files) {
+    const table = getTableName(filePath);
+    const data = readJson(filePath);
     if (!data) continue;
-    await importArray(m.table, data);
+
+    if (table === 'tree_complete') {
+      await importTreeComplete(data);
+      continue;
+    }
+
+    await importArray(table, data);
   }
 
   console.log('Import finished. Verify your Supabase tables and indexes.');

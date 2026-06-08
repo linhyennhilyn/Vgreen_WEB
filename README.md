@@ -43,15 +43,19 @@ ng serve --o  # hoặc npm run start:open
 
 ```
 FinalWeb_VGreen/
-├── backend/              # Backend API (Node.js + Express + MongoDB)
+├── backend/              # Backend API (Node.js + Express + Supabase)
 ├── my-user/              # Frontend User (Angular)
 ├── my-admin/             # Frontend Admin (Angular)
-├── data/                 # Dữ liệu JSON để import vào MongoDB
+├── data/                 # Dữ liệu JSON để import vào Supabase / MongoDB
 ├── asset/                # Assets chung (images, icons, fonts)
 ├── setup.js              # Script tự động cài đặt dependencies
 └── package.json          # Root package.json
 ```
-
+> Ghi chú: Backend hiện tại đã được sửa sang Supabase. Bạn có thể dùng `backend/server.supabase.js` để chạy backend bằng Supabase.
+>
+> - Script import Supabase: `scripts/import-to-supabase.js`
+> - Môi trường cần thêm: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`
+> - Nếu muốn chạy lại bằng MongoDB, giữ nguyên `backend/server.js` và cấu hình `MONGODB_URI`.
 ## 🚀 Hướng dẫn cài đặt
 
 ### Bước 1: Clone repository
@@ -102,22 +106,29 @@ npm install --include=dev --force
 cd ..
 ```
 
-### Bước 3: Cấu hình MongoDB
+### Bước 3: Cấu hình Supabase (hoặc MongoDB)
 
-1. Đảm bảo MongoDB đã được cài đặt và đang chạy
-2. Kiểm tra file `backend/config/database.js` hoặc `backend/db.js` để cấu hình connection string
-3. Mặc định MongoDB chạy tại: `mongodb://localhost:27017`
-4. Database name: `vgreen` (hoặc theo cấu hình của bạn)
+1. Nếu dùng Supabase, thiết lập các biến môi trường trong `backend/.env`:
+   - `SUPABASE_URL=https://<your-project>.supabase.co`
+   - `SUPABASE_SERVICE_ROLE_KEY=<your-service-role-key>`
+2. Nếu muốn dùng MongoDB cũ, giữ nguyên cấu hình `MONGODB_URI` trong `backend/.env`.
+3. Với Supabase, bạn cần tạo bảng tương ứng với các collection hiện tại và import dữ liệu.
 
-### Bước 4: Import dữ liệu vào MongoDB (Tùy chọn)
+### Bước 4: Import dữ liệu vào Supabase hoặc MongoDB (Tùy chọn)
 
-Nếu cần import dữ liệu từ các file JSON:
+Nếu cần import dữ liệu từ các file JSON vào MongoDB:
 
 ```bash
 npm run import-json
 ```
 
-Lệnh này sẽ import tất cả các file JSON trong thư mục `data/` vào MongoDB.
+Nếu cần import dữ liệu từ các file JSON vào Supabase:
+
+```bash
+npm run import-supabase
+```
+
+Lưu ý: `npm run import-supabase` sẽ quét toàn bộ `*.json` trong thư mục `data/` và import từng file theo tên bảng.
 
 ## ▶️ Hướng dẫn chạy
 

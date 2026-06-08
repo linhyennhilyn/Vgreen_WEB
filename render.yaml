@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: vgreen-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: node backend/server.supabase.js
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: https://njaxwrkyvztzpjfnvxli.supabase.co
+        fromDatabase: false
+      - key: sb_secret_ik7pOSdztDjHkYddBmH2lw_m2RlIbyf
+        fromDatabase: false

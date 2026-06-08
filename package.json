@@ -11,6 +11,7 @@
     "list-collections": "cd backend && node scripts/list-collections.js",
     "init-db": "cd backend && npm run init-db",
     "import-json": "cd backend && node scripts/import-all-json.js",
+    "import-supabase": "node scripts/import-to-supabase.js",
     "test-api": "cd backend && npm run test-api",
     "dev": "npx concurrently \"npm run backend\" \"npm run start\"",
     "serve": "npx concurrently \"npm run backend\" \"cd my-user && ng serve --open\"",
@@ -19,7 +20,11 @@
     "setup": "node setup.js",
     "fix-angular": "node fix-angular-build.js"
   },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.35.0",
+    "dotenv": "^17.2.3"
+  },
   "devDependencies": {
-    "concurrently": "^7.6.0"
+    "concurrently": "^10.0.3"
   }
 }
