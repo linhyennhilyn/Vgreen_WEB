@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 import { map, catchError, timeout } from 'rxjs/operators';
 import { SupabaseService } from './supabase.service';
+import { ApiConfigService } from './api-config.service';
 
 export interface AdminUser {
   id: number;
@@ -16,8 +17,6 @@ export interface AdminUser {
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:3000/api';
-  
   // Signal để track trạng thái đăng nhập
   isAuthenticated = signal<boolean>(false);
   currentUser = signal<AdminUser | null>(null);
@@ -25,10 +24,18 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private supabase: SupabaseService
+    private supabase: SupabaseService,
+    private apiConfig: ApiConfigService
   ) {
     // Kiểm tra xem có session không khi khởi động
     this.checkSession();
+  }
+
+  /**
+   * Get API endpoint URL
+   */
+  private getApiUrl(endpoint: string): string {
+    return this.apiConfig.getApiEndpoint(endpoint);
   }
 
   /**
@@ -145,7 +152,7 @@ export class AuthService {
    * Trả về full response bao gồm OTP (trong development mode)
    */
   requestPasswordReset(email: string): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/auth/forgot-password`, { email })
+    return this.http.post<any>(this.getApiUrl('/auth/forgot-password'), { email })
       .pipe(
         timeout(10000), // 10 seconds timeout
         map(response => {
@@ -182,7 +189,7 @@ export class AuthService {
    * Xác thực mã OTP
    */
   verifyOTP(email: string, otp: string): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/auth/verify-otp`, { 
+    return this.http.post<any>(this.getApiUrl('/auth/verify-otp'), { 
       email, 
       otp 
     }).pipe(
@@ -220,7 +227,7 @@ export class AuthService {
    * Reset password với OTP
    */
   resetPassword(email: string, otp: string, newPassword: string): Observable<boolean> {
-    return this.http.post<any>(`${this.baseUrl}/auth/reset-password`, { 
+    return this.http.post<any>(this.getApiUrl('/auth/reset-password'), { 
       email, 
       otp, 
       newPassword 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
+import { ApiConfigService } from './api-config.service';
 
 export interface AddressInfo {
   _id?: string;
@@ -27,14 +28,15 @@ export interface UserAddress {
   providedIn: 'root',
 })
 export class AddressService {
-  private apiUrl = 'http://localhost:3000/api/address';
   private addressesSubject = new BehaviorSubject<AddressInfo[]>([]);
   public addresses$ = this.addressesSubject.asObservable();
   private currentCustomerID: string | null = null;
   private addressTree: any = null; // Cache for tree_complete collection data
   private addressTreeLoaded: boolean = false; // Flag to track if addressTree is loaded
+  private apiUrl = ''; // Will be set from apiConfig
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private apiConfig: ApiConfigService) {
+    this.apiUrl = this.apiConfig.getApiEndpoint('/address');
     // Load address tree data for Vietnamese name formatting
     this.loadAddressTree();
     // Load CustomerID from localStorage if exists
@@ -286,7 +288,7 @@ export class AddressService {
    * Load address tree data from MongoDB collection tree_complete
    */
   private loadAddressTree(): void {
-    this.http.get<any>('http://localhost:3000/api/tree_complete').subscribe({
+    this.http.get<any>(this.apiConfig.getApiEndpoint('/tree_complete')).subscribe({
       next: (treeData: any) => {
         // tree_complete từ MongoDB là array chứa một object với structure: [{ tree: {...} }]
         // Hoặc có thể là array trực tiếp: [{...}]

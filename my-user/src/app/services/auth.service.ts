@@ -4,6 +4,7 @@ import { map, tap, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { MockBackendService } from './mock-backend.service';
 import { SupabaseService } from './supabase.service';
+import { ApiConfigService } from './api-config.service';
 
 export interface User {
   id: string;
@@ -85,16 +86,20 @@ export interface ChangePasswordResponse {
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly API_URL = 'http://localhost:3000/api/auth';
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
 
   constructor(
     private mockBackend: MockBackendService,
     private http: HttpClient,
-    private supabaseService: SupabaseService
+    private supabaseService: SupabaseService,
+    private apiConfig: ApiConfigService
   ) {
     this.loadUserFromStorage();
+  }
+
+  private getApiUrl(): string {
+    return this.apiConfig.getApiEndpoint('/auth');
   }
 
   private toSupabaseEmail(phoneNumber: string): string {
@@ -275,7 +280,7 @@ export class AuthService {
     console.log(' [AuthService] Updating user info:', updateData);
 
     return this.http
-      .put<UpdateUserInfoResponse>('http://localhost:3000/api/auth/user/update', updateData)
+      .put<UpdateUserInfoResponse>(this.apiConfig.getApiEndpoint('/auth/user/update'), updateData)
       .pipe(
         tap((response) => {
           if (response.success && response.data) {
@@ -322,7 +327,7 @@ export class AuthService {
     console.log(' [AuthService] Changing password for customer:', data.customerID);
 
     return this.http
-      .post<ChangePasswordResponse>('http://localhost:3000/api/auth/change-password', data)
+      .post<ChangePasswordResponse>(this.apiConfig.getApiEndpoint('/auth/change-password'), data)
       .pipe(
         tap((response) => {
           if (response.success) {

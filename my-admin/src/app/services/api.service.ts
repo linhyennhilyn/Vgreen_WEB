@@ -2,15 +2,16 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ApiConfigService } from './api-config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
   private http = inject(HttpClient);
+  private apiConfig = inject(ApiConfigService);
 
-  // Base URL của backend API
-  private baseUrl = 'http://localhost:3000/api'; // Thay đổi URL này theo backend của bạn
+  private baseUrl = this.apiConfig.getBaseApiUrl() + '/api';
 
   private httpOptions = {
     headers: new HttpHeaders({
