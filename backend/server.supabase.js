@@ -14,8 +14,8 @@ app.use(cors({
   origin: [
     'http://localhost:4200',
     'http://localhost:4201',
-    'https://vgreen-user.vercel.app',
-    'https://vgreen-admin.vercel.app',
+    'vgreen-web.vercel.app',
+    'vgreen-web-admin.vercel.app',
   ],
 }));
 app.use(express.json({ limit: "50mb" }));
