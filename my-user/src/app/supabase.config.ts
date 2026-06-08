@@ -1,3 +1,3 @@
-export const SUPABASE_URL = 'https://example.supabase.co';
-export const SUPABASE_ANON_KEY = 'testanonkey';
+export const SUPABASE_URL = 'https://njaxwrkyvztzpjfnvxli.supabase.co';
+export const SUPABASE_ANON_KEY = 'sb_public_ik7pOSdztDjHkYddBmH2lw_m2RlIbyf';
 export const SUPABASE_EMAIL_DOMAIN = 'vgreen.local';
